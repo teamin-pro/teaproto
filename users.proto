@@ -1,0 +1,57 @@
+syntax = "proto3";
+
+package gamarjoba;
+
+message Icon {
+  string letters = 1; // example: AB
+  string color = 2; // example #FF9671
+}
+
+message Profile {
+  string id = 1;
+  string name = 2;
+  Icon icon = 3;
+  string login = 4;
+  string lastOpenedChatId = 5;
+}
+
+message GetProfileRequest {}
+
+message GetProfileResponse {
+  Profile profile = 1;
+}
+
+message UpdateProfileRequest {
+  string newName = 1;
+}
+
+message UpdateProfileResponse {
+  enum Status {
+    OK = 0;
+    NAME_IS_TOO_LONG = 1;
+  }
+
+  Status status = 1;
+  Profile profile = 2;
+}
+
+message User {
+  string id = 1;
+  string name = 2;
+  Icon icon = 3;
+  bool isOnline = 4;
+  uint64 wasOnlineAt = 5;
+  bool isMe = 6;
+}
+
+message GetUsersListRequest {
+  oneof search {
+    string userId = 1;
+    string query = 2;
+  }
+  // TODO: pagination
+}
+
+message GetUsersListResponse {
+  repeated User users = 1;
+}

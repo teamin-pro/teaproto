@@ -1,0 +1,80 @@
+syntax = "proto3";
+
+package gamarjoba;
+
+import "devices.proto";
+import "state.proto";
+import "tokens.proto";
+import "auth.proto";
+import "users.proto";
+import "messages.proto";
+
+message ClientRequest {
+  string token = 1;
+
+  oneof action {
+    // auth
+    LoginRequest loginRequest = 16;
+    LogoutRequest logoutRequest = 17;
+    RegisterAccountRequest registerAccountRequest = 19;
+
+    // devices
+    CreateOrUpdateDeviceRequest createOrUpdateDeviceRequest = 10;
+    GetDevicesListRequest getDevicesListRequest = 11;
+    DeleteDeviceRequest deleteDeviceRequest = 12;
+
+    // messages
+    SendMessageRequest sendMessageRequest = 22;
+    GetMessagesListRequest getMessagesListRequest = 23;
+
+    // state
+    GetStateRequest getStateRequest = 15;
+
+    // tokens
+    GetTokensListRequest getTokensListRequest = 13;
+    DeleteTokenRequest deleteTokenRequest = 14;
+
+    // users
+    GetProfileRequest getProfileRequest = 18;
+    UpdateProfileRequest updateProfileRequest = 21;
+    GetUsersListRequest getUsersListRequest = 20;
+  }
+}
+
+message ServerResponse {
+  enum Status {
+    OK = 0;
+    INVALID_TOKEN = 1;
+    INVALID_ACTION = 2;
+  }
+
+  Status status = 1;
+
+  oneof result {
+    // auth
+    LoginResponse loginResponse = 16;
+    LogoutResponse logoutResponse = 17;
+    RegisterAccountResponse registerAccountResponse = 19;
+
+    // devices
+    CreateOrUpdateDeviceResponse createOrUpdateDeviceResponse = 10;
+    GetDevicesListResponse getDevicesListResponse = 11;
+    DeleteDeviceResponse deleteDeviceResponse = 12;
+
+    // messages
+    SendMessageResponse sendMessageResponse = 22;
+    GetMessagesListResponse getMessagesListResponse = 23;
+
+    // state
+    GetStateResponse getStateResponse = 15;
+
+    // tokens
+    GetTokensListResponse getTokensListResponse = 13;
+    DeleteTokenResponse deleteTokenResponse = 14;
+
+    // users
+    GetProfileResponse getProfileResponse = 18;
+    UpdateProfileResponse updateProfileResponse = 21;
+    GetUsersListResponse getUsersListResponse = 20;
+  }
+}

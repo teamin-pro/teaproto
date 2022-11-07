@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+package gamarjoba;
+
+message GetStateRequest {
+  enum Mode {
+    NONE = 0;
+    RETURN_SERVER_ERROR = 1;
+    RETURN_INVALID_TOKEN = 2;
+    RETURN_INVALID_ACTION = 3;
+  }
+  Mode mode = 1;
+}
+
+// 3-in-one: server configuration / ping / errors emulator
+message GetStateResponse {
+  uint64 now = 1; // current server time in unix format, UTC
+  uint32 maxResultsOnPage = 2;
+  uint32 maxGroupTitleLength = 3;
+  uint32 maxUsernameLength = 4;
+  uint32 maxMessageLength = 5;
+}

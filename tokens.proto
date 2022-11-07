@@ -1,0 +1,29 @@
+syntax = "proto3";
+
+package gamarjoba;
+
+// Auth token. TODO: rename to session?
+message Token {
+  string id = 1;
+  string addr = 2; // ip address
+  string useragent = 3; // example: Mozilla/5.0 (Macintosh; Intel Mac OS X x.y; rv:42.0) Gecko/20100101 Firefox/42.0
+  uint64 lastUsedAt = 4;
+}
+
+message GetTokensListRequest {}
+
+message GetTokensListResponse {
+  repeated Token tokens = 1;
+}
+
+message DeleteTokenRequest {
+  string id = 1;
+}
+
+message DeleteTokenResponse {
+  enum Status {
+    OK = 0;
+    TOKEN_NOT_FOUND = 1;
+  }
+  Status status = 1;
+}

@@ -1,0 +1,43 @@
+syntax = "proto3";
+
+package gamarjoba;
+
+// Device for push notifications
+message Device {
+  string id = 1;
+  string token = 2; // device token from Firebase / APNs
+  string useragent = 3;
+  uint64 createdAt = 4;
+}
+
+message CreateOrUpdateDeviceRequest {
+  string token = 1;
+  string testPushValue = 2;  // send data push with payload: {"type": "test", "value": <given value>"}
+}
+
+message CreateOrUpdateDeviceResponse {
+  enum Status {
+    OK = 0;
+    INVALID_DEVICE_TOKEN = 1;
+  }
+  Status status = 1;
+  Device device = 2;
+}
+
+message GetDevicesListRequest {}
+
+message GetDevicesListResponse {
+  repeated Device devices = 1;
+}
+
+message DeleteDeviceRequest {
+  string id = 1;
+}
+
+message DeleteDeviceResponse {
+  enum Status {
+    OK = 0;
+    DEVICE_NOT_FOUND = 1;
+  }
+  Status status = 1;
+}

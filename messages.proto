@@ -1,0 +1,52 @@
+syntax = "proto3";
+
+package gamarjoba;
+
+import "users.proto";
+
+message Message {
+  string id = 1;
+  string chatId = 2;
+  uint64 createdAt = 3;
+  string text = 4;
+  User sender = 5;
+  string prevMessageId = 6;
+  uint64 viewed = 7;
+  // TODO: message type / group title
+}
+
+message SendMessageRequest {
+  oneof recipient {
+    string userId = 1;
+    string chatId = 2;
+  }
+  string text = 3;
+}
+
+message SendMessageResponse {
+  enum Status {
+    OK = 0;
+    INVALID_RECIPIENT = 1;
+    MESSAGE_TEXT_TOO_LONG = 2;
+    MESSAGE_IS_EMPTY = 3;
+  }
+  Status status = 1;
+  Message message = 2;
+}
+
+message GetMessagesListRequest {
+  oneof recipient {
+    string userId = 1;
+    string chatId = 2;
+  }
+  // TODO: pagination
+}
+
+message GetMessagesListResponse {
+  enum Status {
+    OK = 0;
+    INVALID_RECIPIENT = 1;
+  }
+  Status status = 1;
+  repeated Message messages = 2;
+}

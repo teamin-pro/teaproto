@@ -1,0 +1,8 @@
+syntax = "proto3";
+
+package gamarjoba;
+
+message ChatBadge {
+  string chatId = 1;
+  uint64 badge = 2;
+}
