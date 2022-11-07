@@ -14,9 +14,9 @@ message ClientRequest {
 
   oneof action {
     // auth
-    LoginRequest loginRequest = 16;
+    LoginRequest loginRequest = 16; // works without ClientRequest.token
     LogoutRequest logoutRequest = 17;
-    RegisterAccountRequest registerAccountRequest = 19;
+    RegisterAccountRequest registerAccountRequest = 19; // works without ClientRequest.token
 
     // devices
     CreateOrUpdateDeviceRequest createOrUpdateDeviceRequest = 10;
@@ -28,7 +28,7 @@ message ClientRequest {
     GetMessagesListRequest getMessagesListRequest = 23;
 
     // state
-    GetStateRequest getStateRequest = 15;
+    GetStateRequest getStateRequest = 15; // works without ClientRequest.token
 
     // tokens
     GetTokensListRequest getTokensListRequest = 13;
