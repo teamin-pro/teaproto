@@ -2,12 +2,12 @@ syntax = "proto3";
 
 package gamarjoba;
 
+import "auth.proto";
 import "devices.proto";
+import "messages.proto";
 import "state.proto";
 import "tokens.proto";
-import "auth.proto";
 import "users.proto";
-import "messages.proto";
 
 message ClientRequest {
   string token = 1;
