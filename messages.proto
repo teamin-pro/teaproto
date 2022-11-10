@@ -39,7 +39,17 @@ message GetMessagesListRequest {
     string userId = 1;
     string chatId = 2;
   }
-  // TODO: pagination
+
+  enum Mode {
+    LATEST = 0; // open chat
+    NEW_FROM_GIVEN_TIME = 1; // scroll down
+    OLD_FROM_GIVEN_TIME = 2; // scroll up
+    OLD_AND_NEW_AROUND_GIVEN_TIME = 3; // open random message in the middle of history
+  }
+
+  Mode mode = 3;
+  uint64 time = 4;
+  uint32 limit = 5;
 }
 
 message GetMessagesListResponse {
