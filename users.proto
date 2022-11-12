@@ -26,12 +26,11 @@ message UpdateProfileRequest {
 }
 
 message UpdateProfileResponse {
-  enum Status {
-    OK = 0;
-    NAME_IS_TOO_LONG = 1;
+  enum Error {
+    NAME_IS_TOO_LONG_ERROR = 0;
   }
+  repeated Error errors = 1;
 
-  Status status = 1;
   Profile profile = 2;
 }
 

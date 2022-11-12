@@ -21,9 +21,9 @@ message DeleteTokenRequest {
 }
 
 message DeleteTokenResponse {
-  enum Status {
-    OK = 0;
-    TOKEN_NOT_FOUND = 1;
+  enum Error {
+    UNKNOWN_ERROR = 0;
+    TOKEN_NOT_FOUND_ERROR = 2;
   }
-  Status status = 1;
+  repeated Error errors = 1;
 }

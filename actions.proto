@@ -42,13 +42,11 @@ message ClientRequest {
 }
 
 message ServerResponse {
-  enum Status {
-    OK = 0;
-    INVALID_TOKEN = 1;
-    INVALID_ACTION = 2;
+  enum Error {
+    INVALID_TOKEN_ERROR = 0;
+    INVALID_ACTION_ERROR = 1;
   }
-
-  Status status = 1;
+  repeated Error errors = 1;
 
   oneof result {
     // auth

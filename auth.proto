@@ -11,13 +11,12 @@ message RegisterAccountRequest {
 }
 
 message RegisterAccountResponse {
-  enum Status {
-    OK = 0;
-    INVALID_LOGIN = 1;
-    INVALID_PASSWORD = 2;
-    LOGIN_ALREADY_USED = 3;
+  enum Error {
+    INVALID_LOGIN_ERROR = 0;
+    INVALID_PASSWORD_ERROR = 1;
+    LOGIN_ALREADY_USED_ERROR = 2;
   }
-  Status status = 1;
+  repeated Error errors = 1;
 
   string token = 2;
   Profile profile = 3;
@@ -29,11 +28,10 @@ message LoginRequest {
 }
 
 message LoginResponse {
-  enum Status {
-    OK = 0;
-    INVALID_LOGIN_OR_PASSWORD = 1;
+  enum Error {
+    INVALID_LOGIN_OR_PASSWORD_ERROR = 0;
   }
-  Status status = 1;
+  repeated Error errors = 1;
 
   string token = 2;
   Profile profile = 3;

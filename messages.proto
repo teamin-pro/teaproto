@@ -25,14 +25,14 @@ message SendMessageRequest {
 }
 
 message SendMessageResponse {
-  enum Status {
-    OK = 0;
-    INVALID_MESSAGE_ID = 4;
-    INVALID_RECIPIENT = 1;
-    MESSAGE_TEXT_TOO_LONG = 2;
-    MESSAGE_IS_EMPTY = 3;
+  enum Error {
+    INVALID_MESSAGE_ID_ERROR = 0;
+    INVALID_RECIPIENT_ERROR = 1;
+    MESSAGE_TEXT_TOO_LONG_ERROR = 2;
+    MESSAGE_IS_EMPTY_ERROR = 3;
   }
-  Status status = 1;
+  repeated Error errors = 1;
+
   Message message = 2;
 }
 
@@ -48,17 +48,17 @@ message GetMessagesListRequest {
     OLD_FROM_GIVEN_TIME = 2; // scroll up
     OLD_AND_NEW_AROUND_GIVEN_TIME = 3; // open random message in the middle of history
   }
-
   Mode mode = 3;
+
   uint64 time = 4;
-  uint32 limit = 5;
+  uint32 limit = 5; // default: GetStateResponse.maxResultsOnPage
 }
 
 message GetMessagesListResponse {
-  enum Status {
-    OK = 0;
-    INVALID_RECIPIENT = 1;
+  enum Error {
+    INVALID_RECIPIENT_ERROR = 0;
   }
-  Status status = 1;
+  repeated Error errors = 1;
+
   repeated Message messages = 2;
 }

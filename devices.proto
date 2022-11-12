@@ -16,11 +16,11 @@ message CreateOrUpdateDeviceRequest {
 }
 
 message CreateOrUpdateDeviceResponse {
-  enum Status {
-    OK = 0;
-    INVALID_DEVICE_TOKEN = 1;
+  enum Error {
+    INVALID_DEVICE_TOKEN_ERROR = 0;
   }
-  Status status = 1;
+  repeated Error errors = 1;
+
   Device device = 2;
 }
 
@@ -35,9 +35,8 @@ message DeleteDeviceRequest {
 }
 
 message DeleteDeviceResponse {
-  enum Status {
-    OK = 0;
-    DEVICE_NOT_FOUND = 1;
+  enum Error {
+    DEVICE_NOT_FOUND_ERROR = 0;
   }
-  Status status = 1;
+  repeated Error errors = 1;
 }
