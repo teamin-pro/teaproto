@@ -16,6 +16,7 @@ message Message {
 }
 
 message SendMessageRequest {
+  string id = 4; // optional
   oneof recipient {
     string userId = 1;
     string chatId = 2;
@@ -26,6 +27,7 @@ message SendMessageRequest {
 message SendMessageResponse {
   enum Status {
     OK = 0;
+    INVALID_MESSAGE_ID = 4;
     INVALID_RECIPIENT = 1;
     MESSAGE_TEXT_TOO_LONG = 2;
     MESSAGE_IS_EMPTY = 3;
