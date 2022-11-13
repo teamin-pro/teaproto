@@ -2,7 +2,22 @@ syntax = "proto3";
 
 package gamarjoba;
 
+import "users.proto";
+
 message ChatBadge {
   string chatId = 1;
   uint64 badge = 2;
+}
+
+enum ChatType {
+  DIRECT_CHAT = 0;
+  GROUP_CHAT = 1;
+  TASK_CHAT = 2;
+}
+
+message Chat {
+  string id = 1;
+  ChatType chatType = 2;
+  Icon icon = 3;
+  string displayName = 4;
 }

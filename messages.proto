@@ -3,16 +3,16 @@ syntax = "proto3";
 package gamarjoba;
 
 import "users.proto";
+import "chats.proto";
 
 message Message {
+  Chat chat = 8;
   string id = 1;
-  string chatId = 2;
   uint64 createdAt = 3;
   string text = 4;
   User sender = 5;
   string prevMessageId = 6;
   uint64 viewed = 7;
-  // TODO: message type / group title
 }
 
 message SendMessageRequest {
