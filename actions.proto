@@ -43,8 +43,9 @@ message ClientRequest {
 
 message ServerResponse {
   enum Error {
-    INVALID_TOKEN_ERROR = 0;
-    INVALID_ACTION_ERROR = 1;
+    UNKNOWN_ERROR = 0;
+    INVALID_TOKEN_ERROR = 1;
+    INVALID_ACTION_ERROR = 2;
   }
   repeated Error errors = 1;
 

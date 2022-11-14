@@ -27,7 +27,8 @@ message UpdateProfileRequest {
 
 message UpdateProfileResponse {
   enum Error {
-    NAME_IS_TOO_LONG_ERROR = 0;
+    UNKNOWN_ERROR = 0;
+    NAME_IS_TOO_LONG_ERROR = 1;
   }
   repeated Error errors = 1;
 

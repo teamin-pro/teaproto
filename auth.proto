@@ -12,9 +12,10 @@ message RegisterAccountRequest {
 
 message RegisterAccountResponse {
   enum Error {
-    INVALID_LOGIN_ERROR = 0;
-    INVALID_PASSWORD_ERROR = 1;
-    LOGIN_ALREADY_USED_ERROR = 2;
+    UNKNOWN_ERROR = 0;
+    INVALID_LOGIN_ERROR = 1;
+    INVALID_PASSWORD_ERROR = 2;
+    LOGIN_ALREADY_USED_ERROR = 3;
   }
   repeated Error errors = 1;
 
@@ -29,7 +30,8 @@ message LoginRequest {
 
 message LoginResponse {
   enum Error {
-    INVALID_LOGIN_OR_PASSWORD_ERROR = 0;
+    UNKNOWN_ERROR = 0;
+    INVALID_LOGIN_OR_PASSWORD_ERROR = 1;
   }
   repeated Error errors = 1;
 

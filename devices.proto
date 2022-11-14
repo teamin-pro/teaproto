@@ -17,7 +17,8 @@ message CreateOrUpdateDeviceRequest {
 
 message CreateOrUpdateDeviceResponse {
   enum Error {
-    INVALID_DEVICE_TOKEN_ERROR = 0;
+    UNKNOWN_ERROR = 0;
+    INVALID_DEVICE_TOKEN_ERROR = 1;
   }
   repeated Error errors = 1;
 
@@ -36,7 +37,8 @@ message DeleteDeviceRequest {
 
 message DeleteDeviceResponse {
   enum Error {
-    DEVICE_NOT_FOUND_ERROR = 0;
+    UNKNOWN_ERROR = 0;
+    DEVICE_NOT_FOUND_ERROR = 1;
   }
   repeated Error errors = 1;
 }
