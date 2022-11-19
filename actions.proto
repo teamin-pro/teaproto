@@ -3,6 +3,7 @@ syntax = "proto3";
 package gamarjoba;
 
 import "auth.proto";
+import "chats.proto";
 import "devices.proto";
 import "messages.proto";
 import "state.proto";
@@ -17,6 +18,9 @@ message ClientRequest {
     LoginRequest loginRequest = 16; // works without ClientRequest.token
     LogoutRequest logoutRequest = 17;
     RegisterAccountRequest registerAccountRequest = 19; // works without ClientRequest.token
+
+    // chats
+    ChatDetailsRequest chatDetailsRequest = 24;
 
     // devices
     CreateOrUpdateDeviceRequest createOrUpdateDeviceRequest = 10;
@@ -54,6 +58,9 @@ message ServerResponse {
     LoginResponse loginResponse = 16;
     LogoutResponse logoutResponse = 17;
     RegisterAccountResponse registerAccountResponse = 19;
+
+    // chats
+    ChatDetailsResponse chatDetailsResponse = 24;
 
     // devices
     CreateOrUpdateDeviceResponse createOrUpdateDeviceResponse = 10;

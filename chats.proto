@@ -3,21 +3,35 @@ syntax = "proto3";
 package gamarjoba;
 
 import "users.proto";
+import "messages.proto";
 
-message ChatBadge {
-  string chatId = 1;
-  uint64 badge = 2;
-}
-
-enum ChatType {
-  DIRECT_CHAT = 0;
-  GROUP_CHAT = 1;
-  TASK_CHAT = 2;
-}
-
-message Chat {
+message ChatDetails {
   string id = 1;
+  string withUserId = 5; // direct chats only
   ChatType chatType = 2;
-  Icon icon = 3;
-  string displayName = 4;
+  bool isDeleted = 3;
+  uint64 numMembers = 4;
+  string displayName = 6; // chat title for groups, participant name for direct chats
+  Icon icon = 7;
+  Message lastMessage = 8; // optional
+  uint64 updatedAt = 9; // last message creation time even message was deleted
+  string lastViewedMessageId = 10; // optional
+  uint64 badge = 11; // number of unseen messages
+  uint64 pinnedPosition = 12;  // pinned position at chat list, if any
+}
+
+message ChatDetailsRequest {
+  oneof recipient {
+    string chatId = 2;
+    string userId = 1;
+  }
+}
+
+message ChatDetailsResponse {
+  enum Error {
+    UNKNOWN_ERROR = 0;
+    INVALID_RECIPIENT_ERROR = 1;
+  }
+  repeated Error errors = 1;
+  ChatDetails chatDetails = 2;
 }
