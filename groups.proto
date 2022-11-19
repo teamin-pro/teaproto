@@ -24,3 +24,16 @@ message CreateGroupResponse {
   repeated Error errors = 1;
   Group group = 2;
 }
+
+message GroupDetailsRequest {
+  string chatId = 1;
+}
+
+message GroupDetailsResponse {
+  enum Error {
+    UNKNOWN_ERROR = 0;
+    CHAT_ID_NOT_FOUND = 1;
+  }
+  repeated Error errors = 1;
+  Group group = 2;
+}
