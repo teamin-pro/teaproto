@@ -9,6 +9,7 @@ message Message {
   Chat chat = 8;
   string id = 1;
   uint64 createdAt = 3;
+  uint64 updatedAt = 9; // non-empty if message was changed
   string text = 4;
   User sender = 5;
   string prevMessageId = 6;
