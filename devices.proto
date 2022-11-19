@@ -25,9 +25,9 @@ message CreateOrUpdateDeviceResponse {
   Device device = 2;
 }
 
-message GetDevicesListRequest {}
+message DevicesListRequest {}
 
-message GetDevicesListResponse {
+message DevicesListResponse {
   repeated Device devices = 1;
 }
 

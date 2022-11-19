@@ -15,9 +15,9 @@ message Profile {
   string lastOpenedChatId = 5;
 }
 
-message GetProfileRequest {}
+message ProfileRequest {}
 
-message GetProfileResponse {
+message ProfileResponse {
   Profile profile = 1;
 }
 
@@ -44,7 +44,7 @@ message User {
   bool isMe = 6;
 }
 
-message GetUsersListRequest {
+message UsersListRequest {
   oneof search {
     string userId = 1;
     string query = 2;
@@ -52,6 +52,6 @@ message GetUsersListRequest {
   // TODO: pagination
 }
 
-message GetUsersListResponse {
+message UsersListResponse {
   repeated User users = 1;
 }

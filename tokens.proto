@@ -10,9 +10,9 @@ message Token {
   uint64 lastUsedAt = 4;
 }
 
-message GetTokensListRequest {}
+message TokensListRequest {}
 
-message GetTokensListResponse {
+message TokensListResponse {
   repeated Token tokens = 1;
 }
 

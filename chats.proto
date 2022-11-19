@@ -5,7 +5,7 @@ package gamarjoba;
 import "users.proto";
 import "messages.proto";
 
-message ChatDetails {
+message Chat {
   string id = 1;
   string withUserId = 5; // direct chats only
   ChatType chatType = 2;
@@ -33,5 +33,11 @@ message ChatDetailsResponse {
     INVALID_RECIPIENT_ERROR = 1;
   }
   repeated Error errors = 1;
-  ChatDetails chatDetails = 2;
+  Chat chat = 2;
+}
+
+message ChatListRequest {}
+
+message ChatListResponse {
+  repeated Chat chats = 1;
 }

@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+package gamarjoba;
+
+import "users.proto";
+
+message Group {
+  string chatId = 1;
+  string title = 2;
+  Icon icon = 3;
+}
+
+message CreateGroupRequest {
+  string title = 1;
+  repeated string userIds = 2;
+}
+
+message CreateGroupResponse {
+  enum Error {
+    UNKNOWN_ERROR = 0;
+    EMPTY_TITLE = 1;
+    TITLE_TOO_LONG = 2;
+  }
+  repeated Error errors = 1;
+  Group group = 2;
+}

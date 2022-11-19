@@ -16,7 +16,7 @@ enum ChatType {
   TASK = 3;
 }
 
-message Chat {
+message ChatPreview {
   string id = 1;
   //  ChatType chatType = 2;
   //  Icon icon = 3;
@@ -24,7 +24,7 @@ message Chat {
 }
 
 message Message {
-  Chat chat = 8;
+  ChatPreview chat = 8;
   string id = 1;
   uint64 createdAt = 3;
   uint64 updatedAt = 9; // non-empty if message was changed
@@ -32,6 +32,13 @@ message Message {
   User sender = 5;
   string prevMessageId = 6;
   uint64 viewed = 7;
+
+  enum Right {
+    UNKNOWN_RIGHT = 0;
+    CAN_EDIT = 1;
+    CAN_DELETE = 2;
+  }
+  repeated Right rights = 10;
 }
 
 message SendMessageRequest {
@@ -56,7 +63,7 @@ message SendMessageResponse {
   Message message = 2;
 }
 
-message GetMessagesListRequest {
+message MessagesListRequest {
   oneof recipient {
     string chatId = 2;
     string userId = 1;
@@ -74,7 +81,7 @@ message GetMessagesListRequest {
   uint32 limit = 5; // default: GetStateResponse.maxResultsOnPage
 }
 
-message GetMessagesListResponse {
+message MessagesListResponse {
   enum Error {
     UNKNOWN_ERROR = 0;
     INVALID_RECIPIENT_ERROR = 1;
