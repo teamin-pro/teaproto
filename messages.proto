@@ -123,3 +123,16 @@ message ViewMessageResponse {
   uint64 badge = 2;  // number of unseen messages
   repeated ViewedMessage viewedMessages = 3; // viewed messages list
 }
+
+message MessageViewersRequest {
+  string id = 1;
+}
+
+message MessageViewersResponse {
+  enum Error {
+    UNKNOWN_ERROR = 0;
+    INVALID_MESSAGE_ID_ERROR = 1;
+  }
+  repeated Error errors = 1;
+  repeated User users = 3;
+}
