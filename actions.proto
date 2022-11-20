@@ -24,6 +24,7 @@ message ClientRequest {
     ChatDetailsRequest chatDetailsRequest = 24;
     ChatListRequest chatListRequest = 25;
     UpdateChatRequest updateChatRequest = 30;
+    ChatEventRequest chatEventRequest = 31;
 
     // groups
     CreateGroupRequest createGroupRequest = 26;
@@ -72,6 +73,7 @@ message ServerResponse {
     ChatDetailsResponse chatDetailsResponse = 24;
     ChatListResponse chatListResponse = 25;
     UpdateChatResponse updateChatResponse = 30;
+    ChatEventResponse chatEventResponse = 31;
 
     // groups
     CreateGroupResponse createGroupResponse = 26;

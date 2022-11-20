@@ -20,6 +20,21 @@ message Chat {
   uint64 pinnedPosition = 12;  // pinned position at chat list, if any
 }
 
+enum ChatEventType {
+  UNKNOWN_EVENT_TYPE = 0;
+  TYPING = 1;
+  RECORDING_AUDIO = 2;
+  CHOOSING_STICKER = 3;
+}
+
+message ChatEvent {
+  ChatEventType type = 1;
+  string chatId = 2;
+  string userId = 3;
+  uint64 stopAfter = 4; // stop showing event after this time
+  bool stopNow = 5; // stop showing event right now
+}
+
 message ChatDetailsRequest {
   oneof recipient {
     string chatId = 2;
@@ -57,4 +72,20 @@ message ChatListRequest {}
 
 message ChatListResponse {
   repeated Chat chats = 1;
+}
+
+message ChatEventRequest {
+  oneof recipient {
+    string chatId = 2;
+    string userId = 1;
+  }
+}
+
+message ChatEventResponse {
+  enum Error {
+    UNKNOWN_ERROR = 0;
+    INVALID_RECIPIENT_ERROR = 1;
+  }
+  repeated Error errors = 1;
+  ChatEvent chatEvent = 2;
 }

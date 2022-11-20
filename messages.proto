@@ -10,7 +10,7 @@ message ChatBadge {
 }
 
 enum ChatType {
-  UNKNOWN = 0;
+  UNKNOWN_CHAT_TYPE = 0;
   DIRECT = 1;
   GROUP = 2;
   TASK = 3;
