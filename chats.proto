@@ -21,10 +21,9 @@ message Chat {
 }
 
 enum ChatEventType {
-  UNKNOWN_EVENT_TYPE = 0;
-  TYPING = 1;
-  RECORDING_AUDIO = 2;
-  CHOOSING_STICKER = 3;
+  TYPING = 0;
+  RECORDING_AUDIO = 1;
+  CHOOSING_STICKER = 2;
 }
 
 message ChatEvent {
@@ -79,6 +78,7 @@ message ChatEventRequest {
     string chatId = 2;
     string userId = 1;
   }
+  ChatEventType type = 3;
 }
 
 message ChatEventResponse {
