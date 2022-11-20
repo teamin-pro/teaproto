@@ -2,6 +2,7 @@ syntax = "proto3";
 
 package gamarjoba;
 
+// 3-in-one: server configuration / ping / errors emulator
 message StateRequest {
   enum Mode {
     NONE = 0;
@@ -12,7 +13,6 @@ message StateRequest {
   Mode mode = 1;
 }
 
-// 3-in-one: server configuration / ping / errors emulator
 message StateResponse {
   uint64 now = 1; // current server time in unix format, UTC
   uint32 maxResultsOnPage = 2;
