@@ -36,6 +36,23 @@ message ChatDetailsResponse {
   Chat chat = 2;
 }
 
+message UpdateChatRequest {
+  oneof recipient {
+    string chatId = 2;
+    string userId = 1;
+  }
+  uint64 pinnedPosition = 3; // pinned position at chat list, if any
+}
+
+message UpdateChatResponse {
+  enum Error {
+    UNKNOWN_ERROR = 0;
+    INVALID_RECIPIENT_ERROR = 1;
+  }
+  repeated Error errors = 1;
+  Chat chat = 2;
+}
+
 message ChatListRequest {}
 
 message ChatListResponse {
