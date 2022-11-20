@@ -31,7 +31,7 @@ message Message {
   string text = 4;
   User sender = 5;
   string prevMessageId = 6;
-  uint64 viewed = 7;
+  uint64 viewedCounter = 7; // how many recipients viewed this message
 
   enum Right {
     UNKNOWN_RIGHT = 0;
@@ -44,7 +44,7 @@ message Message {
 message ViewedMessage {
   string messageId = 1;
   string chatId = 2;
-  uint64 viewed = 3;  // how many recipients viewed this message
+  uint64 viewedCounter = 3; // how many recipients viewed this message
 }
 
 message SendMessageRequest {
