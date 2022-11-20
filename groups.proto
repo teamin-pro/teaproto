@@ -20,6 +20,24 @@ message CreateGroupResponse {
     UNKNOWN_ERROR = 0;
     EMPTY_TITLE = 1;
     TITLE_TOO_LONG = 2;
+    CREATION_NOT_ALLOWED = 3;
+  }
+  repeated Error errors = 1;
+  Group group = 2;
+}
+
+message UpdateGroupSettingsRequest {
+  string chatId = 1;
+  string title = 2;
+}
+
+message UpdateGroupSettingsResponse {
+  enum Error {
+    UNKNOWN_ERROR = 0;
+    CHAT_ID_NOT_FOUND = 1;
+    UPDATE_NOT_ALLOWED = 2;
+    EMPTY_TITLE = 3;
+    TITLE_TOO_LONG = 4;
   }
   repeated Error errors = 1;
   Group group = 2;

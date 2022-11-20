@@ -28,6 +28,7 @@ message ClientRequest {
     CreateGroupRequest createGroupRequest = 26;
     GroupDetailsRequest groupDetailsRequest = 27;
     GroupListRequest groupListRequest = 28;
+    UpdateGroupSettingsRequest updateGroupSettingsRequest = 29;
 
     // devices
     CreateOrUpdateDeviceRequest createOrUpdateDeviceRequest = 10;
@@ -74,6 +75,7 @@ message ServerResponse {
     CreateGroupResponse createGroupResponse = 26;
     GroupDetailsResponse groupDetailsResponse = 27;
     GroupListResponse groupListResponse = 28;
+    UpdateGroupSettingsResponse updateGroupSettingsResponse = 29;
 
     // devices
     CreateOrUpdateDeviceResponse createOrUpdateDeviceResponse = 10;
