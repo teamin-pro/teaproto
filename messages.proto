@@ -77,7 +77,7 @@ message MessagesListRequest {
   }
   Mode mode = 3;
 
-  uint64 time = 4;
+  uint64 createdAt = 4;
   uint32 limit = 5; // default: GetStateResponse.maxResultsOnPage
 }
 
@@ -89,4 +89,17 @@ message MessagesListResponse {
   repeated Error errors = 1;
 
   repeated Message messages = 2;
+}
+
+message MessageDetailsRequest {
+  string id = 1;
+}
+
+message MessageDetailsResponse {
+  enum Error {
+    UNKNOWN_ERROR = 0;
+    INVALID_MESSAGE_ID_ERROR = 1;
+  }
+  repeated Error errors = 1;
+  Message message = 2;
 }
