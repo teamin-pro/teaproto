@@ -109,3 +109,17 @@ message MessageDetailsResponse {
   repeated Error errors = 1;
   Message message = 2;
 }
+
+message ViewMessageRequest {
+  string id = 1;
+}
+
+message ViewMessageResponse {
+  enum Error {
+    UNKNOWN_ERROR = 0;
+    INVALID_MESSAGE_ID_ERROR = 1;
+  }
+  repeated Error errors = 1;
+  uint64 badge = 2;  // number of unseen messages
+  repeated ViewedMessage viewedMessages = 3; // viewed messages list
+}

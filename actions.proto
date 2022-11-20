@@ -41,6 +41,7 @@ message ClientRequest {
     SendMessageRequest sendMessageRequest = 22;
     MessagesListRequest messagesListRequest = 23;
     MessageDetailsRequest messageDetailsRequest = 32;
+    ViewMessageRequest viewMessageRequest = 33;
 
     // state
     StateRequest stateRequest = 15; // works without ClientRequest.token
@@ -91,6 +92,7 @@ message ServerResponse {
     SendMessageResponse sendMessageResponse = 22;
     MessagesListResponse messagesListResponse = 23;
     MessageDetailsResponse messageDetailsResponse = 32;
+    ViewMessageResponse viewMessageResponse = 33;
 
     // state
     StateResponse stateResponse = 15;
