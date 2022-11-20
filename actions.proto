@@ -105,3 +105,14 @@ message ServerResponse {
     UsersListResponse usersListResponse = 20;
   }
 }
+
+message WebsocketEvent {
+  repeated string goingOnline = 1; // user ids going online
+  repeated string goingOffline = 2; // user ids going offline
+  repeated Message messages = 3; // new or updated messages
+  repeated User users = 4; // new or updated users
+  repeated Chat chats = 5; // new or updated chats
+  repeated ChatBadge chatBadges = 6; // Updated chat badges
+  repeated ChatEvent chatEvents = 7;
+  repeated ViewedMessage viewedMessages = 8;
+}

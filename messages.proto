@@ -41,6 +41,12 @@ message Message {
   repeated Right rights = 10;
 }
 
+message ViewedMessage {
+  string messageId = 1;
+  string chatId = 2;
+  uint64 viewed = 3;  // how many recipients viewed this message
+}
+
 message SendMessageRequest {
   string id = 4; // optional
   oneof recipient {
