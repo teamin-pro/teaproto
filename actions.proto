@@ -107,6 +107,7 @@ message ServerResponse {
 }
 
 message WebsocketEvent {
+  uint64 generatedAt = 99;
   repeated string goingOnline = 1; // user ids going online
   repeated string goingOffline = 2; // user ids going offline
   repeated Message messages = 3; // new or updated messages
