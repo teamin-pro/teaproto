@@ -110,6 +110,18 @@ message ServerResponse {
   }
 }
 
+message WebsocketAuthRequest {
+  string token = 1;
+}
+
+message WebsocketAuthResponse {
+  enum Error {
+    UNKNOWN_ERROR = 0;
+    INVALID_TOKEN_ERROR = 1;
+  }
+  repeated Error errors = 1;
+}
+
 message WebsocketEvent {
   repeated string goingOnline = 1; // user ids going online
   repeated string goingOffline = 2; // user ids going offline
