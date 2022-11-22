@@ -70,10 +70,6 @@ message SendMessageResponse {
 }
 
 message MessagesListRequest {
-  message ExactFilter {
-    string messageId = 1;
-  }
-
   message LatestFilter {
     oneof recipient {
       string chatId = 1;
@@ -93,7 +89,6 @@ message MessagesListRequest {
   }
 
   oneof filter {
-    ExactFilter exact = 2;
     LatestFilter latest = 3;
     ScrollFilter scroll = 4;
   }
