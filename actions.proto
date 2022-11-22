@@ -114,15 +114,13 @@ message WebsocketAuthRequest {
   string token = 1;
 }
 
-message WebsocketAuthResponse {
+message WebsocketEvent {
   enum Error {
     UNKNOWN_ERROR = 0;
     INVALID_TOKEN_ERROR = 1;
   }
-  repeated Error errors = 1;
-}
+  repeated Error errors = 99;
 
-message WebsocketEvent {
   repeated string goingOnline = 1; // user ids going online
   repeated string goingOffline = 2; // user ids going offline
   repeated Message messages = 3; // new or updated messages
