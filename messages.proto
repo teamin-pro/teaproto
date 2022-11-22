@@ -70,21 +70,30 @@ message SendMessageResponse {
 }
 
 message MessagesListRequest {
-  oneof recipient {
-    string chatId = 2;
-    string userId = 1;
+  message LatestFilter {
+    oneof recipient {
+      string chatId = 1;
+      string userId = 2;
+    }
+    uint32 limit = 3; // default: GetStateResponse.maxResultsOnPage
   }
 
-  enum Mode {
-    LATEST = 0; // open chat
-    NEW_FROM_GIVEN_TIME = 1; // scroll down
-    OLD_FROM_GIVEN_TIME = 2; // scroll up
-    OLD_AND_NEW_AROUND_GIVEN_TIME = 3; // open random message in the middle of history
+  message ScrollFilter {
+    oneof recipient {
+      string chatId = 1;
+      string userId = 2;
+    }
+    uint64 createdAt = 3;
+    uint32 upLimit = 4;
+    uint32 downLimit = 5;
   }
-  Mode mode = 3;
 
-  uint64 createdAt = 4;
-  uint32 limit = 5; // default: GetStateResponse.maxResultsOnPage
+  string searchQuery = 1;
+
+  oneof filter {
+    LatestFilter latest = 3;
+    ScrollFilter scroll = 4;
+  }
 }
 
 message MessagesListResponse {
