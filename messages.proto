@@ -70,6 +70,10 @@ message SendMessageResponse {
 }
 
 message MessagesListRequest {
+  message ExactFilter {
+    string messageId = 1;
+  }
+
   message LatestFilter {
     oneof recipient {
       string chatId = 1;
@@ -84,13 +88,12 @@ message MessagesListRequest {
       string userId = 2;
     }
     uint64 createdAt = 3;
-    uint32 upLimit = 4;
-    uint32 downLimit = 5;
+    uint32 newMessagesLimit = 4;
+    uint32 oldMessagesLimit = 5;
   }
 
-  string searchQuery = 1;
-
   oneof filter {
+    ExactFilter exact = 2;
     LatestFilter latest = 3;
     ScrollFilter scroll = 4;
   }
