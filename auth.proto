@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-package gamarjoba;
+package gtproto;
 
 import "users.proto";
 

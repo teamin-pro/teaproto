@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-package gamarjoba;
+package gtproto;
 
 message Icon {
   string letters = 1; // example: AB

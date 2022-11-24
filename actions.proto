@@ -1,15 +1,16 @@
 syntax = "proto3";
 
-package gamarjoba;
+package gtproto;
 
 import "auth.proto";
+import "chat_members.proto";
 import "chats.proto";
 import "devices.proto";
+import "groups.proto";
 import "messages.proto";
 import "state.proto";
 import "tokens.proto";
 import "users.proto";
-import "groups.proto";
 
 message ClientRequest {
   string token = 1;
@@ -25,6 +26,9 @@ message ClientRequest {
     ChatListRequest chatListRequest = 25;
     UpdateChatRequest updateChatRequest = 30;
     ChatEventRequest chatEventRequest = 31;
+
+    // chat members
+    ChatMembersListRequest chatMembersListRequest = 35;
 
     // groups
     CreateGroupRequest createGroupRequest = 26;
@@ -77,6 +81,9 @@ message ServerResponse {
     ChatListResponse chatListResponse = 25;
     UpdateChatResponse updateChatResponse = 30;
     ChatEventResponse chatEventResponse = 31;
+
+    // chat members
+    ChatMembersListResponse chatMembersListResponse = 35;
 
     // groups
     CreateGroupResponse createGroupResponse = 26;

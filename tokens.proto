@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-package gamarjoba;
+package gtproto;
 
 // Auth token. TODO: rename to session?
 message Token {

@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-package gamarjoba;
+package gtproto;
 
 // 3-in-one: server configuration / ping / errors emulator
 message StateRequest {

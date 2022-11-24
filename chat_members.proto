@@ -1,0 +1,30 @@
+syntax = "proto3";
+
+package gtproto;
+
+import "users.proto";
+
+enum ChatMemberRight {
+  UNKNOWN_CHAT_MEMBER_RIGHT = 0;
+  CAN_REMOVE_CHAT_MEMBER = 1;
+}
+
+message ChatMember {
+  User user = 1;
+  bool isOwner = 2;
+  string invitedByUserId = 3;
+  repeated ChatMemberRight rights = 4;
+}
+
+message ChatMembersListRequest {
+  string chatId = 1;
+}
+
+message ChatMembersListResponse {
+  enum Error {
+    UNKNOWN_ERROR = 0;
+    INVALID_CHAT_ERROR = 1;
+  }
+  repeated Error errors = 1;
+  repeated ChatMember members = 2;
+}

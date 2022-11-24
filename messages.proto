@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-package gamarjoba;
+package gtproto;
 
 import "users.proto";
 
@@ -23,6 +23,12 @@ message ChatPreview {
   //  string displayName = 4;
 }
 
+enum MessageRight {
+  UNKNOWN_MESSAGE_RIGHT = 0;
+  CAN_EDIT_MESSAGE = 1;
+  CAN_DELETE_MESSAGE = 2;
+}
+
 message Message {
   ChatPreview chat = 8;
   string id = 1;
@@ -33,12 +39,7 @@ message Message {
   string prevMessageId = 6;
   uint64 viewedCounter = 7; // how many recipients viewed this message
 
-  enum Right {
-    UNKNOWN_RIGHT = 0;
-    CAN_EDIT = 1;
-    CAN_DELETE = 2;
-  }
-  repeated Right rights = 10;
+  repeated MessageRight rights = 10;
 }
 
 message ViewedMessage {
