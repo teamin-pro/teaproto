@@ -28,3 +28,48 @@ message ChatMembersListResponse {
   repeated Error errors = 1;
   repeated ChatMember members = 2;
 }
+
+message ChatMemberDetailsRequest {
+  string chatId = 1;
+  string userId = 2; // uuid or "me"
+}
+
+message ChatMemberDetailsResponse {
+  enum Error {
+    UNKNOWN_ERROR = 0;
+    INVALID_CHAT_ERROR = 1;
+    INVALID_USER_ERROR = 2;
+  }
+  repeated Error errors = 1;
+  ChatMember member = 2;
+}
+
+message DeleteChatMemberRequest {
+  string chatId = 1;
+  string userId = 2; // uuid or "me"
+}
+
+message DeleteChatMemberResponse {
+  enum Error {
+    UNKNOWN_ERROR = 0;
+    INVALID_CHAT_ERROR = 1;
+    INVALID_USER_ERROR = 2;
+    NOT_ALLOWED_ERROR = 3;
+  }
+  repeated Error errors = 1;
+}
+
+message CreateChatMembersRequest {
+  string chatId = 1;
+  repeated string userIds = 2;
+}
+
+message CreateChatMembersResponse {
+  enum Error {
+    UNKNOWN_ERROR = 0;
+    INVALID_CHAT_ERROR = 1;
+    NOT_ALLOWED_ERROR = 2;
+  }
+  repeated Error errors = 1;
+  repeated ChatMember members = 2;
+}

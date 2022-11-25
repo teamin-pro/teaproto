@@ -34,10 +34,10 @@ message UpdateGroupSettingsRequest {
 message UpdateGroupSettingsResponse {
   enum Error {
     UNKNOWN_ERROR = 0;
-    CHAT_ID_NOT_FOUND = 1;
-    UPDATE_NOT_ALLOWED = 2;
-    EMPTY_TITLE = 3;
-    TITLE_TOO_LONG = 4;
+    INVALID_CHAT_ERROR = 1;
+    NOT_ALLOWED_ERROR = 2;
+    EMPTY_TITLE_ERROR = 3;
+    TITLE_TOO_LONG_ERROR = 4;
   }
   repeated Error errors = 1;
   Group group = 2;
@@ -50,7 +50,7 @@ message GroupDetailsRequest {
 message GroupDetailsResponse {
   enum Error {
     UNKNOWN_ERROR = 0;
-    CHAT_ID_NOT_FOUND = 1;
+    INVALID_CHAT_ERROR = 1;
   }
   repeated Error errors = 1;
   Group group = 2;

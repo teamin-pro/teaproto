@@ -29,6 +29,9 @@ message ClientRequest {
 
     // chat members
     ChatMembersListRequest chatMembersListRequest = 35;
+    ChatMemberDetailsRequest chatMemberDetailsRequest = 36;
+    DeleteChatMemberRequest deleteChatMemberRequest = 37;
+    CreateChatMembersRequest CreateChatMembersRequest = 38;
 
     // groups
     CreateGroupRequest createGroupRequest = 26;
@@ -84,6 +87,9 @@ message ServerResponse {
 
     // chat members
     ChatMembersListResponse chatMembersListResponse = 35;
+    ChatMemberDetailsResponse chatMemberDetailsResponse = 36;
+    DeleteChatMemberResponse deleteChatMemberResponse = 37;
+    CreateChatMembersResponse CreateChatMembersResponse = 38;
 
     // groups
     CreateGroupResponse createGroupResponse = 26;
