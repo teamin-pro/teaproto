@@ -83,7 +83,7 @@ message MessagesListRequest {
       string chatId = 1;
       string userId = 2;
     }
-    uint64 createdAt = 3;
+    string messageId = 6;
     uint32 newMessagesLimit = 4;
     uint32 oldMessagesLimit = 5;
   }
@@ -98,6 +98,8 @@ message MessagesListResponse {
   enum Error {
     UNKNOWN_ERROR = 0;
     INVALID_RECIPIENT_ERROR = 1;
+    INVALID_MESSAGE_ID_ERROR = 2;
+    INVALID_LIMIT_ERROR = 3;
   }
   repeated Error errors = 1;
 
