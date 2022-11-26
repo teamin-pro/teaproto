@@ -38,7 +38,6 @@ message Message {
   User sender = 5;
   string prevMessageId = 6;
   uint64 viewedCounter = 7; // how many recipients viewed this message
-
   repeated MessageRight rights = 10;
 }
 
