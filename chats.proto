@@ -67,9 +67,18 @@ message UpdateChatResponse {
   Chat chat = 2;
 }
 
-message ChatListRequest {}
+message ChatListRequest {
+  repeated ChatType chatTypes = 1;
+  uint32 limit = 2; // default: StateResponse.maxResultsOnPage
+  uint64 offset = 3;
+}
 
 message ChatListResponse {
+  enum Error {
+    UNKNOWN_ERROR = 0;
+    INVALID_LIMIT_ERROR = 1;
+  }
+  repeated Error errors = 2;
   repeated Chat chats = 1;
 }
 

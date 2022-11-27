@@ -75,7 +75,7 @@ message MessagesListRequest {
       string chatId = 1;
       string userId = 2;
     }
-    uint32 limit = 3; // default: GetStateResponse.maxResultsOnPage
+    uint32 limit = 3; // default: StateResponse.maxResultsOnPage
   }
 
   message ScrollFilter {
