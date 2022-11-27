@@ -54,5 +54,10 @@ message UsersListRequest {
 }
 
 message UsersListResponse {
+  enum Error {
+    UNKNOWN_ERROR = 0;
+    INVALID_LIMIT_ERROR = 1;
+  }
+  repeated Error errors = 2;
   repeated User users = 1;
 }

@@ -26,6 +26,7 @@ message ChatMembersListResponse {
   enum Error {
     UNKNOWN_ERROR = 0;
     INVALID_CHAT_ERROR = 1;
+    INVALID_LIMIT_ERROR = 2;
   }
   repeated Error errors = 1;
   repeated ChatMember members = 2;

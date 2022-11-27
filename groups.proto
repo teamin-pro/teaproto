@@ -62,5 +62,10 @@ message GroupListRequest {
 }
 
 message GroupListResponse {
+  enum Error {
+    UNKNOWN_ERROR = 0;
+    INVALID_LIMIT_ERROR = 1;
+  }
+  repeated Error errors = 2;
   repeated Group groups = 1;
 }
