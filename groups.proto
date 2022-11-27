@@ -56,7 +56,10 @@ message GroupDetailsResponse {
   Group group = 2;
 }
 
-message GroupListRequest {}
+message GroupListRequest {
+  uint32 limit = 1; // default: StateResponse.maxResultsOnPage
+  uint64 offset = 2;
+}
 
 message GroupListResponse {
   repeated Group groups = 1;

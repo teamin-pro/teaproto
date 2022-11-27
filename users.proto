@@ -49,7 +49,8 @@ message UsersListRequest {
     string userId = 1;
     string query = 2;
   }
-  // TODO: pagination
+  uint32 limit = 3; // default: StateResponse.maxResultsOnPage
+  uint64 offset = 4;
 }
 
 message UsersListResponse {

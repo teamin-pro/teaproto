@@ -18,6 +18,8 @@ message ChatMember {
 
 message ChatMembersListRequest {
   string chatId = 1;
+  uint32 limit = 2; // default: StateResponse.maxResultsOnPage
+  uint64 offset = 3;
 }
 
 message ChatMembersListResponse {
