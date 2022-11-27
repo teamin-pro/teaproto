@@ -79,7 +79,7 @@ message ChatListResponse {
     INVALID_LIMIT_ERROR = 1;
   }
   repeated Error errors = 2;
-  repeated Chat chats = 1;
+  repeated Chat chats = 1; // pinned chats first, other chats sorted by activity.
 }
 
 message ChatEventRequest {
