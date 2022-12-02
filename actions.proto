@@ -17,51 +17,51 @@ message ClientRequest {
 
   oneof action {
     // auth
-    LoginRequest loginRequest = 16; // works without ClientRequest.token
-    LogoutRequest logoutRequest = 17;
-    RegisterAccountRequest registerAccountRequest = 19; // works without ClientRequest.token
+    LoginRequest login_request = 16; // works without ClientRequest.token
+    LogoutRequest logout_request = 17;
+    RegisterAccountRequest register_account_request = 19; // works without ClientRequest.token
 
     // chats
-    ChatDetailsRequest chatDetailsRequest = 24;
-    ChatListRequest chatListRequest = 25;
-    UpdateChatRequest updateChatRequest = 30;
-    ChatEventRequest chatEventRequest = 31;
+    ChatDetailsRequest chat_details_request = 24;
+    ChatListRequest chat_list_request = 25;
+    UpdateChatRequest update_chat_request = 30;
+    ChatEventRequest chat_event_request = 31;
 
     // chat members
-    ChatMembersListRequest chatMembersListRequest = 35;
-    ChatMemberDetailsRequest chatMemberDetailsRequest = 36;
-    DeleteChatMemberRequest deleteChatMemberRequest = 37;
-    CreateChatMembersRequest CreateChatMembersRequest = 38;
+    ChatMembersListRequest chat_members_list_request = 35;
+    ChatMemberDetailsRequest chat_member_details_request = 36;
+    DeleteChatMemberRequest delete_chat_member_request = 37;
+    CreateChatMembersRequest create_chat_members_request = 38;
 
     // groups
-    CreateGroupRequest createGroupRequest = 26;
-    GroupDetailsRequest groupDetailsRequest = 27;
-    GroupListRequest groupListRequest = 28;
-    UpdateGroupSettingsRequest updateGroupSettingsRequest = 29;
+    CreateGroupRequest create_group_request = 26;
+    GroupDetailsRequest group_details_request = 27;
+    GroupListRequest group_list_request = 28;
+    UpdateGroupSettingsRequest update_group_settings_request = 29;
 
     // devices
-    CreateOrUpdateDeviceRequest createOrUpdateDeviceRequest = 10;
-    DevicesListRequest devicesListRequest = 11;
-    DeleteDeviceRequest deleteDeviceRequest = 12;
+    CreateOrUpdateDeviceRequest create_or_update_device_request = 10;
+    DevicesListRequest devices_list_request = 11;
+    DeleteDeviceRequest delete_device_request = 12;
 
     // messages
-    SendMessageRequest sendMessageRequest = 22;
-    MessagesListRequest messagesListRequest = 23;
-    MessageDetailsRequest messageDetailsRequest = 32;
-    ViewMessageRequest viewMessageRequest = 33;
-    MessageViewersRequest messageViewersRequest = 34;
+    SendMessageRequest send_message_request = 22;
+    MessagesListRequest messages_list_request = 23;
+    MessageDetailsRequest message_details_request = 32;
+    ViewMessageRequest view_message_request = 33;
+    MessageViewersRequest message_viewers_request = 34;
 
     // state
-    StateRequest stateRequest = 15; // works without ClientRequest.token
+    StateRequest state_request = 15; // works without ClientRequest.token
 
     // tokens
-    TokensListRequest tokensListRequest = 13;
-    DeleteTokenRequest deleteTokenRequest = 14;
+    TokensListRequest tokens_list_request = 13;
+    DeleteTokenRequest delete_token_request = 14;
 
     // users
-    ProfileRequest profileRequest = 18;
-    UpdateProfileRequest updateProfileRequest = 21;
-    UsersListRequest usersListRequest = 20;
+    ProfileRequest profile_request = 18;
+    UpdateProfileRequest update_profile_request = 21;
+    UsersListRequest users_list_request = 20;
   }
 }
 
@@ -75,51 +75,51 @@ message ServerResponse {
 
   oneof result {
     // auth
-    LoginResponse loginResponse = 16;
-    LogoutResponse logoutResponse = 17;
-    RegisterAccountResponse registerAccountResponse = 19;
+    LoginResponse login_response = 16;
+    LogoutResponse logout_response = 17;
+    RegisterAccountResponse register_account_response = 19;
 
     // chats
-    ChatDetailsResponse chatDetailsResponse = 24;
-    ChatListResponse chatListResponse = 25;
-    UpdateChatResponse updateChatResponse = 30;
-    ChatEventResponse chatEventResponse = 31;
+    ChatDetailsResponse chat_details_response = 24;
+    ChatListResponse chat_list_response = 25;
+    UpdateChatResponse update_chat_response = 30;
+    ChatEventResponse chat_event_response = 31;
 
     // chat members
-    ChatMembersListResponse chatMembersListResponse = 35;
-    ChatMemberDetailsResponse chatMemberDetailsResponse = 36;
-    DeleteChatMemberResponse deleteChatMemberResponse = 37;
-    CreateChatMembersResponse CreateChatMembersResponse = 38;
+    ChatMembersListResponse chat_members_list_response = 35;
+    ChatMemberDetailsResponse chat_member_details_response = 36;
+    DeleteChatMemberResponse delete_chat_member_response = 37;
+    CreateChatMembersResponse create_chat_members_response = 38;
 
     // groups
-    CreateGroupResponse createGroupResponse = 26;
-    GroupDetailsResponse groupDetailsResponse = 27;
-    GroupListResponse groupListResponse = 28;
-    UpdateGroupSettingsResponse updateGroupSettingsResponse = 29;
+    CreateGroupResponse create_group_response = 26;
+    GroupDetailsResponse group_details_response = 27;
+    GroupListResponse group_list_response = 28;
+    UpdateGroupSettingsResponse update_group_settings_response = 29;
 
     // devices
-    CreateOrUpdateDeviceResponse createOrUpdateDeviceResponse = 10;
-    DevicesListResponse devicesListResponse = 11;
-    DeleteDeviceResponse deleteDeviceResponse = 12;
+    CreateOrUpdateDeviceResponse create_or_update_device_response = 10;
+    DevicesListResponse devices_list_response = 11;
+    DeleteDeviceResponse delete_device_response = 12;
 
     // messages
-    SendMessageResponse sendMessageResponse = 22;
-    MessagesListResponse messagesListResponse = 23;
-    MessageDetailsResponse messageDetailsResponse = 32;
-    ViewMessageResponse viewMessageResponse = 33;
-    MessageViewersResponse messageViewersResponse = 34;
+    SendMessageResponse send_message_response = 22;
+    MessagesListResponse messages_list_response = 23;
+    MessageDetailsResponse message_details_response = 32;
+    ViewMessageResponse view_message_response = 33;
+    MessageViewersResponse message_viewers_response = 34;
 
     // state
-    StateResponse stateResponse = 15;
+    StateResponse state_response = 15;
 
     // tokens
-    TokensListResponse tokensListResponse = 13;
-    DeleteTokenResponse deleteTokenResponse = 14;
+    TokensListResponse tokens_list_response = 13;
+    DeleteTokenResponse delete_token_response = 14;
 
     // users
-    ProfileResponse profileResponse = 18;
-    UpdateProfileResponse updateProfileResponse = 21;
-    UsersListResponse usersListResponse = 20;
+    ProfileResponse profile_response = 18;
+    UpdateProfileResponse update_profile_response = 21;
+    UsersListResponse users_list_response = 20;
   }
 }
 
@@ -134,12 +134,12 @@ message WebsocketEvent {
   }
   repeated Error errors = 99;
 
-  repeated string goingOnline = 1; // user ids going online
-  repeated string goingOffline = 2; // user ids going offline
+  repeated string going_online = 1; // user ids going online
+  repeated string going_offline = 2; // user ids going offline
   repeated Message messages = 3; // new or updated messages
   repeated User users = 4; // new or updated users
   repeated Chat chats = 5; // new or updated chats
-  repeated ChatBadge chatBadges = 6; // updated chat badges
-  repeated ChatEvent chatEvents = 7;
-  repeated ViewedMessage viewedMessages = 8;
+  repeated ChatBadge chat_badges = 6; // updated chat badges
+  repeated ChatEvent chat_events = 7;
+  repeated ViewedMessage viewed_messages = 8;
 }

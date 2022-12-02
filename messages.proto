@@ -5,7 +5,7 @@ package gtproto;
 import "users.proto";
 
 message ChatBadge {
-  string chatId = 1;
+  string chat_id = 1;
   uint64 badge = 2;
 }
 
@@ -32,26 +32,26 @@ enum MessageRight {
 message Message {
   ChatPreview chat = 8;
   string id = 1;
-  uint64 createdAt = 3;
-  uint64 updatedAt = 9; // non-empty if message was changed
+  uint64 created_at = 3;
+  uint64 updated_at = 9; // non-empty if message was changed
   string text = 4;
   User sender = 5;
-  string prevMessageId = 6;
-  uint64 viewedCounter = 7; // how many recipients viewed this message
+  string prev_message_id = 6;
+  uint64 viewed_counter = 7; // how many recipients viewed this message
   repeated MessageRight rights = 10;
 }
 
 message ViewedMessage {
-  string messageId = 1;
-  string chatId = 2;
-  uint64 viewedCounter = 3; // how many recipients viewed this message
+  string message_id = 1;
+  string chat_id = 2;
+  uint64 viewed_counter = 3; // how many recipients viewed this message
 }
 
 message SendMessageRequest {
   string id = 4; // optional
   oneof recipient {
-    string chatId = 2;
-    string userId = 1;
+    string chat_id = 2;
+    string user_id = 1;
   }
   string text = 3;
 }
@@ -72,20 +72,20 @@ message SendMessageResponse {
 message MessagesListRequest {
   message LatestFilter {
     oneof recipient {
-      string chatId = 1;
-      string userId = 2;
+      string chat_id = 1;
+      string user_id = 2;
     }
     uint32 limit = 3; // default: StateResponse.maxResultsOnPage
   }
 
   message ScrollFilter {
     oneof recipient {
-      string chatId = 1;
-      string userId = 2;
+      string chat_id = 1;
+      string user_id = 2;
     }
-    string messageId = 6;
-    uint32 newMessagesLimit = 4;
-    uint32 oldMessagesLimit = 5;
+    string message_id = 6;
+    uint32 new_messages_limit = 4;
+    uint32 old_messages_limit = 5;
   }
 
   oneof filter {
@@ -130,7 +130,7 @@ message ViewMessageResponse {
   }
   repeated Error errors = 1;
   uint64 badge = 2;  // number of unseen messages
-  repeated ViewedMessage viewedMessages = 3; // viewed messages list
+  repeated ViewedMessage viewed_messages = 3; // viewed messages list
 }
 
 message MessageViewersRequest {

@@ -7,12 +7,12 @@ message Device {
   string id = 1;
   string token = 2; // device token from Firebase / APNs
   string useragent = 3;
-  uint64 createdAt = 4;
+  uint64 created_at = 4;
 }
 
 message CreateOrUpdateDeviceRequest {
   string token = 1;
-  string testPushValue = 2;  // send data push with payload: {"type": "test", "value": <given value>"}
+  string test_push_value = 2;  // send data push with payload: {"type": "test", "value": <given value>"}
 }
 
 message CreateOrUpdateDeviceResponse {

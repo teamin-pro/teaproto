@@ -11,13 +11,13 @@ enum ChatMemberRight {
 
 message ChatMember {
   User user = 1;
-  bool isOwner = 2;
-  string invitedByUserId = 3;
+  bool is_owner = 2;
+  string invited_by_user_id = 3;
   repeated ChatMemberRight rights = 4;
 }
 
 message ChatMembersListRequest {
-  string chatId = 1;
+  string chat_id = 1;
   uint32 limit = 2; // default: StateResponse.maxResultsOnPage
   uint64 offset = 3;
 }
@@ -33,8 +33,8 @@ message ChatMembersListResponse {
 }
 
 message ChatMemberDetailsRequest {
-  string chatId = 1;
-  string userId = 2; // uuid or "me"
+  string chat_id = 1;
+  string user_id = 2; // uuid or "me"
 }
 
 message ChatMemberDetailsResponse {
@@ -48,8 +48,8 @@ message ChatMemberDetailsResponse {
 }
 
 message DeleteChatMemberRequest {
-  string chatId = 1;
-  string userId = 2; // uuid or "me"
+  string chat_id = 1;
+  string user_id = 2; // uuid or "me"
 }
 
 message DeleteChatMemberResponse {
@@ -63,8 +63,8 @@ message DeleteChatMemberResponse {
 }
 
 message CreateChatMembersRequest {
-  string chatId = 1;
-  repeated string userIds = 2;
+  string chat_id = 1;
+  repeated string user_ids = 2;
 }
 
 message CreateChatMembersResponse {

@@ -40,7 +40,7 @@ message LoginResponse {
 }
 
 message LogoutRequest {
-  repeated string deleteDevices = 1;
+  repeated string delete_devices = 1;
 }
 
 message LogoutResponse {}

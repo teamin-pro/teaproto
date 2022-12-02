@@ -7,17 +7,17 @@ import "messages.proto";
 
 message Chat {
   string id = 1;
-  string withUserId = 5; // direct chats only
-  ChatType chatType = 2;
-  bool isDeleted = 3;
-  uint64 numMembers = 4;
-  string displayName = 6; // chat title for groups, participant name for direct chats
+  string with_user_id = 5; // direct chats only
+  ChatType chat_type = 2;
+  bool is_deleted = 3;
+  uint64 num_members = 4;
+  string display_name = 6; // chat title for groups, participant name for direct chats
   Icon icon = 7;
-  Message lastMessage = 8; // optional
-  uint64 updatedAt = 9; // last message creation time even message was deleted
-  string lastViewedMessageId = 10; // optional
+  Message last_message = 8; // optional
+  uint64 updated_at = 9; // last message creation time even message was deleted
+  string last_viewed_message_id = 10; // optional
   uint64 badge = 11; // number of unseen messages
-  uint64 pinnedPosition = 12;  // pinned position at chat list, if any
+  uint64 pinned_position = 12;  // pinned position at chat list, if any
 }
 
 enum ChatEventType {
@@ -28,16 +28,16 @@ enum ChatEventType {
 
 message ChatEvent {
   ChatEventType type = 1;
-  string chatId = 2;
-  string userId = 3;
-  uint64 stopAfter = 4; // stop showing event after this time
-  bool stopNow = 5; // stop showing event right now
+  string chat_id = 2;
+  string user_id = 3;
+  uint64 stop_after = 4; // stop showing event after this time
+  bool stop_now = 5; // stop showing event right now
 }
 
 message ChatDetailsRequest {
   oneof recipient {
-    string chatId = 2;
-    string userId = 1;
+    string chat_id = 2;
+    string user_id = 1;
   }
 }
 
@@ -52,10 +52,10 @@ message ChatDetailsResponse {
 
 message UpdateChatRequest {
   oneof recipient {
-    string chatId = 2;
-    string userId = 1;
+    string chat_id = 2;
+    string user_id = 1;
   }
-  uint64 pinnedPosition = 3; // pinned position at chat list, if any
+  uint64 pinned_position = 3; // pinned position at chat list, if any
 }
 
 message UpdateChatResponse {
@@ -68,7 +68,7 @@ message UpdateChatResponse {
 }
 
 message ChatListRequest {
-  repeated ChatType chatTypes = 1;
+  repeated ChatType chat_types = 1;
   uint32 limit = 2; // default: StateResponse.maxResultsOnPage
   uint64 offset = 3;
 }
@@ -84,8 +84,8 @@ message ChatListResponse {
 
 message ChatEventRequest {
   oneof recipient {
-    string chatId = 2;
-    string userId = 1;
+    string chat_id = 2;
+    string user_id = 1;
   }
   ChatEventType type = 3;
 }
@@ -96,5 +96,5 @@ message ChatEventResponse {
     INVALID_RECIPIENT_ERROR = 1;
   }
   repeated Error errors = 1;
-  ChatEvent chatEvent = 2;
+  ChatEvent chat_event = 2;
 }

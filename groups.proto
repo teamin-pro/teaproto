@@ -5,14 +5,14 @@ package gtproto;
 import "users.proto";
 
 message Group {
-  string chatId = 1;
+  string chat_id = 1;
   string title = 2;
   Icon icon = 3;
 }
 
 message CreateGroupRequest {
   string title = 1;
-  repeated string userIds = 2;
+  repeated string user_ids = 2;
 }
 
 message CreateGroupResponse {
@@ -27,7 +27,7 @@ message CreateGroupResponse {
 }
 
 message UpdateGroupSettingsRequest {
-  string chatId = 1;
+  string chat_id = 1;
   string title = 2;
 }
 
@@ -44,7 +44,7 @@ message UpdateGroupSettingsResponse {
 }
 
 message GroupDetailsRequest {
-  string chatId = 1;
+  string chat_id = 1;
 }
 
 message GroupDetailsResponse {

@@ -12,7 +12,7 @@ message Profile {
   string name = 2;
   Icon icon = 3;
   string login = 4;
-  string lastOpenedChatId = 5;
+  string last_opened_chat_id = 5;
 }
 
 message ProfileRequest {}
@@ -22,7 +22,7 @@ message ProfileResponse {
 }
 
 message UpdateProfileRequest {
-  string newName = 1;
+  string new_name = 1;
 }
 
 message UpdateProfileResponse {
@@ -39,14 +39,14 @@ message User {
   string id = 1;
   string name = 2;
   Icon icon = 3;
-  bool isOnline = 4;
-  uint64 wasOnlineAt = 5;
-  bool isMe = 6;
+  bool is_online = 4;
+  uint64 was_online_at = 5;
+  bool is_me = 6;
 }
 
 message UsersListRequest {
   oneof search {
-    string userId = 1;
+    string user_id = 1;
     string query = 2;
   }
   uint32 limit = 3; // default: StateResponse.maxResultsOnPage

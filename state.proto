@@ -15,8 +15,8 @@ message StateRequest {
 
 message StateResponse {
   uint64 now = 1; // current server time in unix format, UTC
-  uint32 maxResultsOnPage = 2;
-  uint32 maxGroupTitleLength = 3;
-  uint32 maxUsernameLength = 4;
-  uint32 maxMessageLength = 5;
+  uint32 max_results_on_page = 2;
+  uint32 max_group_title_length = 3;
+  uint32 max_username_length = 4;
+  uint32 max_message_length = 5;
 }
