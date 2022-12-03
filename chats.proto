@@ -50,15 +50,15 @@ message ChatDetailsResponse {
   Chat chat = 2;
 }
 
-message UpdateChatRequest {
+message PinChatRequest {
   oneof recipient {
     string chat_id = 2;
     string user_id = 1;
   }
-  uint64 pinned_position = 3; // pinned position at chat list, if any
+  uint64 pinned_position = 3; // 0 = unpin
 }
 
-message UpdateChatResponse {
+message PinChatResponse {
   enum Error {
     UNKNOWN_ERROR = 0;
     INVALID_RECIPIENT_ERROR = 1;

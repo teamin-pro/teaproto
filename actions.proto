@@ -24,7 +24,7 @@ message ClientRequest {
     // chats
     ChatDetailsRequest chat_details_request = 24;
     ChatListRequest chat_list_request = 25;
-    UpdateChatRequest update_chat_request = 30;
+    PinChatRequest pin_chat_request = 30;
     ChatEventRequest chat_event_request = 31;
 
     // chat members
@@ -82,7 +82,7 @@ message ServerResponse {
     // chats
     ChatDetailsResponse chat_details_response = 24;
     ChatListResponse chat_list_response = 25;
-    UpdateChatResponse update_chat_response = 30;
+    PinChatResponse pin_chat_response = 30;
     ChatEventResponse chat_event_response = 31;
 
     // chat members
