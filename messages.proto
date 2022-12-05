@@ -6,7 +6,7 @@ import "users.proto";
 
 message ChatBadge {
   string chat_id = 1;
-  uint64 badge = 2;
+  uint32 badge = 2;
 }
 
 enum ChatType {
@@ -37,14 +37,14 @@ message Message {
   string text = 4;
   User sender = 5;
   string prev_message_id = 6;
-  uint64 viewed_counter = 7; // how many recipients viewed this message
+  uint32 viewed_counter = 7; // how many recipients viewed this message
   repeated MessageRight rights = 10;
 }
 
 message ViewedMessage {
   string message_id = 1;
   string chat_id = 2;
-  uint64 viewed_counter = 3; // how many recipients viewed this message
+  uint32 viewed_counter = 3; // how many recipients viewed this message
 }
 
 message SendMessageRequest {
@@ -129,7 +129,7 @@ message ViewMessageResponse {
     INVALID_MESSAGE_ID_ERROR = 1;
   }
   repeated Error errors = 1;
-  uint64 badge = 2;  // number of unseen messages
+  uint32 badge = 2;  // number of unseen messages
   repeated ViewedMessage viewed_messages = 3; // viewed messages list
 }
 

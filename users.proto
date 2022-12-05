@@ -50,7 +50,7 @@ message UsersListRequest {
     string query = 2;
   }
   uint32 limit = 3; // default: StateResponse.maxResultsOnPage
-  uint64 offset = 4;
+  uint32 offset = 4;
 }
 
 message UsersListResponse {

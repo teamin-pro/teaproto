@@ -10,15 +10,15 @@ message Chat {
   string with_user_id = 5; // direct chats only
   ChatType chat_type = 2;
   bool is_deleted = 3;
-  uint64 num_members = 4;
+  uint32 num_members = 4;
   string display_name = 6; // chat title for groups, participant name for direct chats
   Icon icon = 7;
   Message last_message = 8; // optional
   uint64 updated_at = 9; // last message creation time even message was deleted
   string last_viewed_message_id = 10; // optional
   uint64 last_viewed_message_created_at = 13; // optional
-  uint64 badge = 11; // number of unseen messages
-  uint64 pinned_position = 12;  // pinned position at chat list, if any
+  uint32 badge = 11; // number of unseen messages
+  uint32 pinned_position = 12;  // pinned position at chat list, if any
 }
 
 enum ChatEventType {
@@ -56,7 +56,7 @@ message PinChatRequest {
     string chat_id = 2;
     string user_id = 1;
   }
-  uint64 pinned_position = 3; // 0 = unpin
+  uint32 pinned_position = 3; // 0 = unpin
 }
 
 message PinChatResponse {
@@ -71,7 +71,7 @@ message PinChatResponse {
 message ChatListRequest {
   repeated ChatType chat_types = 1;
   uint32 limit = 2; // default: StateResponse.maxResultsOnPage
-  uint64 offset = 3;
+  uint32 offset = 3;
 }
 
 message ChatListResponse {
