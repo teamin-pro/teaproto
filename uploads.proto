@@ -19,21 +19,22 @@ message PreviewImage {
 message Upload {
   string id = 1;
   string url = 2;
-  string name = 3;
+  string filename = 3;
   UploadType type = 4;
   uint32 size = 5;
-  PreviewImage previewImage = 6; // optional
+  PreviewImage previewImage = 6; // optional: for UT_IMAGE and UT_VIDEO
+  uint32 duration = 7; // non-empty for UT_AUDIO and UT_VIDEO
 }
 
-// 3-in-one: server configuration / ping / errors emulator
 message UploadRequest {
   bytes content = 1;
+  string filename = 2;
 }
 
 message UploadResponse {
   enum Error {
     UNKNOWN_ERROR = 0;
-    FILE_TOO_BIG_ERROR = 1; //
+    FILE_TOO_BIG_ERROR = 1; // see StateResponse.max_file_size
   }
   repeated Error errors = 1;
   Upload upload = 2;
