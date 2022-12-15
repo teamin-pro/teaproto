@@ -49,7 +49,7 @@ message UsersListRequest {
     string user_id = 1;
     string query = 2;
   }
-  uint32 limit = 3; // default: StateResponse.maxResultsOnPage
+  uint32 limit = 3; // default: StateResponse.max_results_on_page
   uint32 offset = 4;
 }
 

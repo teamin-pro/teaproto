@@ -1,0 +1,58 @@
+syntax = "proto3";
+
+package gtproto;
+
+enum UploadType {
+  UT_FILE = 0;
+  UT_IMAGE = 1;
+  UT_VIDEO = 2;
+  UT_AUDIO = 3;
+}
+
+message PreviewImage {
+  string url = 1;
+  uint32 width = 2;
+  uint32 height = 3;
+  string blur_hash = 4; // https://blurha.sh/
+}
+
+message Upload {
+  string id = 1;
+  uint64 created_at = 8;
+  string url = 2;
+  string filename = 3;
+  UploadType type = 4;
+  uint32 size = 5;
+  PreviewImage preview_image = 6; // optional: for UT_IMAGE and UT_VIDEO
+  uint32 duration = 7; // non-empty for UT_AUDIO and UT_VIDEO
+}
+
+message UploadRequest {
+  bytes content = 1;
+  string filename = 2;
+  bool as_file = 3; // upload as simple file, without resize, type detection etc
+}
+
+message UploadResponse {
+  enum Error {
+    UNKNOWN_ERROR = 0;
+    FILE_TOO_BIG_ERROR = 1; // see StateResponse.max_file_size
+  }
+  repeated Error errors = 1;
+  Upload upload = 2;
+}
+
+message ChatUploadsRequest {
+  string chat_id = 1;
+  uint32 limit = 3; // default: StateResponse.max_results_on_page
+  uint32 offset = 4;
+}
+
+message ChatUploadsResponse {
+  enum Error {
+    UNKNOWN_ERROR = 0;
+    INVALID_LIMIT_ERROR = 1;
+  }
+  repeated Error errors = 1;
+  repeated Upload uploads = 2;
+}

@@ -2,6 +2,7 @@ syntax = "proto3";
 
 package gtproto;
 
+import "uploads.proto";
 import "users.proto";
 
 message ChatBadge {
@@ -39,6 +40,7 @@ message Message {
   string prev_message_id = 6;
   uint32 viewed_counter = 7; // how many recipients viewed this message
   repeated MessageRight rights = 10;
+  repeated Upload uploads = 11;
 }
 
 message ViewedMessage {
@@ -54,6 +56,7 @@ message SendMessageRequest {
     string user_id = 1;
   }
   string text = 3;
+  string upload_ids = 5;
 }
 
 message SendMessageResponse {
@@ -63,6 +66,7 @@ message SendMessageResponse {
     INVALID_RECIPIENT_ERROR = 2;
     MESSAGE_TEXT_TOO_LONG_ERROR = 3;
     MESSAGE_IS_EMPTY_ERROR = 4;
+    TOO_MANY_UPLOADS_ERROR = 5; // see StateResponse.max_uploads_for_message
   }
   repeated Error errors = 1;
 
@@ -75,7 +79,7 @@ message MessagesListRequest {
       string chat_id = 1;
       string user_id = 2;
     }
-    uint32 limit = 3; // default: StateResponse.maxResultsOnPage
+    uint32 limit = 3; // default: StateResponse.max_results_on_page
   }
 
   message ScrollFilter {
@@ -92,6 +96,9 @@ message MessagesListRequest {
     LatestFilter latest = 3;
     ScrollFilter scroll = 4;
   }
+
+  // filters
+  bool only_with_uploads = 6;
 }
 
 message MessagesListResponse {
