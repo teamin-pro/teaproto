@@ -30,6 +30,7 @@ message Upload {
 message UploadRequest {
   bytes content = 1;
   string filename = 2;
+  bool as_file = 3; // upload as simple file, without resize, type detection etc
 }
 
 message UploadResponse {
