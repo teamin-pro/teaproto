@@ -1,0 +1,41 @@
+syntax = "proto3";
+
+package gtproto;
+
+enum UploadType {
+  UT_FILE = 0;
+  UT_IMAGE = 1;
+  UT_VIDEO = 2;
+  UT_AUDIO = 3;
+}
+
+message PreviewImage {
+  string url = 1;
+  uint32 width = 2;
+  uint32 height = 3;
+  string blurHash = 4; // https://blurha.sh/
+}
+
+message Upload {
+  string id = 1;
+  string url = 2;
+  string name = 3;
+  UploadType type = 4;
+  uint32 size = 5;
+  PreviewImage previewImage = 6; // optional
+}
+
+// 3-in-one: server configuration / ping / errors emulator
+message UploadRequest {
+  bytes content = 1;
+}
+
+message UploadResponse {
+  enum Error {
+    UNKNOWN_ERROR = 0;
+    FILE_TOO_BIG_ERROR = 1; //
+  }
+  repeated Error errors = 1;
+  Upload upload = 2;
+}
+
