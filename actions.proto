@@ -61,6 +61,7 @@ message ClientRequest {
 
     // uploads
     UploadRequest upload_request = 39;
+    ChatUploadsRequest chat_uploads_request = 40;
 
     // users
     ProfileRequest profile_request = 18;
@@ -122,6 +123,7 @@ message ServerResponse {
 
     // uploads
     UploadResponse upload_response = 39;
+    ChatUploadsResponse chat_uploads_response = 40;
 
     // users
     ProfileResponse profile_response = 18;

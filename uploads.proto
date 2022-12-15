@@ -40,3 +40,18 @@ message UploadResponse {
   repeated Error errors = 1;
   Upload upload = 2;
 }
+
+message ChatUploadsRequest {
+  string chat_id = 1;
+  uint32 limit = 3; // default: StateResponse.max_results_on_page
+  uint32 offset = 4;
+}
+
+message ChatUploadsResponse {
+  enum Error {
+    UNKNOWN_ERROR = 0;
+    INVALID_LIMIT_ERROR = 1;
+  }
+  repeated Error errors = 1;
+  repeated Upload uploads = 2;
+}

@@ -79,7 +79,7 @@ message MessagesListRequest {
       string chat_id = 1;
       string user_id = 2;
     }
-    uint32 limit = 3; // default: StateResponse.maxResultsOnPage
+    uint32 limit = 3; // default: StateResponse.max_results_on_page
   }
 
   message ScrollFilter {

@@ -18,7 +18,7 @@ message ChatMember {
 
 message ChatMembersListRequest {
   string chat_id = 1;
-  uint32 limit = 2; // default: StateResponse.maxResultsOnPage
+  uint32 limit = 2; // default: StateResponse.max_results_on_page
   uint32 offset = 3;
 }
 
