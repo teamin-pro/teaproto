@@ -13,7 +13,7 @@ message PreviewImage {
   string url = 1;
   uint32 width = 2;
   uint32 height = 3;
-  string blurHash = 4; // https://blurha.sh/
+  string blur_hash = 4; // https://blurha.sh/
 }
 
 message Upload {
@@ -23,7 +23,7 @@ message Upload {
   string filename = 3;
   UploadType type = 4;
   uint32 size = 5;
-  PreviewImage previewImage = 6; // optional: for UT_IMAGE and UT_VIDEO
+  PreviewImage preview_image = 6; // optional: for UT_IMAGE and UT_VIDEO
   uint32 duration = 7; // non-empty for UT_AUDIO and UT_VIDEO
 }
 
