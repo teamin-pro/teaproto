@@ -4,11 +4,11 @@ Protocol specification.
 Start from [actions.proto](https://github.com/gamarjoba-team/gtproto/blob/main/actions.proto).
 
 ## Synchronous workflow (for actions)
- - client send POST http request `/api/v2` with message `ClientRequest`
+ - client send POST http request to `https://api.gamarjoba.team/` with message `ClientRequest`
  - server respond with message `ServerResponse`.
 
 ## Asynchronous workflow (for events)
- - client create a websocket connection to `/api/v2/ws`;
+ - client create a websocket connection to `https://api.gamarjoba.team/ws`;
  - client send message `WebsocketAuthRequest`;
  - server start sending `WebsocketEvent` messages.
 
