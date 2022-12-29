@@ -37,6 +37,7 @@ message UploadResponse {
   enum Error {
     UNKNOWN_ERROR = 0;
     FILE_TOO_BIG_ERROR = 1; // see StateResponse.max_file_size
+    INVALID_FILENAME_ERROR = 2;
   }
   repeated Error errors = 1;
   Upload upload = 2;
@@ -52,6 +53,7 @@ message ChatUploadsResponse {
   enum Error {
     UNKNOWN_ERROR = 0;
     INVALID_LIMIT_ERROR = 1;
+    INVALID_CHAT_ERROR = 2;
   }
   repeated Error errors = 1;
   repeated Upload uploads = 2;
