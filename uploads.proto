@@ -24,7 +24,8 @@ message Upload {
   UploadType type = 4;
   uint32 size = 5;
   PreviewImage preview_image = 6; // optional: for UT_IMAGE and UT_VIDEO
-  uint32 duration = 7; // non-empty for UT_AUDIO and UT_VIDEO
+  uint32 duration = 7; // non-zero for UT_AUDIO and UT_VIDEO
+  string content_type = 9; // https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Type
 }
 
 message UploadRequest {
