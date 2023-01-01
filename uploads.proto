@@ -71,7 +71,7 @@ message UploadProfileAvatarResponse {
     UNKNOWN_ERROR = 0;
     FILE_TOO_BIG_ERROR = 1; // see StateResponse.max_file_size
     INVALID_IMAGE_FORMAT_ERROR = 2;
-    IMAGE_TOO_SMALL_ERROR = 3;
+    IMAGE_TOO_SMALL_ERROR = 3; // see StateResponse.min_avatar_size
   }
   repeated Error errors = 1;
   Icon icon = 2;
@@ -87,7 +87,7 @@ message UploadGroupAvatarResponse {
     UNKNOWN_ERROR = 0;
     FILE_TOO_BIG_ERROR = 1; // see StateResponse.max_file_size
     INVALID_IMAGE_FORMAT_ERROR = 2;
-    IMAGE_TOO_SMALL_ERROR = 3;
+    IMAGE_TOO_SMALL_ERROR = 3; // see StateResponse.min_avatar_size
     NOT_ALLOWED_ERROR = 4;
   }
   repeated Error errors = 1;
