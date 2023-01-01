@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package gtproto;
 
-import "users.proto";
+import "commons.proto";
 
 message Group {
   string chat_id = 1;

@@ -2,20 +2,13 @@ syntax = "proto3";
 
 package gtproto;
 
-import "users.proto";
+import "commons.proto";
 
 enum UploadType {
   UT_FILE = 0;
   UT_IMAGE = 1;
   UT_VIDEO = 2;
   UT_AUDIO = 3;
-}
-
-message PreviewImage {
-  string url = 1;
-  uint32 width = 2;
-  uint32 height = 3;
-  string blur_hash = 4; // https://blurha.sh/
 }
 
 message Upload {
