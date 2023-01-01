@@ -36,14 +36,13 @@ message UploadRequest {
   bool as_file = 3; // upload as simple file, without resize, type detection etc
 }
 
-enum UploadError {
-  UNKNOWN_ERROR = 0;
-  FILE_TOO_BIG_ERROR = 1; // see StateResponse.max_file_size
-  INVALID_FILENAME_ERROR = 2;
-}
-
 message UploadResponse {
-  repeated UploadError errors = 1;
+  enum Error {
+    UNKNOWN_ERROR = 0;
+    FILE_TOO_BIG_ERROR = 1; // see StateResponse.max_file_size
+    INVALID_FILENAME_ERROR = 2;
+  }
+  repeated Error errors = 1;
   Upload upload = 2;
 }
 
