@@ -2,9 +2,12 @@ syntax = "proto3";
 
 package gtproto;
 
+import "uploads.proto";
+
 message Icon {
   string letters = 1; // example: AB
   string color = 2; // example #FF9671
+  PreviewImage preview_image = 3;
 }
 
 message Profile {
