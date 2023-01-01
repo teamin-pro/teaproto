@@ -1,7 +1,8 @@
 syntax = "proto3";
-import "users.proto";
 
 package gtproto;
+
+import "users.proto";
 
 enum UploadType {
   UT_FILE = 0;
