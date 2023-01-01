@@ -82,6 +82,7 @@ message UploadGroupIconResponse {
     INVALID_IMAGE_FORMAT_ERROR = 2;
     IMAGE_TOO_SMALL_ERROR = 3; // see StateResponse.min_avatar_size
     NOT_ALLOWED_ERROR = 4;
+    INVALID_CHAT_ERROR = 5;
   }
   repeated Error errors = 1;
   Icon icon = 2;
