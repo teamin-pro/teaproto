@@ -2,10 +2,7 @@ syntax = "proto3";
 
 package gtproto;
 
-message Icon {
-  string letters = 1; // example: AB
-  string color = 2; // example #FF9671
-}
+import "commons.proto";
 
 message Profile {
   string id = 1;

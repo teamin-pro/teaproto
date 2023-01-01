@@ -62,6 +62,8 @@ message ClientRequest {
     // uploads
     UploadRequest upload_request = 39;
     ChatUploadsRequest chat_uploads_request = 40;
+    UploadGroupIconRequest upload_group_icon_request = 41;
+    UploadProfileIconRequest upload_profile_icon_request = 42;
 
     // users
     ProfileRequest profile_request = 18;
@@ -124,6 +126,8 @@ message ServerResponse {
     // uploads
     UploadResponse upload_response = 39;
     ChatUploadsResponse chat_uploads_response = 40;
+    UploadGroupIconResponse upload_group_icon_response = 41;
+    UploadProfileIconResponse upload_profile_icon_response = 42;
 
     // users
     ProfileResponse profile_response = 18;
