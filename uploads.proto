@@ -18,8 +18,8 @@ message Upload {
   string filename = 3;
   UploadType type = 4;
   uint32 size = 5;
-  PreviewImage large_preview = 6; // optional large preview: for UT_IMAGE and UT_VIDEO
-  PreviewImage small_preview = 10; // optional small square preview: for UT_IMAGE and UT_VIDEO
+  Image large_preview = 6; // optional large preview: for UT_IMAGE and UT_VIDEO
+  Image small_preview = 10; // optional small square preview: for UT_IMAGE and UT_VIDEO
   uint32 duration = 7; // non-zero for UT_AUDIO and UT_VIDEO
   string content_type = 9; // https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Type
 }
