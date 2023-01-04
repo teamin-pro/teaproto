@@ -30,25 +30,39 @@ enum MessageRight {
   CAN_DELETE_MESSAGE = 2;
 }
 
-message CurrentChatMessage {
-  string id = 1;
-  string text = 4;
-  User sender = 5;
-  repeated Upload uploads = 11;
-}
-
+// Full message with all fields
 message Message {
   ChatPreview chat = 8;
   string id = 1;
   uint64 created_at = 3;
-  uint64 updated_at = 9;
+  uint64 changed_at = 9; // when equal to created_at, message was not edited
   string text = 4;
   User sender = 5;
   string prev_message_id = 6;
   uint32 viewed_counter = 7; // how many recipients viewed this message
   repeated MessageRight rights = 10;
+
+  // attachments
+  MessageReference replied_message = 12;
+  ForwardedMessages forwarded_messages = 13;
   repeated Upload uploads = 11;
-  CurrentChatMessage reply_to = 12;
+}
+
+// Short message representation for replies and forwards
+message MessageReference {
+  string id = 1;
+  string text = 4;
+  User sender = 5;
+
+  // attachments
+  MessageReference replied_message = 12;
+  ForwardedMessages forwarded_messages = 13;
+  repeated Upload uploads = 11;
+}
+
+message ForwardedMessages {
+  ChatPreview chat = 1;
+  repeated MessageReference messages = 2; // messages ordered by created_at
 }
 
 message ViewedMessage {
@@ -58,14 +72,17 @@ message ViewedMessage {
 }
 
 message SendMessageRequest {
-  string id = 4; // Optional. When present used as id for new message or for editing existing message
+  string id = 4; // optional: when present used as id for new message or for editing existing message
   oneof recipient {
     string chat_id = 2;
     string user_id = 1;
   }
   string text = 3;
+
+  // attachments
+  string replied_message_id = 6; // optional
+  repeated string forwarded_message_ids = 7;
   repeated string upload_ids = 5;
-  string reply_to_message_id = 6; // optional
 }
 
 message SendMessageResponse {
@@ -73,9 +90,12 @@ message SendMessageResponse {
     UNKNOWN_ERROR = 0;
     INVALID_MESSAGE_ID_ERROR = 1;
     INVALID_RECIPIENT_ERROR = 2;
-    MESSAGE_TEXT_TOO_LONG_ERROR = 3;
-    MESSAGE_IS_EMPTY_ERROR = 4;
+    MESSAGE_TEXT_TOO_LONG_ERROR = 3; // see StateResponse.max_message_length
+    MESSAGE_IS_EMPTY_ERROR = 4; // message must have text, uploads or forwarded messages
     TOO_MANY_UPLOADS_ERROR = 5; // see StateResponse.max_uploads_for_message
+    TOO_MANY_FORWARDED_MESSAGES_ERROR = 6; // see StateResponse.max_forwarded_messages
+    INVALID_FORWARDED_MESSAGES_ERROR = 7; // all forwarded messages must be from the same chat
+    INVALID_REPLIED_MESSAGE_ERROR = 8; // message must be from the same chat
   }
   repeated Error errors = 1;
 
