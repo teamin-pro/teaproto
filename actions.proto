@@ -51,6 +51,7 @@ message ClientRequest {
     MessageDetailsRequest message_details_request = 32;
     ViewMessageRequest view_message_request = 33;
     MessageViewersRequest message_viewers_request = 34;
+    SetMessageReactionRequest set_message_reaction_request = 43;
 
     // state
     StateRequest state_request = 15; // works without ClientRequest.token
@@ -115,6 +116,7 @@ message ServerResponse {
     MessageDetailsResponse message_details_response = 32;
     ViewMessageResponse view_message_response = 33;
     MessageViewersResponse message_viewers_response = 34;
+    SetMessageReactionResponse set_message_reaction_response = 43;
 
     // state
     StateResponse state_response = 15;
