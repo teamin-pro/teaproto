@@ -43,8 +43,8 @@ message Message {
   repeated MessageRight rights = 10;
 
   // attachments
-  MessageReference replied_message = 12;
-  ForwardedMessages forwarded_messages = 13;
+  MessageReference reply = 12;
+  ForwardedMessages forwards = 13;
   repeated Upload uploads = 11;
 }
 
@@ -55,8 +55,8 @@ message MessageReference {
   User sender = 5;
 
   // attachments
-  MessageReference replied_message = 12;
-  ForwardedMessages forwarded_messages = 13;
+  MessageReference reply = 12;
+  ForwardedMessages forwards = 13;
   repeated Upload uploads = 11;
 }
 
@@ -80,8 +80,8 @@ message SendMessageRequest {
   string text = 3;
 
   // attachments
-  string replied_message_id = 6; // optional
-  repeated string forwarded_message_ids = 7;
+  string reply_id = 6; // optional
+  repeated string forward_ids = 7;
   repeated string upload_ids = 5;
 }
 
