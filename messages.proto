@@ -93,7 +93,7 @@ message SendMessageResponse {
     MESSAGE_TEXT_TOO_LONG_ERROR = 3; // see StateResponse.max_message_length
     MESSAGE_IS_EMPTY_ERROR = 4; // message must have text, uploads or forwarded messages
     TOO_MANY_UPLOADS_ERROR = 5; // see StateResponse.max_uploads_for_message
-    TOO_MANY_FORWARDED_MESSAGES_ERROR = 6; // see StateResponse.max_forwarded_messages
+    TOO_MANY_FORWARDED_MESSAGES_ERROR = 6; // see StateResponse.max_forwards_for_message
     INVALID_FORWARDED_MESSAGES_ERROR = 7; // all forwarded messages must be from the same chat
     INVALID_REPLIED_MESSAGE_ERROR = 8; // message must be from the same chat
   }
