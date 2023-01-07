@@ -69,7 +69,7 @@ message PinChatResponse {
 }
 
 message ChatListRequest {
-  repeated ChatType chat_types = 1;
+  repeated ChatType chat_types = 1; // if empty, all chats are returned
   uint32 limit = 2; // default: StateResponse.max_results_on_page
   uint32 offset = 3;
 }
