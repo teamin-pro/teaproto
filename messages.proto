@@ -43,7 +43,7 @@ message Message {
   repeated MessageRight rights = 10;
 
   // attachments
-  MessageReference reply = 12;
+  ShortMessage reply = 12;
   ForwardedMessages forwards = 13;
   repeated Upload uploads = 11;
   repeated Reaction reactions = 14;
@@ -55,20 +55,20 @@ message Reaction {
 }
 
 // Short message representation for replies and forwards
-message MessageReference {
+message ShortMessage {
   string id = 1;
   string text = 4;
   User sender = 5;
 
   // attachments
-  MessageReference reply = 12;
+  ShortMessage reply = 12;
   ForwardedMessages forwards = 13;
   repeated Upload uploads = 11;
 }
 
 message ForwardedMessages {
   ChatPreview chat = 1;
-  repeated MessageReference messages = 2; // messages ordered by created_at
+  repeated ShortMessage messages = 2; // messages ordered by created_at
 }
 
 message ViewedMessage {
