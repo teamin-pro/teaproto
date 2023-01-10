@@ -4,6 +4,7 @@ package gtproto;
 
 import "commons.proto";
 import "messages.proto";
+import "users.proto";
 
 message Chat {
   string id = 1;
@@ -30,7 +31,8 @@ enum ChatEventType {
 message ChatEvent {
   ChatEventType type = 1;
   string chat_id = 2;
-  string user_id = 3;
+  string user_id = 3; // deprecated
+  User user = 6;
   uint64 stop_after = 4; // stop showing event after this time
   bool stop_now = 5; // stop showing event right now
 }
