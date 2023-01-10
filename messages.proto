@@ -35,7 +35,7 @@ message Message {
   ChatPreview chat = 8;
   string id = 1;
   uint64 created_at = 3;
-  uint64 changed_at = 9; // when equal to created_at, message was not edited
+  uint64 edited_at = 9; // Message edited by author. It happens only on text / uploads / reply / forwards change. When equal to created_at, message was not edited.
   string text = 4;
   User sender = 5;
   string prev_message_id = 6;
