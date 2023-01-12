@@ -44,6 +44,7 @@ message ChatUploadsRequest {
   string chat_id = 1;
   uint32 limit = 3; // default: StateResponse.max_results_on_page
   uint32 offset = 4;
+  repeated UploadType types = 5;
 }
 
 message ChatUploadsResponse {
