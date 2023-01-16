@@ -8,6 +8,7 @@ import "chats.proto";
 import "devices.proto";
 import "groups.proto";
 import "messages.proto";
+import "reactions.proto";
 import "state.proto";
 import "tokens.proto";
 import "uploads.proto";
@@ -51,6 +52,9 @@ message ClientRequest {
     MessageDetailsRequest message_details_request = 32;
     ViewMessageRequest view_message_request = 33;
     MessageViewersRequest message_viewers_request = 34;
+
+    // reactions
+    ReactionsRequest reactions_request = 44;
     SetMessageReactionRequest set_message_reaction_request = 43;
 
     // state
@@ -116,6 +120,9 @@ message ServerResponse {
     MessageDetailsResponse message_details_response = 32;
     ViewMessageResponse view_message_response = 33;
     MessageViewersResponse message_viewers_response = 34;
+
+    // reactions
+    ReactionsResponse reactions_response = 44;
     SetMessageReactionResponse set_message_reaction_response = 43;
 
     // state

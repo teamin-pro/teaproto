@@ -46,10 +46,10 @@ message Message {
   ShortMessage reply = 12;
   ForwardedMessages forwards = 13;
   repeated Upload uploads = 11;
-  repeated Reaction reactions = 14;
+  repeated MessageReaction reactions = 14;
 }
 
-message Reaction {
+message MessageReaction {
   string emoji = 1;
   repeated User users = 2;
 }
@@ -106,22 +106,6 @@ message SendMessageResponse {
   repeated Error errors = 1;
 
   Message message = 2;
-}
-
-message SetMessageReactionRequest {
-  string message_id = 1;
-  string emoji = 2;
-  bool remove = 3;
-}
-
-message SetMessageReactionResponse {
-  enum Error {
-    UNKNOWN_ERROR = 0;
-    INVALID_MESSAGE_ID_ERROR = 1;
-    INVALID_EMOJI_ERROR = 2;
-  }
-  repeated Error errors = 1;
-  repeated Reaction reactions = 2;
 }
 
 message MessagesListRequest {
