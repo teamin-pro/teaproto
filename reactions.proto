@@ -1,0 +1,35 @@
+syntax = "proto3";
+
+package gtproto;
+
+import "messages.proto";
+
+message Reaction {
+  string emoji = 1; // ☘️
+  string slug = 2; // shamrock
+  string group = 3; // Animals & Nature
+  string sub_group = 4; // plant-other
+}
+
+message ReactionsRequest {}
+
+message ReactionsResponse {
+  repeated string recent = 1;
+  repeated Reaction all = 2;
+}
+
+message SetMessageReactionRequest {
+  string message_id = 1;
+  string emoji = 2;
+  bool remove = 3;
+}
+
+message SetMessageReactionResponse {
+  enum Error {
+    UNKNOWN_ERROR = 0;
+    INVALID_MESSAGE_ID_ERROR = 1;
+    INVALID_EMOJI_ERROR = 2;
+  }
+  repeated Error errors = 1;
+  repeated MessageReaction reactions = 2;
+}
