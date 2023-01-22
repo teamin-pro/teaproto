@@ -51,7 +51,9 @@ message Message {
 
 message MessageReaction {
   string emoji = 1;
-  repeated User users = 2;
+  uint32 count = 2; // total count of reactions
+  bool is_my = 3; // is my reaction
+  repeated User users = 4; // users who reacted with this emoji
 }
 
 // Short message representation for replies and forwards
