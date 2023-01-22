@@ -19,7 +19,7 @@ enum ChatType {
 
 message ChatPreview {
   string id = 1;
-  //  ChatType chatType = 2;
+  ChatType chatType = 2;
   //  Icon icon = 3;
   //  string displayName = 4;
 }
