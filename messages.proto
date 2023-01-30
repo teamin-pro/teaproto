@@ -43,7 +43,7 @@ message Message {
   repeated MessageRight rights = 10;
 
   // attachments
-  ShortMessage reply = 12;
+  Message reply = 12;
   ForwardedMessages forwards = 13;
   repeated Upload uploads = 11;
   repeated MessageReaction reactions = 14;
@@ -56,21 +56,9 @@ message MessageReaction {
   repeated User users = 4; // users who reacted with this emoji
 }
 
-// Short message representation for replies and forwards
-message ShortMessage {
-  string id = 1;
-  string text = 4;
-  User sender = 5;
-
-  // attachments
-  ShortMessage reply = 12;
-  ForwardedMessages forwards = 13;
-  repeated Upload uploads = 11;
-}
-
 message ForwardedMessages {
   ChatPreview chat = 1;
-  repeated ShortMessage messages = 2; // messages ordered by created_at
+  repeated Message messages = 2; // messages ordered by created_at
 }
 
 message ViewedMessage {
