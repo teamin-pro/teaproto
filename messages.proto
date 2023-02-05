@@ -2,9 +2,9 @@ syntax = "proto3";
 
 package gtproto;
 
+import "commons.proto";
 import "uploads.proto";
 import "users.proto";
-import "commons.proto";
 
 message ChatBadge {
   string chat_id = 1;
@@ -36,7 +36,7 @@ message OriginalChat {
 }
 
 message Message {
-  string chatId = 9;
+  string chatId = 16;
   string id = 1;
   uint64 created_at = 3;
   uint64 edited_at = 9; // Message edited by author. It happens only on text / uploads / reply / forwards change. When equal to created_at, message was not edited.
@@ -53,7 +53,7 @@ message Message {
 
   // forwarded info
   OriginalChat original_chat = 13;
-  string original_created_at = 15;
+  uint64 original_created_at = 15;
 }
 
 message MessageReaction {
