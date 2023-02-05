@@ -63,11 +63,9 @@ message MessageReaction {
   repeated User users = 4; // users who reacted with this emoji
 }
 
-// message and all message above was viewed
 message ViewedMessage {
-  string chat_id = 2;
   string message_id = 1;
-  uint64 message_created_at = 4;
+  string chat_id = 2;
   uint32 viewed_counter = 3; // how many recipients viewed this message
 }
 
