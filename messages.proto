@@ -73,11 +73,14 @@ message SendMessageRequest {
     string chat_id = 2;
     string user_id = 1;
   }
-  string text = 3;
+
+  oneof content {
+    string text = 3;
+    string forward_id = 7;
+  }
 
   // attachments
   string reply_id = 6; // optional
-  repeated string forward_ids = 7;
   repeated string upload_ids = 5;
 }
 
