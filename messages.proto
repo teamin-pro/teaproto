@@ -2,6 +2,7 @@ syntax = "proto3";
 
 package gtproto;
 
+import "commons.proto";
 import "uploads.proto";
 import "users.proto";
 
@@ -17,22 +18,25 @@ enum ChatType {
   TASK = 3;
 }
 
-message ChatPreview {
-  string id = 1;
-  ChatType chatType = 2;
-  //  Icon icon = 3;
-  //  string displayName = 4;
-}
-
 enum MessageRight {
   UNKNOWN_MESSAGE_RIGHT = 0;
   CAN_EDIT_MESSAGE = 1;
   CAN_DELETE_MESSAGE = 2;
 }
 
-// Full message with all fields
+// half of Chat type
+message ShortChat {
+  string id = 1;
+  string with_user_id = 5;
+  ChatType chat_type = 2;
+  bool is_deleted = 3;
+  uint32 num_members = 4;
+  string display_name = 6;
+  Icon icon = 7;
+}
+
 message Message {
-  ChatPreview chat = 8;
+  string chatId = 16;
   string id = 1;
   uint64 created_at = 3;
   uint64 edited_at = 9; // Message edited by author. It happens only on text / uploads / reply / forwards change. When equal to created_at, message was not edited.
@@ -44,9 +48,12 @@ message Message {
 
   // attachments
   Message reply = 12;
-  ForwardedMessages forwards = 13;
   repeated Upload uploads = 11;
   repeated MessageReaction reactions = 14;
+
+  // forwarded info
+  ShortChat original_chat = 13;
+  uint64 original_created_at = 15;
 }
 
 message MessageReaction {
@@ -54,11 +61,6 @@ message MessageReaction {
   uint32 count = 2; // total count of reactions
   bool is_my = 3; // is my reaction
   repeated User users = 4; // users who reacted with this emoji
-}
-
-message ForwardedMessages {
-  ChatPreview chat = 1;
-  repeated Message messages = 2; // messages ordered by created_at
 }
 
 message ViewedMessage {
@@ -73,11 +75,14 @@ message SendMessageRequest {
     string chat_id = 2;
     string user_id = 1;
   }
-  string text = 3;
+
+  oneof content {
+    string text = 3;
+    string forward_id = 7;
+  }
 
   // attachments
   string reply_id = 6; // optional
-  repeated string forward_ids = 7;
   repeated string upload_ids = 5;
 }
 
@@ -87,10 +92,9 @@ message SendMessageResponse {
     INVALID_MESSAGE_ID_ERROR = 1;
     INVALID_RECIPIENT_ERROR = 2;
     MESSAGE_TEXT_TOO_LONG_ERROR = 3; // see StateResponse.max_message_length
-    MESSAGE_IS_EMPTY_ERROR = 4; // message must have text, uploads or forwarded messages
+    MESSAGE_IS_EMPTY_ERROR = 4; // message must have text, uploads or forward_id
     TOO_MANY_UPLOADS_ERROR = 5; // see StateResponse.max_uploads_for_message
-    TOO_MANY_FORWARDED_MESSAGES_ERROR = 6; // see StateResponse.max_forwards_for_message
-    INVALID_FORWARDED_MESSAGES_ERROR = 7; // all forwarded messages must be from the same chat
+    INVALID_FORWARDED_MESSAGE_ERROR = 7;
     INVALID_REPLIED_MESSAGE_ERROR = 8; // message must be from the same chat
   }
   repeated Error errors = 1;
