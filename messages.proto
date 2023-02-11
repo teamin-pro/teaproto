@@ -2,6 +2,7 @@ syntax = "proto3";
 
 package gtproto;
 
+import "commons.proto";
 import "uploads.proto";
 import "users.proto";
 
@@ -23,6 +24,22 @@ enum MessageRight {
   CAN_DELETE_MESSAGE = 2;
 }
 
+// half of Chat type
+message ShortChat {
+  string id = 1;
+  string with_user_id = 5;
+  ChatType chat_type = 2;
+  bool is_deleted = 3;
+  uint32 num_members = 4;
+  string display_name = 6;
+  Icon icon = 7;
+}
+
+message Forward {
+  ShortChat chat = 1;
+  Message message = 2;
+}
+
 message Message {
   string chatId = 16;
   string id = 1;
@@ -36,7 +53,7 @@ message Message {
 
   // attachments
   Message reply = 12;
-  Message forwarded_message = 8;
+  Forward forward = 13;
   repeated Upload uploads = 11;
   repeated MessageReaction reactions = 14;
 }
