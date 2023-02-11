@@ -2,7 +2,6 @@ syntax = "proto3";
 
 package gtproto;
 
-import "commons.proto";
 import "uploads.proto";
 import "users.proto";
 
