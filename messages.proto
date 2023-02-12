@@ -35,7 +35,8 @@ message ShortChat {
   Icon icon = 7;
 }
 
-message Forward {
+// Message with full chat info. For forward messages and search results
+message ChatMessage {
   ShortChat chat = 1;
   Message message = 2;
 }
@@ -53,7 +54,7 @@ message Message {
 
   // attachments
   Message reply = 12;
-  Forward forward = 13;
+  ChatMessage forward = 13;
   repeated Upload uploads = 11;
   repeated MessageReaction reactions = 14;
 }
