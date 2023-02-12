@@ -28,32 +28,35 @@ enum MessageRight {
 message ShortChat {
   string id = 1;
   string with_user_id = 5;
-  ChatType chat_type = 2;
+  ChatType type = 2;
   bool is_deleted = 3;
   uint32 num_members = 4;
   string display_name = 6;
   Icon icon = 7;
 }
 
+// Message with full chat info. For forwarded, search results etc
+message ChatMessage {
+  ShortChat chat = 1;
+  Message message = 2;
+}
+
 message Message {
-  string chatId = 16;
+  string chat_id = 16; // actually need only for push notifications and websocket events but present in all messages for consistency
   string id = 1;
   uint64 created_at = 3;
-  uint64 edited_at = 9; // Message edited by author. It happens only on text / uploads / reply / forwards change. When equal to created_at, message was not edited.
+  uint64 edited_at = 9; // Time when message was edited by author. It happens only on text / uploads / reply / forwards change. When equal to created_at, message was not edited.
   string text = 4;
-  User sender = 5;
-  string prev_message_id = 6;
-  uint32 viewed_counter = 7; // how many recipients viewed this message
+  User sender = 5; // Sender of message. If empty, message was sent by system
+  string prev_message_id = 6; // If empty, message is first in chat
+  uint32 viewed_counter = 7; // How many recipients viewed this message
   repeated MessageRight rights = 10;
 
   // attachments
   Message reply = 12;
+  ChatMessage forward = 13;
   repeated Upload uploads = 11;
   repeated MessageReaction reactions = 14;
-
-  // forwarded info
-  ShortChat original_chat = 13;
-  uint64 original_created_at = 15;
 }
 
 message MessageReaction {
