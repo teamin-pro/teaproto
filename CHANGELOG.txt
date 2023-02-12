@@ -1,4 +1,5 @@
 12 feb 2023
 ===========
+ - changelog was added
  - added new type ChatMessage. Currently only used for forwarded messages
  - Chat.chat_type was renamed to just Chat.type
