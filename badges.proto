@@ -10,3 +10,9 @@ message Badge {
   BadgeType type = 1;
   uint32 count = 2;
 }
+
+message BadgeRequest {}
+
+message BadgeResponse {
+  repeated Badge badges = 1;
+}

@@ -60,6 +60,7 @@ message ClientRequest {
 
     // state
     StateRequest state_request = 15; // works without ClientRequest.token
+    BadgeRequest badge_request = 45;
 
     // tokens
     TokensListRequest tokens_list_request = 13;
@@ -128,6 +129,7 @@ message ServerResponse {
 
     // state
     StateResponse state_response = 15;
+    BadgeResponse badge_response = 45;
 
     // tokens
     TokensListResponse tokens_list_response = 13;
