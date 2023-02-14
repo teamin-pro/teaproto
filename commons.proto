@@ -14,3 +14,12 @@ message Icon {
   string color = 2; // example: #FF9671
   Image image = 3; // may be empty
 }
+
+enum BadgeType {
+  BADGE_TYPE_MAIN = 0; // badge on application icon
+}
+
+message Badge {
+  BadgeType type = 1;
+  uint32 count = 2;
+}

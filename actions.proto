@@ -5,6 +5,7 @@ package gtproto;
 import "auth.proto";
 import "chat_members.proto";
 import "chats.proto";
+import "commons.proto";
 import "devices.proto";
 import "groups.proto";
 import "messages.proto";
@@ -149,6 +150,7 @@ message WebsocketAuthRequest {
   string token = 1;
 }
 
+
 message WebsocketEvent {
   enum Error {
     UNKNOWN_ERROR = 0;
@@ -164,4 +166,5 @@ message WebsocketEvent {
   repeated ChatBadge chat_badges = 6; // updated chat badges
   repeated ChatEvent chat_events = 7;
   repeated ViewedMessage viewed_messages = 8;
+  repeated Badge badges = 9;
 }
