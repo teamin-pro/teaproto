@@ -3,9 +3,9 @@ syntax = "proto3";
 package gtproto;
 
 import "auth.proto";
+import "badges.proto";
 import "chat_members.proto";
 import "chats.proto";
-import "commons.proto";
 import "devices.proto";
 import "groups.proto";
 import "messages.proto";
