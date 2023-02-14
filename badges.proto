@@ -9,6 +9,7 @@ enum BadgeType {
 message Badge {
   BadgeType type = 1;
   uint32 count = 2;
+  uint64 updated_at = 3; // in conflicting cases, the badge with the latest updated_at will be used
 }
 
 message BadgeRequest {}
