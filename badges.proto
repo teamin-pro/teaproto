@@ -15,5 +15,5 @@ message Badge {
 message BadgeRequest {}
 
 message BadgeResponse {
-  repeated Badge badges = 1;
+  repeated Badge global_badges = 1;
 }

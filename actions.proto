@@ -152,7 +152,6 @@ message WebsocketAuthRequest {
   string token = 1;
 }
 
-
 message WebsocketEvent {
   enum Error {
     UNKNOWN_ERROR = 0;
