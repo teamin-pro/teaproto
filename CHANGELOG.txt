@@ -1,6 +1,6 @@
 14 feb 2023
 ===========
- - badges
+ - global badges
 
 12 feb 2023
 ===========
