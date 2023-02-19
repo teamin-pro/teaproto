@@ -3,6 +3,7 @@ syntax = "proto3";
 package gtproto;
 
 import "auth.proto";
+import "badges.proto";
 import "chat_members.proto";
 import "chats.proto";
 import "devices.proto";
@@ -59,6 +60,7 @@ message ClientRequest {
 
     // state
     StateRequest state_request = 15; // works without ClientRequest.token
+    BadgeRequest badge_request = 45;
 
     // tokens
     TokensListRequest tokens_list_request = 13;
@@ -127,6 +129,7 @@ message ServerResponse {
 
     // state
     StateResponse state_response = 15;
+    BadgeResponse badge_response = 45;
 
     // tokens
     TokensListResponse tokens_list_response = 13;
@@ -164,4 +167,5 @@ message WebsocketEvent {
   repeated ChatBadge chat_badges = 6; // updated chat badges
   repeated ChatEvent chat_events = 7;
   repeated ViewedMessage viewed_messages = 8;
+  repeated Badge global_badges = 9;
 }
