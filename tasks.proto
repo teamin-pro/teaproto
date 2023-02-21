@@ -52,4 +52,12 @@ message Task {
   string description = 3; // one of the title or description must be set
 
   string chat_id = 1; // link to the chat, also unique uuid of the task
+
+  User creator = 8; // user who created the task
+  uint64 created_at = 10;
+
+  repeated User assignees = 9; // users who are assigned to the task
+
+  uint64 should_be_started_at = 11; // optional, used for calendar
+  uint64 should_be_finished_at = 12; // optional, used for calendar
 }
