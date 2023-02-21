@@ -5,18 +5,19 @@ package gtproto;
 import "commons.proto";
 import "users.proto";
 
-// CardList is a column in the board. It can be used to represent a status of the Card.
+// CardList is a column in the board
 message CardList {
   string id = 1;
   uint32 order = 2;
   string title = 3;
 }
 
+// CardStatus is a status of the card. For example: "To Do", "In Progress", "Done".
 message CardStatus {
   string id = 1;
   uint32 order = 2;
   string title = 3;
-  bool hide_card_from_board = 4; // card with this status will not be shown in the board
+  bool hide_card_from_board = 4; // card with this status will not be shown in the board. Useful for "Archive" status.
 }
 
 // CardListPresets is ready-to-use set of statuses that can be used in new board. For example: "To Do", "In Progress", "Done".
@@ -29,11 +30,10 @@ message CardStatusPresets {
 message Board {
   string id = 1;
   string title = 2;
-  string description = 3; // optional
   uint32 num_members = 4;
-  string prefix = 5; // optional, used to generate Card ids like jira: "PROJ-123" etc.
-  repeated CardList lists = 6;
-  repeated CardStatus statuses = 7;
+  string prefix = 5; // optional, used to generate Card ids like JIRA "PROJ-123" etc.
+  repeated CardList lists = 6; // at least one list must be created
+  repeated CardStatus statuses = 7; // optional. If not set, then Card.status_id is not used and cards have no statuses.
 }
 
 enum BoardMemberRight {
