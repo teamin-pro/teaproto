@@ -43,7 +43,7 @@ message BoardMember {
 
 message Task {
   Board board = 4;
-  uint32 number = 5; // task number in the board, optional
+  uint32 number = 5; // task number in the board. Shows only when board prefix is set.
 
   string status_id = 6; // current status id (see Board.statuses)
   uint32 order = 7; // imagine Trello board: statuses are columns, tasks are cards. This is the order of the task in the column.
@@ -51,5 +51,5 @@ message Task {
   string title = 2; // one of the title or description must be set
   string description = 3; // one of the title or description must be set
 
-  string chat_id = 1; // link to the chat
+  string chat_id = 1; // link to the chat, also unique uuid of the task
 }
