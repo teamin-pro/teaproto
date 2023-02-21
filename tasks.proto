@@ -5,7 +5,7 @@ package gtproto;
 import "commons.proto";
 import "users.proto";
 
-// TaskList is a column in the board. It can be used to represent a status of the Card.
+// CardList is a column in the board. It can be used to represent a status of the Card.
 message CardList {
   string id = 1;
   uint32 order = 2;
