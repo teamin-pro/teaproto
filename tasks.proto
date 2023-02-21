@@ -20,8 +20,8 @@ message CardStatus {
   bool hide_card_from_board = 4; // card with this status will not be shown in the board. Useful for "Archive" status.
 }
 
-// CardListPresets is ready-to-use set of statuses that can be used in new board. For example: "To Do", "In Progress", "Done".
-message CardStatusPresets {
+// CardListPreset is ready-to-use set of statuses that can be used in new board. For example: "To Do", "In Progress", "Done".
+message CardStatusPreset {
   string name = 1;
   repeated CardStatus statuses = 2;
 }
