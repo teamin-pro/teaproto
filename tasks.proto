@@ -5,35 +5,35 @@ package gtproto;
 import "commons.proto";
 import "users.proto";
 
-// TaskStatus is a status of a task used in a board.
-message TaskStatus {
+// TaskList is a column in the board. It can be used to represent a status of the Card.
+message CardList {
   string id = 1;
   uint32 order = 2;
   string title = 3;
 }
 
-// TaskStatusPresets is ready-to-use set of statuses that can be used in new board. For example: "To Do", "In Progress", "Done".
-message TaskStatusPresets {
+// CardListPresets is ready-to-use set of lists that can be used in new board. For example: "To Do", "In Progress", "Done".
+message CardListPresets {
   string name = 1;
-  repeated TaskStatus statuses = 2;
+  repeated CardList lists = 2;
 }
 
-// Board is a group of tasks with a common goal and a common set of users.
+// Board is a group of Cards with a common goal and a common set of users.
 message Board {
   string id = 1;
   string title = 2;
   string description = 3; // optional
   uint32 num_members = 4;
-  string prefix = 5; // optional, used to generate task ids like jira: "PROJ-123" etc.
-  repeated TaskStatus statuses = 6;
+  string prefix = 5; // optional, used to generate Card ids like jira: "PROJ-123" etc.
+  repeated CardList lists = 6;
 }
 
 enum BoardMemberRight {
   UNKNOWN_BOARD_MEMBER_RIGHT = 0;
-  CAN_EDIT_BOARD_SETTINGS = 1; // title, description, prefix, statuses
+  CAN_EDIT_BOARD_SETTINGS = 1; // title, description, prefix, lists
 }
 
-// BoardMember can see all tasks in the board
+// BoardMember can see all Cards in the board
 message BoardMember {
   User user = 1;
   string role = 2; // optional
@@ -41,22 +41,22 @@ message BoardMember {
   repeated BoardMemberRight rights = 4;
 }
 
-message Task {
+message Card {
   Board board = 4;
-  uint32 number = 5; // task number in the board. Shows only when board prefix is set.
+  uint32 number = 5; // Card number in the board. Shows only when board prefix is set.
 
-  string status_id = 6; // current status id (see Board.statuses)
-  uint32 order = 7; // imagine Trello board: statuses are columns, tasks are cards. This is the order of the task in the column.
+  string list_id = 6; // current list id (see Board.lists)
+  uint32 order = 7; // order in the current list
 
   string title = 2; // one of the title or description must be set
   string description = 3; // one of the title or description must be set
 
-  string chat_id = 1; // link to the chat, also unique uuid of the task
+  string chat_id = 1; // link to the chat, also unique uuid of the Card
 
-  User creator = 8; // user who created the task
+  User creator = 8; // user who created the Card
   uint64 created_at = 10;
 
-  repeated User assignees = 9; // users who are assigned to the task
+  repeated User assignees = 9; // users who are assigned to the Card
 
   uint64 should_be_started_at = 11; // optional, used for calendar
   uint64 should_be_finished_at = 12; // optional, used for calendar
