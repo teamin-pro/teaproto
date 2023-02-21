@@ -12,10 +12,17 @@ message CardList {
   string title = 3;
 }
 
-// CardListPresets is ready-to-use set of lists that can be used in new board. For example: "To Do", "In Progress", "Done".
-message CardListPresets {
+message CardStatus {
+  string id = 1;
+  uint32 order = 2;
+  string title = 3;
+  bool hide_card_from_board = 4; // card with this status will not be shown in the board
+}
+
+// CardListPresets is ready-to-use set of statuses that can be used in new board. For example: "To Do", "In Progress", "Done".
+message CardStatusPresets {
   string name = 1;
-  repeated CardList lists = 2;
+  repeated CardStatus statuses = 2;
 }
 
 // Board is a group of Cards with a common goal and a common set of users.
@@ -26,11 +33,12 @@ message Board {
   uint32 num_members = 4;
   string prefix = 5; // optional, used to generate Card ids like jira: "PROJ-123" etc.
   repeated CardList lists = 6;
+  repeated CardStatus statuses = 7;
 }
 
 enum BoardMemberRight {
   UNKNOWN_BOARD_MEMBER_RIGHT = 0;
-  CAN_EDIT_BOARD_SETTINGS = 1; // title, description, prefix, lists
+  CAN_EDIT_BOARD_SETTINGS = 1; // title, description, prefix, lists, statuses
 }
 
 // BoardMember can see all Cards in the board
@@ -47,6 +55,8 @@ message Card {
 
   string list_id = 6; // current list id (see Board.lists)
   uint32 order = 7; // order in the current list
+
+  string status_id = 13; // current status id (see Board.statuses), required if board has statuses
 
   string title = 2; // one of the title or description must be set
   string description = 3; // one of the title or description must be set
