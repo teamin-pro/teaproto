@@ -32,7 +32,7 @@ message Board {
   string title = 2;
   uint32 num_members = 4;
   string prefix = 5; // optional, used to generate Card ids like JIRA "PROJ-123" etc.
-  repeated CardList lists = 6; // at least one list must be created
+  repeated CardList lists = 6; // optional. If not set, then Card.list_id is not used and cards have no lists.
   repeated CardStatus statuses = 7; // optional. If not set, then Card.status_id is not used and cards have no statuses.
 }
 
@@ -41,7 +41,7 @@ enum BoardMemberRight {
   CAN_EDIT_BOARD_SETTINGS = 1; // title, description, prefix, lists, statuses
 }
 
-// BoardMember can see all Cards in the board
+// BoardMember can see all cards in the board
 message BoardMember {
   User user = 1;
   string role = 2; // optional
@@ -50,18 +50,17 @@ message BoardMember {
 }
 
 message Card {
-  Board board = 4;
-  uint32 number = 5; // Card number in the board. Shows only when board prefix is set.
+  string chat_id = 1; // link to the chat, also unique uuid of the Card
+  string board_id = 4;
+  uint32 number = 5; // card number in the board. Shows only when board prefix is set.
 
-  string list_id = 6; // current list id (see Board.lists)
+  string list_id = 6; // current list id (see Board.lists), required if board has lists
   uint32 order = 7; // order in the current list
 
   string status_id = 13; // current status id (see Board.statuses), required if board has statuses
 
   string title = 2; // one of the title or description must be set
   string description = 3; // one of the title or description must be set
-
-  string chat_id = 1; // link to the chat, also unique uuid of the Card
 
   User creator = 8; // user who created the Card
   uint64 created_at = 10;
