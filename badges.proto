@@ -2,11 +2,17 @@ syntax = "proto3";
 
 package gtproto;
 
+message ChatBadge {
+  string chat_id = 1;
+  uint32 counter = 2;
+  uint64 updated_at = 3; // in conflicting cases, the badge with the latest updated_at should be used
+}
+
 enum BadgeType {
   BADGE_TYPE_MAIN = 0; // badge on application icon
 }
 
-message Badge {
+message GlobalBadge {
   BadgeType type = 1;
   uint32 count = 2;
   uint64 updated_at = 3; // in conflicting cases, the badge with the latest updated_at should be used
@@ -15,5 +21,5 @@ message Badge {
 message BadgeRequest {}
 
 message BadgeResponse {
-  repeated Badge global_badges = 1;
+  repeated GlobalBadge global_badges = 1;
 }

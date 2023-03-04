@@ -1,3 +1,8 @@
+5 mar 2023
+==========
+ - Badge was renamed to GlobalBadge
+ - ChatBadge.badge was renamed to ChatBadge.counter, and ChatBadge.updated_at added
+
 14 feb 2023
 ===========
  - global badges

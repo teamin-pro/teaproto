@@ -6,11 +6,6 @@ import "commons.proto";
 import "uploads.proto";
 import "users.proto";
 
-message ChatBadge {
-  string chat_id = 1;
-  uint32 badge = 2;
-}
-
 enum ChatType {
   UNKNOWN_CHAT_TYPE = 0;
   DIRECT = 1;
