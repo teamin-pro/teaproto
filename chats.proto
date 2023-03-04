@@ -5,13 +5,14 @@ package gtproto;
 import "commons.proto";
 import "messages.proto";
 import "users.proto";
+import "badges.proto";
 
 message Chat {
   Message last_message = 8; // optional
   uint64 updated_at = 9; // last message creation time even message was deleted
   string last_viewed_message_id = 10; // optional
   uint64 last_viewed_message_created_at = 13; // optional
-  uint32 badge = 11; // number of unseen messages
+  ChatBadge badge = 14;
   uint32 pinned_position = 12;  // pinned position at chat list, if any
 
   // same as messages.proto:ChatPreview
