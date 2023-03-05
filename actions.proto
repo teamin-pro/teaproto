@@ -167,5 +167,5 @@ message WebsocketEvent {
   repeated ChatBadge chat_badges = 6; // updated chat badges
   repeated ChatEvent chat_events = 7;
   repeated ViewedMessage viewed_messages = 8;
-  repeated Badge global_badges = 9;
+  repeated GlobalBadge global_badges = 9;
 }
