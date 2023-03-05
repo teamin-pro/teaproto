@@ -2,7 +2,7 @@
 ==========
  - Badge was renamed to GlobalBadge
  - ChatBadge.badge was renamed to ChatBadge.counter, and ChatBadge.updated_at added
- - Chat.badge now returns ChatBadge not uint32
+ - Chat.badge and ViewMessageResponse.badge now returns ChatBadge not uint32
 
 14 feb 2023
 ===========

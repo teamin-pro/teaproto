@@ -2,6 +2,7 @@ syntax = "proto3";
 
 package gtproto;
 
+import "badges.proto";
 import "commons.proto";
 import "uploads.proto";
 import "users.proto";
@@ -163,8 +164,8 @@ message ViewMessageResponse {
     INVALID_MESSAGE_ID_ERROR = 1;
   }
   repeated Error errors = 1;
-  uint32 badge = 2;  // number of unseen messages
   repeated ViewedMessage viewed_messages = 3; // viewed messages list
+  ChatBadge badge = 4;  // number of unseen messages
 }
 
 message MessageViewersRequest {
