@@ -10,6 +10,7 @@ message BotCommand {
 
 enum BotCommandArgumentType {
   ARG_TYPE_STRING = 0;
+  ARG_TYPE_NUMBER = 1;
 }
 
 message BotCommandArgument {
