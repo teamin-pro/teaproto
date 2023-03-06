@@ -2,20 +2,23 @@
 Protocol specification.
 
 ## How to use
-Start from [actions.proto](https://github.com/gamarjoba-team/gtproto/blob/main/actions.proto).
+To use the gtproto protocol, start by referring to the [actions.proto](https://github.com/gamarjoba-team/gtproto/blob/main/actions.proto) file.
 
 ### Synchronous workflow (for actions)
- - client send POST http request to `https://api.gamarjoba.team/` with message `ClientRequest`
- - server respond with message `ServerResponse`.
+To initiate a synchronous workflow for actions:
+
+ - The client must send a ClientRequest message via a POST HTTP request to the endpoint https://api.gamarjoba.team/.
+ - The server responds with a `ServerResponse` message.
 
 ### Asynchronous workflow (for events)
- - client create a websocket connection to `https://api.gamarjoba.team/ws`;
- - client send message `WebsocketAuthRequest`;
- - server start sending `WebsocketEvent` messages.
+To initiate an asynchronous workflow for events:
+- The client must create a WebSocket connection to the endpoint https://api.gamarjoba.team/ws.
+- The client sends a `WebsocketAuthRequest` message.
+- The server starts sending `WebsocketEvent` messages.
 
 ### Notes
- - timestamps encoded in `uint64` with milliseconds in UTC;
- - all ids are string representation of `uuid`.
+ - Timestamps are encoded in uint64 format and represent milliseconds in UTC.
+ - All IDs are represented as strings using the uuid format.
 
 ## Why use own protocol not XMPP?
 Firstly, creating own protocol can offer more flexibility and customization options for the app developers. They can design the protocol to specifically fit the needs of their app and its features, which may not be possible with a standardized protocol like XMPP. This can allow for faster innovation and development of new features.
