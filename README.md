@@ -1,7 +1,5 @@
 # gtproto
-Protocol specification.
 
-## How to use
 To use the gtproto protocol, start by referring to the [actions.proto](https://github.com/gamarjoba-team/gtproto/blob/main/actions.proto) file.
 
 ### Synchronous workflow (for actions)
