@@ -3,6 +3,7 @@ syntax = "proto3";
 package gtproto;
 
 import "badges.proto";
+import "bot_commands.proto";
 import "commons.proto";
 import "uploads.proto";
 import "users.proto";
@@ -53,6 +54,9 @@ message Message {
   ChatMessage forward = 13;
   repeated Upload uploads = 11;
   repeated MessageReaction reactions = 14;
+
+  // bots
+  repeated BotCommand bot_commands = 15;
 }
 
 message MessageReaction {
