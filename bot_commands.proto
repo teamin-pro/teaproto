@@ -1,0 +1,36 @@
+syntax = "proto3";
+
+package gtproto;
+
+message BotCommand {
+  string command = 1; // string always starts with '/' symbol. Example: "/help"
+  string description = 2;
+  BotCommandArgument arguments = 3;
+}
+
+enum BotCommandArgumentType {
+  ARG_TYPE_STRING = 0;
+}
+
+message BotCommandArgument {
+  string name = 1;
+  string description = 2;
+  bool required = 3;
+  BotCommandArgumentType type = 4;
+}
+
+message BotCommandsRequest {
+  oneof recipient {
+    string chat_id = 2;
+    string user_id = 1;
+  }
+}
+
+message BotCommandsResponse {
+  enum Error {
+    UNKNOWN_ERROR = 0;
+    INVALID_RECIPIENT_ERROR = 1;
+  }
+  repeated Error errors = 1;
+  repeated BotCommand commands = 2;
+}
