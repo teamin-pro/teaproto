@@ -16,7 +16,7 @@ enum ChatType {
 
 enum MessageRight {
   UNKNOWN_MESSAGE_RIGHT = 0;
-  CAN_EDIT_MESSAGE = 1;
+  CAN_EDIT_MESSAGE = 1; // message can be edited by author except for messages to bots
   CAN_DELETE_MESSAGE = 2;
 }
 
