@@ -4,6 +4,17 @@ package gtproto;
 
 import "commons.proto";
 
+message OnlineStatus {
+  enum Status {
+    ONLINE = 0;
+    OFFLINE = 1;
+    AWAY = 2; // not implemented yet
+  }
+  string user_id = 1; // can omited if message inside User
+  Status status = 2;
+  uint64 was_online_at = 3; // only for OFFLINE status
+}
+
 message Profile {
   string id = 1;
   string name = 2;
@@ -36,9 +47,8 @@ message User {
   string id = 1;
   string name = 2;
   Icon icon = 3;
-  bool is_online = 4;
-  uint64 was_online_at = 5;
   bool is_me = 6;
+  OnlineStatus online_status = 7;
 }
 
 message UsersListRequest {
