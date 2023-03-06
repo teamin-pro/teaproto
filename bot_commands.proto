@@ -8,16 +8,10 @@ message BotCommand {
   BotCommandArgument arguments = 3; // optional command arguments. Example: "/help [command]"
 }
 
-enum BotCommandArgumentType {
-  ARG_TYPE_STRING = 0;
-  ARG_TYPE_NUMBER = 1;
-}
-
 message BotCommandArgument {
   string name = 1;
   string description = 2;
   bool required = 3;
-  BotCommandArgumentType type = 4;
 }
 
 message BotCommandsRequest {
