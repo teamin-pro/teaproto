@@ -5,7 +5,7 @@ package gtproto;
 message BotCommand {
   string command = 1; // string always starts with '/' symbol. Example: "/help"
   string description = 2;
-  BotCommandArgument arguments = 3;
+  BotCommandArgument arguments = 3; // optional command arguments. Example: "/help [command]"
 }
 
 enum BotCommandArgumentType {
