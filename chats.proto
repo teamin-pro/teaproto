@@ -17,7 +17,7 @@ message Chat {
 
   // same as messages.proto:ChatPreview
   string id = 1;
-  string with_user_id = 5; // direct chats only
+  User with_user = 15; // direct chats only
   ChatType type = 2;
   bool is_deleted = 3;
   uint32 num_members = 4;
