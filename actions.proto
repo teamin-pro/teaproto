@@ -166,8 +166,6 @@ message WebsocketEvent {
   }
   repeated Error errors = 99;
 
-  repeated string going_online = 1; // user ids going online
-  repeated string going_offline = 2; // user ids going offline
   repeated Message messages = 3; // new or updated messages
   repeated User users = 4; // new or updated users
   repeated Chat chats = 5; // new or updated chats
@@ -175,4 +173,5 @@ message WebsocketEvent {
   repeated ChatEvent chat_events = 7;
   repeated ViewedMessage viewed_messages = 8;
   repeated GlobalBadge global_badges = 9;
+  repeated OnlineStatus online_statuses = 10; // users going online, offline or away
 }

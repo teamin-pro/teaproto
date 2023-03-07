@@ -1,5 +1,8 @@
-## v1.2.0
+## v1.3.0
  - bot commands were added
+
+## v1.2.0
+ - `OnlineStatus` was added
 
 ## v1.1.2
  - `ChatListRequest.min_updated_at` was added
