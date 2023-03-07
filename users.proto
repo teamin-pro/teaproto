@@ -12,7 +12,7 @@ message OnlineStatus {
   }
   string user_id = 1; // can omited if message inside User
   Status status = 2;
-  uint64 was_online_at = 3; // only for OFFLINE status
+  uint64 last_seen = 3; // only for OFFLINE status
 }
 
 message Profile {
