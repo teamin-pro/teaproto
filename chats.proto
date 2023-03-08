@@ -19,7 +19,6 @@ message Chat {
   string id = 1;
   string with_user_id = 5; // direct chats only
   ChatType type = 2;
-  bool is_deleted = 3; // deprecated
   uint32 num_members = 4;
   string display_name = 6; // chat title for groups, participant name for direct chats
   Icon icon = 7;

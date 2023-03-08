@@ -5,11 +5,15 @@ package gtproto;
 import "commons.proto";
 import "users.proto";
 
-// CardList is a column in the board
-message CardList {
-  string id = 1;
-  uint32 order = 2;
-  string title = 3;
+// Board is a chat with members
+// Card also is a chat with members
+
+// Board is a group of Cards with a common goal and a common set of users.
+message Board {
+  string chat_id = 1; // because Board is a chat, it has chat_id
+  string prefix = 5; // optional, used to generate Card ids like JIRA "PROJ-123" etc.
+  // Board is a group of Cards with a common goal and a common set of users.
+  repeated CardStatus statuses = 7; // optional. If not set, then Card.status_id is not used and cards have no statuses.
 }
 
 // CardStatus is a status of the card. For example: "To Do", "In Progress", "Done".
@@ -17,23 +21,6 @@ message CardStatus {
   string id = 1;
   uint32 order = 2;
   string title = 3;
-  bool hide_card_from_board = 4; // card with this status will not be shown in the board. Useful for "Archive" status.
-}
-
-// CardListPreset is ready-to-use set of statuses that can be used in new board. For example: "To Do", "In Progress", "Done".
-message CardStatusPreset {
-  string name = 1;
-  repeated CardStatus statuses = 2;
-}
-
-// Board is a group of Cards with a common goal and a common set of users.
-message Board {
-  string id = 1;
-  string title = 2;
-  uint32 num_members = 4;
-  string prefix = 5; // optional, used to generate Card ids like JIRA "PROJ-123" etc.
-  repeated CardList lists = 6; // optional. If not set, then Card.list_id is not used and cards have no lists.
-  repeated CardStatus statuses = 7; // optional. If not set, then Card.status_id is not used and cards have no statuses.
 }
 
 enum BoardMemberRight {
@@ -41,20 +28,11 @@ enum BoardMemberRight {
   CAN_EDIT_BOARD_SETTINGS = 1; // title, description, prefix, lists, statuses
 }
 
-// BoardMember can see all cards in the board
-message BoardMember {
-  User user = 1;
-  string role = 2; // optional
-  bool is_pending = 3; // if true, the user has not accepted the invitation yet
-  repeated BoardMemberRight rights = 4;
-}
-
 message Card {
-  string chat_id = 1; // link to the chat, also unique uuid of the Card
-  string board_id = 4;
+  string board_chat_id = 1; // link to the chat, also unique uuid of the Card
+  string chat_id = 4;
   uint32 number = 5; // card number in the board. Shows only when board prefix is set.
 
-  string list_id = 6; // current list id (see Board.lists), required if board has lists
   uint32 order = 7; // order in the current list
 
   string status_id = 13; // current status id (see Board.statuses), required if board has statuses
@@ -66,7 +44,4 @@ message Card {
   uint64 created_at = 10;
 
   repeated User assignees = 9; // users who are assigned to the Card
-
-  uint64 should_be_started_at = 11; // optional, used for calendar
-  uint64 should_be_finished_at = 12; // optional, used for calendar
 }

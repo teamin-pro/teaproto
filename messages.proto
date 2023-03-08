@@ -11,6 +11,7 @@ enum ChatType {
   UNKNOWN_CHAT_TYPE = 0;
   DIRECT = 1;
   GROUP = 2;
+  BOARD = 4;
   TASK = 3;
 }
 
@@ -25,7 +26,6 @@ message ShortChat {
   string id = 1;
   string with_user_id = 5;
   ChatType type = 2;
-  bool is_deleted = 3;
   uint32 num_members = 4;
   string display_name = 6;
   Icon icon = 7;
