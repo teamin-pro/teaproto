@@ -30,8 +30,6 @@ message Task {
   string description = 3; // one of the title or description must be set
 
   User creator = 8; // user who created the Task
-  uint64 created_at = 10;
-
   repeated User assignees = 9; // users who are assigned to the Task
 
   uint32 num_members = 14;
