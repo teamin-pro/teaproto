@@ -24,7 +24,7 @@ enum MessageRight {
 // half of Chat type
 message ShortChat {
   string id = 1;
-  string with_user_id = 5;
+  User with_user = 8;
   ChatType type = 2;
   uint32 num_members = 4;
   string display_name = 6;

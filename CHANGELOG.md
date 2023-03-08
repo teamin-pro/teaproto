@@ -1,6 +1,9 @@
 ## v1.4.0
  - tasks api first version
 
+## v1.2.1
+ - `Chat.with_user_id` replaced with `Chat.with_user`
+
 ## v1.2.0
  - `OnlineStatus` was added
 
