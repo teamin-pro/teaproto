@@ -2,26 +2,33 @@ syntax = "proto3";
 
 package gtproto;
 
+import "badges.proto";
 import "commons.proto";
+import "groups.proto";
 import "messages.proto";
 import "users.proto";
-import "badges.proto";
+import "tasks.proto";
 
 message Chat {
-  Message last_message = 8; // optional
+  string id = 1;
+  string display_name = 6;
+  Icon icon = 7;
+
+  ChatType type = 2;
+  oneof topic {
+    User user = 15;   // for type == DIRECT
+    Group group = 16; // for type == GROUP
+    Board board = 17; // for type == BOARD
+    Task task = 18;   // for type == TASK
+  }
+
   uint64 updated_at = 9; // last message creation time even message was deleted
+  Message last_message = 8; // optional
+
   string last_viewed_message_id = 10; // optional
   uint64 last_viewed_message_created_at = 13; // optional
   ChatBadge badge = 14;
   uint32 pinned_position = 12;  // pinned position at chat list, if any
-
-  // same as messages.proto:ChatPreview
-  string id = 1;
-  User with_user = 15; // direct chats only
-  ChatType type = 2;
-  uint32 num_members = 4;
-  string display_name = 6; // chat title for groups, participant name for direct chats
-  Icon icon = 7;
 }
 
 enum ChatEventType {
