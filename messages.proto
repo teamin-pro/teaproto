@@ -4,10 +4,11 @@ package gtproto;
 
 import "badges.proto";
 import "commons.proto";
+import "groups.proto";
+import "notes.proto";
+import "tasks.proto";
 import "uploads.proto";
 import "users.proto";
-import "groups.proto";
-import "tasks.proto";
 
 enum ChatType {
   UNKNOWN_CHAT_TYPE = 0;
@@ -15,6 +16,7 @@ enum ChatType {
   GROUP = 2;
   BOARD = 4;
   TASK = 3;
+  NOTE_LIST = 5;
 }
 
 enum MessageRight {
@@ -33,8 +35,9 @@ message ShortChat {
   oneof topic {
     User user = 15;   // for type == DIRECT
     Group group = 16; // for type == GROUP
-    Board board = 17; // for type == BOARD
+    TaskList board = 17; // for type == BOARD
     Task task = 18;   // for type == TASK
+    NoteList note_list = 19; // for type == NOTE_LIST
   }
 }
 

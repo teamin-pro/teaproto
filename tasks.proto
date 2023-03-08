@@ -4,8 +4,7 @@ package gtproto;
 
 import "users.proto";
 
-// Board is a group of Tasks with a common goal and a common set of users.
-message Board {
+message TaskList {
   string chat_id = 1;
   string prefix = 5; // optional, used to generate Task ids like JIRA "PROJ-123" etc.
   repeated TaskStatus statuses = 7;
@@ -19,19 +18,13 @@ message TaskStatus {
   string title = 3;
 }
 
-enum BoardMemberRight {
-  UNKNOWN_BOARD_MEMBER_RIGHT = 0;
-  CAN_EDIT_BOARD_SETTINGS = 1; // title, description, prefix, lists, statuses
-}
-
 message Task {
-  string parent_chat_id = 1; // link to the chat, also unique uuid of the Task
+  string task_list_chat_id = 1;
   string chat_id = 4;
   uint32 number = 5; // Task number in the board. Shows only when board prefix is set.
 
   uint32 order = 7; // order in the current list
-
-  string status_id = 13; // current status id (see Board.statuses), required if board has statuses
+  string status_id = 13;
 
   string title = 2; // one of the title or description must be set
   string description = 3; // one of the title or description must be set

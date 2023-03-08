@@ -4,16 +4,14 @@ package gtproto;
 
 import "users.proto";
 
-enum ChatMemberRight {
-  UNKNOWN_CHAT_MEMBER_RIGHT = 0;
-  CAN_REMOVE_CHAT_MEMBER = 1;
-}
-
 message ChatMember {
   User user = 1;
-  bool is_owner = 2;
-  string invited_by_user_id = 3;
-  repeated ChatMemberRight rights = 4;
+  bool can_i_remove_this_member = 5; // computed property
+
+  bool is_admin = 2; // admin can change this flag and settings below
+  bool can_add_new_members = 6;
+  bool can_manage_admins = 7;
+  bool can_change_settings = 8;
 }
 
 message ChatMembersListRequest {
