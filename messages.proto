@@ -28,15 +28,16 @@ enum MessageRight {
 // half of Chat type
 message ShortChat {
   string id = 1;
+
   string display_name = 6;
   Icon icon = 7;
 
   ChatType type = 2;
   oneof topic {
-    User user = 15;   // for type == DIRECT
-    Group group = 16; // for type == GROUP
-    TaskList board = 17; // for type == BOARD
-    Task task = 18;   // for type == TASK
+    User user = 15;          // for type == DIRECT
+    Group group = 16;        // for type == GROUP
+    TaskList task_list = 17; // for type == TASK_LIST
+    Task task = 18;          // for type == TASK
     NoteList note_list = 19; // for type == NOTE_LIST
   }
 }
