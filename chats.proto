@@ -6,7 +6,6 @@ import "badges.proto";
 import "commons.proto";
 import "groups.proto";
 import "messages.proto";
-import "notes.proto";
 import "tasks.proto";
 import "users.proto";
 
@@ -22,7 +21,6 @@ message Chat {
     Group group = 16;        // for type == GROUP
     TaskList task_list = 17; // for type == TASK_LIST
     Task task = 18;          // for type == TASK
-    NoteList note_list = 19; // for type == NOTE_LIST
   }
 
   uint64 updated_at = 9; // chat creation time or last message time or any last activity time
