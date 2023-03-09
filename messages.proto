@@ -37,20 +37,37 @@ message ChatMessage {
   Message message = 2;
 }
 
+message SystemMessage {
+  enum Type {
+    UNKNOWN = 0;
+    GROUP_CREATED = 1; // @ created group "@"
+    USER_JOINED = 2; // @ joined
+    USER_LEFT = 3; // @ left
+    USER_INVITED = 4; // @ invited @
+    USER_REMOVED = 5; // @ removed @
+  }
+  Type type = 1;
+  repeated string args = 3; // arguments for message
+  string fallback_text = 2; // text for clients that don't support system messages
+}
+
 message Message {
   string chat_id = 16; // actually need only for push notifications and websocket events but present in all messages for consistency
   string id = 1;
   uint64 created_at = 3;
   uint64 edited_at = 9; // Time when message was edited by author. It happens only on text / uploads / reply / forwards change. When equal to created_at, message was not edited.
-  string text = 4;
   User sender = 5; // Sender of message. If empty, message was sent by system
+  oneof content {
+    string text = 4;
+    ChatMessage forward = 13;
+    SystemMessage system_message = 15;
+  }
   string prev_message_id = 6; // If empty, message is first in chat
   uint32 viewed_counter = 7; // How many recipients viewed this message
   repeated MessageRight rights = 10;
 
   // attachments
   Message reply = 12;
-  ChatMessage forward = 13;
   repeated Upload uploads = 11;
   repeated MessageReaction reactions = 14;
 }
