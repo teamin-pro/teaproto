@@ -6,6 +6,7 @@ import "badges.proto";
 import "commons.proto";
 import "uploads.proto";
 import "users.proto";
+import "groups.proto";
 
 enum ChatType {
   UNKNOWN_CHAT_TYPE = 0;
@@ -20,15 +21,15 @@ enum MessageRight {
   CAN_DELETE_MESSAGE = 2;
 }
 
-// half of Chat type
 message ShortChat {
   string id = 1;
-  User with_user = 8;
-  ChatType type = 2;
-  bool is_deleted = 3;
-  uint32 num_members = 4;
-  string display_name = 6;
+  string title = 6;
   Icon icon = 7;
+  ChatType type = 2;
+  oneof topic {
+    User user = 15; // for type = DIRECT
+    Group group = 16; // for type = GROUP
+  }
 }
 
 // Message with full chat info. For forwarded, search results etc

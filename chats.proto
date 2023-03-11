@@ -6,6 +6,7 @@ import "commons.proto";
 import "messages.proto";
 import "users.proto";
 import "badges.proto";
+import "groups.proto";
 
 message Chat {
   Message last_message = 8; // optional
@@ -15,14 +16,15 @@ message Chat {
   ChatBadge badge = 14;
   uint32 pinned_position = 12;  // pinned position at chat list, if any
 
-  // same as messages.proto:ChatPreview
+  // same as messages.proto:ShortChat
   string id = 1;
-  User with_user = 15; // direct chats only
-  ChatType type = 2;
-  bool is_deleted = 3;
-  uint32 num_members = 4;
-  string display_name = 6; // chat title for groups, participant name for direct chats
+  string title = 6;
   Icon icon = 7;
+  ChatType type = 2;
+  oneof topic {
+    User user = 15; // for type = DIRECT
+    Group group = 16; // for type = GROUP
+  }
 }
 
 enum ChatEventType {
