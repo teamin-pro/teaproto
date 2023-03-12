@@ -1,3 +1,9 @@
+## v1.3.0
+ - `CreateGroupRequest` / `UpdateGroupSettingsRequest` now returns `Chat` object
+ - `Group.chat_id` because group is always part of chat
+ - removed `GroupDetailsRequest`, use `ChatDetailsRequest`
+ - removed `GroupListRequest`, use `ChatListRequest`
+
 ## v1.2.2
  - `Chat` and `ShortChat` have new field `topic` with `User` or `Group` inside 
 
