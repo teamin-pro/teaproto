@@ -1,6 +1,9 @@
 ## v1.4.0
  - tasks api first version
 
+## v1.2.2
+ - `Chat` and `ShortChat` have new field `topic` with `User` or `Group` inside 
+
 ## v1.2.1
  - `Chat.with_user_id` replaced with `Chat.with_user`
 

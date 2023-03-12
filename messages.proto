@@ -23,19 +23,15 @@ enum MessageRight {
   CAN_DELETE_MESSAGE = 2;
 }
 
-// half of Chat type
 message ShortChat {
-  string id = 1;
-
-  string display_name = 6;
+  string title = 6;
   Icon icon = 7;
-
   ChatType type = 2;
   oneof topic {
-    User user = 15;          // for type == DIRECT
-    Group group = 16;        // for type == GROUP
+    User user = 15; // for type = DIRECT
+    Group group = 16; // for type = GROUP
     TaskList task_list = 17; // for type == TASK_LIST
-    Task task = 18;          // for type == TASK
+    Task task = 18; // for type == TASK
   }
 }
 
