@@ -3,10 +3,10 @@ syntax = "proto3";
 package gtproto;
 
 import "badges.proto";
+import "chats.proto";
 import "commons.proto";
 import "uploads.proto";
 import "users.proto";
-import "groups.proto";
 
 enum ChatType {
   UNKNOWN_CHAT_TYPE = 0;

@@ -7,7 +7,6 @@ import "badges.proto";
 import "chat_members.proto";
 import "chats.proto";
 import "devices.proto";
-import "groups.proto";
 import "messages.proto";
 import "reactions.proto";
 import "state.proto";
@@ -38,8 +37,6 @@ message ClientRequest {
 
     // groups
     CreateGroupRequest create_group_request = 26;
-    GroupDetailsRequest group_details_request = 27;
-    GroupListRequest group_list_request = 28;
     UpdateGroupSettingsRequest update_group_settings_request = 29;
 
     // devices
@@ -107,8 +104,6 @@ message ServerResponse {
 
     // groups
     CreateGroupResponse create_group_response = 26;
-    GroupDetailsResponse group_details_response = 27;
-    GroupListResponse group_list_response = 28;
     UpdateGroupSettingsResponse update_group_settings_response = 29;
 
     // devices
