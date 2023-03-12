@@ -20,7 +20,19 @@ enum MessageRight {
   CAN_DELETE_MESSAGE = 2;
 }
 
-message ShortChat {
+enum ChatEventType {
+  TYPING = 0;
+  RECORDING_AUDIO = 1;
+  CHOOSING_STICKER = 2;
+}
+
+message Group {
+  string title = 2;
+  Icon icon = 3;
+  uint32 num_members = 4;
+}
+
+message Chat {
   string id = 1;
   string title = 6;
   Icon icon = 7;
@@ -29,12 +41,24 @@ message ShortChat {
     User user = 15; // for type = DIRECT
     Group group = 16; // for type = GROUP
   }
+  ChatContext context = 17; // optional details for chats list
 }
 
-// Message with full chat info. For forwarded, search results etc
-message ChatMessage {
-  ShortChat chat = 1;
-  Message message = 2;
+message ChatContext {
+  Message last_message = 8; // optional
+  uint64 updated_at = 9; // last message creation time even message was deleted
+  string last_viewed_message_id = 10; // optional
+  uint64 last_viewed_message_created_at = 13; // optional
+  ChatBadge badge = 14;
+  uint32 pinned_position = 12;  // pinned position at chat list, if any
+}
+
+message ChatEvent {
+  ChatEventType type = 1;
+  string chat_id = 2;
+  User user = 6;
+  uint64 stop_after = 4; // stop showing event after this time
+  bool stop_now = 5; // stop showing event right now
 }
 
 message Message {
@@ -53,6 +77,12 @@ message Message {
   ChatMessage forward = 13;
   repeated Upload uploads = 11;
   repeated MessageReaction reactions = 14;
+}
+
+// Message with full chat info. For forwarded, search results etc
+message ChatMessage {
+  Chat chat = 1;
+  Message message = 2;
 }
 
 message MessageReaction {
@@ -181,39 +211,6 @@ message MessageViewersResponse {
   repeated User users = 3;
 }
 
-message Chat {
-  Message last_message = 8; // optional
-  uint64 updated_at = 9; // last message creation time even message was deleted
-  string last_viewed_message_id = 10; // optional
-  uint64 last_viewed_message_created_at = 13; // optional
-  ChatBadge badge = 14;
-  uint32 pinned_position = 12;  // pinned position at chat list, if any
-
-  // same as messages.proto:ShortChat
-  string id = 1;
-  string title = 6;
-  Icon icon = 7;
-  ChatType type = 2;
-  oneof topic {
-    User user = 15; // for type = DIRECT
-    Group group = 16; // for type = GROUP
-  }
-}
-
-enum ChatEventType {
-  TYPING = 0;
-  RECORDING_AUDIO = 1;
-  CHOOSING_STICKER = 2;
-}
-
-message ChatEvent {
-  ChatEventType type = 1;
-  string chat_id = 2;
-  User user = 6;
-  uint64 stop_after = 4; // stop showing event after this time
-  bool stop_now = 5; // stop showing event right now
-}
-
 message ChatDetailsRequest {
   oneof recipient {
     string chat_id = 2;
@@ -311,10 +308,4 @@ message UpdateGroupSettingsResponse {
   }
   repeated Error errors = 1;
   Chat chat = 3;
-}
-
-message Group {
-  string title = 2;
-  Icon icon = 3;
-  uint32 num_members = 4;
 }

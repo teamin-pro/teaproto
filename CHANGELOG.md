@@ -3,6 +3,7 @@
  - `Group.chat_id` because group is always part of chat
  - removed `GroupDetailsRequest`, use `ChatDetailsRequest`
  - removed `GroupListRequest`, use `ChatListRequest`
+ - `Chat` / `ShortChat` pair replaced with `Chat` that have optional `ChatContext` field
 
 ## v1.2.2
  - `Chat` and `ShortChat` have new field `topic` with `User` or `Group` inside 
