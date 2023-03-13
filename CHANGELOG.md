@@ -1,6 +1,6 @@
 ## v1.3.0
  - `CreateGroupRequest` / `UpdateGroupSettingsRequest` now returns `Chat` object
- - `Group.chat_id` because group is always part of chat
+ - `Group.chat_id` removed because group is always part of chat
  - removed `GroupDetailsRequest`, use `ChatDetailsRequest`
  - removed `GroupListRequest`, use `ChatListRequest`
  - `Chat` / `ShortChat` pair replaced with `Chat` that have optional `ChatContext` field
