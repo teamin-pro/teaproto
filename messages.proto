@@ -276,36 +276,3 @@ message ChatEventResponse {
   repeated Error errors = 1;
   ChatEvent chat_event = 2;
 }
-
-message CreateGroupRequest {
-  string title = 1;
-  repeated string user_ids = 2;
-}
-
-message CreateGroupResponse {
-  enum Error {
-    UNKNOWN_ERROR = 0;
-    EMPTY_TITLE = 1;
-    TITLE_TOO_LONG = 2;
-    CREATION_NOT_ALLOWED = 3;
-  }
-  repeated Error errors = 1;
-  Chat chat = 3;
-}
-
-message UpdateGroupSettingsRequest {
-  string chat_id = 1;
-  string title = 2;
-}
-
-message UpdateGroupSettingsResponse {
-  enum Error {
-    UNKNOWN_ERROR = 0;
-    INVALID_CHAT_ERROR = 1;
-    NOT_ALLOWED_ERROR = 2;
-    EMPTY_TITLE_ERROR = 3;
-    TITLE_TOO_LONG_ERROR = 4;
-  }
-  repeated Error errors = 1;
-  Chat chat = 3;
-}
