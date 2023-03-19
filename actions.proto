@@ -6,15 +6,14 @@ import "auth.proto";
 import "badges.proto";
 import "bot_commands.proto";
 import "chat_members.proto";
-import "chats.proto";
 import "devices.proto";
-import "groups.proto";
 import "messages.proto";
 import "reactions.proto";
 import "state.proto";
 import "tokens.proto";
 import "uploads.proto";
 import "users.proto";
+import "group_chats.proto";
 
 message ClientRequest {
   string token = 1;
@@ -41,10 +40,8 @@ message ClientRequest {
     CreateChatMembersRequest create_chat_members_request = 38;
 
     // groups
-    CreateGroupRequest create_group_request = 26;
-    GroupDetailsRequest group_details_request = 27;
-    GroupListRequest group_list_request = 28;
-    UpdateGroupSettingsRequest update_group_settings_request = 29;
+    CreateGroupChatRequest create_group_chat_request = 26;
+    UpdateGroupChatSettingsRequest update_group_chat_settings_request = 29;
 
     // devices
     CreateOrUpdateDeviceRequest create_or_update_device_request = 10;
@@ -113,10 +110,8 @@ message ServerResponse {
     CreateChatMembersResponse create_chat_members_response = 38;
 
     // groups
-    CreateGroupResponse create_group_response = 26;
-    GroupDetailsResponse group_details_response = 27;
-    GroupListResponse group_list_response = 28;
-    UpdateGroupSettingsResponse update_group_settings_response = 29;
+    CreateGroupChatResponse create_group_chat_response = 26;
+    UpdateGroupChatSettingsResponse update_group_chat_settings_response = 29;
 
     // devices
     CreateOrUpdateDeviceResponse create_or_update_device_response = 10;
