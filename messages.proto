@@ -31,10 +31,11 @@ message Group {
   Icon icon = 3;
   uint32 num_members = 4;
 
-  // rights
+  // calculated rights
   bool can_i_add_new_members = 5;
-  bool can_i_change_group_information = 6;
-  bool can_i_change_group_admins = 7;
+  bool can_i_manage_group_information = 6;
+  bool can_i_manage_group_admins = 7;
+  bool can_i_send_messages = 8;
 }
 
 message Chat {

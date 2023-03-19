@@ -106,8 +106,8 @@ message UpdateGroupChatMemberRequest {
 
   Switch is_admin = 3;
   Switch can_this_member_add_new_members = 6;
-  Switch can_this_member_change_group_information = 7;
-  Switch can_this_member_change_group_admins = 8;
+  Switch can_this_member_manage_group_information = 7;
+  Switch can_this_member_manage_group_admins = 8;
 }
 
 message UpdateGroupChatMemberResponse {
