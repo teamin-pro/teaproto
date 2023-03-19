@@ -14,3 +14,9 @@ message Icon {
   string color = 2; // example: #FF9671
   Image image = 3; // may be empty
 }
+
+enum Switch {
+  DONT_CHANGE = 0;
+  ENABLE = 1;
+  DISABLE = 2;
+}

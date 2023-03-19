@@ -2,6 +2,7 @@ syntax = "proto3";
 
 package gtproto;
 
+import "commons.proto";
 import "messages.proto";
 import "users.proto";
 
@@ -97,4 +98,24 @@ message CreateGroupChatMembersResponse {
   }
   repeated Error errors = 1;
   repeated GroupChatMember members = 2;
+}
+
+message UpdateGroupChatMemberRequest {
+  string chat_id = 1;
+  string user_id = 2; // uuid or "me"
+
+  Switch is_admin = 3;
+  Switch can_this_member_add_new_members = 6;
+  Switch can_this_member_change_group_information = 7;
+  Switch can_this_member_change_group_admins = 8;
+}
+
+message UpdateGroupChatMemberResponse {
+  enum Error {
+    UNKNOWN_ERROR = 0;
+    INVALID_CHAT_ERROR = 1;
+    NOT_ALLOWED_ERROR = 2;
+  }
+  repeated Error errors = 1;
+  GroupChatMember member = 2;
 }
