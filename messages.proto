@@ -30,6 +30,11 @@ message Group {
   string title = 2;
   Icon icon = 3;
   uint32 num_members = 4;
+
+  // rights
+  bool can_i_add_new_members = 5;
+  bool can_i_change_group_information = 6;
+  bool can_i_change_group_admins = 7;
 }
 
 message Chat {

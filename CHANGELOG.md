@@ -1,6 +1,7 @@
 ## v1.3.1
  - `ChatMemberXXX` messages renamed to `GroupChatMemberXXX`
  - `GroupChatMemberDetailsRequest` removed, use `GroupChatMembersListResponse` with filter `user_id`
+ - `can_i_XXX` and `can_this_member_XXX` fields
 
 ## v1.3.0
  - `CreateGroupRequest` / `UpdateGroupSettingsRequest` now returns `Chat` object
