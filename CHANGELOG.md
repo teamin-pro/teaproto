@@ -1,3 +1,7 @@
+## v1.3.1
+ - `ChatMemberXXX` messages renamed to `GroupChatMemberXXX`
+ - `GroupChatMemberDetailsRequest` removed, use `GroupChatMembersListResponse` with filter `user_id`
+
 ## v1.3.0
  - `CreateGroupRequest` / `UpdateGroupSettingsRequest` now returns `Chat` object
  - `Group.chat_id` removed because group is always part of chat

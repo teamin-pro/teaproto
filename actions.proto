@@ -29,15 +29,12 @@ message ClientRequest {
     PinChatRequest pin_chat_request = 30;
     ChatEventRequest chat_event_request = 31;
 
-    // chat members
-    ChatMembersListRequest chat_members_list_request = 35;
-    ChatMemberDetailsRequest chat_member_details_request = 36;
-    DeleteChatMemberRequest delete_chat_member_request = 37;
-    CreateChatMembersRequest create_chat_members_request = 38;
-
-    // groups
+    // group chats
     CreateGroupChatRequest create_group_chat_request = 26;
     UpdateGroupChatSettingsRequest update_group_chat_settings_request = 29;
+    GroupChatMembersListRequest chat_members_list_request = 35;
+    DeleteGroupChatMemberRequest delete_chat_member_request = 37;
+    CreateGroupChatMembersRequest create_chat_members_request = 38;
 
     // devices
     CreateOrUpdateDeviceRequest create_or_update_device_request = 10;
@@ -96,15 +93,12 @@ message ServerResponse {
     PinChatResponse pin_chat_response = 30;
     ChatEventResponse chat_event_response = 31;
 
-    // chat members
-    ChatMembersListResponse chat_members_list_response = 35;
-    ChatMemberDetailsResponse chat_member_details_response = 36;
-    DeleteChatMemberResponse delete_chat_member_response = 37;
-    CreateChatMembersResponse create_chat_members_response = 38;
-
-    // groups
+    // group chats
     CreateGroupChatResponse create_group_chat_response = 26;
     UpdateGroupChatSettingsResponse update_group_chat_settings_response = 29;
+    GroupChatMembersListResponse chat_members_list_response = 35;
+    DeleteGroupChatMemberResponse delete_chat_member_response = 37;
+    CreateGroupChatMembersResponse create_chat_members_response = 38;
 
     // devices
     CreateOrUpdateDeviceResponse create_or_update_device_response = 10;

@@ -1,7 +1,16 @@
 syntax = "proto3";
-import "messages.proto";
 
 package gtproto;
+
+import "messages.proto";
+import "users.proto";
+
+message GroupChatMember {
+  User user = 1;
+  bool is_admin = 2;
+
+  bool can_i_remove_this_member = 5;
+}
 
 message CreateGroupChatRequest {
   string title = 1;
@@ -34,4 +43,54 @@ message UpdateGroupChatSettingsResponse {
   }
   repeated Error errors = 1;
   Chat chat = 3;
+}
+
+message GroupChatMembersListRequest {
+  string chat_id = 1;
+  uint32 limit = 2; // default: StateResponse.max_results_on_page
+  uint32 offset = 3;
+
+  // filters
+  string user_id = 4; // uuid or "me"
+  bool admins_only = 5;
+}
+
+message GroupChatMembersListResponse {
+  enum Error {
+    UNKNOWN_ERROR = 0;
+    INVALID_CHAT_ERROR = 1;
+    INVALID_LIMIT_ERROR = 2;
+  }
+  repeated Error errors = 1;
+  repeated GroupChatMember members = 2;
+}
+
+message DeleteGroupChatMemberRequest {
+  string chat_id = 1;
+  string user_id = 2; // uuid or "me"
+}
+
+message DeleteGroupChatMemberResponse {
+  enum Error {
+    UNKNOWN_ERROR = 0;
+    INVALID_CHAT_ERROR = 1;
+    INVALID_USER_ERROR = 2;
+    NOT_ALLOWED_ERROR = 3;
+  }
+  repeated Error errors = 1;
+}
+
+message CreateGroupChatMembersRequest {
+  string chat_id = 1;
+  repeated string user_ids = 2;
+}
+
+message CreateGroupChatMembersResponse {
+  enum Error {
+    UNKNOWN_ERROR = 0;
+    INVALID_CHAT_ERROR = 1;
+    NOT_ALLOWED_ERROR = 2;
+  }
+  repeated Error errors = 1;
+  repeated GroupChatMember members = 2;
 }
