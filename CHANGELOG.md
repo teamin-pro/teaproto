@@ -1,3 +1,12 @@
+## v1.3.0
+ - `CreateGroupRequest` / `UpdateGroupSettingsRequest` now returns `Chat` object
+ - `Group.chat_id` removed because group is always part of chat
+ - removed `GroupDetailsRequest`, use `ChatDetailsRequest`
+ - removed `GroupListRequest`, use `ChatListRequest`
+ - `CreateGroupXXX` renamed to `CreateGroupChatXXX`
+ - `UpdateGroupSettingsXXX` renamed to `UpdateGroupChatSettingsXXX`
+ - `Chat` / `ShortChat` pair replaced with `Chat` that have optional `ChatContext` field. `LastMessage`, `Badge` and other fields moved to the `ChatContext`
+
 ## v1.2.2
  - `Chat` and `ShortChat` have new field `topic` with `User` or `Group` inside 
 
