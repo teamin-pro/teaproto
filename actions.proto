@@ -32,9 +32,9 @@ message ClientRequest {
     // group chats
     CreateGroupChatRequest create_group_chat_request = 26;
     UpdateGroupChatSettingsRequest update_group_chat_settings_request = 29;
-    GroupChatMembersListRequest chat_members_list_request = 35;
-    DeleteGroupChatMemberRequest delete_chat_member_request = 37;
-    CreateGroupChatMembersRequest create_chat_members_request = 38;
+    GroupChatMembersListRequest group_chat_members_list_request = 35;
+    DeleteGroupChatMemberRequest delete_group_chat_member_request = 37;
+    CreateGroupChatMembersRequest create_group_chat_members_request = 38;
 
     // devices
     CreateOrUpdateDeviceRequest create_or_update_device_request = 10;
@@ -96,9 +96,9 @@ message ServerResponse {
     // group chats
     CreateGroupChatResponse create_group_chat_response = 26;
     UpdateGroupChatSettingsResponse update_group_chat_settings_response = 29;
-    GroupChatMembersListResponse chat_members_list_response = 35;
-    DeleteGroupChatMemberResponse delete_chat_member_response = 37;
-    CreateGroupChatMembersResponse create_chat_members_response = 38;
+    GroupChatMembersListResponse group_chat_members_list_response = 35;
+    DeleteGroupChatMemberResponse delete_group_chat_member_response = 37;
+    CreateGroupChatMembersResponse create_group_chat_members_response = 38;
 
     // devices
     CreateOrUpdateDeviceResponse create_or_update_device_response = 10;
