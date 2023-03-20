@@ -8,13 +8,8 @@ import "users.proto";
 
 message GroupChatMember {
   User user = 1;
-  bool is_admin = 2;
-
+  string role_id = 6;
   bool can_i_remove_this_member = 5;
-
-  bool can_this_member_add_new_members = 6;
-  bool can_this_member_change_group_information = 7;
-  bool can_this_member_change_group_admins = 8;
 }
 
 message CreateGroupChatRequest {

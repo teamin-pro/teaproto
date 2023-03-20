@@ -26,16 +26,27 @@ enum ChatEventType {
   CHOOSING_STICKER = 2;
 }
 
+// For example: Owner (admin that can manage other admins), Admin, Member
+message GroupChatRole {
+  string name = 1; // unique string for internal usage
+  string title = 2; // human readable title
+
+  bool can_send_messages = 14;
+
+  bool can_add_new_members = 11;
+  bool can_change_information = 12; // title, icon, description
+
+  repeated string can_set_roles = 13;
+}
+
 message Group {
   string title = 2;
   Icon icon = 3;
   uint32 num_members = 4;
 
-  // calculated rights
-  bool can_i_add_new_members = 5;
-  bool can_i_manage_group_information = 6;
-  bool can_i_manage_group_admins = 7;
-  bool can_i_send_messages = 8;
+  repeated GroupChatRole roles = 9;
+  string default_role_name = 10;
+  string my_role_name = 11;
 }
 
 message Chat {
