@@ -27,6 +27,7 @@ enum ChatEventType {
 }
 
 // For example: Owner (admin that can manage other admins), Admin, Member
+// Roles are predefined on server side. In future we can add custom roles.
 message GroupChatRole {
   string name = 1; // unique string for internal usage
   string title = 2; // human readable title

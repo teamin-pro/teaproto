@@ -8,7 +8,7 @@ import "users.proto";
 
 message GroupChatMember {
   User user = 1;
-  string role_id = 6;
+  string role_name = 6;
   bool can_i_remove_this_member = 5;
 }
 
