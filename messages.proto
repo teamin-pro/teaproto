@@ -29,13 +29,13 @@ enum ChatEventType {
 // For example: Owner (admin that can manage other admins), Admin, Member
 // Roles are predefined on server side. In future we can add custom roles.
 message GroupChatRole {
-  string name = 1; // unique string for internal usage
+  uint32 id = 1; // value is unique inside group chat
   string title = 2; // human readable title
 
   bool can_send_messages = 14;
 
   bool can_add_new_members = 11;
-  bool can_change_information = 12; // title, icon, description
+  bool can_change_information = 12; // title, icon
 
   repeated string can_set_roles = 13;
 }
@@ -43,11 +43,12 @@ message GroupChatRole {
 message Group {
   string title = 2;
   Icon icon = 3;
+
   uint32 num_members = 4;
 
   repeated GroupChatRole roles = 9;
-  string default_role_name = 10;
-  string my_role_name = 11;
+  uint32 default_role_id = 10;
+  uint32 my_role_id = 11;
 }
 
 message Chat {
