@@ -3,7 +3,6 @@ syntax = "proto3";
 package gtproto;
 
 import "badges.proto";
-import "bot_commands.proto";
 import "commons.proto";
 import "uploads.proto";
 import "users.proto";
@@ -13,12 +12,6 @@ enum ChatType {
   DIRECT = 1;
   GROUP = 2;
   TASK = 3;
-}
-
-enum MessageRight {
-  UNKNOWN_MESSAGE_RIGHT = 0;
-  CAN_EDIT_MESSAGE = 1; // message can be edited by author except for messages to bots
-  CAN_DELETE_MESSAGE = 2;
 }
 
 enum ChatEventType {
@@ -84,13 +77,16 @@ message Message {
   User sender = 5; // Sender of message. If empty, message was sent by system
   string prev_message_id = 6; // If empty, message is first in chat
   uint32 viewed_counter = 7; // How many recipients viewed this message
-  repeated MessageRight rights = 10;
 
   // attachments
   Message reply = 12;
   ChatMessage forward = 13;
   repeated Upload uploads = 11;
   repeated MessageReaction reactions = 14;
+
+  // rights
+  bool can_i_edit_this_message = 15; // message can be edited by author except for messages to bots
+  bool can_i_delete_this_message = 17; // message can be deleted by author or admin except for messages to bots
 }
 
 // Message with full chat info. For forwarded, search results etc
