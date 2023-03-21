@@ -4,16 +4,15 @@ package gtproto;
 
 import "auth.proto";
 import "badges.proto";
-import "bot_commands.proto";
 import "chat_members.proto";
 import "devices.proto";
+import "group_chats.proto";
 import "messages.proto";
 import "reactions.proto";
 import "state.proto";
 import "tokens.proto";
 import "uploads.proto";
 import "users.proto";
-import "group_chats.proto";
 
 message ClientRequest {
   string token = 1;
@@ -23,9 +22,6 @@ message ClientRequest {
     LoginRequest login_request = 16; // works without ClientRequest.token
     LogoutRequest logout_request = 17;
     RegisterAccountRequest register_account_request = 19; // works without ClientRequest.token
-
-    // bot commands
-    BotCommandsRequest bot_commands_request = 46;
 
     // chats
     ChatDetailsRequest chat_details_request = 24;
@@ -93,9 +89,6 @@ message ServerResponse {
     LoginResponse login_response = 16;
     LogoutResponse logout_response = 17;
     RegisterAccountResponse register_account_response = 19;
-
-    // bot commands
-    BotCommandsResponse bot_commands_response = 46;
 
     // chats
     ChatDetailsResponse chat_details_response = 24;

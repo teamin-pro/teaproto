@@ -1,4 +1,4 @@
-## v1.4.0
+## v1.3.1
  - bot commands were added
 
 ## v1.3.0
@@ -15,7 +15,6 @@
 
 ## v1.2.1
  - `Chat.with_user_id` replaced with `Chat.with_user`
->>>>>>> main
 
 ## v1.2.0
  - `OnlineStatus` was added
