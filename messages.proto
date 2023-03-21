@@ -86,7 +86,6 @@ message Message {
 
   // rights
   bool can_i_edit_this_message = 15; // message can be edited by author except for messages to bots
-  bool can_i_delete_this_message = 17; // message can be deleted by author or admin except for messages to bots
 }
 
 // Message with full chat info. For forwarded, search results etc
