@@ -91,9 +91,6 @@ message Message {
   ChatMessage forward = 13;
   repeated Upload uploads = 11;
   repeated MessageReaction reactions = 14;
-
-  // bots
-  repeated BotCommand bot_commands = 15;
 }
 
 // Message with full chat info. For forwarded, search results etc
