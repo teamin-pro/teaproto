@@ -29,12 +29,16 @@ If content type is omitted and request starts with `{` (without leading spaces) 
 
 Getting server info:
 ```shell
-curl -X POST https://api.gamarjoba.team/ -H 'Content-Type: application/json' -d '{"stateRequest":{}}'
+curl -X POST https://api.gamarjoba.team/ \
+  -H 'Content-Type: application/json' \
+  -d '{"stateRequest":{}}'
 ```
 
 Sending a message:
 ```shell
-curl -X POST https://api.gamarjoba.team/ -H 'Content-Type: application/json' -d '{"token":"<TOKEN>", "sendMessageRequest": {"chatId": "<CHAT_ID>", "text": "<MESSAGE_TEXT>"}}'
+curl -X POST https://api.gamarjoba.team/ \
+  -H 'Content-Type: application/json' \
+  -d '{"token":"<TOKEN>", "sendMessageRequest": {"chatId": "<CHAT_ID>", "text": "<MESSAGE_TEXT>"}}'
 ```
 
 ## FAQ
