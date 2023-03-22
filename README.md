@@ -38,7 +38,7 @@ curl -X POST https://api.gamarjoba.team/ \
 If request is JSON, response also will be JSON:
 ```json
 {
-  "stateResponse":{
+  "stateResponse": {
     "now": "1679507631905",
     "maxResultsOnPage": 100,
     "maxGroupTitleLength": 40,
@@ -58,7 +58,7 @@ More useful example. This request requires authentication and sends a message to
 ```shell
 curl -X POST https://api.gamarjoba.team/ \
   -H 'Content-Type: application/json' \
-  -d '{"token":"<TOKEN>", "sendMessageRequest": {"chatId": "<CHAT_ID>", "text": "<MESSAGE_TEXT>"}}'
+  -d '{"token": "<TOKEN>", "sendMessageRequest": {"chatId": "<CHAT_ID>", "text": "<MESSAGE_TEXT>"}}'
 ```
 
 ## FAQ
