@@ -27,14 +27,34 @@ If content type is omitted and request starts with `{` (without leading spaces) 
 
 ### Examples
 
-Getting server info:
+#### Getting server info
+
+This is simplest request. It does not require authentication and returns server info.
+
 ```shell
 curl -X POST https://api.gamarjoba.team/ \
   -H 'Content-Type: application/json' \
   -d '{"stateRequest":{}}'
 ```
 
-Sending a message:
+If request is JSON, response also will be JSON:
+```json
+{
+  "stateResponse":{
+    "now": "1679507631905",
+    "maxResultsOnPage": 100,
+    "maxGroupTitleLength": 40,
+    "maxUsernameLength": 25,
+    "maxMessageLength": 5000,
+    "maxFileSize": 524288000,
+    "maxUploadsForMessage": 10,
+    "minIconSize": 256
+  }
+}
+```
+
+#### Sending a message to a chat
+
 ```shell
 curl -X POST https://api.gamarjoba.team/ \
   -H 'Content-Type: application/json' \
