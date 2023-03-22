@@ -25,9 +25,7 @@ header to `application/json` and send the JSON representation of the protobuf me
 
 If content type is omitted and request starts with `{` (without leading spaces) it will be treated as JSON.
 
-### Examples
-
-#### Getting server info
+### Getting server info
 
 This is simplest request. It does not require authentication and returns server info.
 
@@ -53,7 +51,9 @@ If request is JSON, response also will be JSON:
 }
 ```
 
-#### Sending a message to a chat
+### Sending a message to a chat
+
+More useful example. This request requires authentication and sends a message to a chat.
 
 ```shell
 curl -X POST https://api.gamarjoba.team/ \
