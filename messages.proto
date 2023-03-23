@@ -47,17 +47,18 @@ message Chat {
     User user = 15; // for type = DIRECT
     Group group = 16; // for type = GROUP
   }
-  ChatContext context = 17; // optional details. Present only for chats in chat list and for chat details
+  ChatState state = 17;  // present only for chats in chat list and for chat details
 }
 
-message ChatContext {
-  Message last_message = 8; // optional
+// Chat details related to current member
+message ChatState {
+  Message last_message = 8; // can be empty
   uint64 updated_at = 9; // last message creation time even message was deleted
   string last_viewed_message_id = 10; // optional
   uint64 last_viewed_message_created_at = 13; // optional
   ChatBadge badge = 14;
   uint32 pinned_position = 12; // pinned position at chat list, if any
-  repeated Command commands = 15; // bot commands
+  repeated Command bot_commands = 15;
 }
 
 message ChatEvent {
