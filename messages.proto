@@ -14,12 +14,6 @@ enum ChatType {
   TASK = 3;
 }
 
-enum MessageRight {
-  UNKNOWN_MESSAGE_RIGHT = 0;
-  CAN_EDIT_MESSAGE = 1;
-  CAN_DELETE_MESSAGE = 2;
-}
-
 enum ChatEventType {
   TYPING = 0;
   RECORDING_AUDIO = 1;
@@ -32,6 +26,18 @@ message Group {
   uint32 num_members = 4;
 }
 
+message Command {
+  string command = 1; // string always starts with '/' symbol. Example: "/help"
+  string description = 2;
+  CommandArgument arguments = 3; // optional command arguments. Example: "/help [command]"
+}
+
+message CommandArgument {
+  string name = 1;
+  string description = 2;
+  bool required = 3;
+}
+
 message Chat {
   string id = 1;
   string title = 6;
@@ -41,16 +47,18 @@ message Chat {
     User user = 15; // for type = DIRECT
     Group group = 16; // for type = GROUP
   }
-  ChatContext context = 17; // optional details for chats list
+  ChatState state = 17;  // present only for chats in chat list and for chat details
 }
 
-message ChatContext {
-  Message last_message = 8; // optional
+// Chat details related to current member
+message ChatState {
+  Message last_message = 8; // can be empty
   uint64 updated_at = 9; // last message creation time even message was deleted
   string last_viewed_message_id = 10; // optional
   uint64 last_viewed_message_created_at = 13; // optional
   ChatBadge badge = 14;
-  uint32 pinned_position = 12;  // pinned position at chat list, if any
+  uint32 pinned_position = 12; // pinned position at chat list, if any
+  repeated Command bot_commands = 15;
 }
 
 message ChatEvent {
@@ -70,13 +78,15 @@ message Message {
   User sender = 5; // Sender of message. If empty, message was sent by system
   string prev_message_id = 6; // If empty, message is first in chat
   uint32 viewed_counter = 7; // How many recipients viewed this message
-  repeated MessageRight rights = 10;
 
   // attachments
   Message reply = 12;
   ChatMessage forward = 13;
   repeated Upload uploads = 11;
   repeated MessageReaction reactions = 14;
+
+  // rights
+  bool can_i_edit_this_message = 15; // message can be edited by author except for messages to bots
 }
 
 // Message with full chat info. For forwarded, search results etc

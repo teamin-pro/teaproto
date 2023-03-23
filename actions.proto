@@ -6,13 +6,13 @@ import "auth.proto";
 import "badges.proto";
 import "chat_members.proto";
 import "devices.proto";
+import "group_chats.proto";
 import "messages.proto";
 import "reactions.proto";
 import "state.proto";
 import "tokens.proto";
 import "uploads.proto";
 import "users.proto";
-import "group_chats.proto";
 
 message ClientRequest {
   string token = 1;

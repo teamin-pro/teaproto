@@ -1,3 +1,7 @@
+## v1.4.0
+ - bot commands were added
+ - `ChatContext` was renamed to `ChatState`
+
 ## v1.3.0
  - `CreateGroupRequest` / `UpdateGroupSettingsRequest` now returns `Chat` object
  - `Group.chat_id` removed because group is always part of chat
