@@ -56,6 +56,14 @@ message UsersListRequest {
     string user_id = 1;
     string query = 2;
   }
+
+  // filters
+  bool only_bots = 5;
+  bool only_online = 6;
+  bool only_my_contacts = 7;
+  bool only_can_add_to_groups = 8;
+
+  // pagination
   uint32 limit = 3; // default: StateResponse.max_results_on_page
   uint32 offset = 4;
 }
