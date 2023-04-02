@@ -1,3 +1,6 @@
+## v1.4.1
+ - `Device.disable_pushes_when_online` field
+
 ## v1.4.0
  - bot commands were added
  - `ChatContext` was renamed to `ChatState`
