@@ -34,7 +34,7 @@ message UploadResponse {
   enum Error {
     UNKNOWN_ERROR = 0;
     FILE_TOO_BIG_ERROR = 1; // see StateResponse.max_file_size
-    INVALID_FILENAME_ERROR = 2; // filename length must be between 1 and 255 and must not contain any of the following characters: \ / : * ? " < > |
+    INVALID_FILENAME_ERROR = 2; // filename length must be between 1 and 255 and must not contain character /
   }
   repeated Error errors = 1;
   Upload upload = 2;
