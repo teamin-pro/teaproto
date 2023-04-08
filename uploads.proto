@@ -27,7 +27,7 @@ message Upload {
 message UploadRequest {
   bytes content = 1;
   string filename = 2;
-  bool as_file = 3; // don't make any modifications to uploaded file: resize, rotate, convert, etc.
+  bool disable_modifications = 3; // don't make any modifications to uploaded file: resize, rotate, convert, etc.
 }
 
 message UploadResponse {
