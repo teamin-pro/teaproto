@@ -2,7 +2,7 @@
  - `UploadRequest.as_file` was renamed to `UploadRequest.disable_modifications`
 
 ## v1.4.2
- - `ReactionsResponse` was added
+ - `ReactionsResponse.default_reaction` was added
 
 ## v1.4.1
  - `Device.disable_pushes_when_online` field
