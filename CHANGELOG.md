@@ -1,3 +1,6 @@
+## v1.4.4
+ - `UsersListRequest` extended with filters: `only_bots`, `only_online`, `only_my_contacts`
+
 ## v1.4.3
  - `UploadRequest.as_file` was renamed to `UploadRequest.disable_modifications`
 
