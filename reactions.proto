@@ -16,6 +16,7 @@ message ReactionsRequest {}
 message ReactionsResponse {
   repeated string recent = 1;
   repeated Reaction all = 2;
+  string default_reaction = 3; // for double-tap action
 }
 
 message SetMessageReactionRequest {

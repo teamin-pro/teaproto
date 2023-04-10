@@ -8,11 +8,13 @@ message Device {
   string token = 2; // device token from Firebase / APNs
   string useragent = 3;
   uint64 created_at = 4;
+  bool disable_pushes_when_online = 5;
 }
 
 message CreateOrUpdateDeviceRequest {
   string token = 1;
   string test_push_value = 2;  // send data push with payload: {"type": "test", "value": <given value>"}
+  bool disable_pushes_when_online = 5;
 }
 
 message CreateOrUpdateDeviceResponse {
