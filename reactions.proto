@@ -33,4 +33,8 @@ message SetMessageReactionResponse {
   }
   repeated Error errors = 1;
   repeated MessageReaction reactions = 2;
+
+  // update
+  repeated string recent = 3;
+  string default_reaction = 4;
 }

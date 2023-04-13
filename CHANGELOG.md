@@ -1,3 +1,6 @@
+## v1.4.5
+ - `SetMessageReactionResponse` now contains `recent` and `default_reaction` fields like `ReactionsResponse`
+
 ## v1.4.4
  - `UsersListRequest` extended with filters: `only_bots`, `only_online`, `only_my_contacts`
 
