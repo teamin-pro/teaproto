@@ -1,3 +1,7 @@
+## v1.5.0
+ - login with email
+ - `StateResponse.push_notifications_enabled` was added
+
 ## v1.4.5
  - `SetMessageReactionResponse` now contains `recent` and `default_reaction` fields like `ReactionsResponse`
 
