@@ -19,9 +19,8 @@ message ClientRequest {
 
   oneof action {
     // auth
-    LoginRequest login_request = 16; // works without ClientRequest.token
+    LoginPasswordAuthRequest login_password_auth_request = 19; // works without ClientRequest.token
     LogoutRequest logout_request = 17;
-    RegisterAccountRequest register_account_request = 19; // works without ClientRequest.token
 
     // chats
     ChatDetailsRequest chat_details_request = 24;
@@ -86,9 +85,8 @@ message ServerResponse {
 
   oneof result {
     // auth
-    LoginResponse login_response = 16;
+    LoginPasswordAuthResponse login_password_auth_response = 19;
     LogoutResponse logout_response = 17;
-    RegisterAccountResponse register_account_response = 19;
 
     // chats
     ChatDetailsResponse chat_details_response = 24;

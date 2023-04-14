@@ -6,39 +6,23 @@ import "users.proto";
 
 enum AuthMethod {
   UNKNOWN_AUTH_METHOD = 0;
-  EMAIL_AUTH_METHOD = 1;
-  GOOGLE_AUTH_METHOD = 2;
-  APPLE_AUTH_METHOD = 3;
+  LOGIN_PASSWORD_AUTH_METHOD = 1; // only for testing
+  EMAIL_AUTH_METHOD = 2;
+  GOOGLE_AUTH_METHOD = 3;
+  APPLE_AUTH_METHOD = 4;
 }
 
-message RegisterAccountRequest {
+message LoginPasswordAuthRequest {
   string login = 1;
   string password = 2;
-  string name = 3;
+  bool create_new_account = 3;
 }
 
-message RegisterAccountResponse {
-  enum Error {
-    UNKNOWN_ERROR = 0;
-    INVALID_LOGIN_ERROR = 1;
-    INVALID_PASSWORD_ERROR = 2;
-    LOGIN_ALREADY_USED_ERROR = 3;
-  }
-  repeated Error errors = 1;
-
-  string token = 2;
-  Profile profile = 3;
-}
-
-message LoginRequest {
-  string login = 1;
-  string password = 2;
-}
-
-message LoginResponse {
+message LoginPasswordAuthResponse {
   enum Error {
     UNKNOWN_ERROR = 0;
     INVALID_LOGIN_OR_PASSWORD_ERROR = 1;
+    AUTH_METHOD_NOT_SUPPORTED_ERROR = 2;
   }
   repeated Error errors = 1;
 
