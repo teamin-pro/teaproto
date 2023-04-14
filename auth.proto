@@ -21,9 +21,17 @@ message LoginPasswordAuthRequest {
 message LoginPasswordAuthResponse {
   enum Error {
     UNKNOWN_ERROR = 0;
+
+    // login
     INVALID_LOGIN_OR_PASSWORD_ERROR = 1;
     AUTH_METHOD_NOT_SUPPORTED_ERROR = 2;
+
+    // new account
+    NEW_ACCOUNT_INVALID_LOGIN_ERROR = 3;
+    NEW_ACCOUNT_INVALID_PASSWORD_ERROR = 4;
+    NEW_ACCOUNT_LOGIN_ALREADY_USED_ERROR = 5;
   }
+
   repeated Error errors = 1;
 
   string token = 2;
