@@ -19,7 +19,8 @@ message ClientRequest {
 
   oneof action {
     // auth
-    LoginPasswordAuthRequest login_password_auth_request = 19; // works without ClientRequest.token
+    EmailAuthRequest email_auth_request = 19;
+    EmailAuthConfirmRequest email_auth_confirm_request = 27;
     LogoutRequest logout_request = 17;
 
     // chats
@@ -85,7 +86,8 @@ message ServerResponse {
 
   oneof result {
     // auth
-    LoginPasswordAuthResponse login_password_auth_response = 19;
+    EmailAuthResponse email_auth_response = 19;
+    EmailAuthConfirmResponse email_auth_confirm_response = 27;
     LogoutResponse logout_response = 17;
 
     // chats

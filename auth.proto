@@ -6,36 +6,42 @@ import "users.proto";
 
 enum AuthMethod {
   UNKNOWN_AUTH_METHOD = 0;
-  LOGIN_PASSWORD_AUTH_METHOD = 1; // only for testing
-  EMAIL_AUTH_METHOD = 2;
-  GOOGLE_AUTH_METHOD = 3;
-  APPLE_AUTH_METHOD = 4;
+  EMAIL_AUTH_METHOD = 1;
+  // TODO
+  // GOOGLE_AUTH_METHOD = 2;
+  // APPLE_AUTH_METHOD = 3;
 }
 
-message LoginPasswordAuthRequest {
-  string login = 1;
-  string password = 2;
-  bool create_new_account = 3;
+message EmailAuthRequest {
+  string email = 1;
 }
 
-message LoginPasswordAuthResponse {
+message EmailAuthResponse {
   enum Error {
     UNKNOWN_ERROR = 0;
-
-    // login
-    INVALID_LOGIN_OR_PASSWORD_ERROR = 1;
-    AUTH_METHOD_NOT_SUPPORTED_ERROR = 2;
-
-    // new account
-    NEW_ACCOUNT_INVALID_LOGIN_ERROR = 3;
-    NEW_ACCOUNT_INVALID_PASSWORD_ERROR = 4;
-    NEW_ACCOUNT_LOGIN_ALREADY_USED_ERROR = 5;
+    INVALID_EMAIL_ERROR = 1;
+    TOO_MANY_ATTEMPTS_ERROR = 2;
   }
-
   repeated Error errors = 1;
+  uint32 code_length = 2;
+  uint32 code_expired_at = 3;
+  uint64 next_code_will_be_sent_at = 4;
+}
 
-  string token = 2;
-  Profile profile = 3;
+message EmailAuthConfirmRequest {
+  string email = 1;
+  string code = 2;
+}
+
+message EmailAuthConfirmResponse {
+  enum Error {
+    UNKNOWN_ERROR = 0;
+    CODE_INVALID_ERROR = 1; // code invalid but user can try again
+    CODE_EXPIRED_ERROR = 2; // need to request new code
+  }
+  repeated Error errors = 1;
+  string token = 3;
+  Profile profile = 4;
 }
 
 message LogoutRequest {
