@@ -2,6 +2,8 @@ syntax = "proto3";
 
 package gtproto;
 
+import "auth.proto";
+
 // 3-in-one: server configuration / ping / errors emulator
 message StateRequest {
   enum Mode {
@@ -27,9 +29,5 @@ message StateResponse {
 
   // features
   bool push_notifications_enabled = 9; // push notifications are enabled on the server
-
-  // auth
-  bool auth_by_email_enabled = 10;
-  bool auth_by_google_enabled = 11;
-  bool auth_by_apple_enabled = 12;
+  repeated AuthMethod auth_methods = 10;
 }

@@ -4,6 +4,13 @@ package gtproto;
 
 import "users.proto";
 
+enum AuthMethod {
+  UNKNOWN_AUTH_METHOD = 0;
+  EMAIL_AUTH_METHOD = 1;
+  GOOGLE_AUTH_METHOD = 2;
+  APPLE_AUTH_METHOD = 3;
+}
+
 message RegisterAccountRequest {
   string login = 1;
   string password = 2;
