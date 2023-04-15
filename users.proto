@@ -31,18 +31,13 @@ message ProfileResponse {
 }
 
 message UpdateProfileRequest {
-  string new_name = 1; // empty = no change
-  string new_email = 2; // empty = no change
-  string new_password = 3; // empty = no change
+  string new_name = 1;
 }
 
 message UpdateProfileResponse {
   enum Error {
     UNKNOWN_ERROR = 0;
     NAME_IS_TOO_LONG_ERROR = 1;
-    INVALID_EMAIL_ERROR = 2;
-    PASSWORD_IS_TOO_SHORT_ERROR = 3; // see StateResponse.min_password_length
-    PASSWORD_IS_TOO_LONG_ERROR = 4;  // see StateResponse.max_password_length
   }
   repeated Error errors = 1;
 

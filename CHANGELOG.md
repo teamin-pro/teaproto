@@ -1,7 +1,8 @@
 ## v1.5.0
  - `StateResponse.push_notifications_enabled` was added. It's `true` when push notifications are enabled for current server
- - `StateResponse.auth_methods`, `StateResponse.min_password_length` and `StateResponse.max_password_length` was added
- - `Profile.has_password` was added
+ - `StateResponse.auth_methods`, `StateResponse.min_password_length` and `StateResponse.max_password_length` 
+ - `Profile.has_password` 
+ - `SetPasswordRequest`, `SetEmailRequest` and `SetEmailConfirmationRequest`
 
 ## v1.4.5
  - `SetMessageReactionResponse` now contains `recent` and `default_reaction` fields like `ReactionsResponse`

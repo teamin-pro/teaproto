@@ -10,6 +10,12 @@ enum AuthMethod {
   EMAIL_PASSWORD_AUTH_METHOD = 2;
 }
 
+message Confirmation {
+  uint32 code_length = 2;
+  uint64 code_expired_at = 3;
+  uint64 next_code_can_be_sent_at = 4;
+}
+
 message EmailPasswordAuthRequest {
   string email = 1;
   string password = 2;
@@ -39,9 +45,7 @@ message EmailCodeAuthResponse {
     TOO_MANY_ATTEMPTS_ERROR = 3;
   }
   repeated Error errors = 1;
-  uint32 code_length = 2;
-  uint64 code_expired_at = 3;
-  uint64 next_code_will_be_sent_at = 4;
+  Confirmation confirmation = 2;
 }
 
 message EmailCodeAuthConfirmRequest {
@@ -65,3 +69,46 @@ message LogoutRequest {
 }
 
 message LogoutResponse {}
+
+message SetPasswordRequest {
+  // TODO: maybe ask current password if user has password
+  string new_password = 1;
+}
+
+message SetPasswordResponse {
+  enum Error {
+    UNKNOWN_ERROR = 0;
+    NEW_PASSWORD_IS_TOO_SHORT_ERROR = 2; // see StateResponse.min_password_length
+    NEW_PASSWORD_IS_TOO_LONG_ERROR = 3;  // see StateResponse.max_password_length
+  }
+  repeated Error errors = 1;
+}
+
+message SetEmailRequest {
+  string new_email = 1;
+}
+
+message SetEmailResponse {
+  enum Error {
+    UNKNOWN_ERROR = 0;
+    NEW_EMAIL_IS_INVALID_ERROR = 1;
+    TOO_MANY_ATTEMPTS_ERROR = 2;
+  }
+  repeated Error errors = 1;
+  Confirmation confirmation = 2;
+}
+
+message SetEmailConfirmRequest {
+  string new_email = 1;
+  string code = 2;
+}
+
+message SetEmailConfirmResponse {
+  enum Error {
+    UNKNOWN_ERROR = 0;
+    CODE_INVALID_ERROR = 1; // code invalid but user can try again
+    CODE_EXPIRED_ERROR = 2; // need to request new code
+  }
+  repeated Error errors = 1;
+  Profile profile = 2;
+}

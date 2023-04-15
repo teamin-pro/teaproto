@@ -23,6 +23,9 @@ message ClientRequest {
     EmailCodeAuthRequest email_code_auth_request = 19;
     EmailCodeAuthConfirmRequest email_code_auth_confirm_request = 27;
     LogoutRequest logout_request = 17;
+    SetPasswordRequest set_password_request = 16;
+    SetEmailRequest set_email_request = 46;
+    SetEmailConfirmRequest set_email_confirm_request = 47;
 
     // chats
     ChatDetailsRequest chat_details_request = 24;
@@ -91,6 +94,9 @@ message ServerResponse {
     EmailCodeAuthResponse email_code_auth_response = 19;
     EmailCodeAuthConfirmResponse email_code_auth_confirm_response = 27;
     LogoutResponse logout_response = 17;
+    SetPasswordResponse set_password_response = 16;
+    SetEmailResponse set_email_response = 46;
+    SetEmailConfirmResponse set_email_confirm_response = 47;
 
     // chats
     ChatDetailsResponse chat_details_response = 24;
