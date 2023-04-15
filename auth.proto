@@ -20,11 +20,12 @@ message EmailAuthResponse {
   enum Error {
     UNKNOWN_ERROR = 0;
     INVALID_EMAIL_ERROR = 1;
-    TOO_MANY_ATTEMPTS_ERROR = 2;
+    AUTH_METHOD_NOT_SUPPORTED_ERROR = 2;
+    TOO_MANY_ATTEMPTS_ERROR = 3;
   }
   repeated Error errors = 1;
   uint32 code_length = 2;
-  uint32 code_expired_at = 3;
+  uint64 code_expired_at = 3;
   uint64 next_code_will_be_sent_at = 4;
 }
 
