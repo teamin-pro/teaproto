@@ -6,17 +6,15 @@ import "users.proto";
 
 enum AuthMethod {
   UNKNOWN_AUTH_METHOD = 0;
-  EMAIL_AUTH_METHOD = 1;
-  // TODO
-  // GOOGLE_AUTH_METHOD = 2;
-  // APPLE_AUTH_METHOD = 3;
+  EMAIL_CODE_AUTH_METHOD = 1;
+  EMAIL_PASSWORD_AUTH_METHOD = 2;
 }
 
-message EmailAuthRequest {
+message EmailCodeAuthRequest {
   string email = 1;
 }
 
-message EmailAuthResponse {
+message EmailCodeAuthResponse {
   enum Error {
     UNKNOWN_ERROR = 0;
     INVALID_EMAIL_ERROR = 1;
@@ -29,12 +27,12 @@ message EmailAuthResponse {
   uint64 next_code_will_be_sent_at = 4;
 }
 
-message EmailAuthConfirmRequest {
+message EmailCodeAuthConfirmRequest {
   string email = 1;
   string code = 2;
 }
 
-message EmailAuthConfirmResponse {
+message EmailCodeAuthConfirmResponse {
   enum Error {
     UNKNOWN_ERROR = 0;
     CODE_INVALID_ERROR = 1; // code invalid but user can try again

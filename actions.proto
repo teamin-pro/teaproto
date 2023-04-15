@@ -19,8 +19,8 @@ message ClientRequest {
 
   oneof action {
     // auth
-    EmailAuthRequest email_auth_request = 19;
-    EmailAuthConfirmRequest email_auth_confirm_request = 27;
+    EmailCodeAuthRequest email_code_auth_request = 19;
+    EmailCodeAuthConfirmRequest email_code_auth_confirm_request = 27;
     LogoutRequest logout_request = 17;
 
     // chats
@@ -86,8 +86,8 @@ message ServerResponse {
 
   oneof result {
     // auth
-    EmailAuthResponse email_auth_response = 19;
-    EmailAuthConfirmResponse email_auth_confirm_response = 27;
+    EmailCodeAuthResponse email_code_auth_response = 19;
+    EmailCodeAuthConfirmResponse email_code_auth_confirm_response = 27;
     LogoutResponse logout_response = 17;
 
     // chats
