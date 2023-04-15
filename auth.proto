@@ -10,6 +10,23 @@ enum AuthMethod {
   EMAIL_PASSWORD_AUTH_METHOD = 2;
 }
 
+message EmailPasswordAuthRequest {
+  string email = 1;
+  string password = 2;
+}
+
+message EmailPasswordAuthResponse {
+  enum Error {
+    UNKNOWN_ERROR = 0;
+    INVALID_EMAIL_ERROR = 1;
+    INVALID_PASSWORD_OR_PASSWORD_NOT_SET_ERROR = 2;
+    AUTH_METHOD_NOT_SUPPORTED_ERROR = 3;
+  }
+  repeated Error errors = 1;
+  string token = 2;
+  Profile profile = 3;
+}
+
 message EmailCodeAuthRequest {
   string email = 1;
 }
