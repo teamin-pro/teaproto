@@ -2,6 +2,8 @@ syntax = "proto3";
 
 package gtproto;
 
+import "auth.proto";
+
 // 3-in-one: server configuration / ping / errors emulator
 message StateRequest {
   enum Mode {
@@ -15,6 +17,8 @@ message StateRequest {
 
 message StateResponse {
   uint64 now = 1; // current server time in unix format, UTC
+
+  // constants
   uint32 max_results_on_page = 2;
   uint32 max_group_title_length = 3;
   uint32 max_username_length = 4;
@@ -22,4 +26,10 @@ message StateResponse {
   uint32 max_file_size = 6; // 0 = uploads disabled, otherwise file size in bytes
   uint32 max_uploads_for_message = 7;
   uint32 min_icon_size = 8; // min icon width / height in pixels
+  uint32 min_password_length = 11;
+  uint32 max_password_length = 12;
+
+  // features
+  bool push_notifications_enabled = 9; // push notifications are enabled on the server
+  repeated AuthMethod auth_methods = 10;
 }

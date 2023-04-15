@@ -19,8 +19,9 @@ message Profile {
   string id = 1;
   string name = 2;
   Icon icon = 3;
-  string login = 4;
+  string email = 6;
   string last_opened_chat_id = 5;
+  bool has_password = 7;
 }
 
 message ProfileRequest {}
