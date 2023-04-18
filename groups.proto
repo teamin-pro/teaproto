@@ -15,6 +15,7 @@ message GroupMember {
 message CreateGroupRequest {
   string title = 1;
   repeated string user_ids = 2;
+  uint32 default_role_id = 3;
 }
 
 message CreateGroupResponse {
@@ -31,6 +32,7 @@ message CreateGroupResponse {
 message UpdateGroupSettingsRequest {
   string chat_id = 1;
   string title = 2;
+  uint32 default_role_id = 3;
 }
 
 message UpdateGroupSettingsResponse {
