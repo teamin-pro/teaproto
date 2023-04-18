@@ -18,9 +18,13 @@ message ClientRequest {
 
   oneof action {
     // auth
-    LoginRequest login_request = 16; // works without ClientRequest.token
+    EmailPasswordAuthRequest email_password_auth_request = 28;
+    EmailCodeAuthRequest email_code_auth_request = 19;
+    EmailCodeAuthConfirmRequest email_code_auth_confirm_request = 27;
     LogoutRequest logout_request = 17;
-    RegisterAccountRequest register_account_request = 19; // works without ClientRequest.token
+    SetPasswordRequest set_password_request = 16;
+    SetEmailRequest set_email_request = 46;
+    SetEmailConfirmRequest set_email_confirm_request = 47;
 
     // chats
     ChatDetailsRequest chat_details_request = 24;
@@ -34,7 +38,7 @@ message ClientRequest {
     GroupChatMembersListRequest group_chat_members_list_request = 35;
     CreateGroupChatMembersRequest create_group_chat_members_request = 38;
     DeleteGroupChatMemberRequest delete_group_chat_member_request = 37;
-    UpdateGroupChatMemberRequest update_group_chat_member_request = 46;
+    UpdateGroupChatMemberRequest update_group_chat_member_request = 48;
 
     // devices
     CreateOrUpdateDeviceRequest create_or_update_device_request = 10;
@@ -83,9 +87,13 @@ message ServerResponse {
 
   oneof result {
     // auth
-    LoginResponse login_response = 16;
+    EmailPasswordAuthResponse email_password_auth_response = 28;
+    EmailCodeAuthResponse email_code_auth_response = 19;
+    EmailCodeAuthConfirmResponse email_code_auth_confirm_response = 27;
     LogoutResponse logout_response = 17;
-    RegisterAccountResponse register_account_response = 19;
+    SetPasswordResponse set_password_response = 16;
+    SetEmailResponse set_email_response = 46;
+    SetEmailConfirmResponse set_email_confirm_response = 47;
 
     // chats
     ChatDetailsResponse chat_details_response = 24;
@@ -99,7 +107,7 @@ message ServerResponse {
     GroupChatMembersListResponse group_chat_members_list_response = 35;
     CreateGroupChatMembersResponse create_group_chat_members_response = 38;
     DeleteGroupChatMemberResponse delete_group_chat_member_response = 37;
-    UpdateGroupChatMemberResponse update_group_chat_member_response = 46;
+    UpdateGroupChatMemberResponse update_group_chat_member_response = 48;
 
     // devices
     CreateOrUpdateDeviceResponse create_or_update_device_response = 10;

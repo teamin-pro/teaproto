@@ -27,14 +27,14 @@ message Upload {
 message UploadRequest {
   bytes content = 1;
   string filename = 2;
-  bool as_file = 3; // upload as simple file, without resize, type detection etc
+  bool disable_modifications = 3; // don't make any modifications to uploaded file: resize, rotate, convert, etc.
 }
 
 message UploadResponse {
   enum Error {
     UNKNOWN_ERROR = 0;
     FILE_TOO_BIG_ERROR = 1; // see StateResponse.max_file_size
-    INVALID_FILENAME_ERROR = 2;
+    INVALID_FILENAME_ERROR = 2; // filename length must be between 1 and 255 and must not contain character /
   }
   repeated Error errors = 1;
   Upload upload = 2;

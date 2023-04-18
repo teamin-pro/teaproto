@@ -1,7 +1,32 @@
-## v1.3.1
+## v1.6.0
  - `ChatMemberXXX` messages renamed to `GroupChatMemberXXX`
  - `GroupChatMemberDetailsRequest` removed, use `GroupChatMembersListResponse` with filter `user_id`
  - `UpdateGroupChatMemberRequest` for changing member rights
+
+## v1.5.0
+ - `StateResponse.push_notifications_enabled` was added. It's `true` when push notifications are enabled for current server
+ - `StateResponse.auth_methods`, `StateResponse.min_password_length` and `StateResponse.max_password_length` 
+ - `Profile.has_password` 
+ - `SetPasswordRequest`, `SetEmailRequest` and `SetEmailConfirmationRequest`
+
+## v1.4.5
+ - `SetMessageReactionResponse` now contains `recent` and `default_reaction` fields like `ReactionsResponse`
+
+## v1.4.4
+ - `UsersListRequest` extended with filters: `only_bots`, `only_online`, `only_my_contacts`
+
+## v1.4.3
+ - `UploadRequest.as_file` was renamed to `UploadRequest.disable_modifications`
+
+## v1.4.2
+ - `ReactionsResponse.default_reaction` was added
+
+## v1.4.1
+ - `Device.disable_pushes_when_online` field
+
+## v1.4.0
+ - bot commands were added
+ - `ChatContext` was renamed to `ChatState`
 
 ## v1.3.0
  - `CreateGroupRequest` / `UpdateGroupSettingsRequest` now returns `Chat` object
