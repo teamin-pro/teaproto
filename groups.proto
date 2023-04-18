@@ -98,11 +98,7 @@ message CreateGroupMembersResponse {
 message UpdateGroupMemberRequest {
   string chat_id = 1;
   string user_id = 2; // uuid or "me"
-
-  Switch is_admin = 3;
-  Switch can_this_member_add_new_members = 6;
-  Switch can_this_member_manage_group_information = 7;
-  Switch can_this_member_manage_group_admins = 8;
+  uint32 role_id = 3;
 }
 
 message UpdateGroupMemberResponse {
