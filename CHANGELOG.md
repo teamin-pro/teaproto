@@ -1,7 +1,7 @@
 ## v1.6.0
- - `ChatMemberXXX` messages renamed to `GroupChatMemberXXX`
- - `GroupChatMemberDetailsRequest` removed, use `GroupChatMembersListResponse` with filter `user_id`
- - `UpdateGroupChatMemberRequest` for changing member rights
+ - `ChatMemberXXX` messages renamed to `GroupMemberXXX`
+ - `GroupChatMemberDetailsRequest` removed, use `GroupMembersListResponse` with filter `user_id`
+ - `UpdateGroupMemberRequest` for changing member rights
 
 ## v1.5.0
  - `StateResponse.push_notifications_enabled` was added. It's `true` when push notifications are enabled for current server
