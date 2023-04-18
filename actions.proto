@@ -5,7 +5,7 @@ package gtproto;
 import "auth.proto";
 import "badges.proto";
 import "devices.proto";
-import "group_chats.proto";
+import "groups.proto";
 import "messages.proto";
 import "reactions.proto";
 import "state.proto";
