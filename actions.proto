@@ -32,7 +32,7 @@ message ClientRequest {
     PinChatRequest pin_chat_request = 30;
     ChatEventRequest chat_event_request = 31;
 
-    // group chats
+    // groups
     CreateGroupRequest create_group_request = 26;
     UpdateGroupSettingsRequest update_group_settings_request = 29;
     GroupMembersListRequest group_members_list_request = 35;
@@ -101,7 +101,7 @@ message ServerResponse {
     PinChatResponse pin_chat_response = 30;
     ChatEventResponse chat_event_response = 31;
 
-    // group chats
+    // groups
     CreateGroupResponse create_group_response = 26;
     UpdateGroupSettingsResponse update_group_settings_response = 29;
     GroupMembersListResponse group_members_list_response = 35;
