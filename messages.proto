@@ -15,14 +15,11 @@ enum ChatType {
   TASK = 3;
 }
 
-enum ChatEventType {
-  TYPING = 0;
-  RECORDING_AUDIO = 1;
-  CHOOSING_STICKER = 2;
-}
-
-// For example: Owner (admin that can manage other admins), Admin, Member
-// Roles are predefined on server side. In future we can add custom roles.
+// Roles are predefined on server side. In future we can add custom roles via API.
+// Example roles:
+//  * owner: can send messages, can manage members, can change group info, can set any role
+//  * admin: can send messages, can manage members, can change group info, can set any role except owner
+//  * member: can send messages, can add new members
 message GroupRole {
   uint32 id = 1; // value is unique inside group chat
   string title = 2; // human readable title
@@ -62,14 +59,6 @@ message ChatState {
   ChatBadge badge = 14;
   uint32 pinned_position = 12; // pinned position at chat list, if any
   repeated Command bot_commands = 15;
-}
-
-message ChatEvent {
-  ChatEventType type = 1;
-  string chat_id = 2;
-  User user = 6;
-  uint64 stop_after = 4; // stop showing event after this time
-  bool stop_now = 5; // stop showing event right now
 }
 
 message Message {
@@ -271,21 +260,4 @@ message ChatListResponse {
   }
   repeated Error errors = 2;
   repeated Chat chats = 1; // pinned chats first, other chats sorted by activity.
-}
-
-message ChatEventRequest {
-  oneof recipient {
-    string chat_id = 2;
-    string user_id = 1;
-  }
-  ChatEventType type = 3;
-}
-
-message ChatEventResponse {
-  enum Error {
-    UNKNOWN_ERROR = 0;
-    INVALID_RECIPIENT_ERROR = 1;
-  }
-  repeated Error errors = 1;
-  ChatEvent chat_event = 2;
 }
