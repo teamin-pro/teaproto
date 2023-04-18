@@ -21,8 +21,8 @@ message CreateGroupRequest {
 message CreateGroupResponse {
   enum Error {
     UNKNOWN_ERROR = 0;
-    EMPTY_TITLE = 1;
-    TITLE_TOO_LONG = 2;
+    EMPTY_TITLE_ERROR = 1;
+    TITLE_TOO_LONG_ERROR = 2;
     CREATION_NOT_ALLOWED = 3;
   }
   repeated Error errors = 1;
