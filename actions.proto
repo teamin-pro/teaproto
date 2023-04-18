@@ -33,12 +33,12 @@ message ClientRequest {
     ChatEventRequest chat_event_request = 31;
 
     // group chats
-    CreateGroupChatRequest create_group_chat_request = 26;
-    UpdateGroupChatSettingsRequest update_group_chat_settings_request = 29;
-    GroupChatMembersListRequest group_chat_members_list_request = 35;
-    CreateGroupChatMembersRequest create_group_chat_members_request = 38;
-    DeleteGroupChatMemberRequest delete_group_chat_member_request = 37;
-    UpdateGroupChatMemberRequest update_group_chat_member_request = 48;
+    CreateGroupRequest create_group_request = 26;
+    UpdateGroupSettingsRequest update_group_settings_request = 29;
+    GroupMembersListRequest group_members_list_request = 35;
+    CreateGroupMembersRequest create_group_members_request = 38;
+    DeleteGroupMemberRequest delete_group_member_request = 37;
+    UpdateGroupMemberRequest update_group_member_request = 48;
 
     // devices
     CreateOrUpdateDeviceRequest create_or_update_device_request = 10;
@@ -102,12 +102,12 @@ message ServerResponse {
     ChatEventResponse chat_event_response = 31;
 
     // group chats
-    CreateGroupChatResponse create_group_chat_response = 26;
-    UpdateGroupChatSettingsResponse update_group_chat_settings_response = 29;
-    GroupChatMembersListResponse group_chat_members_list_response = 35;
-    CreateGroupChatMembersResponse create_group_chat_members_response = 38;
-    DeleteGroupChatMemberResponse delete_group_chat_member_response = 37;
-    UpdateGroupChatMemberResponse update_group_chat_member_response = 48;
+    CreateGroupResponse create_group_response = 26;
+    UpdateGroupSettingsResponse update_group_settings_response = 29;
+    GroupMembersListResponse group_members_list_response = 35;
+    CreateGroupMembersResponse create_group_members_response = 38;
+    DeleteGroupMemberResponse delete_group_member_response = 37;
+    UpdateGroupMemberResponse update_group_member_response = 48;
 
     // devices
     CreateOrUpdateDeviceResponse create_or_update_device_response = 10;

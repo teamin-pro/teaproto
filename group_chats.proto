@@ -6,18 +6,18 @@ import "commons.proto";
 import "messages.proto";
 import "users.proto";
 
-message GroupChatMember {
+message GroupMember {
   User user = 1;
   uint32 role_id = 6;
   bool can_i_remove_this_member = 5;
 }
 
-message CreateGroupChatRequest {
+message CreateGroupRequest {
   string title = 1;
   repeated string user_ids = 2;
 }
 
-message CreateGroupChatResponse {
+message CreateGroupResponse {
   enum Error {
     UNKNOWN_ERROR = 0;
     EMPTY_TITLE = 1;
@@ -28,12 +28,12 @@ message CreateGroupChatResponse {
   Chat chat = 3;
 }
 
-message UpdateGroupChatSettingsRequest {
+message UpdateGroupSettingsRequest {
   string chat_id = 1;
   string title = 2;
 }
 
-message UpdateGroupChatSettingsResponse {
+message UpdateGroupSettingsResponse {
   enum Error {
     UNKNOWN_ERROR = 0;
     INVALID_CHAT_ERROR = 1;
@@ -45,7 +45,7 @@ message UpdateGroupChatSettingsResponse {
   Chat chat = 3;
 }
 
-message GroupChatMembersListRequest {
+message GroupMembersListRequest {
   string chat_id = 1;
   uint32 limit = 2; // default: StateResponse.max_results_on_page
   uint32 offset = 3;
@@ -55,22 +55,22 @@ message GroupChatMembersListRequest {
   bool admins_only = 5;
 }
 
-message GroupChatMembersListResponse {
+message GroupMembersListResponse {
   enum Error {
     UNKNOWN_ERROR = 0;
     INVALID_CHAT_ERROR = 1;
     INVALID_LIMIT_ERROR = 2;
   }
   repeated Error errors = 1;
-  repeated GroupChatMember members = 2;
+  repeated GroupMember members = 2;
 }
 
-message DeleteGroupChatMemberRequest {
+message DeleteGroupMemberRequest {
   string chat_id = 1;
   string user_id = 2; // uuid or "me"
 }
 
-message DeleteGroupChatMemberResponse {
+message DeleteGroupMemberResponse {
   enum Error {
     UNKNOWN_ERROR = 0;
     INVALID_CHAT_ERROR = 1;
@@ -80,22 +80,22 @@ message DeleteGroupChatMemberResponse {
   repeated Error errors = 1;
 }
 
-message CreateGroupChatMembersRequest {
+message CreateGroupMembersRequest {
   string chat_id = 1;
   repeated string user_ids = 2;
 }
 
-message CreateGroupChatMembersResponse {
+message CreateGroupMembersResponse {
   enum Error {
     UNKNOWN_ERROR = 0;
     INVALID_CHAT_ERROR = 1;
     NOT_ALLOWED_ERROR = 2;
   }
   repeated Error errors = 1;
-  repeated GroupChatMember members = 2;
+  repeated GroupMember members = 2;
 }
 
-message UpdateGroupChatMemberRequest {
+message UpdateGroupMemberRequest {
   string chat_id = 1;
   string user_id = 2; // uuid or "me"
 
@@ -105,12 +105,12 @@ message UpdateGroupChatMemberRequest {
   Switch can_this_member_manage_group_admins = 8;
 }
 
-message UpdateGroupChatMemberResponse {
+message UpdateGroupMemberResponse {
   enum Error {
     UNKNOWN_ERROR = 0;
     INVALID_CHAT_ERROR = 1;
     NOT_ALLOWED_ERROR = 2;
   }
   repeated Error errors = 1;
-  GroupChatMember member = 2;
+  GroupMember member = 2;
 }
