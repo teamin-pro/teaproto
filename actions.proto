@@ -13,6 +13,7 @@ import "state.proto";
 import "tokens.proto";
 import "uploads.proto";
 import "users.proto";
+import "viewed_messages.proto";
 
 message ClientRequest {
   string token = 1;
