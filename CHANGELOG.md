@@ -1,3 +1,6 @@
+## v1.6.0
+ - `SendMessageListRequest` was added. Useful for forwarding and resending messages
+
 ## v1.5.0
  - `StateResponse.push_notifications_enabled` was added. It's `true` when push notifications are enabled for current server
  - `StateResponse.auth_methods`, `StateResponse.min_password_length` and `StateResponse.max_password_length` 

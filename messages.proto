@@ -141,6 +141,14 @@ message SendMessageResponse {
   Message message = 2;
 }
 
+message SendMessageListRequest {
+  repeated SendMessageRequest messages = 1;
+}
+
+message SendMessageListResponse {
+  repeated SendMessageResponse messages = 1;
+}
+
 message MessagesListRequest {
   message LatestFilter {
     oneof recipient {

@@ -50,6 +50,7 @@ message ClientRequest {
 
     // messages
     SendMessageRequest send_message_request = 22;
+    SendMessageListRequest send_message_list_request = 35;
     MessagesListRequest messages_list_request = 23;
     MessageDetailsRequest message_details_request = 32;
     ViewMessageRequest view_message_request = 33;
