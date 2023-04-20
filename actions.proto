@@ -40,7 +40,7 @@ message ClientRequest {
     GroupMembersListRequest group_members_list_request = 35;
     CreateGroupMembersRequest create_group_members_request = 38;
     DeleteGroupMemberRequest delete_group_member_request = 37;
-    UpdateGroupMemberRequest update_group_member_request = 48;
+    UpdateGroupMemberRequest update_group_member_request = 49;
 
     // devices
     CreateOrUpdateDeviceRequest create_or_update_device_request = 10;
@@ -110,7 +110,7 @@ message ServerResponse {
     GroupMembersListResponse group_members_list_response = 35;
     CreateGroupMembersResponse create_group_members_response = 38;
     DeleteGroupMemberResponse delete_group_member_response = 37;
-    UpdateGroupMemberResponse update_group_member_response = 48;
+    UpdateGroupMemberResponse update_group_member_response = 49;
 
     // devices
     CreateOrUpdateDeviceResponse create_or_update_device_response = 10;
