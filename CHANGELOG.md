@@ -2,6 +2,7 @@
  - `ChatMemberXXX` messages renamed to `GroupMemberXXX`
  - `GroupChatMemberDetailsRequest` removed, use `GroupMembersListResponse` with filter `user_id`
  - `UpdateGroupMemberRequest` for changing member rights
+ - `StateResponse.gtproto_version` was added
 
 ## v1.5.0
  - `SendMessageListRequest` was added. Useful for forwarding and resending messages
