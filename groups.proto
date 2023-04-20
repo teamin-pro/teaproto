@@ -51,7 +51,6 @@ message GroupMembersListRequest {
 
   // filters
   string user_id = 4; // uuid or "me"
-  bool admins_only = 5;
 }
 
 message GroupMembersListResponse {
@@ -59,6 +58,7 @@ message GroupMembersListResponse {
     UNKNOWN_ERROR = 0;
     INVALID_CHAT_ERROR = 1;
     INVALID_LIMIT_ERROR = 2;
+    INVALID_USER_ERROR = 3;
   }
   repeated Error errors = 1;
   repeated GroupMember members = 2;
