@@ -1,7 +1,10 @@
-## v1.6.0
+## v1.7.0
  - `ChatMemberXXX` messages renamed to `GroupMemberXXX`
  - `GroupChatMemberDetailsRequest` removed, use `GroupMembersListResponse` with filter `user_id`
  - `UpdateGroupMemberRequest` for changing member rights
+
+## v1.5.0
+ - `SendMessageListRequest` was added. Useful for forwarding and resending messages
 
 ## v1.5.0
  - `StateResponse.push_notifications_enabled` was added. It's `true` when push notifications are enabled for current server

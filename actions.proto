@@ -49,6 +49,7 @@ message ClientRequest {
 
     // messages
     SendMessageRequest send_message_request = 22;
+    SendMessageListRequest send_message_list_request = 48;
     MessagesListRequest messages_list_request = 23;
     MessageDetailsRequest message_details_request = 32;
     ViewMessageRequest view_message_request = 33;
@@ -118,6 +119,7 @@ message ServerResponse {
 
     // messages
     SendMessageResponse send_message_response = 22;
+    SendMessageListResponse send_message_list_response = 48;
     MessagesListResponse messages_list_response = 23;
     MessageDetailsResponse message_details_response = 32;
     ViewMessageResponse view_message_response = 33;
