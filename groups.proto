@@ -105,7 +105,8 @@ message UpdateGroupMemberResponse {
   enum Error {
     UNKNOWN_ERROR = 0;
     INVALID_CHAT_ERROR = 1;
-    NOT_ALLOWED_ERROR = 2;
+    INVALID_USER_ERROR = 2;
+    NOT_ALLOWED_ERROR = 3;
   }
   repeated Error errors = 1;
   GroupMember member = 2;
