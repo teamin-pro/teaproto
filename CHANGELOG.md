@@ -1,7 +1,7 @@
 ## v1.7.0
  - `ChatMemberXXX` messages renamed to `GroupMemberXXX`
  - `GroupChatMemberDetailsRequest` removed, use `GroupMembersListResponse` with filter `user_id`
- -  introduced group roles: `GroupMembersListResponse.roles`
+ -  introduced group roles: available in `GroupMembersListResponse.roles` and `GroupRolesResponse.roles`
  - `UpdateGroupMemberRequest` for changing member role
  - `StateResponse.gtproto_version` was added
 
