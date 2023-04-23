@@ -4,7 +4,7 @@
  - `UpdateGroupMemberRequest` for changing member rights
  - `StateResponse.gtproto_version` was added
 
-## v1.5.0
+## v1.6.0
  - `SendMessageListRequest` was added. Useful for forwarding and resending messages
 
 ## v1.5.0
