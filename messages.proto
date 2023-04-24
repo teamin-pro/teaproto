@@ -23,7 +23,6 @@ enum ChatType {
 message GroupRole {
   uint32 id = 1; // value is unique inside group chat
   string title = 2; // human readable title
-  bool is_default = 3; // if true, new members will be added with this role
   bool can_send_messages = 14;
   bool can_add_new_members = 11;
   bool can_change_information = 12; // title, icon
