@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+package gtproto;
+
+message Command {
+  string command = 1; // string always starts with '/' symbol. Example: "/help"
+  string description = 2;
+  CommandArgument arguments = 3; // optional command arguments. Example: "/help [command]"
+}
+
+message CommandArgument {
+  string name = 1;
+  string description = 2;
+  bool required = 3;
+}

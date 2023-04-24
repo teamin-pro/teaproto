@@ -1,0 +1,39 @@
+syntax = "proto3";
+
+package gtproto;
+
+import "badges.proto";
+import "users.proto";
+
+message ViewedMessage {
+  string message_id = 1;
+  string chat_id = 2;
+  uint32 viewed_counter = 3; // how many recipients viewed this message
+}
+
+message ViewMessageRequest {
+  string id = 1;
+}
+
+message ViewMessageResponse {
+  enum Error {
+    UNKNOWN_ERROR = 0;
+    INVALID_MESSAGE_ID_ERROR = 1;
+  }
+  repeated Error errors = 1;
+  repeated ViewedMessage viewed_messages = 3; // viewed messages list
+  ChatBadge badge = 4;  // number of unseen messages
+}
+
+message MessageViewersRequest {
+  string id = 1;
+}
+
+message MessageViewersResponse {
+  enum Error {
+    UNKNOWN_ERROR = 0;
+    INVALID_MESSAGE_ID_ERROR = 1;
+  }
+  repeated Error errors = 1;
+  repeated User users = 3;
+}

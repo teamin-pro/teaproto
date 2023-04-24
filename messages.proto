@@ -3,6 +3,7 @@ syntax = "proto3";
 package gtproto;
 
 import "badges.proto";
+import "commands.proto";
 import "commons.proto";
 import "uploads.proto";
 import "users.proto";
@@ -14,28 +15,24 @@ enum ChatType {
   TASK = 3;
 }
 
-enum ChatEventType {
-  TYPING = 0;
-  RECORDING_AUDIO = 1;
-  CHOOSING_STICKER = 2;
+// Roles are predefined on server side. In future we can add custom roles via API.
+// Example roles:
+//  * owner: can send messages, can manage members, can change group info, can set any role
+//  * admin: can send messages, can manage members, can change group info, can set any role except owner
+//  * member: can send messages, can add new members
+message GroupRole {
+  uint32 id = 1; // value is unique inside group chat
+  string title = 2; // human readable title
+  bool can_send_messages = 14;
+  bool can_add_new_members = 11;
+  bool can_change_information = 12; // title, icon
+  repeated uint32 can_set_role_ids = 13;
 }
 
 message Group {
   string title = 2;
   Icon icon = 3;
-  uint32 num_members = 4;
-}
-
-message Command {
-  string command = 1; // string always starts with '/' symbol. Example: "/help"
-  string description = 2;
-  CommandArgument arguments = 3; // optional command arguments. Example: "/help [command]"
-}
-
-message CommandArgument {
-  string name = 1;
-  string description = 2;
-  bool required = 3;
+  uint32 num_members = 4; // read only computed field
 }
 
 message Chat {
@@ -59,14 +56,6 @@ message ChatState {
   ChatBadge badge = 14;
   uint32 pinned_position = 12; // pinned position at chat list, if any
   repeated Command bot_commands = 15;
-}
-
-message ChatEvent {
-  ChatEventType type = 1;
-  string chat_id = 2;
-  User user = 6;
-  uint64 stop_after = 4; // stop showing event after this time
-  bool stop_now = 5; // stop showing event right now
 }
 
 message Message {
@@ -100,12 +89,6 @@ message MessageReaction {
   uint32 count = 2; // total count of reactions
   bool is_my = 3; // is my reaction
   repeated User users = 4; // users who reacted with this emoji
-}
-
-message ViewedMessage {
-  string message_id = 1;
-  string chat_id = 2;
-  uint32 viewed_counter = 3; // how many recipients viewed this message
 }
 
 message SendMessageRequest {
@@ -202,33 +185,6 @@ message MessageDetailsResponse {
   Message message = 2;
 }
 
-message ViewMessageRequest {
-  string id = 1;
-}
-
-message ViewMessageResponse {
-  enum Error {
-    UNKNOWN_ERROR = 0;
-    INVALID_MESSAGE_ID_ERROR = 1;
-  }
-  repeated Error errors = 1;
-  repeated ViewedMessage viewed_messages = 3; // viewed messages list
-  ChatBadge badge = 4;  // number of unseen messages
-}
-
-message MessageViewersRequest {
-  string id = 1;
-}
-
-message MessageViewersResponse {
-  enum Error {
-    UNKNOWN_ERROR = 0;
-    INVALID_MESSAGE_ID_ERROR = 1;
-  }
-  repeated Error errors = 1;
-  repeated User users = 3;
-}
-
 message ChatDetailsRequest {
   oneof recipient {
     string chat_id = 2;
@@ -276,21 +232,4 @@ message ChatListResponse {
   }
   repeated Error errors = 2;
   repeated Chat chats = 1; // pinned chats first, other chats sorted by activity.
-}
-
-message ChatEventRequest {
-  oneof recipient {
-    string chat_id = 2;
-    string user_id = 1;
-  }
-  ChatEventType type = 3;
-}
-
-message ChatEventResponse {
-  enum Error {
-    UNKNOWN_ERROR = 0;
-    INVALID_RECIPIENT_ERROR = 1;
-  }
-  repeated Error errors = 1;
-  ChatEvent chat_event = 2;
 }

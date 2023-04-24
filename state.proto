@@ -17,6 +17,7 @@ message StateRequest {
 
 message StateResponse {
   uint64 now = 1; // current server time in unix format, UTC
+  string gtproto_version = 13;
 
   // constants
   uint32 max_results_on_page = 2;
