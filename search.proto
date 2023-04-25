@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+package gtproto;
+
+import "messages.proto";
+import "users.proto";
+
+// TODO: latest searches?
+// TODO: suggestions?
+
+message SearchRequest {
+  string query = 1;
+}
+
+message SearchResponse {
+  repeated Chat chats = 1; // existing chats
+  repeated Message messages = 2;
+  repeated Group groups = 3; // groups where the user is not a member
+  repeated User users = 4; // users that are not in the user's contacts
+}
