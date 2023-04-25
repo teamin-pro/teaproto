@@ -68,14 +68,14 @@ message Message {
   User sender = 5; // Sender of message. If empty, message was sent by system
   oneof content {
     string text = 4;
-    LocalizedText localized_text = 18; // for system messages
+    ChatMessage forward = 13;
+    LocalizedText system_message = 18;
   }
   string prev_message_id = 6; // If empty, message is first in chat
   uint32 viewed_counter = 7; // How many recipients viewed this message
 
   // attachments
   Message reply = 12;
-  ChatMessage forward = 13;
   repeated Upload uploads = 11;
   repeated MessageReaction reactions = 14;
 
