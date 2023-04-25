@@ -17,7 +17,7 @@ message Icon {
 
 message LocalizedText {
   enum Type {
-    UNKNOWN = 0;
+    EMPTY = 0;
     GROUP_WAS_CREATED = 1; // "group {group.title} was created by {actor.name}"
     GROUP_WAS_RENAMED = 2; // "{actor.name} renamed group to {group.title}"
     USER_LEFT_GROUP = 3; // "{actor.name} left group"
