@@ -14,3 +14,12 @@ message Icon {
   string color = 2; // example: #FF9671
   Image image = 3; // may be empty
 }
+
+enum LocalizedStringType {
+  UNKNOWN = 0;
+}
+
+message LocalizedText {
+  LocalizedStringType type = 1;
+  map<string, string> arguments = 2; // arguments for string formatting
+}
