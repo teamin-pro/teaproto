@@ -1,3 +1,6 @@
+## v1.8.0
+ - `Message.system_message` was added
+
 ## v1.7.0
  - `ChatMemberXXX` messages renamed to `GroupMemberXXX`
  - `GroupChatMemberDetailsRequest` removed, use `GroupMembersListResponse` with filter `user_id`
