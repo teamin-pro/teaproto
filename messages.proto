@@ -56,6 +56,8 @@ message ChatState {
   ChatBadge badge = 14;
   uint32 pinned_position = 12; // pinned position at chat list, if any
   repeated Command bot_commands = 15;
+
+  reserved 1 to 7, 11;
 }
 
 message Message {
@@ -76,6 +78,8 @@ message Message {
 
   // rights
   bool can_i_edit_this_message = 15; // message can be edited by author except for messages to bots
+
+  reserved 2, 8, 10;
 }
 
 // Message with full chat info. For forwarded, search results etc
