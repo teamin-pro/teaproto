@@ -4,7 +4,6 @@ package gtproto;
 
 import "users.proto";
 
-
 message SystemMessage {
   message GroupCreated {
     User actor = 1;
@@ -34,8 +33,6 @@ message SystemMessage {
     User subject = 2;
   }
 
-  string fallback_text = 1;
-
   oneof type {
     GroupCreated group_created = 2;
     GroupRenamed group_renamed = 3;
@@ -44,4 +41,6 @@ message SystemMessage {
     UserInvitedToGroup user_invited_to_group = 6;
     UserRemovedFromGroup user_removed_from_group = 7;
   }
+
+  string fallback_text = 1;
 }
