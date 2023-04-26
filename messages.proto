@@ -5,6 +5,7 @@ package gtproto;
 import "badges.proto";
 import "commands.proto";
 import "commons.proto";
+import "system_messages.proto";
 import "uploads.proto";
 import "users.proto";
 
@@ -69,7 +70,7 @@ message Message {
   oneof content {
     string text = 4;
     ChatMessage forward = 13;
-    LocalizedText system_message = 18;
+    SystemMessage system_message = 17;
   }
   string prev_message_id = 6; // If empty, message is first in chat
   uint32 viewed_counter = 7; // How many recipients viewed this message

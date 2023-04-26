@@ -14,17 +14,3 @@ message Icon {
   string color = 2; // example: #FF9671
   Image image = 3; // may be empty
 }
-
-message LocalizedText {
-  enum Type {
-    EMPTY = 0;
-    GROUP_CREATED = 1; // "group {group.title} was created by {actor.name}"
-    GROUP_RENAMED = 2; // "{actor.name} renamed group to {group.title}"
-    USER_JOINED_GROUP = 3; // "{actor.name} joined group"
-    USER_LEFT_GROUP = 4; // "{actor.name} left group"
-    USER_INVITED_TO_GROUP = 5; // "{subject.name} was invited to group by {actor.name}"
-    USER_REMOVED_FROM_GROUP = 6; // "{subject.name} was removed from group by {actor.name}"
-  }
-  Type type = 1;
-  map<string, string> arguments = 2; // arguments for string formatting. Client can use it to format text or ignore it.
-}

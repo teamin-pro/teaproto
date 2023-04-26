@@ -1,0 +1,47 @@
+syntax = "proto3";
+
+package gtproto;
+
+import "users.proto";
+
+
+message SystemMessage {
+  message GroupCreated {
+    User actor = 1;
+  }
+
+  message GroupRenamed {
+    User actor = 1;
+    string old_title = 2;
+    string new_title = 3;
+  }
+
+  message UserJoinedGroup {
+    User actor = 1;
+  }
+
+  message UserLeftGroup {
+    User actor = 1;
+  }
+
+  message UserInvitedToGroup {
+    User actor = 1;
+    User subject = 2;
+  }
+
+  message UserRemovedFromGroup {
+    User actor = 1;
+    User subject = 2;
+  }
+
+  string fallback_text = 1;
+
+  oneof type {
+    GroupCreated group_created = 2;
+    GroupRenamed group_renamed = 3;
+    UserJoinedGroup user_joined_group = 4;
+    UserLeftGroup user_left_group = 5;
+    UserInvitedToGroup user_invited_to_group = 6;
+    UserRemovedFromGroup user_removed_from_group = 7;
+  }
+}
