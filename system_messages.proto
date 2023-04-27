@@ -15,11 +15,11 @@ message SystemMessage {
   }
 
   message UsersAddedToGroup {
-    repeated User subjects = 1;
+    repeated User users = 1;
   }
 
   message UsersRemovedFromGroup {
-    repeated User subjects = 1;
+    repeated User users = 1;
   }
 
   User actor = 1;
