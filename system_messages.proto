@@ -15,15 +15,7 @@ message SystemMessage {
     string new_title = 3;
   }
 
-  message UserJoinedGroup {
-    User actor = 1;
-  }
-
-  message UserLeftGroup {
-    User actor = 1;
-  }
-
-  message UserInvitedToGroup {
+  message UserAddedToGroup {
     User actor = 1;
     User subject = 2;
   }
@@ -36,10 +28,8 @@ message SystemMessage {
   oneof type {
     GroupCreated group_created = 2;
     GroupRenamed group_renamed = 3;
-    UserJoinedGroup user_joined_group = 4;
-    UserLeftGroup user_left_group = 5;
-    UserInvitedToGroup user_invited_to_group = 6;
-    UserRemovedFromGroup user_removed_from_group = 7;
+    UserAddedToGroup user_added_to_group = 4;
+    UserRemovedFromGroup user_removed_from_group = 5;
   }
 
   string fallback_text = 1;
