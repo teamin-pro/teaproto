@@ -6,31 +6,28 @@ import "users.proto";
 
 message SystemMessage {
   message GroupCreated {
-    User actor = 1;
+    string title = 1;
   }
 
   message GroupRenamed {
-    User actor = 1;
-    string old_title = 2;
-    string new_title = 3;
+    string old_title = 1;
+    string new_title = 2;
   }
 
-  message UserAddedToGroup {
-    User actor = 1;
-    User subject = 2;
+  message UsersAddedToGroup {
+    repeated User subjects = 1;
   }
 
-  message UserRemovedFromGroup {
-    User actor = 1;
-    User subject = 2;
+  message UsersRemovedFromGroup {
+    repeated User subjects = 1;
   }
 
+  User actor = 1;
   oneof type {
-    GroupCreated group_created = 2;
-    GroupRenamed group_renamed = 3;
-    UserAddedToGroup user_added_to_group = 4;
-    UserRemovedFromGroup user_removed_from_group = 5;
+    GroupCreated group_created = 10;
+    GroupRenamed group_renamed = 11;
+    UsersAddedToGroup users_added_to_group = 12;
+    UsersRemovedFromGroup users_removed_from_group = 13;
   }
-
-  string fallback_text = 1;
+  string fallback_text = 2;
 }
