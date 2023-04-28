@@ -5,29 +5,34 @@ package gtproto;
 import "users.proto";
 
 message SystemMessage {
-  message GroupCreated {
+  message ErrorMessageType {
+    string text = 1;
+  }
+
+  message GroupCreatedType {
     string title = 1;
   }
 
-  message GroupRenamed {
+  message GroupRenamedType {
     string old_title = 1;
     string new_title = 2;
   }
 
-  message UsersAddedToGroup {
+  message UsersAddedToGroupType {
     repeated User users = 1;
   }
 
-  message UsersRemovedFromGroup {
+  message UsersRemovedFromGroupType {
     repeated User users = 1;
   }
 
   User actor = 1;
   oneof type {
-    GroupCreated group_created = 10;
-    GroupRenamed group_renamed = 11;
-    UsersAddedToGroup users_added_to_group = 12;
-    UsersRemovedFromGroup users_removed_from_group = 13;
+    ErrorMessageType error_message = 9;
+    GroupCreatedType group_created = 10;
+    GroupRenamedType group_renamed = 11;
+    UsersAddedToGroupType users_added_to_group = 12;
+    UsersRemovedFromGroupType users_removed_from_group = 13;
   }
   string fallback_text = 2;
 }
