@@ -1,6 +1,7 @@
 ## v1.8.0
  - `Message.system_message` was added
  - all .proto files were moved to `protobuf` folder
+ - experimental field `SendMessageResponse.errors_hint` was added
 
 ## v1.7.0
  - `ChatMemberXXX` messages renamed to `GroupMemberXXX`

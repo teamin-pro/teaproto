@@ -128,7 +128,7 @@ message SendMessageResponse {
     INVALID_REPLIED_MESSAGE_ERROR = 8; // message must be from the same chat
   }
   repeated Error errors = 1;
-
+  string errors_hint = 3; // optional human readable error description
   Message message = 2;
 }
 
