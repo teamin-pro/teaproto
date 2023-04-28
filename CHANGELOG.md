@@ -1,5 +1,6 @@
 ## v1.8.0
  - `Message.system_message` was added
+ - all .proto files were moved to `protobuf` folder
 
 ## v1.7.0
  - `ChatMemberXXX` messages renamed to `GroupMemberXXX`
