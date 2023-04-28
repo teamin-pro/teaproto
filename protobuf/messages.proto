@@ -166,6 +166,7 @@ message MessagesListRequest {
 
   // filters
   bool only_with_uploads = 6;
+  bool skip_system_messages = 7;
 }
 
 message MessagesListResponse {
