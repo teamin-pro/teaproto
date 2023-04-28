@@ -5,6 +5,7 @@ package gtproto;
 import "badges.proto";
 import "commands.proto";
 import "commons.proto";
+import "system_messages.proto";
 import "uploads.proto";
 import "users.proto";
 
@@ -56,6 +57,8 @@ message ChatState {
   ChatBadge badge = 14;
   uint32 pinned_position = 12; // pinned position at chat list, if any
   repeated Command bot_commands = 15;
+
+  reserved 1 to 7, 11;
 }
 
 message Message {
@@ -63,19 +66,24 @@ message Message {
   string id = 1;
   uint64 created_at = 3;
   uint64 edited_at = 9; // Time when message was edited by author. It happens only on text / uploads / reply / forwards change. When equal to created_at, message was not edited.
-  string text = 4;
   User sender = 5; // Sender of message. If empty, message was sent by system
+  oneof content {
+    string text = 4;
+    ChatMessage forward = 13;
+    SystemMessage system_message = 17;
+  }
   string prev_message_id = 6; // If empty, message is first in chat
   uint32 viewed_counter = 7; // How many recipients viewed this message
 
   // attachments
   Message reply = 12;
-  ChatMessage forward = 13;
   repeated Upload uploads = 11;
   repeated MessageReaction reactions = 14;
 
   // rights
   bool can_i_edit_this_message = 15; // message can be edited by author except for messages to bots
+
+  reserved 2, 8, 10;
 }
 
 // Message with full chat info. For forwarded, search results etc
@@ -120,7 +128,7 @@ message SendMessageResponse {
     INVALID_REPLIED_MESSAGE_ERROR = 8; // message must be from the same chat
   }
   repeated Error errors = 1;
-
+  string errors_hint = 3; // optional human readable error description
   Message message = 2;
 }
 
@@ -158,6 +166,7 @@ message MessagesListRequest {
 
   // filters
   bool only_with_uploads = 6;
+  bool skip_system_messages = 7;
 }
 
 message MessagesListResponse {

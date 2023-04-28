@@ -1,0 +1,37 @@
+syntax = "proto3";
+
+package gtproto;
+
+import "users.proto";
+
+message SystemMessage {
+  message ErrorMessageType {
+    string text = 1;
+  }
+
+  message GroupCreatedType {
+    string title = 1;
+  }
+
+  message GroupRenamedType {
+    string new_title = 1;
+  }
+
+  message UsersAddedToGroupType {
+    repeated User users = 1;
+  }
+
+  message UsersRemovedFromGroupType {
+    repeated User users = 1;
+  }
+
+  User actor = 1;
+  oneof type {
+    ErrorMessageType error_message = 9;
+    GroupCreatedType group_created = 10;
+    GroupRenamedType group_renamed = 11;
+    UsersAddedToGroupType users_added_to_group = 12;
+    UsersRemovedFromGroupType users_removed_from_group = 13;
+  }
+  string fallback_text = 2;
+}

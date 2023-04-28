@@ -49,7 +49,7 @@ message User {
   string name = 2;
   Icon icon = 3;
   bool is_me = 6;
-  OnlineStatus online_status = 7;
+  OnlineStatus online_status = 7;  // can be omited in system messages
 }
 
 message UsersListRequest {
