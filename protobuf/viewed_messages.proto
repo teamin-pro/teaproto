@@ -12,7 +12,7 @@ message ViewedMessage {
 }
 
 message ViewMessageRequest {
-  string id = 1;
+  string message_id = 1;
 }
 
 message ViewMessageResponse {
@@ -26,13 +26,16 @@ message ViewMessageResponse {
 }
 
 message MessageViewersRequest {
-  string id = 1;
+  string message_id = 1;
+  uint32 limit = 2; // default: StateResponse.max_results_on_page
+  uint32 offset = 3;
 }
 
 message MessageViewersResponse {
   enum Error {
     UNKNOWN_ERROR = 0;
     INVALID_MESSAGE_ID_ERROR = 1;
+    INVALID_LIMIT_ERROR = 2;
   }
   repeated Error errors = 1;
   repeated User users = 3;

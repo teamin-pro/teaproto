@@ -1,3 +1,6 @@
+## v1.8.1
+ - `MessageViewersRequest` parameters `limit` and `offset` were added
+
 ## v1.8.0
  - `Message.system_message` was added
  - all .proto files were moved to `protobuf` folder
