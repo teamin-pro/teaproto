@@ -1,3 +1,6 @@
+## v1.8.2
+ - `SendMessageListRequest` restrictions were added: no more than `StateResponse.max_results_on_page` allowed
+
 ## v1.8.1
  - `MessageViewersRequest` parameters `limit` and `offset` were added
 
