@@ -1,3 +1,6 @@
+## v1.9.0
+ - `APPLE_AUTH_METHOD` and `GOOGLE_AUTH_METHOD` were added to `StateResponse.auth_methods`
+
 ## v1.8.2
  - `SendMessageListRequest` restrictions were added: no more than `StateResponse.max_results_on_page` allowed
 

@@ -8,6 +8,8 @@ enum AuthMethod {
   UNKNOWN_AUTH_METHOD = 0;
   EMAIL_CODE_AUTH_METHOD = 1;
   EMAIL_PASSWORD_AUTH_METHOD = 2;
+  APPLE_AUTH_METHOD = 3;
+  GOOGLE_AUTH_METHOD = 4;
 }
 
 message Confirmation {
