@@ -2,12 +2,16 @@ syntax = "proto3";
 
 package gtproto;
 
+import "commons.proto";
 import "users.proto";
 
 message Folder {
-  string task_prefix = 1;
-  repeated TaskStatus task_statuses = 2;
-  uint32 num_members = 3;
+  string title = 1;
+  Icon icon = 2;
+  uint32 num_members = 3; // read only computed field
+
+  string task_prefix = 10;
+  repeated TaskStatus task_statuses = 11;
 }
 
 message TaskStatus {
