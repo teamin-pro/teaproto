@@ -14,7 +14,7 @@ enum ChatType {
   UNKNOWN_CHAT_TYPE = 0;
   DIRECT = 1;
   GROUP = 2;
-  BOARD = 4;
+  FOLDER = 4;
   TASK = 3;
 }
 
@@ -46,7 +46,7 @@ message Chat {
   oneof topic {
     User user = 15; // for type = DIRECT
     Group group = 16; // for type = GROUP
-    TaskList task_list = 19; // for type == TASK_LIST
+    Folder folder = 19; // for type == FOLDER
     Task task = 18; // for type == TASK
   }
   ChatState state = 17;  // present only for chats in chat list and for chat details
