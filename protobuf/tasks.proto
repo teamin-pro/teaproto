@@ -11,8 +11,8 @@ message Folder {
 }
 
 message TaskStatus {
-  string id = 1;
-  uint32 order = 2;
+  uint32 id = 1; // unique id of the status in the folder
+  uint32 sort_order = 2;
   string title = 3; // for example: "To Do", "In Progress", "Done".
 }
 
@@ -25,10 +25,8 @@ message Task {
 
   string title = 6; // one of the title or description must be set
   string description = 7; // one of the title or description must be set
-  string status_id = 8;
+  uint32 task_status_id = 8;
 
-  // sortable fields
-  uint64 updated_at = 10;
   int32 priority = 11;
   uint64 created_at = 9;
 }
@@ -41,7 +39,7 @@ enum TaskSort {
 
 message FolderRequest {
   string chat_id = 1;
-  repeated string task_status_ids = 2; // if empty, all statuses are returned
+  repeated uint32 task_status_ids = 2; // if empty, all statuses are returned
   TaskSort task_sort = 3;
   uint32 limit = 4; // default: StateResponse.max_results_on_page
   uint32 offset = 5;
