@@ -3,7 +3,9 @@ syntax = "proto3";
 package gtproto;
 
 import "badges.proto";
+import "commands.proto";
 import "commons.proto";
+import "system_messages.proto";
 import "tasks.proto";
 import "uploads.proto";
 import "users.proto";
@@ -16,22 +18,24 @@ enum ChatType {
   TASK = 3;
 }
 
-enum MessageRight {
-  UNKNOWN_MESSAGE_RIGHT = 0;
-  CAN_EDIT_MESSAGE = 1;
-  CAN_DELETE_MESSAGE = 2;
-}
-
-enum ChatEventType {
-  TYPING = 0;
-  RECORDING_AUDIO = 1;
-  CHOOSING_STICKER = 2;
+// Roles are predefined on server side. In future we can add custom roles via API.
+// Example roles:
+//  * owner: can send messages, can manage members, can change group info, can set any role
+//  * admin: can send messages, can manage members, can change group info, can set any role except owner
+//  * member: can send messages, can add new members
+message GroupRole {
+  uint32 id = 1; // value is unique inside group chat
+  string title = 2; // human readable title
+  bool can_send_messages = 14;
+  bool can_add_new_members = 11;
+  bool can_change_information = 12; // title, icon
+  repeated uint32 can_set_role_ids = 13;
 }
 
 message Group {
   string title = 2;
   Icon icon = 3;
-  uint32 num_members = 4;
+  uint32 num_members = 4; // read only computed field
 }
 
 message Chat {
@@ -45,24 +49,20 @@ message Chat {
     TaskList task_list = 19; // for type == TASK_LIST
     Task task = 18; // for type == TASK
   }
-  ChatContext context = 17; // optional details for chats list
+  ChatState state = 17;  // present only for chats in chat list and for chat details
 }
 
-message ChatContext {
-  Message last_message = 8; // optional
+// Chat details related to current member
+message ChatState {
+  Message last_message = 8; // can be empty
   uint64 updated_at = 9; // last message creation time even message was deleted
   string last_viewed_message_id = 10; // optional
   uint64 last_viewed_message_created_at = 13; // optional
   ChatBadge badge = 14;
-  uint32 pinned_position = 12;  // pinned position at chat list, if any
-}
+  uint32 pinned_position = 12; // pinned position at chat list, if any
+  repeated Command bot_commands = 15;
 
-message ChatEvent {
-  ChatEventType type = 1;
-  string chat_id = 2;
-  User user = 6;
-  uint64 stop_after = 4; // stop showing event after this time
-  bool stop_now = 5; // stop showing event right now
+  reserved 1 to 7, 11;
 }
 
 message Message {
@@ -70,17 +70,24 @@ message Message {
   string id = 1;
   uint64 created_at = 3;
   uint64 edited_at = 9; // Time when message was edited by author. It happens only on text / uploads / reply / forwards change. When equal to created_at, message was not edited.
-  string text = 4;
   User sender = 5; // Sender of message. If empty, message was sent by system
+  oneof content {
+    string text = 4;
+    ChatMessage forward = 13;
+    SystemMessage system_message = 17;
+  }
   string prev_message_id = 6; // If empty, message is first in chat
   uint32 viewed_counter = 7; // How many recipients viewed this message
-  repeated MessageRight rights = 10;
 
   // attachments
   Message reply = 12;
-  ChatMessage forward = 13;
   repeated Upload uploads = 11;
   repeated MessageReaction reactions = 14;
+
+  // rights
+  bool can_i_edit_this_message = 15; // message can be edited by author except for messages to bots
+
+  reserved 2, 8, 10;
 }
 
 // Message with full chat info. For forwarded, search results etc
@@ -94,12 +101,6 @@ message MessageReaction {
   uint32 count = 2; // total count of reactions
   bool is_my = 3; // is my reaction
   repeated User users = 4; // users who reacted with this emoji
-}
-
-message ViewedMessage {
-  string message_id = 1;
-  string chat_id = 2;
-  uint32 viewed_counter = 3; // how many recipients viewed this message
 }
 
 message SendMessageRequest {
@@ -129,10 +130,19 @@ message SendMessageResponse {
     TOO_MANY_UPLOADS_ERROR = 5; // see StateResponse.max_uploads_for_message
     INVALID_FORWARDED_MESSAGE_ERROR = 7;
     INVALID_REPLIED_MESSAGE_ERROR = 8; // message must be from the same chat
+    TOO_MANY_MESSAGES_IN_LIST_ERROR = 9; // see StateResponse.max_results_on_page
   }
   repeated Error errors = 1;
-
+  string errors_hint = 3; // optional human readable error description
   Message message = 2;
+}
+
+message SendMessageListRequest {
+  repeated SendMessageRequest messages = 1;
+}
+
+message SendMessageListResponse {
+  repeated SendMessageResponse messages = 1;
 }
 
 message MessagesListRequest {
@@ -161,6 +171,7 @@ message MessagesListRequest {
 
   // filters
   bool only_with_uploads = 6;
+  bool skip_system_messages = 7;
 }
 
 message MessagesListResponse {
@@ -186,33 +197,6 @@ message MessageDetailsResponse {
   }
   repeated Error errors = 1;
   Message message = 2;
-}
-
-message ViewMessageRequest {
-  string id = 1;
-}
-
-message ViewMessageResponse {
-  enum Error {
-    UNKNOWN_ERROR = 0;
-    INVALID_MESSAGE_ID_ERROR = 1;
-  }
-  repeated Error errors = 1;
-  repeated ViewedMessage viewed_messages = 3; // viewed messages list
-  ChatBadge badge = 4;  // number of unseen messages
-}
-
-message MessageViewersRequest {
-  string id = 1;
-}
-
-message MessageViewersResponse {
-  enum Error {
-    UNKNOWN_ERROR = 0;
-    INVALID_MESSAGE_ID_ERROR = 1;
-  }
-  repeated Error errors = 1;
-  repeated User users = 3;
 }
 
 message ChatDetailsRequest {
@@ -262,21 +246,4 @@ message ChatListResponse {
   }
   repeated Error errors = 2;
   repeated Chat chats = 1; // pinned chats first, other chats sorted by activity.
-}
-
-message ChatEventRequest {
-  oneof recipient {
-    string chat_id = 2;
-    string user_id = 1;
-  }
-  ChatEventType type = 3;
-}
-
-message ChatEventResponse {
-  enum Error {
-    UNKNOWN_ERROR = 0;
-    INVALID_RECIPIENT_ERROR = 1;
-  }
-  repeated Error errors = 1;
-  ChatEvent chat_event = 2;
 }

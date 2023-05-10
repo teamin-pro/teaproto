@@ -16,6 +16,7 @@ message ReactionsRequest {}
 message ReactionsResponse {
   repeated string recent = 1;
   repeated Reaction all = 2;
+  string default_reaction = 3; // for double-tap action
 }
 
 message SetMessageReactionRequest {
@@ -32,4 +33,8 @@ message SetMessageReactionResponse {
   }
   repeated Error errors = 1;
   repeated MessageReaction reactions = 2;
+
+  // update
+  repeated string recent = 3;
+  string default_reaction = 4;
 }

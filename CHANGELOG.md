@@ -1,5 +1,53 @@
-## v1.5.0
+## v1.9.0
  - tasks api first version
+
+## v1.8.2
+ - `SendMessageListRequest` restrictions were added: no more than `StateResponse.max_results_on_page` allowed
+
+## v1.8.1
+ - `MessageViewersRequest` parameters `limit` and `offset` were added
+
+## v1.8.0
+ - `Message.system_message` was added
+ - all .proto files were moved to `protobuf` folder
+ - experimental field `SendMessageResponse.errors_hint` was added
+ - `MessagesListRequest.skip_system_messages` filter
+
+## v1.7.0
+ - `ChatMemberXXX` messages renamed to `GroupMemberXXX`
+ - `GroupChatMemberDetailsRequest` removed, use `GroupMembersListResponse` with filter `user_id`
+ -  introduced group roles: available in `GroupMembersListResponse.roles` and `GroupRolesResponse.roles`
+ - `UpdateGroupMemberRequest` for changing member role
+ - `StateResponse.gtproto_version` was added
+
+## v1.6.0
+ - `SendMessageListRequest` was added. Useful for forwarding and resending messages
+
+## v1.5.0
+ - `StateResponse.push_notifications_enabled` was added. It's `true` when push notifications are enabled for current server
+ - `StateResponse.auth_methods`, `StateResponse.min_password_length` and `StateResponse.max_password_length` 
+ - `Profile.has_password` 
+ - `SetPasswordRequest`, `SetEmailRequest` and `SetEmailConfirmationRequest`
+
+## v1.4.5
+ - `SetMessageReactionResponse` now contains `recent` and `default_reaction` fields like `ReactionsResponse`
+
+## v1.4.4
+ - `UsersListRequest` extended with filters: `only_bots`, `only_online`, `only_my_contacts`
+
+## v1.4.3
+ - `UploadRequest.as_file` was renamed to `UploadRequest.disable_modifications`
+
+## v1.4.2
+ - `ReactionsResponse.default_reaction` was added
+
+## v1.4.1
+ - `Device.disable_pushes_when_online` field
+
+## v1.4.0
+ - bot commands were added
+ - `ChatContext` was renamed to `ChatState`
+>>>>>>> main
 
 ## v1.3.0
  - `CreateGroupRequest` / `UpdateGroupSettingsRequest` now returns `Chat` object

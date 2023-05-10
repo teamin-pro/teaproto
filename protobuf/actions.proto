@@ -4,24 +4,29 @@ package gtproto;
 
 import "auth.proto";
 import "badges.proto";
-import "chat_members.proto";
+import "chat_events.proto";
 import "devices.proto";
+import "groups.proto";
 import "messages.proto";
 import "reactions.proto";
 import "state.proto";
 import "tokens.proto";
 import "uploads.proto";
 import "users.proto";
-import "group_chats.proto";
+import "viewed_messages.proto";
 
 message ClientRequest {
   string token = 1;
 
   oneof action {
     // auth
-    LoginRequest login_request = 16; // works without ClientRequest.token
+    EmailPasswordAuthRequest email_password_auth_request = 28;
+    EmailCodeAuthRequest email_code_auth_request = 19;
+    EmailCodeAuthConfirmRequest email_code_auth_confirm_request = 27;
     LogoutRequest logout_request = 17;
-    RegisterAccountRequest register_account_request = 19; // works without ClientRequest.token
+    SetPasswordRequest set_password_request = 16;
+    SetEmailRequest set_email_request = 46;
+    SetEmailConfirmRequest set_email_confirm_request = 47;
 
     // chats
     ChatDetailsRequest chat_details_request = 24;
@@ -29,15 +34,14 @@ message ClientRequest {
     PinChatRequest pin_chat_request = 30;
     ChatEventRequest chat_event_request = 31;
 
-    // chat members
-    ChatMembersListRequest chat_members_list_request = 35;
-    ChatMemberDetailsRequest chat_member_details_request = 36;
-    DeleteChatMemberRequest delete_chat_member_request = 37;
-    CreateChatMembersRequest create_chat_members_request = 38;
-
     // groups
-    CreateGroupChatRequest create_group_chat_request = 26;
-    UpdateGroupChatSettingsRequest update_group_chat_settings_request = 29;
+    CreateGroupRequest create_group_request = 26;
+    UpdateGroupSettingsRequest update_group_settings_request = 29;
+    GroupMembersListRequest group_members_list_request = 35;
+    CreateGroupMembersRequest create_group_members_request = 38;
+    DeleteGroupMemberRequest delete_group_member_request = 37;
+    UpdateGroupMemberRequest update_group_member_request = 49;
+    GroupRolesRequest group_roles_request = 50;
 
     // devices
     CreateOrUpdateDeviceRequest create_or_update_device_request = 10;
@@ -46,6 +50,7 @@ message ClientRequest {
 
     // messages
     SendMessageRequest send_message_request = 22;
+    SendMessageListRequest send_message_list_request = 48;
     MessagesListRequest messages_list_request = 23;
     MessageDetailsRequest message_details_request = 32;
     ViewMessageRequest view_message_request = 33;
@@ -86,9 +91,13 @@ message ServerResponse {
 
   oneof result {
     // auth
-    LoginResponse login_response = 16;
+    EmailPasswordAuthResponse email_password_auth_response = 28;
+    EmailCodeAuthResponse email_code_auth_response = 19;
+    EmailCodeAuthConfirmResponse email_code_auth_confirm_response = 27;
     LogoutResponse logout_response = 17;
-    RegisterAccountResponse register_account_response = 19;
+    SetPasswordResponse set_password_response = 16;
+    SetEmailResponse set_email_response = 46;
+    SetEmailConfirmResponse set_email_confirm_response = 47;
 
     // chats
     ChatDetailsResponse chat_details_response = 24;
@@ -96,15 +105,14 @@ message ServerResponse {
     PinChatResponse pin_chat_response = 30;
     ChatEventResponse chat_event_response = 31;
 
-    // chat members
-    ChatMembersListResponse chat_members_list_response = 35;
-    ChatMemberDetailsResponse chat_member_details_response = 36;
-    DeleteChatMemberResponse delete_chat_member_response = 37;
-    CreateChatMembersResponse create_chat_members_response = 38;
-
     // groups
-    CreateGroupChatResponse create_group_chat_response = 26;
-    UpdateGroupChatSettingsResponse update_group_chat_settings_response = 29;
+    CreateGroupResponse create_group_response = 26;
+    UpdateGroupSettingsResponse update_group_settings_response = 29;
+    GroupMembersListResponse group_members_list_response = 35;
+    CreateGroupMembersResponse create_group_members_response = 38;
+    DeleteGroupMemberResponse delete_group_member_response = 37;
+    UpdateGroupMemberResponse update_group_member_response = 49;
+    GroupRolesResponse group_roles_response = 50;
 
     // devices
     CreateOrUpdateDeviceResponse create_or_update_device_response = 10;
@@ -113,6 +121,7 @@ message ServerResponse {
 
     // messages
     SendMessageResponse send_message_response = 22;
+    SendMessageListResponse send_message_list_response = 48;
     MessagesListResponse messages_list_response = 23;
     MessageDetailsResponse message_details_response = 32;
     ViewMessageResponse view_message_response = 33;
