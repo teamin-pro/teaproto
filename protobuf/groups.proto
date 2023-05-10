@@ -44,17 +44,17 @@ message UpdateGroupSettingsResponse {
   Chat chat = 3;
 }
 
-message GroupRolesRequest {
+message GroupDetailsRequest {
   string chat_id = 1;
 }
 
-message GroupRolesResponse {
+message GroupDetailsResponse {
   enum Error {
     UNKNOWN_ERROR = 0;
     INVALID_CHAT_ERROR = 1;
   }
   repeated Error errors = 1;
-  repeated GroupRole roles = 2;
+  repeated GroupRole group_roles = 2;
 }
 
 message GroupMembersListRequest {
@@ -75,7 +75,7 @@ message GroupMembersListResponse {
   }
   repeated Error errors = 1;
   repeated GroupMember members = 2;
-  repeated GroupRole roles = 3;
+  repeated GroupRole group_roles = 3;
 }
 
 message DeleteGroupMemberRequest {

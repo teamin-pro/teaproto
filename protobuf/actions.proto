@@ -14,6 +14,7 @@ import "tokens.proto";
 import "uploads.proto";
 import "users.proto";
 import "viewed_messages.proto";
+import "tasks.proto";
 
 message ClientRequest {
   string token = 1;
@@ -41,7 +42,10 @@ message ClientRequest {
     CreateGroupMembersRequest create_group_members_request = 38;
     DeleteGroupMemberRequest delete_group_member_request = 37;
     UpdateGroupMemberRequest update_group_member_request = 49;
-    GroupRolesRequest group_roles_request = 50;
+    GroupDetailsRequest group_details_request = 51;
+
+    // tasks
+    FolderDetailsRequest folder_details_request = 52;
 
     // devices
     CreateOrUpdateDeviceRequest create_or_update_device_request = 10;
@@ -79,6 +83,8 @@ message ClientRequest {
     UpdateProfileRequest update_profile_request = 21;
     UsersListRequest users_list_request = 20;
   }
+
+  reserved 50;
 }
 
 message ServerResponse {
@@ -112,7 +118,10 @@ message ServerResponse {
     CreateGroupMembersResponse create_group_members_response = 38;
     DeleteGroupMemberResponse delete_group_member_response = 37;
     UpdateGroupMemberResponse update_group_member_response = 49;
-    GroupRolesResponse group_roles_response = 50;
+    GroupDetailsResponse group_details_response = 51;
+
+    // tasks
+    FolderDetailsRequest folder_details_request = 52;
 
     // devices
     CreateOrUpdateDeviceResponse create_or_update_device_response = 10;
@@ -150,6 +159,8 @@ message ServerResponse {
     UpdateProfileResponse update_profile_response = 21;
     UsersListResponse users_list_response = 20;
   }
+
+  reserved 50;
 }
 
 message WebsocketAuthRequest {

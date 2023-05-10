@@ -5,13 +5,35 @@ package gtproto;
 import "commons.proto";
 import "users.proto";
 
+message FolderRole {
+  uint32 id = 1; // value is unique inside folder
+  string title = 2; // human readable title
+  bool can_send_messages = 14;
+  bool can_add_new_members = 11;
+  bool can_change_information = 12; // title, icon
+  repeated uint32 can_set_role_ids = 13;
+  bool can_create_tasks = 15;
+}
+
 message Folder {
   string title = 1;
   Icon icon = 2;
   uint32 num_members = 3; // read only computed field
+}
 
+message FolderDetailsRequest {
+  string chat_id = 1;
+}
+
+message FolderDetailsResponse {
+  enum Error {
+    UNKNOWN_ERROR = 0;
+    INVALID_CHAT_ERROR = 1;
+  }
+  repeated Error errors = 1;
   string task_prefix = 10;
   repeated TaskStatus task_statuses = 11;
+  repeated FolderRole folder_roles = 12;
 }
 
 message TaskStatus {
