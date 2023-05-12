@@ -2,39 +2,7 @@ syntax = "proto3";
 
 package gtproto;
 
-import "commons.proto";
-import "users.proto";
-
-message FolderRole {
-  uint32 id = 1; // value is unique inside folder
-  string title = 2; // human readable title
-  bool can_send_messages = 14;
-  bool can_add_new_members = 11;
-  bool can_change_information = 12; // title, icon
-  repeated uint32 can_set_role_ids = 13;
-  bool can_create_tasks = 15;
-}
-
-message Folder {
-  string title = 1;
-  Icon icon = 2;
-  uint32 num_members = 3; // read only computed field
-}
-
-message FolderDetailsRequest {
-  string chat_id = 1;
-}
-
-message FolderDetailsResponse {
-  enum Error {
-    UNKNOWN_ERROR = 0;
-    INVALID_CHAT_ERROR = 1;
-  }
-  repeated Error errors = 1;
-  string task_prefix = 10;
-  repeated TaskStatus task_statuses = 11;
-  repeated FolderRole folder_roles = 12;
-}
+import "core.proto";
 
 message TaskStatus {
   uint32 id = 1; // unique id of the status in the folder
@@ -42,41 +10,8 @@ message TaskStatus {
   string title = 3; // for example: "To Do", "In Progress", "Done".
 }
 
-message Task {
-  string folder_chat_id = 1;
-  uint32 number = 3; // Unique task number in the list. Shows only when board prefix is set.
-
-  User creator = 4; // user who created the Task
-  repeated User assignees = 5; // users who are assigned to the Task. See: StateResponse.max_task_assignees
-
-  string title = 6; // one of the title or description must be set
-  string description = 7; // one of the title or description must be set
-  uint32 task_status_id = 8;
-
-  int32 priority = 11;
-  uint64 created_at = 9;
-}
-
-enum TaskSort {
-  SORT_BY_UPDATED_AT = 0;
-  SORT_BY_PRIORITY = 1;
-  SORT_BY_CREATED_AT = 2;
-}
-
-message FolderRequest {
-  string chat_id = 1;
-  repeated uint32 task_status_ids = 2; // if empty, all statuses are returned
-  TaskSort task_sort = 3;
-  uint32 limit = 4; // default: StateResponse.max_results_on_page
-  uint32 offset = 5;
-}
-
-message FolderResponse {
-  repeated Task tasks = 1;
-}
-
 message CreateTaskRequest {
-  string folder_chat_id = 1;
+  string parent_chat_id = 1;
   string title = 2;
   string description = 3;
   repeated string assignee_ids = 4;
@@ -90,5 +25,5 @@ message CreateTaskResponse {
     INVALID_FOLDER_CHAT_ID_ERROR = 2;
   }
   repeated Error errors = 1;
-  Task task = 2;
+  Chat chat = 2;
 }

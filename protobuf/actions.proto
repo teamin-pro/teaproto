@@ -5,16 +5,16 @@ package gtproto;
 import "auth.proto";
 import "badges.proto";
 import "chat_events.proto";
+import "core.proto";
 import "devices.proto";
 import "groups.proto";
-import "messages.proto";
 import "reactions.proto";
 import "state.proto";
 import "tokens.proto";
 import "uploads.proto";
 import "users.proto";
 import "viewed_messages.proto";
-import "tasks.proto";
+import "boards.proto";
 
 message ClientRequest {
   string token = 1;
@@ -44,8 +44,9 @@ message ClientRequest {
     UpdateGroupMemberRequest update_group_member_request = 49;
     GroupDetailsRequest group_details_request = 51;
 
-    // tasks
-    FolderDetailsRequest folder_details_request = 52;
+    // boards
+    BoardDetailsRequest board_details_request = 52;
+    BoardTasksRequest board_tasks_request = 53;
 
     // devices
     CreateOrUpdateDeviceRequest create_or_update_device_request = 10;
@@ -120,8 +121,9 @@ message ServerResponse {
     UpdateGroupMemberResponse update_group_member_response = 49;
     GroupDetailsResponse group_details_response = 51;
 
-    // tasks
-    FolderDetailsRequest folder_details_request = 52;
+    // boards
+    BoardDetailsResponse board_details_response = 52;
+    BoardTasksResponse board_tasks_response = 53;
 
     // devices
     CreateOrUpdateDeviceResponse create_or_update_device_response = 10;

@@ -3,52 +3,30 @@ syntax = "proto3";
 package gtproto;
 
 import "badges.proto";
+import "chat_types.proto";
 import "commands.proto";
 import "commons.proto";
 import "system_messages.proto";
-import "tasks.proto";
 import "uploads.proto";
 import "users.proto";
 
-enum ChatType {
-  UNKNOWN_CHAT_TYPE = 0;
-  DIRECT = 1;
-  GROUP = 2;
-  FOLDER = 4;
-  TASK = 3;
-}
-
-// Roles are predefined on server side. In future we can add custom roles via API.
-// Example roles:
-//  * owner: can send messages, can manage members, can change group info, can set any role
-//  * admin: can send messages, can manage members, can change group info, can set any role except owner
-//  * member: can send messages, can add new members
-message GroupRole {
-  uint32 id = 1; // value is unique inside group chat
-  string title = 2; // human readable title
-  bool can_send_messages = 14;
-  bool can_add_new_members = 11;
-  bool can_change_information = 12; // title, icon
-  repeated uint32 can_set_role_ids = 13;
-}
-
-message Group {
-  string title = 2;
-  Icon icon = 3;
-  uint32 num_members = 4; // read only computed field
-}
-
 message Chat {
   string id = 1;
+  ChatType type = 2;
+
+  string parent_id = 8; // optional, present only for task chats
+  ChatType parent_type = 9;
+
   string title = 6;
   Icon icon = 7;
-  ChatType type = 2;
+
   oneof topic {
     User user = 15; // for type = DIRECT
     Group group = 16; // for type = GROUP
-    Folder folder = 19; // for type == FOLDER
     Task task = 18; // for type == TASK
+    Board board = 19; // for type == BOARD
   }
+
   ChatState state = 17;  // present only for chats in chat list and for chat details
 }
 
@@ -115,8 +93,8 @@ message SendMessageRequest {
     string forward_id = 7;
   }
 
-  // attachments
-  string reply_id = 6; // optional
+  // optional attachments
+  string reply_id = 6;
   repeated string upload_ids = 5;
 }
 

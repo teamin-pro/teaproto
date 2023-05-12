@@ -1,0 +1,42 @@
+syntax = "proto3";
+
+package gtproto;
+
+import "tasks.proto";
+import "chat_types.proto";
+
+message BoardRole {
+  uint32 id = 1; // value is unique inside board
+  string title = 2; // human readable title
+  bool can_add_new_members = 11;
+  bool can_change_information = 12; // title, icon
+  repeated uint32 can_set_role_ids = 13;
+  bool can_create_tasks = 15;
+}
+
+message BoardDetailsRequest {
+  string chat_id = 1;
+}
+
+message BoardDetailsResponse {
+  enum Error {
+    UNKNOWN_ERROR = 0;
+    INVALID_CHAT_ERROR = 1;
+  }
+  repeated Error errors = 1;
+
+  string task_prefix = 10;
+  repeated TaskStatus task_statuses = 11;
+  repeated BoardRole board_roles = 12;
+}
+
+message BoardTasksRequest {
+  string chat_id = 1;
+  repeated uint32 task_status_ids = 2; // if empty, all statuses are returned
+  uint32 limit = 4; // default: StateResponse.max_results_on_page
+  uint32 offset = 5;
+}
+
+message BoardTasksResponse {
+  repeated Task tasks = 1;
+}
