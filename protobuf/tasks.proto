@@ -42,7 +42,18 @@ message CreateTaskResponse {
     TITLE_IS_TOO_LONG_ERROR = 3; // see: StateResponse.max_task_title_length
     DESCRIPTION_IS_TOO_LONG_ERROR = 4; // see: StateResponse.max_task_description_length
     TOO_MANY_ASSIGNEES_ERROR = 5; // see: StateResponse.max_task_assignees
+    NOT_ALLOWED_TO_CREATE_TASK_ERROR = 6;
   }
   repeated Error errors = 1;
   Chat chat = 2;
+}
+
+message UpdateTaskRequest {
+  string chat_id = 1;
+
+  bool update_title = 2;
+  string title = 3;
+
+  bool update_description = 4;
+  string description = 5;
 }

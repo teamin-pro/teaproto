@@ -43,6 +43,7 @@ message CreateGroupResponse {
 
 message UpdateGroupSettingsRequest {
   string chat_id = 1;
+  bool update_title = 3;
   string title = 2;
 }
 
