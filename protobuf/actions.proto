@@ -60,7 +60,7 @@ message ClientRequest {
     DeleteBoardMemberRequest delete_board_member_request = 62;
 
     // boards tasks
-    BoardTasksRequest board_tasks_request = 53;
+    TaskListRequest task_list_request = 53;
     CreateTaskRequest create_task_request = 54;
     UpdateTaskRequest update_task_request = 55;
     DeleteTaskRequest delete_task_request = 56;
@@ -140,13 +140,13 @@ message ServerResponse {
 
     // boards
     BoardDetailsResponse board_details_response = 52;
-    BoardTasksResponse board_tasks_response = 53;
     BoardMembersListResponse board_members_list_response = 58;
     CreateBoardMembersResponse create_board_members_response = 60;
     UpdateBoardMemberResponse update_board_member_response = 61;
     DeleteBoardMemberResponse delete_board_member_response = 62;
 
     // tasks
+    TaskListResponse task_list_response = 53;
     CreateTaskResponse create_task_response = 54;
     UpdateTaskResponse update_task_response = 55;
     DeleteTaskResponse delete_task_response = 56;

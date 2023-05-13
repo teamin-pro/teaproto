@@ -6,6 +6,7 @@ import "tasks.proto";
 import "core.proto";
 import "users.proto";
 
+// Roles are predefined on server side. In future we can add custom roles via API.
 message BoardRole {
   uint32 id = 1; // value is unique inside board
   string title = 2; // human readable title
@@ -31,8 +32,8 @@ message BoardDetailsResponse {
     INVALID_CHAT_ERROR = 1;
   }
   repeated Error errors = 1;
-  repeated TaskStatus task_statuses = 11;
-  repeated BoardRole board_roles = 12;
+  repeated BoardRole board_roles = 2;
+  repeated TaskStatus task_statuses = 3;
 }
 
 message CreateBoardRequest {

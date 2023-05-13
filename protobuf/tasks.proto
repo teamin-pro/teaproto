@@ -10,14 +10,14 @@ message TaskStatus {
   string title = 3; // for example: "To Do", "In Progress", "Done".
 }
 
-message BoardTasksRequest {
+message TaskListRequest {
   string chat_id = 1;
   repeated uint32 task_status_ids = 2; // if empty, all statuses are returned
   uint32 limit = 4; // default: StateResponse.max_results_on_page
   uint32 offset = 5;
 }
 
-message BoardTasksResponse {
+message TaskListResponse {
   enum Error {
     UNKNOWN_ERROR = 0;
     INVALID_CHAT_ID_ERROR = 1;
@@ -25,6 +25,7 @@ message BoardTasksResponse {
   }
   repeated Error errors = 1;
   repeated Task tasks = 2;
+  repeated TaskStatus task_statuses = 3;
 }
 
 message CreateTaskRequest {
