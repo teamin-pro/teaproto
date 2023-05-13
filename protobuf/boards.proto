@@ -51,6 +51,36 @@ message CreateBoardResponse {
   Chat chat = 2;
 }
 
+message UpdateBoardRequest {
+  string chat_id = 1;
+  string title = 2;
+}
+
+message UpdateBoardResponse {
+  enum Error {
+    UNKNOWN_ERROR = 0;
+    INVALID_CHAT_ERROR = 1;
+    EMPTY_TITLE_ERROR = 2;
+    TITLE_TOO_LONG_ERROR = 3; // see StateResponse.max_board_title_length
+    UPDATE_BOARD_NOT_ALLOWED_ERROR = 4;
+  }
+  repeated Error errors = 1;
+  Chat chat = 2;
+}
+
+message DeleteBoardRequest {
+  string chat_id = 1;
+}
+
+message DeleteBoardResponse {
+  enum Error {
+    UNKNOWN_ERROR = 0;
+    INVALID_CHAT_ERROR = 1;
+    DELETE_BOARD_NOT_ALLOWED_ERROR = 2;
+  }
+  repeated Error errors = 1;
+}
+
 message BoardMembersListRequest {
   string chat_id = 1;
   uint32 limit = 2; // default: StateResponse.max_results_on_page
