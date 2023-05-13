@@ -138,17 +138,17 @@ message UpdateGroupMemberResponse {
   GroupMember member = 2;
 }
 
-message DeleteGroupMemberRequest {
+message RemoveGroupMemberRequest {
   string chat_id = 1;
   string user_id = 2; // uuid or "me"
 }
 
-message DeleteGroupMemberResponse {
+message RemoveGroupMemberResponse {
   enum Error {
     UNKNOWN_ERROR = 0;
     INVALID_CHAT_ERROR = 1;
     INVALID_USER_ERROR = 2;
-    DELETE_GROUP_MEMBER_NOT_ALLOWED_ERROR = 3;
+    REMOVE_GROUP_MEMBER_NOT_ALLOWED_ERROR = 3;
   }
   repeated Error errors = 1;
 }

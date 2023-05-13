@@ -136,12 +136,12 @@ message UpdateBoardMemberResponse {
   BoardMember member = 2;
 }
 
-message DeleteBoardMemberRequest {
+message RemoveBoardMemberRequest {
   string chat_id = 1;
   string user_id = 2; // uuid or "me"
 }
 
-message DeleteBoardMemberResponse {
+message RemoveBoardMemberResponse {
   enum Error {
     UNKNOWN_ERROR = 0;
     INVALID_CHAT_ERROR = 1;

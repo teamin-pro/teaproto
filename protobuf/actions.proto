@@ -44,7 +44,7 @@ message ClientRequest {
     // groups members
     GroupMembersListRequest group_members_list_request = 35;
     CreateGroupMembersRequest create_group_members_request = 38;
-    DeleteGroupMemberRequest delete_group_member_request = 37;
+    RemoveGroupMemberRequest remove_group_member_request = 37;
     UpdateGroupMemberRequest update_group_member_request = 49;
 
     // boards
@@ -57,7 +57,7 @@ message ClientRequest {
     BoardMembersListRequest board_members_list_request = 58;
     CreateBoardMembersRequest create_board_members_request = 60;
     UpdateBoardMemberRequest update_board_member_request = 61;
-    DeleteBoardMemberRequest delete_board_member_request = 62;
+    RemoveBoardMemberRequest remove_board_member_request = 62;
 
     // tasks
     TaskListRequest task_list_request = 53;
@@ -138,7 +138,7 @@ message ServerResponse {
     DeleteGroupResponse delete_group_response = 57;
     GroupMembersListResponse group_members_list_response = 35;
     CreateGroupMembersResponse create_group_members_response = 38;
-    DeleteGroupMemberResponse delete_group_member_response = 37;
+    RemoveGroupMemberResponse remove_group_member_response = 37;
     UpdateGroupMemberResponse update_group_member_response = 49;
     GroupDetailsResponse group_details_response = 51;
 
@@ -147,7 +147,7 @@ message ServerResponse {
     BoardMembersListResponse board_members_list_response = 58;
     CreateBoardMembersResponse create_board_members_response = 60;
     UpdateBoardMemberResponse update_board_member_response = 61;
-    DeleteBoardMemberResponse delete_board_member_response = 62;
+    RemoveBoardMemberResponse remove_board_member_response = 62;
 
     // tasks
     TaskListResponse task_list_response = 53;
