@@ -3,6 +3,7 @@ syntax = "proto3";
 package gtproto;
 
 import "core.proto";
+import "users.proto";
 
 message TaskStatus {
   uint32 id = 1; // unique id of the status in the folder
@@ -10,8 +11,14 @@ message TaskStatus {
   string title = 3; // for example: "To Do", "In Progress", "Done".
 }
 
+message TaskMember {
+  User user = 1;
+  bool is_assignee = 2;
+  bool is_creator = 3;
+}
+
 message TaskListRequest {
-  string chat_id = 1;
+  string parent_chat_id = 1; // any task should have a parent chat for now
   repeated uint32 task_status_ids = 2; // if empty, all statuses are returned
   uint32 limit = 4; // default: StateResponse.max_results_on_page
   uint32 offset = 5;
@@ -86,4 +93,31 @@ message DeleteTaskResponse {
     NOT_ALLOWED_TO_DELETE_TASK_ERROR = 2;
   }
   repeated Error errors = 1;
+}
+
+message TaskMemberListRequest {
+  string chat_id = 1;
+}
+
+message TaskMemberListResponse {
+  enum Error {
+    UNKNOWN_ERROR = 0;
+    INVALID_CHAT_ID_ERROR = 1;
+  }
+  repeated Error errors = 1;
+  repeated TaskMember members = 2;
+}
+
+message WatchTaskRequest {
+  string chat_id = 1;
+  bool watch = 2; // if false, unwatch
+}
+
+message WatchTaskResponse {
+  enum Error {
+    UNKNOWN_ERROR = 0;
+    INVALID_CHAT_ERROR = 1;
+  }
+  repeated Error errors = 1;
+  TaskMember member = 2;
 }

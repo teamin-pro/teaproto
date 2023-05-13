@@ -59,11 +59,15 @@ message ClientRequest {
     UpdateBoardMemberRequest update_board_member_request = 61;
     DeleteBoardMemberRequest delete_board_member_request = 62;
 
-    // boards tasks
+    // tasks
     TaskListRequest task_list_request = 53;
     CreateTaskRequest create_task_request = 54;
     UpdateTaskRequest update_task_request = 55;
     DeleteTaskRequest delete_task_request = 56;
+
+    // tasks members
+    TaskMemberListRequest task_member_list_request = 66;
+    WatchTaskRequest watch_task_request = 67;
 
     // devices
     CreateOrUpdateDeviceRequest create_or_update_device_request = 10;
@@ -150,6 +154,10 @@ message ServerResponse {
     CreateTaskResponse create_task_response = 54;
     UpdateTaskResponse update_task_response = 55;
     DeleteTaskResponse delete_task_response = 56;
+
+    // tasks members
+    TaskMemberListResponse task_member_list_response = 66;
+    WatchTaskResponse watch_task_response = 67;
 
     // devices
     CreateOrUpdateDeviceResponse create_or_update_device_response = 10;
