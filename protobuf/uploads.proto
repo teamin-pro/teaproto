@@ -57,34 +57,23 @@ message ChatUploadsResponse {
   repeated Upload uploads = 2;
 }
 
-message UploadProfileIconRequest {
-  bytes content = 1; // delete when empty
-}
-
-message UploadProfileIconResponse {
-  enum Error {
-    UNKNOWN_ERROR = 0;
-    FILE_TOO_BIG_ERROR = 1; // see StateResponse.max_file_size
-    INVALID_IMAGE_FORMAT_ERROR = 2;
-    IMAGE_TOO_SMALL_ERROR = 3; // see StateResponse.min_avatar_size
+message UploadIconRequest {
+  oneof destination {
+    string chat_id = 1; // group or board id
+    string user_id = 2; // uuid or "me"
   }
-  repeated Error errors = 1;
-  Icon icon = 2;
+  bytes content = 3; // delete when empty
 }
 
-message UploadGroupIconRequest {
-  string chat_id = 1;
-  bytes content = 2; // delete when empty
-}
-
-message UploadGroupIconResponse {
+message UploadIconResponse {
   enum Error {
     UNKNOWN_ERROR = 0;
     FILE_TOO_BIG_ERROR = 1; // see StateResponse.max_file_size
     INVALID_IMAGE_FORMAT_ERROR = 2;
     IMAGE_TOO_SMALL_ERROR = 3; // see StateResponse.min_avatar_size
-    NOT_ALLOWED_ERROR = 4;
-    INVALID_CHAT_ERROR = 5;
+    INVALID_CHAT_ERROR = 4;
+    INVALID_USER_ERROR = 5;
+    NOT_ALLOWED_ERROR = 6;
   }
   repeated Error errors = 1;
   Icon icon = 2;

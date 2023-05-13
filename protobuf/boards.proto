@@ -17,7 +17,7 @@ message BoardRole {
 
 message BoardMember {
   User user = 1;
-  uint32 role_id = 6;
+  uint32 board_role_id = 6;
   bool can_i_remove_this_member = 5;
 }
 
@@ -45,6 +45,7 @@ message CreateBoardResponse {
     UNKNOWN_ERROR = 0;
     EMPTY_TITLE_ERROR = 1;
     TITLE_TOO_LONG_ERROR = 2; // see StateResponse.max_board_title_length
+    BOARD_CREATION_NOT_ALLOWED_ERROR = 3;
   }
   repeated Error errors = 1;
   Chat chat = 2;
@@ -69,4 +70,51 @@ message BoardMembersListResponse {
   repeated Error errors = 1;
   repeated BoardMember members = 2;
   repeated BoardRole board_roles = 3;
+}
+
+message CreateBoardMembersRequest {
+  string chat_id = 1;
+  repeated string user_ids = 2;
+}
+
+message CreateBoardMembersResponse {
+  enum Error {
+    UNKNOWN_ERROR = 0;
+    INVALID_CHAT_ERROR = 1;
+    NOT_ALLOWED_TO_ADD_MEMBERS_ERROR = 2;
+  }
+  repeated Error errors = 1;
+  repeated BoardMember members = 2;
+}
+
+message UpdateBoardMemberRequest {
+  string chat_id = 1;
+  string user_id = 2; // uuid or "me"
+  uint32 board_role_id = 3;
+}
+
+message UpdateBoardMemberResponse {
+  enum Error {
+    UNKNOWN_ERROR = 0;
+    INVALID_CHAT_ERROR = 1;
+    INVALID_USER_ERROR = 2;
+    UPDATE_BOARD_MEMBER_NOT_ALLOWED_ERROR = 3;
+  }
+  repeated Error errors = 1;
+  BoardMember member = 2;
+}
+
+message DeleteBoardMemberRequest {
+  string chat_id = 1;
+  string user_id = 2; // uuid or "me"
+}
+
+message DeleteBoardMemberResponse {
+  enum Error {
+    UNKNOWN_ERROR = 0;
+    INVALID_CHAT_ERROR = 1;
+    INVALID_USER_ERROR = 2;
+    DELETE_BOARD_MEMBER_NOT_ALLOWED_ERROR = 3;
+  }
+  repeated Error errors = 1;
 }
