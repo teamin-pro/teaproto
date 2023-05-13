@@ -56,4 +56,33 @@ message UpdateTaskRequest {
 
   bool update_description = 4;
   string description = 5;
+
+  bool update_task_status_id = 6;
+  uint32 task_status_id = 7;
+}
+
+message UpdateTaskResponse {
+  enum Error {
+    UNKNOWN_ERROR = 0;
+    INVALID_CHAT_ID_ERROR = 1;
+    NOT_ALLOWED_TO_UPDATE_TASK_ERROR = 2;
+    TITLE_IS_TOO_LONG_ERROR = 3; // see: StateResponse.max_task_title_length
+    DESCRIPTION_IS_TOO_LONG_ERROR = 4; // see: StateResponse.max_task_description_length
+    TITLE_AND_DESCRIPTION_EMPTY_ERROR = 5;
+  }
+  repeated Error errors = 1;
+  Chat chat = 2;
+}
+
+message DeleteTaskRequest {
+  string chat_id = 1;
+}
+
+message DeleteTaskResponse {
+  enum Error {
+    UNKNOWN_ERROR = 0;
+    INVALID_CHAT_ID_ERROR = 1;
+    NOT_ALLOWED_TO_DELETE_TASK_ERROR = 2;
+  }
+  repeated Error errors = 1;
 }

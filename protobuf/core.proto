@@ -8,6 +8,18 @@ import "system_messages.proto";
 import "uploads.proto";
 import "users.proto";
 
+// Example of chat list
+// ====================
+// - direct chat
+// - direct chat
+// - group chat
+// - group chat
+// - board
+//   - task chat
+//   - task chat
+//   - task chat
+// - group chat
+// - direct chat
 enum ChatType {
   UNKNOWN_CHAT_TYPE = 0;
   DIRECT = 1;
@@ -16,15 +28,15 @@ enum ChatType {
   BOARD = 4;
 }
 
+// Group is a group chat
 message Group {
   string title = 2;
   Icon icon = 3;
   uint32 num_members = 4; // read only computed field
 }
 
+// Task is a task chat
 message Task {
-  uint32 number = 3; // Unique task number in the list. Shows only when board prefix is set.
-
   User creator = 4; // user who created the Task
   repeated User assignees = 5; // users who are assigned to the Task. See: StateResponse.max_task_assignees
 
@@ -35,18 +47,20 @@ message Task {
   uint64 created_at = 9;
 }
 
+// Board is a collection of task chats (for now. In future it can be a collection of any chats)
 message Board {
   string title = 1;
   Icon icon = 2;
   uint32 num_members = 3; // read only computed field
 }
 
+// Chat is a chat in chat list. It can be direct chat, group chat, task chat or board
 message Chat {
   string id = 1;
   ChatType type = 2;
 
   string parent_id = 8; // optional, present only for task chats
-  ChatType parent_type = 9;
+  ChatType parent_type = 9; // optional, present only for task chats and always is BOARD for now
 
   string title = 6;
   Icon icon = 7;
@@ -61,7 +75,7 @@ message Chat {
   ChatState state = 17;  // present only for chats in chat list and for chat details
 }
 
-// Chat details related to current member
+// ChatState contain details related to current member
 message ChatState {
   Message last_message = 8; // can be empty
   uint64 updated_at = 9; // last message creation time even message was deleted
@@ -74,6 +88,7 @@ message ChatState {
   reserved 1 to 7, 11;
 }
 
+// MessageReaction is a reaction to message
 message MessageReaction {
   string emoji = 1;
   uint32 count = 2; // total count of reactions
@@ -81,6 +96,7 @@ message MessageReaction {
   repeated User users = 4; // users who reacted with this emoji
 }
 
+// Message is a message in chat
 message Message {
   string chat_id = 16; // actually need only for push notifications and websocket events but present in all messages for consistency
   string id = 1;
@@ -106,12 +122,13 @@ message Message {
   reserved 2, 8, 10;
 }
 
-// Message with full chat info. For forwarded, search results etc
+// ChatMessage is message with full chat info. For forwarded, search results etc
 message ChatMessage {
   Chat chat = 1;
   Message message = 2;
 }
 
+// ChatBadge contains counter for chat
 message ChatBadge {
   string chat_id = 1; // omited when ChatBadge is used inside Chat
   uint32 counter = 2;
@@ -122,6 +139,7 @@ enum BadgeType {
   BADGE_TYPE_MAIN = 0; // badge on application icon
 }
 
+// GlobalBadge contains counter for application
 message GlobalBadge {
   BadgeType type = 1;
   uint32 counter = 2;

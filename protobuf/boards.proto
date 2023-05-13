@@ -3,6 +3,7 @@ syntax = "proto3";
 package gtproto;
 
 import "tasks.proto";
+import "core.proto";
 
 message BoardRole {
   uint32 id = 1; // value is unique inside board
@@ -23,8 +24,21 @@ message BoardDetailsResponse {
     INVALID_CHAT_ERROR = 1;
   }
   repeated Error errors = 1;
-
-  string task_prefix = 10;
   repeated TaskStatus task_statuses = 11;
   repeated BoardRole board_roles = 12;
+}
+
+message CreateBoardRequest {
+  string title = 1;
+  repeated string user_ids = 2;
+}
+
+message CreateBoardResponse {
+  enum Error {
+    UNKNOWN_ERROR = 0;
+    EMPTY_TITLE_ERROR = 1;
+    TITLE_TOO_LONG_ERROR = 2; // see StateResponse.max_board_title_length
+  }
+  repeated Error errors = 1;
+  Chat chat = 2;
 }

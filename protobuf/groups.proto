@@ -41,22 +41,34 @@ message CreateGroupResponse {
   Chat chat = 3;
 }
 
-message UpdateGroupSettingsRequest {
+message UpdateGroupRequest {
   string chat_id = 1;
-  bool update_title = 3;
   string title = 2;
 }
 
-message UpdateGroupSettingsResponse {
+message UpdateGroupResponse {
   enum Error {
     UNKNOWN_ERROR = 0;
     INVALID_CHAT_ERROR = 1;
-    NOT_ALLOWED_ERROR = 2;
+    NOT_ALLOWED_TO_UPDATE_ERROR = 2;
     EMPTY_TITLE_ERROR = 3;
     TITLE_TOO_LONG_ERROR = 4;
   }
   repeated Error errors = 1;
   Chat chat = 3;
+}
+
+message DeleteGroupRequest {
+  string chat_id = 1;
+}
+
+message DeleteGroupResponse {
+  enum Error {
+    UNKNOWN_ERROR = 0;
+    INVALID_CHAT_ERROR = 1;
+    NOT_ALLOWED_TO_DELETE_ERROR = 2;
+  }
+  repeated Error errors = 1;
 }
 
 message GroupDetailsRequest {
