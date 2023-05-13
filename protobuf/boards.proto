@@ -4,6 +4,7 @@ package gtproto;
 
 import "tasks.proto";
 import "core.proto";
+import "users.proto";
 
 message BoardRole {
   uint32 id = 1; // value is unique inside board
@@ -12,6 +13,12 @@ message BoardRole {
   bool can_change_information = 12; // title, icon
   repeated uint32 can_set_role_ids = 13;
   bool can_create_tasks = 15;
+}
+
+message BoardMember {
+  User user = 1;
+  uint32 role_id = 6;
+  bool can_i_remove_this_member = 5;
 }
 
 message BoardDetailsRequest {
@@ -41,4 +48,25 @@ message CreateBoardResponse {
   }
   repeated Error errors = 1;
   Chat chat = 2;
+}
+
+message BoardMembersListRequest {
+  string chat_id = 1;
+  uint32 limit = 2; // default: StateResponse.max_results_on_page
+  uint32 offset = 3;
+
+  // filters
+  string user_id = 4; // uuid or "me"
+}
+
+message BoardMembersListResponse {
+  enum Error {
+    UNKNOWN_ERROR = 0;
+    INVALID_CHAT_ERROR = 1;
+    INVALID_LIMIT_ERROR = 2;
+    INVALID_USER_ERROR = 3;
+  }
+  repeated Error errors = 1;
+  repeated BoardMember members = 2;
+  repeated BoardRole board_roles = 3;
 }
