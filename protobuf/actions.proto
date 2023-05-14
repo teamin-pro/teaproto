@@ -144,6 +144,11 @@ message ServerResponse {
 
     // boards
     BoardDetailsResponse board_details_response = 52;
+    CreateBoardResponse create_board_response = 63;
+    UpdateBoardResponse update_board_response = 64;
+    DeleteBoardResponse delete_board_response = 65;
+
+    // boards members
     BoardMembersListResponse board_members_list_response = 58;
     CreateBoardMembersResponse create_board_members_response = 60;
     UpdateBoardMemberResponse update_board_member_response = 61;
