@@ -1,3 +1,8 @@
+## v1.9.0
+ - `ClientRequest` allow multiple requests in one message
+ - `StateResponse.max_actions_in_one_request` was added
+ - `SendMessageListRequest` removed
+
 ## v1.8.2
  - `SendMessageListRequest` restrictions were added: no more than `StateResponse.max_results_on_page` allowed
 
