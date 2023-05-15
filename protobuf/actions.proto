@@ -118,7 +118,6 @@ message ServerResponse {
 
   // messages
   repeated SendMessageResponse send_message_response = 22;
-  repeated SendMessageListResponse send_message_list_response = 48;
   repeated MessagesListResponse messages_list_response = 23;
   repeated MessageDetailsResponse message_details_response = 32;
   repeated ViewMessageResponse view_message_response = 33;
