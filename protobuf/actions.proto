@@ -19,66 +19,66 @@ message ClientRequest {
   string token = 1;
 
   // auth
-  repeated EmailPasswordAuthRequest email_password_auth_request = 28;
-  repeated EmailCodeAuthRequest email_code_auth_request = 19;
-  repeated EmailCodeAuthConfirmRequest email_code_auth_confirm_request = 27;
-  repeated LogoutRequest logout_request = 17;
-  repeated SetPasswordRequest set_password_request = 16;
-  repeated SetEmailRequest set_email_request = 46;
-  repeated SetEmailConfirmRequest set_email_confirm_request = 47;
+  repeated EmailPasswordAuthRequest email_password_auth_requests = 28;
+  repeated EmailCodeAuthRequest email_code_auth_requests = 19;
+  repeated EmailCodeAuthConfirmRequest email_code_auth_confirm_requests = 27;
+  repeated LogoutRequest logout_requests = 17;
+  repeated SetPasswordRequest set_password_requests = 16;
+  repeated SetEmailRequest set_email_requests = 46;
+  repeated SetEmailConfirmRequest set_email_confirm_requests = 47;
 
   // chats
-  repeated ChatDetailsRequest chat_details_request = 24;
-  repeated ChatListRequest chat_list_request = 25;
-  repeated PinChatRequest pin_chat_request = 30;
-  repeated ChatEventRequest chat_event_request = 31;
+  repeated ChatDetailsRequest chat_details_requests = 24;
+  repeated ChatListRequest chat_list_requests = 25;
+  repeated PinChatRequest pin_chat_requests = 30;
+  repeated ChatEventRequest chat_event_requests = 31;
 
   // groups
-  repeated CreateGroupRequest create_group_request = 26;
-  repeated UpdateGroupSettingsRequest update_group_settings_request = 29;
-  repeated GroupMembersListRequest group_members_list_request = 35;
-  repeated CreateGroupMembersRequest create_group_members_request = 38;
-  repeated DeleteGroupMemberRequest delete_group_member_request = 37;
-  repeated UpdateGroupMemberRequest update_group_member_request = 49;
-  repeated GroupRolesRequest group_roles_request = 50;
+  repeated CreateGroupRequest create_group_requests = 26;
+  repeated UpdateGroupSettingsRequest update_group_settings_requests = 29;
+  repeated GroupMembersListRequest group_members_list_requests = 35;
+  repeated CreateGroupMembersRequest create_group_members_requests = 38;
+  repeated DeleteGroupMemberRequest delete_group_member_requests = 37;
+  repeated UpdateGroupMemberRequest update_group_member_requests = 49;
+  repeated GroupRolesRequest group_roles_requests = 50;
 
   // devices
-  repeated CreateOrUpdateDeviceRequest create_or_update_device_request = 10;
-  repeated DevicesListRequest devices_list_request = 11;
-  repeated DeleteDeviceRequest delete_device_request = 12;
+  repeated CreateOrUpdateDeviceRequest create_or_update_device_requests = 10;
+  repeated DevicesListRequest devices_list_requests = 11;
+  repeated DeleteDeviceRequest delete_device_requests = 12;
 
   // messages
-  repeated SendMessageRequest send_message_request = 22;
-  repeated MessagesListRequest messages_list_request = 23;
-  repeated MessageDetailsRequest message_details_request = 32;
-  repeated ViewMessageRequest view_message_request = 33;
-  repeated MessageViewersRequest message_viewers_request = 34;
+  repeated SendMessageRequest send_message_requests = 22;
+  repeated MessagesListRequest messages_list_requests = 23;
+  repeated MessageDetailsRequest message_details_requests = 32;
+  repeated ViewMessageRequest view_message_requests = 33;
+  repeated MessageViewersRequest message_viewers_requests = 34;
 
   // reactions
-  repeated ReactionsRequest reactions_request = 44;
-  repeated SetMessageReactionRequest set_message_reaction_request = 43;
+  repeated ReactionsRequest reactions_requests = 44;
+  repeated SetMessageReactionRequest set_message_reaction_requests = 43;
 
   // state
-  repeated StateRequest state_request = 15; // works without ClientRequest.token
-  repeated BadgeRequest badge_request = 45;
+  repeated StateRequest state_requests = 15; // works without ClientRequest.token
+  repeated BadgeRequest badge_requests = 45;
 
   // tokens
-  repeated TokensListRequest tokens_list_request = 13;
-  repeated DeleteTokenRequest delete_token_request = 14;
+  repeated TokensListRequest tokens_list_requests = 13;
+  repeated DeleteTokenRequest delete_token_requests = 14;
 
   // uploads
-  repeated UploadRequest upload_request = 39;
-  repeated ChatUploadsRequest chat_uploads_request = 40;
-  repeated UploadGroupIconRequest upload_group_icon_request = 41;
-  repeated UploadProfileIconRequest upload_profile_icon_request = 42;
+  repeated UploadRequest upload_requests = 39;
+  repeated ChatUploadsRequest chat_uploads_requests = 40;
+  repeated UploadGroupIconRequest upload_group_icon_requests = 41;
+  repeated UploadProfileIconRequest upload_profile_icon_requests = 42;
 
   // users
-  repeated ProfileRequest profile_request = 18;
-  repeated UpdateProfileRequest update_profile_request = 21;
-  repeated UsersListRequest users_list_request = 20;
+  repeated ProfileRequest profile_requests = 18;
+  repeated UpdateProfileRequest update_profile_requests = 21;
+  repeated UsersListRequest users_list_requests = 20;
 }
 
-message ServerResponse {
+message PinChatResponseServerResponse {
   enum Error {
     UNKNOWN_ERROR = 0;
     INVALID_TOKEN_ERROR = 1;
@@ -88,63 +88,63 @@ message ServerResponse {
   repeated Error errors = 1;
 
   // auth
-  repeated EmailPasswordAuthResponse email_password_auth_response = 28;
-  repeated EmailCodeAuthResponse email_code_auth_response = 19;
-  repeated EmailCodeAuthConfirmResponse email_code_auth_confirm_response = 27;
-  repeated LogoutResponse logout_response = 17;
-  repeated SetPasswordResponse set_password_response = 16;
-  repeated SetEmailResponse set_email_response = 46;
-  repeated SetEmailConfirmResponse set_email_confirm_response = 47;
+  repeated EmailPasswordAuthResponse email_password_auth_responses = 28;
+  repeated EmailCodeAuthResponse email_code_auth_responses = 19;
+  repeated EmailCodeAuthConfirmResponse email_code_auth_confirm_responses = 27;
+  repeated LogoutResponse logout_responses = 17;
+  repeated SetPasswordResponse set_password_responses = 16;
+  repeated SetEmailResponse set_email_responses = 46;
+  repeated SetEmailConfirmResponse set_email_confirm_responses = 47;
 
   // chats
-  repeated ChatDetailsResponse chat_details_response = 24;
-  repeated ChatListResponse chat_list_response = 25;
-  repeated PinChatResponse pin_chat_response = 30;
-  repeated ChatEventResponse chat_event_response = 31;
+  repeated ChatDetailsResponse chat_details_responses = 24;
+  repeated ChatListResponse chat_list_responses = 25;
+  repeated PinChatResponse pin_chat_responses = 30;
+  repeated ChatEventResponse chat_event_responses = 31;
 
   // groups
-  repeated CreateGroupResponse create_group_response = 26;
-  repeated UpdateGroupSettingsResponse update_group_settings_response = 29;
-  repeated GroupMembersListResponse group_members_list_response = 35;
-  repeated CreateGroupMembersResponse create_group_members_response = 38;
-  repeated DeleteGroupMemberResponse delete_group_member_response = 37;
-  repeated UpdateGroupMemberResponse update_group_member_response = 49;
-  repeated GroupRolesResponse group_roles_response = 50;
+  repeated CreateGroupResponse create_group_responses = 26;
+  repeated UpdateGroupSettingsResponse update_group_settings_responses = 29;
+  repeated GroupMembersListResponse group_members_list_responses = 35;
+  repeated CreateGroupMembersResponse create_group_members_responses = 38;
+  repeated DeleteGroupMemberResponse delete_group_member_responses = 37;
+  repeated UpdateGroupMemberResponse update_group_member_responses = 49;
+  repeated GroupRolesResponse group_roles_responses = 50;
 
   // devices
-  repeated CreateOrUpdateDeviceResponse create_or_update_device_response = 10;
-  repeated DevicesListResponse devices_list_response = 11;
-  repeated DeleteDeviceResponse delete_device_response = 12;
+  repeated CreateOrUpdateDeviceResponse create_or_update_device_responses = 10;
+  repeated DevicesListResponse devices_list_responses = 11;
+  repeated DeleteDeviceResponse delete_device_responses = 12;
 
   // messages
-  repeated SendMessageResponse send_message_response = 22;
-  repeated MessagesListResponse messages_list_response = 23;
-  repeated MessageDetailsResponse message_details_response = 32;
-  repeated ViewMessageResponse view_message_response = 33;
-  repeated MessageViewersResponse message_viewers_response = 34;
+  repeated SendMessageResponse send_message_responses = 22;
+  repeated MessagesListResponse messages_list_responses = 23;
+  repeated MessageDetailsResponse message_details_responses = 32;
+  repeated ViewMessageResponse view_message_responses = 33;
+  repeated MessageViewersResponse message_viewers_responses = 34;
 
   // reactions
-  repeated ReactionsResponse reactions_response = 44;
-  repeated SetMessageReactionResponse set_message_reaction_response = 43;
+  repeated ReactionsResponse reactions_responses = 44;
+  repeated SetMessageReactionResponse set_message_reaction_responses = 43;
 
   // state
-  repeated StateResponse state_response = 15;
-  repeated BadgeResponse badge_response = 45;
+  repeated StateResponse state_responses = 15;
+  repeated BadgeResponse badge_responses = 45;
 
   // tokens
-  repeated TokensListResponse tokens_list_response = 13;
-  repeated DeleteTokenResponse delete_token_response = 14;
+  repeated TokensListResponse tokens_list_responses = 13;
+  repeated DeleteTokenResponse delete_token_responses = 14;
 
   // uploads
-  repeated UploadResponse upload_response = 39;
-  repeated ChatUploadsResponse chat_uploads_response = 40;
-  repeated UploadGroupIconResponse upload_group_icon_response = 41;
-  repeated UploadProfileIconResponse upload_profile_icon_response = 42;
+  repeated UploadResponse upload_responses = 39;
+  repeated ChatUploadsResponse chat_uploads_responses = 40;
+  repeated UploadGroupIconResponse upload_group_icon_responses = 41;
+  repeated UploadProfileIconResponse upload_profile_icon_responses = 42;
 
   // users
-  repeated ProfileResponse profile_response = 18;
-  repeated UpdateProfileResponse update_profile_response = 21;
-  repeated UsersListResponse users_list_response = 20;
+  repeated ProfileResponse profile_responses = 18;
+  repeated UpdateProfileResponse update_profile_responses = 21;
+  repeated UsersListResponse users_list_responses = 20;
 }
 
 message WebsocketAuthRequest {
