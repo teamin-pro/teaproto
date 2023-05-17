@@ -15,13 +15,17 @@ import "uploads.proto";
 import "users.proto";
 import "viewed_messages.proto";
 
+message ClientRequest {
+  string token = 1;
+  repeated Action actions = 2;
+}
 
 message ServerResponse {
   enum Error {
     UNKNOWN_ERROR = 0;
     INVALID_TOKEN_ERROR = 1;
     NO_ACTIONS_IN_REQUEST_ERROR = 2;
-    MAX_ACTIONS_IN_ONE_REQUEST_ERROR = 3; // see: StateResponse.max_actions_in_one_request
+    MAX_ACTIONS_IN_REQUEST_ERROR = 3; // see: StateResponse.max_actions_in_one_request
   }
   repeated Error errors = 1;
   repeated Result results = 2;
@@ -90,8 +94,12 @@ message Action {
   }
 }
 
+message InvalidActionResponse {}
+
 message Result {
   oneof response {
+    InvalidActionResponse invalid_action_response = 2;
+
     // auth
     EmailPasswordAuthResponse email_password_auth_response = 28;
     EmailCodeAuthResponse email_code_auth_response = 19;
@@ -151,11 +159,6 @@ message Result {
     UpdateProfileResponse update_profile_response = 21;
     UsersListResponse users_list_response = 20;
   }
-}
-
-message ClientRequest {
-  string token = 1;
-  repeated Action actions = 2;
 }
 
 message WebsocketAuthRequest {
