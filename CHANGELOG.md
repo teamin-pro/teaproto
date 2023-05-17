@@ -1,8 +1,9 @@
 ## v1.9.0
  - `ClientRequest` allow multiple actions in one request for each action type
  - `StateResponse.max_actions_in_one_request` was added
- - `SendMessageListRequest` removed, use `SendMessageRequests` list
+ - `SendMessageListRequest` removed, use `SendMessageRequests`
  - `TOO_MANY_MESSAGES_IN_LIST_ERROR` removed in favor of `MAX_ACTIONS_IN_ONE_REQUEST_ERROR`
+ - `INVALID_ACTION_ERROR` replaced with `NO_ACTIONS_IN_REQUEST_ERROR`
 
 ## v1.8.2
  - `SendMessageListRequest` restrictions were added: no more than `StateResponse.max_results_on_page` allowed
