@@ -10,7 +10,6 @@ message StateRequest {
     NONE = 0;
     RETURN_SERVER_ERROR = 1;
     RETURN_INVALID_TOKEN = 2;
-    RETURN_INVALID_ACTION = 3;
   }
   Mode mode = 1;
 }

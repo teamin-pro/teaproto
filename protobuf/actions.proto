@@ -82,7 +82,7 @@ message ServerResponse {
   enum Error {
     UNKNOWN_ERROR = 0;
     INVALID_TOKEN_ERROR = 1;
-    EMPTY_REQUEST_ERROR = 2;
+    NO_ACTIONS_IN_REQUEST_ERROR = 2;
     MAX_ACTIONS_IN_ONE_REQUEST_ERROR = 3; // see: StateResponse.max_actions_in_one_request
   }
   repeated Error errors = 1;
