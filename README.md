@@ -74,7 +74,7 @@ More useful example. This request requires authentication and sends a message to
 ```shell
 curl -X POST https://api.gamarjoba.team/ \
   -H 'Content-Type: application/json' \
-  -d '{"token": "<TOKEN>", "sendMessageRequest": {"chatId": "<CHAT_ID>", "text": "<MESSAGE_TEXT>"}}'
+  -d '{"token": "<TOKEN>", "sendMessageRequests": [{"chatId": "<CHAT_ID>", "text": "<MESSAGE_TEXT>"}]}'
 ```
 
 ## FAQ
