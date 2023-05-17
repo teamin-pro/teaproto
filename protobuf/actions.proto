@@ -78,7 +78,7 @@ message ClientRequest {
   repeated UsersListRequest users_list_requests = 20;
 }
 
-message PinChatResponseServerResponse {
+message ServerResponse {
   enum Error {
     UNKNOWN_ERROR = 0;
     INVALID_TOKEN_ERROR = 1;
