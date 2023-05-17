@@ -1,3 +1,6 @@
+## v1.10.0
+ - `ClientRequest.Actions` / `ServerResponse.Results` was added 
+ 
 ## v1.9.0
  - `ClientRequest` allow multiple actions in one request for each action type
  - `StateResponse.max_actions_in_one_request` was added
