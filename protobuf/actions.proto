@@ -18,8 +18,22 @@ import "users.proto";
 
 message ClientRequest {
   string token = 1;
+  repeated Action actions = 2;
+}
 
-  oneof action {
+message ServerResponse {
+  enum Error {
+    UNKNOWN_ERROR = 0;
+    INVALID_TOKEN_ERROR = 1;
+    NO_ACTIONS_IN_REQUEST_ERROR = 2;
+    MAX_ACTIONS_IN_REQUEST_ERROR = 3; // see: StateResponse.max_actions_in_one_request
+  }
+  repeated Error errors = 1;
+  repeated Result results = 2;
+}
+
+message Action {
+  oneof request {
     // auth
     EmailPasswordAuthRequest email_password_auth_request = 28;
     EmailCodeAuthRequest email_code_auth_request = 19;
@@ -76,7 +90,6 @@ message ClientRequest {
 
     // messages
     SendMessageRequest send_message_request = 22;
-    SendMessageListRequest send_message_list_request = 48;
     MessagesListRequest messages_list_request = 23;
     MessageDetailsRequest message_details_request = 32;
     ViewMessageRequest view_message_request = 33;
@@ -104,19 +117,14 @@ message ClientRequest {
     UpdateProfileRequest update_profile_request = 21;
     UsersListRequest users_list_request = 20;
   }
-
-  reserved 50, 36, 41, 42;
 }
 
-message ServerResponse {
-  enum Error {
-    UNKNOWN_ERROR = 0;
-    INVALID_TOKEN_ERROR = 1;
-    INVALID_ACTION_ERROR = 2;
-  }
-  repeated Error errors = 1;
+message InvalidActionResponse {}
 
-  oneof result {
+message Result {
+  oneof response {
+    InvalidActionResponse invalid_action_response = 2;
+
     // auth
     EmailPasswordAuthResponse email_password_auth_response = 28;
     EmailCodeAuthResponse email_code_auth_response = 19;
@@ -171,7 +179,6 @@ message ServerResponse {
 
     // messages
     SendMessageResponse send_message_response = 22;
-    SendMessageListResponse send_message_list_response = 48;
     MessagesListResponse messages_list_response = 23;
     MessageDetailsResponse message_details_response = 32;
     ViewMessageResponse view_message_response = 33;
@@ -199,8 +206,6 @@ message ServerResponse {
     UpdateProfileResponse update_profile_response = 21;
     UsersListResponse users_list_response = 20;
   }
-
-  reserved 50, 36, 41, 42;
 }
 
 message WebsocketAuthRequest {

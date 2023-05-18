@@ -10,7 +10,6 @@ message StateRequest {
     NONE = 0;
     RETURN_SERVER_ERROR = 1;
     RETURN_INVALID_TOKEN = 2;
-    RETURN_INVALID_ACTION = 3;
   }
   Mode mode = 1;
 }
@@ -19,6 +18,7 @@ message StateResponse {
   // server info
   uint64 now = 1; // current server time in unix format, UTC
   string gtproto_version = 13;
+  uint32 max_actions_in_request = 14;
 
   // common
   uint32 max_results_on_page = 2;
