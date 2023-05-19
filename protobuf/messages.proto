@@ -130,6 +130,8 @@ message SendMessageResponse {
   repeated Error errors = 1;
   string errors_hint = 3; // optional human readable error description
   Message message = 2;
+  repeated ChatBadge chat_badges = 4;
+  repeated GlobalBadge global_badges = 5;
 }
 
 message MessagesListRequest {
@@ -169,7 +171,6 @@ message MessagesListResponse {
     INVALID_LIMIT_ERROR = 3;
   }
   repeated Error errors = 1;
-
   repeated Message messages = 2;
 }
 
