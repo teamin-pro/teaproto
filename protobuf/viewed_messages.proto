@@ -23,6 +23,7 @@ message ViewMessageResponse {
   repeated Error errors = 1;
   repeated ViewedMessage viewed_messages = 3; // viewed messages list
   ChatBadge badge = 4;  // number of unseen messages
+  repeated GlobalBadge global_badges = 5;
 }
 
 message MessageViewersRequest {
