@@ -1,3 +1,6 @@
+## v1.11.0
+ - `chat_badges` + `global_badge` in `SendMessageResponse` and `ViewMessageResponse` 
+
 ## v1.10.0
  - `ClientRequest.Actions` / `ServerResponse.Results` was added 
  

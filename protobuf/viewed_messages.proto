@@ -22,7 +22,7 @@ message ViewMessageResponse {
   }
   repeated Error errors = 1;
   repeated ViewedMessage viewed_messages = 3; // viewed messages list
-  repeated ChatBadge badge = 4;
+  repeated ChatBadge chat_badges = 4;
   repeated GlobalBadge global_badges = 5;
 }
 
