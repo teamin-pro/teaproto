@@ -71,6 +71,7 @@ message Message {
     string text = 4;
     ChatMessage forward = 13;
     SystemMessage system_message = 17;
+    Upload audio_upload = 18;
   }
   string prev_message_id = 6; // If empty, message is first in chat
   uint32 viewed_counter = 7; // How many recipients viewed this message
@@ -109,6 +110,7 @@ message SendMessageRequest {
   oneof content {
     string text = 3;
     string forward_id = 7;
+    string audio_upload_id = 8;
   }
 
   // attachments
@@ -126,6 +128,8 @@ message SendMessageResponse {
     TOO_MANY_UPLOADS_ERROR = 5; // see StateResponse.max_uploads_for_message
     INVALID_FORWARDED_MESSAGE_ERROR = 7;
     INVALID_REPLIED_MESSAGE_ERROR = 8; // message must be from the same chat
+    INVALID_AUDIO_UPLOAD_ID_ERROR = 9; // audio_upload_id must be valid and has audio type
+    AUDIO_TOO_LONG_ERROR = 10; // see StateResponse.max_audio_length_in_seconds. Application should split long audio into multiple messages
   }
   repeated Error errors = 1;
   string errors_hint = 3; // optional human readable error description
@@ -161,6 +165,7 @@ message MessagesListRequest {
   // filters
   bool only_with_uploads = 6;
   bool skip_system_messages = 7;
+  bool only_audio_messages = 8;
 }
 
 message MessagesListResponse {
