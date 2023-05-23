@@ -128,8 +128,8 @@ message SendMessageResponse {
     TOO_MANY_UPLOADS_ERROR = 5; // see StateResponse.max_uploads_for_message
     INVALID_FORWARDED_MESSAGE_ERROR = 7;
     INVALID_REPLIED_MESSAGE_ERROR = 8; // message must be from the same chat
-    INVALID_AUDIO_UPLOAD_ID_ERROR = 9;
-    AUDIO_TOO_LONG_ERROR = 10; // see StateResponse.max_audio_length_in_seconds
+    INVALID_AUDIO_UPLOAD_ID_ERROR = 9; // audio_upload_id must be valid and has audio type
+    AUDIO_TOO_LONG_ERROR = 10; // see StateResponse.max_audio_length_in_seconds. Application should split long audio into multiple messages
   }
   repeated Error errors = 1;
   string errors_hint = 3; // optional human readable error description
