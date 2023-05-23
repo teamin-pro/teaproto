@@ -1,5 +1,5 @@
 ## v1.12.0
- - audio messages support 
+ - audio messages support
 
 ## v1.11.0
  - `chat_badges` + `global_badge` in `SendMessageResponse` and `ViewMessageResponse` 
