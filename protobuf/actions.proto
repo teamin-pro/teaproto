@@ -84,7 +84,7 @@ message Action {
     // uploads
     UploadRequest upload_request = 39;
     ChatUploadsRequest chat_uploads_request = 40;
-    UploadIconResponse upload_icon_response = 48;
+    UploadIconRequest upload_icon_request = 48;
 
     // users
     ProfileRequest profile_request = 18;
