@@ -84,14 +84,15 @@ message Action {
     // uploads
     UploadRequest upload_request = 39;
     ChatUploadsRequest chat_uploads_request = 40;
-    UploadGroupIconRequest upload_group_icon_request = 41;
-    UploadProfileIconRequest upload_profile_icon_request = 42;
+    UploadIconRequest upload_icon_request = 48;
 
     // users
     ProfileRequest profile_request = 18;
     UpdateProfileRequest update_profile_request = 21;
     UsersListRequest users_list_request = 20;
   }
+
+  reserved 41, 42;
 }
 
 message InvalidActionResponse {}
@@ -151,14 +152,15 @@ message Result {
     // uploads
     UploadResponse upload_response = 39;
     ChatUploadsResponse chat_uploads_response = 40;
-    UploadGroupIconResponse upload_group_icon_response = 41;
-    UploadProfileIconResponse upload_profile_icon_response = 42;
+    UploadIconResponse upload_icon_response = 48;
 
     // users
     ProfileResponse profile_response = 18;
     UpdateProfileResponse update_profile_response = 21;
     UsersListResponse users_list_response = 20;
   }
+
+  reserved 41, 42;
 }
 
 message WebsocketAuthRequest {
