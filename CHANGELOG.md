@@ -1,3 +1,6 @@
+## v1.13.0
+ - `UploadGroupIcon` / `UploadProfileIcon` replaced with `UploadIcon`
+
 ## v1.12.0
  - audio messages support
 
