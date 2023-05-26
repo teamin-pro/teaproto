@@ -71,6 +71,7 @@ message UploadIconResponse {
     FILE_TOO_BIG_ERROR = 1; // see StateResponse.max_file_size
     INVALID_IMAGE_FORMAT_ERROR = 2;
     IMAGE_TOO_SMALL_ERROR = 3; // see StateResponse.min_icon_size
+    NOT_ALLOWED_ERROR = 4;
   }
   repeated Error errors = 1;
   Icon icon = 2;
