@@ -15,6 +15,7 @@ message SendMessageRequest {
   oneof content {
     string text = 3;
     string forward_id = 7;
+    string audio_upload_id = 8;
   }
 
   // optional attachments
@@ -32,10 +33,14 @@ message SendMessageResponse {
     TOO_MANY_UPLOADS_ERROR = 5; // see StateResponse.max_uploads_for_message
     INVALID_FORWARDED_MESSAGE_ERROR = 7;
     INVALID_REPLIED_MESSAGE_ERROR = 8; // message must be from the same chat
+    INVALID_AUDIO_UPLOAD_ID_ERROR = 9; // audio_upload_id must be valid and has audio type
+    AUDIO_TOO_LONG_ERROR = 10; // see StateResponse.max_audio_length_in_seconds. Application should split long audio into multiple messages
   }
   repeated Error errors = 1;
   string errors_hint = 3; // optional human readable error description
   Message message = 2;
+  repeated ChatBadge chat_badges = 4;
+  repeated GlobalBadge global_badges = 5;
 }
 
 message MessagesListRequest {
@@ -65,6 +70,7 @@ message MessagesListRequest {
   // filters
   bool only_with_uploads = 6;
   bool skip_system_messages = 7;
+  bool only_audio_uploads = 8;
 }
 
 message MessagesListResponse {
@@ -75,7 +81,6 @@ message MessagesListResponse {
     INVALID_LIMIT_ERROR = 3;
   }
   repeated Error errors = 1;
-
   repeated Message messages = 2;
 }
 

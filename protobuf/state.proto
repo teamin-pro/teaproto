@@ -18,10 +18,10 @@ message StateResponse {
   // server info
   uint64 now = 1; // current server time in unix format, UTC
   string gtproto_version = 13;
-  uint32 max_actions_in_request = 14;
 
   // common
   uint32 max_results_on_page = 2;
+  uint32 max_actions_in_request = 14;
   uint32 max_file_size = 6; // 0 = uploads disabled, otherwise file size in bytes
   uint32 min_icon_size = 8; // min icon width / height in pixels
 
@@ -33,6 +33,7 @@ message StateResponse {
 
   // messages
   uint32 max_message_length = 5;
+  uint32 max_audio_length_in_seconds = 15;
   uint32 max_uploads_for_message = 7;
 
   // groups
@@ -40,7 +41,7 @@ message StateResponse {
 
   // task
   uint32 max_task_assignees = 18;
-  uint32 max_task_title_length = 15;
+  uint32 max_task_title_length = 19;
   uint32 max_task_description_length = 16;
   uint32 max_board_title_length = 17;
 

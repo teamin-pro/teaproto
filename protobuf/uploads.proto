@@ -58,11 +58,11 @@ message ChatUploadsResponse {
 }
 
 message UploadIconRequest {
-  oneof destination {
-    string chat_id = 1; // group or board id
+  oneof subject {
     string user_id = 2; // uuid or "me"
+    string chat_id = 3;
   }
-  bytes content = 3; // delete when empty
+  bytes content = 1; // delete when empty
 }
 
 message UploadIconResponse {
@@ -70,10 +70,8 @@ message UploadIconResponse {
     UNKNOWN_ERROR = 0;
     FILE_TOO_BIG_ERROR = 1; // see StateResponse.max_file_size
     INVALID_IMAGE_FORMAT_ERROR = 2;
-    IMAGE_TOO_SMALL_ERROR = 3; // see StateResponse.min_avatar_size
-    INVALID_CHAT_ERROR = 4;
-    INVALID_USER_ERROR = 5;
-    NOT_ALLOWED_ERROR = 6;
+    IMAGE_TOO_SMALL_ERROR = 3; // see StateResponse.min_icon_size
+    NOT_ALLOWED_ERROR = 4;
   }
   repeated Error errors = 1;
   Icon icon = 2;

@@ -1,5 +1,14 @@
-## v1.11.0
+## v1.14.0
  - tasks api first version
+
+## v1.13.0
+ - `UploadGroupIcon` / `UploadProfileIcon` replaced with `UploadIcon`
+
+## v1.12.0
+ - audio messages support
+
+## v1.11.0
+ - `chat_badges` + `global_badge` in `SendMessageResponse` and `ViewMessageResponse` 
 
 ## v1.10.0
  - `ClientRequest.Actions` / `ServerResponse.Results` was added 
