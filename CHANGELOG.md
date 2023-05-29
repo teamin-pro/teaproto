@@ -1,3 +1,6 @@
+## v1.13.1
+ - `ServerResponse.INTERNAL_SERVER_ERROR`
+
 ## v1.13.0
  - `UploadGroupIcon` / `UploadProfileIcon` replaced with `UploadIcon`
 

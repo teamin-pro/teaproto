@@ -26,6 +26,7 @@ message ServerResponse {
     INVALID_TOKEN_ERROR = 1;
     NO_ACTIONS_IN_REQUEST_ERROR = 2;
     MAX_ACTIONS_IN_REQUEST_ERROR = 3; // see: StateResponse.max_actions_in_one_request
+    INTERNAL_SERVER_ERROR = 4;
   }
   repeated Error errors = 1;
   repeated Result results = 2;
