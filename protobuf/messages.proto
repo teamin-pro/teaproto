@@ -65,8 +65,8 @@ message Message {
   string chat_id = 16; // actually need only for push notifications and websocket events but present in all messages for consistency
   string id = 1;
   uint64 created_at = 3;
-  uint64 edited_at = 9; // Time when message was edited by author. It happens only on text / uploads / reply / forwards change. When equal to created_at, message was not edited.
-  User sender = 5; // Sender of message. If empty, message was sent by system
+  uint64 edited_at = 9; // Time when message was edited by author or deleted. It happens only on text / uploads / reply / forwards change. When equal to created_at, message was not edited.
+  User sender = 5; // Sender of message. If empty, message was sent by system or deleted
   oneof content {
     string text = 4;
     ChatMessage forward = 13;
@@ -83,6 +83,7 @@ message Message {
 
   // rights
   bool can_i_edit_this_message = 15; // message can be edited by author except for messages to bots
+  bool can_i_delete_this_message = 19;
 
   reserved 2, 8, 10;
 }

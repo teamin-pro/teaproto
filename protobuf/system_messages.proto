@@ -5,6 +5,8 @@ package gtproto;
 import "users.proto";
 
 message SystemMessage {
+  message MessageWasDeletedType {}
+
   message ErrorMessageType {
     string text = 1;
   }
@@ -27,6 +29,7 @@ message SystemMessage {
 
   User actor = 1;
   oneof type {
+    MessageWasDeletedType message_was_deleted = 8;
     ErrorMessageType error_message = 9;
     GroupCreatedType group_created = 10;
     GroupRenamedType group_renamed = 11;
