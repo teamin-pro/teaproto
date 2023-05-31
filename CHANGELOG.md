@@ -1,3 +1,6 @@
+## v1.15.0
+ - message deletion
+
 ## v1.13.1
  - `ServerResponse.INTERNAL_SERVER_ERROR`
 
