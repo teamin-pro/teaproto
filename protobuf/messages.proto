@@ -139,6 +139,20 @@ message SendMessageResponse {
   repeated GlobalBadge global_badges = 5;
 }
 
+message DeleteMessageRequest {
+  string message_id = 1;
+}
+
+message DeleteMessageResponse {
+  enum Error {
+    UNKNOWN_ERROR = 0;
+    INVALID_MESSAGE_ID_ERROR = 1;
+    NOT_ALLOWED_ERROR = 2;
+  }
+  repeated Error errors = 1;
+  Message message = 2;
+}
+
 message MessagesListRequest {
   message LatestFilter {
     oneof recipient {
