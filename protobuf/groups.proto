@@ -16,7 +16,8 @@ message GroupRole {
   bool can_send_messages = 14;
   bool can_add_new_members = 11;
   bool can_change_information = 12; // title, icon
-  bool can_delete_group = 15;
+  bool can_delete_group = 16;
+  bool can_delete_any_message = 15;
   repeated uint32 can_set_role_ids = 13;
 }
 

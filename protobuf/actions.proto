@@ -27,6 +27,7 @@ message ServerResponse {
     INVALID_TOKEN_ERROR = 1;
     NO_ACTIONS_IN_REQUEST_ERROR = 2;
     MAX_ACTIONS_IN_REQUEST_ERROR = 3; // see: StateResponse.max_actions_in_one_request
+    INTERNAL_SERVER_ERROR = 4;
   }
   repeated Error errors = 1;
   repeated Result results = 2;
@@ -90,6 +91,7 @@ message Action {
 
     // messages
     SendMessageRequest send_message_request = 22;
+    DeleteMessageRequest delete_message_request = 36;
     MessagesListRequest messages_list_request = 23;
     MessageDetailsRequest message_details_request = 32;
     ViewMessageRequest view_message_request = 33;
@@ -181,6 +183,7 @@ message Result {
 
     // messages
     SendMessageResponse send_message_response = 22;
+    DeleteMessageResponse delete_message_response = 36;
     MessagesListResponse messages_list_response = 23;
     MessageDetailsResponse message_details_response = 32;
     ViewMessageResponse view_message_response = 33;

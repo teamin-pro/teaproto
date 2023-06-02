@@ -1,5 +1,11 @@
-## v1.14.0
+## v2.0.0
  - tasks api first version
+
+## v1.15.0
+ - message deletion
+
+## v1.13.1
+ - `ServerResponse.INTERNAL_SERVER_ERROR`
 
 ## v1.13.0
  - `UploadGroupIcon` / `UploadProfileIcon` replaced with `UploadIcon`
