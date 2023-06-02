@@ -62,9 +62,9 @@ message ChatState {
   reserved 1 to 7, 11;
 }
 
-message Message {
-  message Deleted {}
+message DeletedMessage {}
 
+message Message {
   string chat_id = 16; // actually need only for push notifications and websocket events but present in all messages for consistency
   string id = 1;
   uint64 created_at = 3;
@@ -75,7 +75,7 @@ message Message {
     ChatMessage forward = 13;
     SystemMessage system_message = 17;
     Upload audio_upload = 18;
-    Deleted deleted = 20;
+    DeletedMessage deleted = 20;
   }
   string prev_message_id = 6; // If empty, message is first in chat
   uint32 viewed_counter = 7; // How many recipients viewed this message
