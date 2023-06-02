@@ -27,6 +27,7 @@ message GroupRole {
   bool can_send_messages = 14;
   bool can_add_new_members = 11;
   bool can_change_information = 12; // title, icon
+  bool can_delete_any_message = 15;
   repeated uint32 can_set_role_ids = 13;
 }
 
@@ -61,17 +62,22 @@ message ChatState {
   reserved 1 to 7, 11;
 }
 
+message DeletedMessage {
+  uint64 deleted_at = 1;
+}
+
 message Message {
   string chat_id = 16; // actually need only for push notifications and websocket events but present in all messages for consistency
   string id = 1;
   uint64 created_at = 3;
-  uint64 edited_at = 9; // Time when message was edited by author. It happens only on text / uploads / reply / forwards change. When equal to created_at, message was not edited.
-  User sender = 5; // Sender of message. If empty, message was sent by system
+  uint64 edited_at = 9; // Time when message was edited by author or deleted. It happens only on text / uploads / reply / forwards change. When equal to created_at, message was not edited.
+  User sender = 5; // Sender of message. If empty, message was sent by system or deleted
   oneof content {
     string text = 4;
     ChatMessage forward = 13;
     SystemMessage system_message = 17;
     Upload audio_upload = 18;
+    DeletedMessage deleted = 20;
   }
   string prev_message_id = 6; // If empty, message is first in chat
   uint32 viewed_counter = 7; // How many recipients viewed this message
@@ -83,6 +89,7 @@ message Message {
 
   // rights
   bool can_i_edit_this_message = 15; // message can be edited by author except for messages to bots
+  bool can_i_delete_this_message = 19;
 
   reserved 2, 8, 10;
 }
@@ -136,6 +143,20 @@ message SendMessageResponse {
   Message message = 2;
   repeated ChatBadge chat_badges = 4;
   repeated GlobalBadge global_badges = 5;
+}
+
+message DeleteMessageRequest {
+  string message_id = 1;
+}
+
+message DeleteMessageResponse {
+  enum Error {
+    UNKNOWN_ERROR = 0;
+    INVALID_MESSAGE_ID_ERROR = 1;
+    NOT_ALLOWED_ERROR = 2;
+  }
+  repeated Error errors = 1;
+  Message message = 2;
 }
 
 message MessagesListRequest {

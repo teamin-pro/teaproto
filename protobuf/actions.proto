@@ -65,6 +65,7 @@ message Action {
 
     // messages
     SendMessageRequest send_message_request = 22;
+    DeleteMessageRequest delete_message_request = 36;
     MessagesListRequest messages_list_request = 23;
     MessageDetailsRequest message_details_request = 32;
     ViewMessageRequest view_message_request = 33;
@@ -133,6 +134,7 @@ message Result {
 
     // messages
     SendMessageResponse send_message_response = 22;
+    DeleteMessageResponse delete_message_response = 36;
     MessagesListResponse messages_list_response = 23;
     MessageDetailsResponse message_details_response = 32;
     ViewMessageResponse view_message_response = 33;
