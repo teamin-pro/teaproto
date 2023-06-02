@@ -62,7 +62,9 @@ message ChatState {
   reserved 1 to 7, 11;
 }
 
-message DeletedMessage {}
+message DeletedMessage {
+  uint64 deleted_at = 1;
+}
 
 message Message {
   string chat_id = 16; // actually need only for push notifications and websocket events but present in all messages for consistency
