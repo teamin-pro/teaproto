@@ -1,6 +1,9 @@
 ## v2.0.0
  - tasks api first version
 
+## v1.15.1
+ - `SystemMessage.GroupIconChanged` was added
+
 ## v1.15.0
  - message deletion
 
