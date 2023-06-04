@@ -2,6 +2,7 @@ syntax = "proto3";
 
 package gtproto;
 
+import "commons.proto";
 import "users.proto";
 
 message SystemMessage {
@@ -17,6 +18,10 @@ message SystemMessage {
     string new_title = 1;
   }
 
+  message GroupIconChangedType {
+    Icon new_icon = 1;
+  }
+
   message UsersAddedToGroupType {
     repeated User users = 1;
   }
@@ -30,6 +35,7 @@ message SystemMessage {
     ErrorMessageType error_message = 9;
     GroupCreatedType group_created = 10;
     GroupRenamedType group_renamed = 11;
+    GroupIconChangedType group_icon_changed = 14;
     UsersAddedToGroupType users_added_to_group = 12;
     UsersRemovedFromGroupType users_removed_from_group = 13;
   }
