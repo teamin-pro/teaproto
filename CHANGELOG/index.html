@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Changelog - GTProto</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Changelog";
+        var mkdocs_page_input_path = "CHANGELOG.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <script src="../js/jquery-3.6.0.min.js" defer></script>
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+      <script>hljs.initHighlightingOnLoad();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> GTProto
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../01-basics/">Basic usage</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../02-auth/">Authentication</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../90-faq/">FAQ</a>
+                </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="./">Changelog</a>
+    <ul class="current">
+    </ul>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">GTProto</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a> &raquo;</li>
+      <li>Changelog</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h2 id="v1152">v1.15.2</h2>
+<ul>
+<li>documentation added</li>
+</ul>
+<h2 id="v1151">v1.15.1</h2>
+<ul>
+<li><code>SystemMessage.GroupIconChanged</code> was added</li>
+</ul>
+<h2 id="v1150">v1.15.0</h2>
+<ul>
+<li>message deletion</li>
+</ul>
+<h2 id="v1131">v1.13.1</h2>
+<ul>
+<li><code>ServerResponse.INTERNAL_SERVER_ERROR</code></li>
+</ul>
+<h2 id="v1130">v1.13.0</h2>
+<ul>
+<li><code>UploadGroupIcon</code> / <code>UploadProfileIcon</code> replaced with <code>UploadIcon</code></li>
+</ul>
+<h2 id="v1120">v1.12.0</h2>
+<ul>
+<li>audio messages support</li>
+</ul>
+<h2 id="v1110">v1.11.0</h2>
+<ul>
+<li><code>chat_badges</code> + <code>global_badge</code> in <code>SendMessageResponse</code> and <code>ViewMessageResponse</code> </li>
+</ul>
+<h2 id="v1100">v1.10.0</h2>
+<ul>
+<li><code>ClientRequest.Actions</code> / <code>ServerResponse.Results</code> was added </li>
+</ul>
+<h2 id="v190">v1.9.0</h2>
+<ul>
+<li><code>ClientRequest</code> allow multiple actions in one request for each action type</li>
+<li><code>StateResponse.max_actions_in_one_request</code> was added</li>
+<li><code>SendMessageListRequest</code> removed, use <code>SendMessageRequests</code></li>
+<li><code>TOO_MANY_MESSAGES_IN_LIST_ERROR</code> removed in favor of <code>MAX_ACTIONS_IN_ONE_REQUEST_ERROR</code></li>
+<li><code>INVALID_ACTION_ERROR</code> replaced with <code>NO_ACTIONS_IN_REQUEST_ERROR</code></li>
+</ul>
+<h2 id="v182">v1.8.2</h2>
+<ul>
+<li><code>SendMessageListRequest</code> restrictions were added: no more than <code>StateResponse.max_results_on_page</code> allowed</li>
+</ul>
+<h2 id="v181">v1.8.1</h2>
+<ul>
+<li><code>MessageViewersRequest</code> parameters <code>limit</code> and <code>offset</code> were added</li>
+</ul>
+<h2 id="v180">v1.8.0</h2>
+<ul>
+<li><code>Message.system_message</code> was added</li>
+<li>all .proto files were moved to <code>protobuf</code> folder</li>
+<li>experimental field <code>SendMessageResponse.errors_hint</code> was added</li>
+<li><code>MessagesListRequest.skip_system_messages</code> filter</li>
+</ul>
+<h2 id="v170">v1.7.0</h2>
+<ul>
+<li><code>ChatMemberXXX</code> messages renamed to <code>GroupMemberXXX</code></li>
+<li><code>GroupChatMemberDetailsRequest</code> removed, use <code>GroupMembersListResponse</code> with filter <code>user_id</code></li>
+<li>introduced group roles: available in <code>GroupMembersListResponse.roles</code> and <code>GroupRolesResponse.roles</code></li>
+<li><code>UpdateGroupMemberRequest</code> for changing member role</li>
+<li><code>StateResponse.gtproto_version</code> was added</li>
+</ul>
+<h2 id="v160">v1.6.0</h2>
+<ul>
+<li><code>SendMessageListRequest</code> was added. Useful for forwarding and resending messages</li>
+</ul>
+<h2 id="v150">v1.5.0</h2>
+<ul>
+<li><code>StateResponse.push_notifications_enabled</code> was added. It's <code>true</code> when push notifications are enabled for current server</li>
+<li><code>StateResponse.auth_methods</code>, <code>StateResponse.min_password_length</code> and <code>StateResponse.max_password_length</code> </li>
+<li><code>Profile.has_password</code> </li>
+<li><code>SetPasswordRequest</code>, <code>SetEmailRequest</code> and <code>SetEmailConfirmationRequest</code></li>
+</ul>
+<h2 id="v145">v1.4.5</h2>
+<ul>
+<li><code>SetMessageReactionResponse</code> now contains <code>recent</code> and <code>default_reaction</code> fields like <code>ReactionsResponse</code></li>
+</ul>
+<h2 id="v144">v1.4.4</h2>
+<ul>
+<li><code>UsersListRequest</code> extended with filters: <code>only_bots</code>, <code>only_online</code>, <code>only_my_contacts</code></li>
+</ul>
+<h2 id="v143">v1.4.3</h2>
+<ul>
+<li><code>UploadRequest.as_file</code> was renamed to <code>UploadRequest.disable_modifications</code></li>
+</ul>
+<h2 id="v142">v1.4.2</h2>
+<ul>
+<li><code>ReactionsResponse.default_reaction</code> was added</li>
+</ul>
+<h2 id="v141">v1.4.1</h2>
+<ul>
+<li><code>Device.disable_pushes_when_online</code> field</li>
+</ul>
+<h2 id="v140">v1.4.0</h2>
+<ul>
+<li>bot commands were added</li>
+<li><code>ChatContext</code> was renamed to <code>ChatState</code></li>
+</ul>
+<h2 id="v130">v1.3.0</h2>
+<ul>
+<li><code>CreateGroupRequest</code> / <code>UpdateGroupSettingsRequest</code> now returns <code>Chat</code> object</li>
+<li><code>Group.chat_id</code> removed because group is always part of chat</li>
+<li>removed <code>GroupDetailsRequest</code>, use <code>ChatDetailsRequest</code></li>
+<li>removed <code>GroupListRequest</code>, use <code>ChatListRequest</code></li>
+<li><code>CreateGroupXXX</code> renamed to <code>CreateGroupChatXXX</code></li>
+<li><code>UpdateGroupSettingsXXX</code> renamed to <code>UpdateGroupChatSettingsXXX</code></li>
+<li><code>Chat</code> / <code>ShortChat</code> pair replaced with <code>Chat</code> that have optional <code>ChatContext</code> field. <code>LastMessage</code>, <code>Badge</code> and other fields moved to the <code>ChatContext</code></li>
+</ul>
+<h2 id="v122">v1.2.2</h2>
+<ul>
+<li><code>Chat</code> and <code>ShortChat</code> have new field <code>topic</code> with <code>User</code> or <code>Group</code> inside </li>
+</ul>
+<h2 id="v121">v1.2.1</h2>
+<ul>
+<li><code>Chat.with_user_id</code> replaced with <code>Chat.with_user</code></li>
+</ul>
+<h2 id="v120">v1.2.0</h2>
+<ul>
+<li><code>OnlineStatus</code> was added</li>
+</ul>
+<h2 id="v112">v1.1.2</h2>
+<ul>
+<li><code>ChatListRequest.min_updated_at</code> was added</li>
+</ul>
+<h2 id="v111">v1.1.1</h2>
+<ul>
+<li><code>Badge</code> was renamed to <code>GlobalBadge</code></li>
+<li><code>ChatBadge.badge</code> was renamed to <code>ChatBadge.counter</code>, and <code>ChatBadge.updated_at</code> added</li>
+<li><code>Chat.badge</code> and <code>ViewMessageResponse.badge</code> now returns <code>ChatBadge</code> not <code>uint32</code></li>
+</ul>
+<h2 id="v110">v1.1.0</h2>
+<ul>
+<li>global badges</li>
+</ul>
+<h2 id="v100">v1.0.0</h2>
+<ul>
+<li>changelog was added</li>
+<li><code>Chat.chat_type</code> was renamed to just <code>Chat.type</code></li>
+<li>added new type <code>ChatMessage</code>. Currently only used for forwarded messages</li>
+<li>forwards api was stabilized</li>
+</ul>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../90-faq/" class="btn btn-neutral float-left" title="FAQ"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../90-faq/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+  </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme_extra.js" defer></script>
+    <script src="../js/theme.js" defer></script>
+      <script src="../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

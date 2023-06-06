@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Basic usage - GTProto</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Basic usage";
+        var mkdocs_page_input_path = "01-basics.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <script src="../js/jquery-3.6.0.min.js" defer></script>
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+      <script>hljs.initHighlightingOnLoad();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> GTProto
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="./">Basic usage</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#synchronous-workflow-for-actions">Synchronous workflow (for actions)</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#asynchronous-workflow-for-events">Asynchronous workflow (for events)</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#notes">Notes</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#json-support">JSON support</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#getting-server-info">Getting server info</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#sending-a-message-to-a-chat">Sending a message to a chat</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../02-auth/">Authentication</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../90-faq/">FAQ</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../CHANGELOG/">Changelog</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">GTProto</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a> &raquo;</li>
+      <li>Basic usage</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="basic-usage">Basic usage</h1>
+<h2 id="synchronous-workflow-for-actions">Synchronous workflow (for actions)</h2>
+<p>To initiate a synchronous workflow for actions:</p>
+<ul>
+<li>The client must send a <code>ClientRequest</code> message via a POST HTTP request to the endpoint <a href="https://api.gamarjoba.team/">https://api.gamarjoba.team/</a></li>
+<li>The server responds with a <code>ServerResponse</code> message.</li>
+</ul>
+<h2 id="asynchronous-workflow-for-events">Asynchronous workflow (for events)</h2>
+<p>To initiate an asynchronous workflow for events:</p>
+<ul>
+<li>The client must create a WebSocket connection to the endpoint https://api.gamarjoba.team/ws.</li>
+<li>The client sends a <code>WebsocketAuthRequest</code> message.</li>
+<li>The server starts sending <code>WebsocketEvent</code> messages.</li>
+</ul>
+<h2 id="notes">Notes</h2>
+<ul>
+<li>Timestamps are encoded in <code>uint64</code> format and represent milliseconds in UTC.</li>
+<li>All IDs are represented as strings using the uuid format.</li>
+</ul>
+<h2 id="json-support">JSON support</h2>
+<p>For command line tools, it is easier to use JSON instead of protobuf. To use JSON, simply set <code>Content-Type</code>
+header to <code>application/json</code> and send the JSON representation of the protobuf message.</p>
+<p>If content type is omitted and request starts with <code>{</code> (without leading spaces) it will be treated as JSON.</p>
+<h3 id="getting-server-info">Getting server info</h3>
+<p>This is simplest request. It does not require authentication and returns server info.</p>
+<pre><code class="language-shell">curl -X POST https://api.gamarjoba.team/ \
+  -H 'Content-Type: application/json' \
+  -d '{&quot;stateRequest&quot;:{}}'
+</code></pre>
+<p>If request is JSON, response also will be JSON:</p>
+<pre><code class="language-json">{
+  &quot;stateResponse&quot;: {
+    &quot;now&quot;: &quot;1679507631905&quot;,
+    &quot;maxResultsOnPage&quot;: 100,
+    &quot;maxGroupTitleLength&quot;: 40,
+    &quot;maxUsernameLength&quot;: 25,
+    &quot;maxMessageLength&quot;: 5000,
+    &quot;maxFileSize&quot;: 524288000,
+    &quot;maxUploadsForMessage&quot;: 10,
+    &quot;minIconSize&quot;: 256
+  }
+}
+</code></pre>
+<h3 id="sending-a-message-to-a-chat">Sending a message to a chat</h3>
+<p>More useful example. This request requires authentication and sends a message to a chat.</p>
+<pre><code class="language-shell">curl -X POST https://api.gamarjoba.team/ \
+  -H 'Content-Type: application/json' \
+  -d '{&quot;token&quot;:&quot;&lt;TOKEN&gt;&quot;,&quot;actions&quot;:[{&quot;sendMessageRequest&quot;:{&quot;chatId&quot;:&quot;&lt;CHAT_ID&gt;&quot;,&quot;text&quot;:&quot;&lt;MESSAGE_TEXT&gt;&quot;}}]}'
+</code></pre>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href=".." class="btn btn-neutral float-left" title="Home"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../02-auth/" class="btn btn-neutral float-right" title="Authentication">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href=".." style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../02-auth/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme_extra.js" defer></script>
+    <script src="../js/theme.js" defer></script>
+      <script src="../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>
