@@ -1,3 +1,6 @@
+## v1.15.2
+ - documentation added
+
 ## v1.15.1
  - `SystemMessage.GroupIconChanged` was added
 

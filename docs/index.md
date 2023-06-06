@@ -1,4 +1,4 @@
-# gtproto
+# Welcome to GTProto
 
 Extensible protocol for GTNode and client. Based on protobuf over HTTP(s) and WebSocket. GRPC is not used.
 

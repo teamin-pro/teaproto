@@ -1,0 +1,8 @@
+site_name: GTProto
+nav:
+  - Home: index.md
+  - Basic usage: 01-basics.md
+  - Authentication: 02-auth.md
+  - FAQ: 90-faq.md
+  - Changelog: CHANGELOG.md
+theme: readthedocs
