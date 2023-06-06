@@ -175,7 +175,31 @@
 <p>Number of unread notifications. Should be displayed as a badge on 
 the application icon, on browser tab, etc.</p>
 <h3 id="request_2">Request</h3>
+<pre><code class="language-json">{
+  &quot;token&quot;: &quot;&lt;token&gt;&quot;,
+  &quot;actions&quot;: [
+    {
+      &quot;badgeRequest&quot;: {}
+    }
+  ]
+}
+</code></pre>
 <h3 id="response_2">Response</h3>
+<pre><code class="language-json">{
+  &quot;results&quot;: [
+    {
+      &quot;badgeResponse&quot;: {
+        &quot;globalBadges&quot;: [
+          {
+            &quot;counter&quot;: 42,
+            &quot;updatedAt&quot;: &quot;1609466584000&quot;
+          }
+        ]
+      }
+    }
+  ]
+}
+</code></pre>
               
             </div>
           </div><footer>
