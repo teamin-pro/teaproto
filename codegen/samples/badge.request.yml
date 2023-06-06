@@ -1,0 +1,10 @@
+```json
+{
+  "token": "<token>",
+  "actions": [
+    {
+      "badgeRequest": {}
+    }
+  ]
+}
+```
