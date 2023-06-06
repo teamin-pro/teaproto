@@ -7,8 +7,5 @@ jobs:
     runs-on: ubuntu-20.04
     steps:
       - uses: actions/checkout@v3
-      - run: |
-          git checkout gh-pages
-          git pull
-          git checkout -
+      - run: git config --global push.default tracking
       - run: make gh-deploy
