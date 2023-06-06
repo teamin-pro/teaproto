@@ -19,3 +19,13 @@ Can be used for checking server availability (ping). Works without authenticatio
 
 ### Response
 {% include "../codegen/samples/state-server-error.response.yml" %}
+
+## Global badge
+Number of unread notifications. Should be displayed as a badge on 
+the application icon, on browser tab, etc.
+
+### Request
+{% include "../codegen/samples/badge.request.yml" %}
+
+### Response
+{% include "../codegen/samples/badge.response.yml" %}

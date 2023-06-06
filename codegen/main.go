@@ -76,6 +76,35 @@ func state() {
 			gtproto.ServerResponse_INTERNAL_SERVER_ERROR,
 		},
 	})
+
+	mustSave("badge.request.yml", &gtproto.ClientRequest{
+		Token: "<token>",
+		Actions: []*gtproto.Action{
+			{
+				Request: &gtproto.Action_BadgeRequest{
+					BadgeRequest: &gtproto.BadgeRequest{},
+				},
+			},
+		},
+	})
+
+	mustSave("badge.response.yml", &gtproto.ServerResponse{
+		Results: []*gtproto.Result{
+			{
+				Response: &gtproto.Result_BadgeResponse{
+					BadgeResponse: &gtproto.BadgeResponse{
+						GlobalBadges: []*gtproto.GlobalBadge{
+							{
+								Type:      gtproto.BadgeType_BADGE_TYPE_MAIN,
+								Counter:   42,
+								UpdatedAt: UnixTime(time.Date(2021, 1, 1, 2, 3, 4, 6, time.UTC)),
+							},
+						},
+					},
+				},
+			},
+		},
+	})
 }
 
 func mustSave(dest string, m proto.Message) {
