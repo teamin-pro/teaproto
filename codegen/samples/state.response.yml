@@ -1,0 +1,26 @@
+```json
+{
+  "results": [
+    {
+      "stateResponse": {
+        "now": "1609459200000",
+        "gtprotoVersion": "v1.15.2",
+        "maxResultsOnPage": 10,
+        "maxActionsInRequest": 10,
+        "maxFileSize": 10485760,
+        "minIconSize": 100,
+        "maxUsernameLength": 20,
+        "minPasswordLength": 5,
+        "maxPasswordLength": 100,
+        "maxMessageLength": 1024,
+        "maxAudioLengthInSeconds": 120,
+        "maxUploadsForMessage": 5,
+        "maxGroupTitleLength": 10,
+        "authMethods": [
+          "EMAIL_CODE_AUTH_METHOD"
+        ]
+      }
+    }
+  ]
+}
+```

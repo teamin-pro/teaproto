@@ -1,8 +1,12 @@
 site_name: GTProto
 nav:
   - Home: index.md
-  - Basic usage: 01-basics.md
-  - Authentication: 02-auth.md
-  - FAQ: 90-faq.md
+  - Basic usage: basics.md
+  - Authentication: auth.md
+  - State: state.md
+  - Messaging: messaging.md
+  - FAQ: faq.md
   - Changelog: CHANGELOG.md
 theme: readthedocs
+plugins:
+  - include-markdown
