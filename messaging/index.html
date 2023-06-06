@@ -5,15 +5,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link rel="shortcut icon" href="../img/favicon.ico" />
-    <title>Authentication - GTProto</title>
+    <title>Messaging - GTProto</title>
     <link rel="stylesheet" href="../css/theme.css" />
     <link rel="stylesheet" href="../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
     
       <script>
         // Current page data
-        var mkdocs_page_name = "Authentication";
-        var mkdocs_page_input_path = "02-auth.md";
+        var mkdocs_page_name = "Messaging";
+        var mkdocs_page_input_path = "messaging.md";
         var mkdocs_page_url = null;
       </script>
     
@@ -32,11 +32,7 @@
     <div class="wy-side-scroll">
       <div class="wy-side-nav-search">
           <a href=".." class="icon icon-home"> GTProto
-        </a><div role="search">
-  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
-      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
-  </form>
-</div>
+        </a>
       </div>
 
       <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
@@ -45,21 +41,25 @@
                 </li>
               </ul>
               <ul>
-                <li class="toctree-l1"><a class="reference internal" href="../01-basics/">Basic usage</a>
+                <li class="toctree-l1"><a class="reference internal" href="../basics/">Basic usage</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../auth/">Authentication</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../state/">State</a>
                 </li>
               </ul>
               <ul class="current">
-                <li class="toctree-l1 current"><a class="reference internal current" href="./">Authentication</a>
+                <li class="toctree-l1 current"><a class="reference internal current" href="./">Messaging</a>
     <ul class="current">
-    <li class="toctree-l2"><a class="reference internal" href="#by-password">By password</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#by-one-time-code">By one-time code</a>
-    </li>
     </ul>
                 </li>
               </ul>
               <ul>
-                <li class="toctree-l1"><a class="reference internal" href="../90-faq/">FAQ</a>
+                <li class="toctree-l1"><a class="reference internal" href="../faq/">FAQ</a>
                 </li>
               </ul>
               <ul>
@@ -80,7 +80,7 @@
         <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
     <li><a href=".." class="icon icon-home" aria-label="Docs"></a> &raquo;</li>
-      <li>Authentication</li>
+      <li>Messaging</li>
     <li class="wy-breadcrumbs-aside">
     </li>
   </ul>
@@ -89,25 +89,18 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h1 id="authentication">Authentication</h1>
-<h2 id="by-password">By password</h2>
-<p><code>StateResponse.auth_methods</code> must contain <code>EMAIL_PASSWORD_AUTH_METHOD</code></p>
-<ul>
-<li>send <code>EmailPasswordAuthResponse</code> with <code>email</code> and <code>password</code> fields</li>
-</ul>
-<h2 id="by-one-time-code">By one-time code</h2>
-<p><code>StateResponse.auth_methods</code> must contain <code>EMAIL_CODE_AUTH_METHOD</code></p>
-<ul>
-<li>send <code>EmailCodeAuthRequest</code> with <code>email</code> field</li>
-<li>server will send email with code to <code>email</code> address</li>
-<li>send <code>EmailCodeAuthConfirmRequest</code> with <code>email</code> and <code>code</code> fields</li>
-</ul>
+                <h3 id="sending-a-message-to-a-chat">Sending a message to a chat</h3>
+<p>More useful example. This request requires authentication and sends a message to a chat.</p>
+<pre><code class="language-shell">curl -X POST https://api.gamarjoba.team/ \
+  -H 'Content-Type: application/json' \
+  -d '{&quot;token&quot;:&quot;&lt;TOKEN&gt;&quot;,&quot;actions&quot;:[{&quot;sendMessageRequest&quot;:{&quot;chatId&quot;:&quot;&lt;CHAT_ID&gt;&quot;,&quot;text&quot;:&quot;&lt;MESSAGE_TEXT&gt;&quot;}}]}'
+</code></pre>
               
             </div>
           </div><footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
-        <a href="../01-basics/" class="btn btn-neutral float-left" title="Basic usage"><span class="icon icon-circle-arrow-left"></span> Previous</a>
-        <a href="../90-faq/" class="btn btn-neutral float-right" title="FAQ">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../state/" class="btn btn-neutral float-left" title="State"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../faq/" class="btn btn-neutral float-right" title="FAQ">Next <span class="icon icon-circle-arrow-right"></span></a>
     </div>
 
   <hr/>
@@ -130,17 +123,16 @@
   <span class="rst-current-version" data-toggle="rst-current-version">
     
     
-      <span><a href="../01-basics/" style="color: #fcfcfc">&laquo; Previous</a></span>
+      <span><a href="../state/" style="color: #fcfcfc">&laquo; Previous</a></span>
     
     
-      <span><a href="../90-faq/" style="color: #fcfcfc">Next &raquo;</a></span>
+      <span><a href="../faq/" style="color: #fcfcfc">Next &raquo;</a></span>
     
   </span>
 </div>
     <script>var base_url = '..';</script>
     <script src="../js/theme_extra.js" defer></script>
     <script src="../js/theme.js" defer></script>
-      <script src="../search/main.js" defer></script>
     <script defer>
         window.onload = function () {
             SphinxRtdTheme.Navigation.enable(true);
