@@ -28,9 +28,12 @@ go-protobuf:
 		--go_opt=Mactions.proto=./$(PROTOBUF_PACKAGE) \
 		--go_opt=Mauth.proto=./$(PROTOBUF_PACKAGE) \
 		--go_opt=Mbadges.proto=./$(PROTOBUF_PACKAGE) \
+		--go_opt=Mboards.proto=./$(PROTOBUF_PACKAGE) \
 		--go_opt=Mchat_events.proto=./$(PROTOBUF_PACKAGE) \
+		--go_opt=Mchats.proto=./$(PROTOBUF_PACKAGE) \
 		--go_opt=Mcommands.proto=./$(PROTOBUF_PACKAGE) \
 		--go_opt=Mcommons.proto=./$(PROTOBUF_PACKAGE) \
+		--go_opt=Mcore.proto=./$(PROTOBUF_PACKAGE) \
 		--go_opt=Mdevices.proto=./$(PROTOBUF_PACKAGE) \
 		--go_opt=Mgroup_chats.proto=./$(PROTOBUF_PACKAGE) \
 		--go_opt=Mgroups.proto=./$(PROTOBUF_PACKAGE) \
@@ -38,6 +41,7 @@ go-protobuf:
 		--go_opt=Mreactions.proto=./$(PROTOBUF_PACKAGE) \
 		--go_opt=Mstate.proto=./$(PROTOBUF_PACKAGE) \
 		--go_opt=Msystem_messages.proto=./$(PROTOBUF_PACKAGE) \
+		--go_opt=Mtasks.proto=./$(PROTOBUF_PACKAGE) \
 		--go_opt=Mtokens.proto=./$(PROTOBUF_PACKAGE) \
 		--go_opt=Muploads.proto=./$(PROTOBUF_PACKAGE) \
 		--go_opt=Musers.proto=./$(PROTOBUF_PACKAGE) \
