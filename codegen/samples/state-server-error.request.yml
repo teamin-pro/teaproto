@@ -1,0 +1,11 @@
+```json
+{
+  "actions": [
+    {
+      "stateRequest": {
+        "mode": "RETURN_SERVER_ERROR"
+      }
+    }
+  ]
+}
+```

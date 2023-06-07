@@ -1,0 +1,16 @@
+```json
+{
+  "results": [
+    {
+      "badgeResponse": {
+        "globalBadges": [
+          {
+            "counter": 42,
+            "updatedAt": "1609466584000"
+          }
+        ]
+      }
+    }
+  ]
+}
+```
