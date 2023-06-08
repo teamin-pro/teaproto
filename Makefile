@@ -28,7 +28,7 @@ go-protobuf: version
 	cp version.txt $(PROTOBUF_DIR)/$(PROTOBUF_PACKAGE)/
 	rm -rf $(PROTOBUF_DIR)/$(PROTOBUF_PACKAGE)/*.pb.go
 	protoc --version
-	protoc --fatal_warnings -I protobuf \
+	protoc --fatal_warnings=true -I protobuf \
 		--go_opt=Mactions.proto=./$(PROTOBUF_PACKAGE) \
 		--go_opt=Mauth.proto=./$(PROTOBUF_PACKAGE) \
 		--go_opt=Mbadges.proto=./$(PROTOBUF_PACKAGE) \
