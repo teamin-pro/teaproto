@@ -21,10 +21,10 @@ codegen: go-protobuf
 	go run codegen/main.go
 
 version:
-	cat docs/CHANGELOG.md  | grep '##' | head -n 1 | sed -e 's/## //' > $(PROTOBUF_DIR)/gtproto/version.txt
+	mkdir -p $(PROTOBUF_DIR)/$(PROTOBUF_PACKAGE)
+	cat docs/CHANGELOG.md  | grep '##' | head -n 1 | sed -e 's/## //' > $(PROTOBUF_DIR)/$(PROTOBUF_PACKAGE)/version.txt
 
 go-protobuf: version
-	mkdir -p $(PROTOBUF_DIR)
 	rm -rf $(PROTOBUF_DIR)/$(PROTOBUF_PACKAGE)/*.pb.go
 	protoc --fatal_warnings -I protobuf \
 		--go_opt=Mactions.proto=./$(PROTOBUF_PACKAGE) \
