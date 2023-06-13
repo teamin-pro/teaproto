@@ -158,28 +158,23 @@ message DeleteMessageResponse {
 }
 
 message MessagesListRequest {
-  message LatestFilter {
-    oneof recipient {
-      string chat_id = 1;
-      string user_id = 2;
-    }
-    uint32 limit = 3; // default: StateResponse.max_results_on_page
+  oneof recipient {
+    string chat_id = 1;
+    string user_id = 2;
   }
 
-  message ScrollFilter {
-    oneof recipient {
-      string chat_id = 1;
-      string user_id = 2;
-    }
-    string message_id = 6;
-    uint32 new_messages_limit = 4;
-    uint32 old_messages_limit = 5;
+  enum PositionType {
+    LAST_MESSAGES_IN_CHAT = 0;
+    LAST_VIEWED_MESSAGES_IN_CHAT = 1;
   }
 
-  oneof filter {
-    LatestFilter latest = 3;
-    ScrollFilter scroll = 4;
+  oneof position {
+    PositionType type = 10;
+    string message_id = 9;
   }
+
+  uint32 new_messages_limit = 4; // default: StateResponse.max_results_on_page
+  uint32 old_messages_limit = 5; // default: StateResponse.max_results_on_page
 
   // filters
   bool only_with_uploads = 6;
