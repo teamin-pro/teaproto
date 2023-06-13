@@ -1,5 +1,6 @@
 ## v1.16.0
  - last viewed message information moved from `ChatContext` to `ChatBadge` 
+ - `MessagesListRequest` reworked
 
 ## v1.15.2
  - documentation added
