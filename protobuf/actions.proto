@@ -52,7 +52,6 @@ message Action {
 
     // groups
     CreateGroupRequest create_group_request = 26;
-    DeleteGroupRequest delete_group_request = 57;
     GroupDetailsRequest group_details_request = 51;
     UpdateGroupRequest update_group_request = 29;
 
@@ -65,7 +64,6 @@ message Action {
     // boards
     BoardDetailsRequest board_details_request = 52;
     CreateBoardRequest create_board_request = 63;
-    DeleteBoardRequest delete_board_request = 65;
     UpdateBoardRequest update_board_request = 64;
 
     // boards members
@@ -148,7 +146,6 @@ message Result {
 
     // groups
     CreateGroupResponse create_group_response = 26;
-    DeleteGroupResponse delete_group_response = 57;
     GroupDetailsResponse group_details_response = 51;
     UpdateGroupResponse update_group_response = 29;
 
@@ -161,7 +158,6 @@ message Result {
     // boards
     BoardDetailsResponse board_details_response = 52;
     CreateBoardResponse create_board_response = 63;
-    DeleteBoardResponse delete_board_response = 65;
     UpdateBoardResponse update_board_response = 64;
 
     // boards members

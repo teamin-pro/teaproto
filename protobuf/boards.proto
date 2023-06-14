@@ -70,19 +70,6 @@ message UpdateBoardResponse {
   Chat chat = 2;
 }
 
-message DeleteBoardRequest {
-  string chat_id = 1;
-}
-
-message DeleteBoardResponse {
-  enum Error {
-    UNKNOWN_ERROR = 0;
-    INVALID_CHAT_ERROR = 1;
-    DELETE_BOARD_NOT_ALLOWED_ERROR = 2;
-  }
-  repeated Error errors = 1;
-}
-
 message BoardMembersListRequest {
   string chat_id = 1;
   uint32 limit = 2; // default: StateResponse.max_results_on_page
