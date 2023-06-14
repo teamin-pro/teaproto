@@ -5,6 +5,102 @@ package gtproto;
 import "users.proto";
 import "core.proto";
 
+enum ChatType {
+  UNKNOWN_CHAT_TYPE = 0;
+  DIRECT = 1;
+  GROUP = 2;
+  TASK = 3;
+}
+
+// Roles are predefined on server side. In future we can add custom roles via API.
+// Example roles:
+//  * owner: can send messages, can manage members, can change group info, can set any role
+//  * admin: can send messages, can manage members, can change group info, can set any role except owner
+//  * member: can send messages, can add new members
+message GroupRole {
+  uint32 id = 1; // value is unique inside group chat
+  string title = 2; // human readable title
+  bool can_send_messages = 14;
+  bool can_add_new_members = 11;
+  bool can_change_information = 12; // title, icon
+  bool can_delete_any_message = 15;
+  repeated uint32 can_set_role_ids = 13;
+}
+
+message Group {
+  string title = 2;
+  Icon icon = 3;
+  uint32 num_members = 4; // read only computed field
+}
+
+message Chat {
+  string id = 1;
+  string title = 6;
+  Icon icon = 7;
+  ChatType type = 2;
+  oneof topic {
+    User user = 15; // for type = DIRECT
+    Group group = 16; // for type = GROUP
+  }
+  ChatState state = 17;  // present only for chats in chat list and for chat details
+}
+
+// Chat details related to current member
+message ChatState {
+  Message last_message = 8; // can be empty
+  uint64 updated_at = 9; // last message creation time even message was deleted
+  ChatBadge badge = 14;
+  uint32 pinned_position = 12; // pinned position at chat list, if any
+  repeated Command bot_commands = 15;
+
+  reserved 1 to 7, 10, 11, 13;
+}
+
+message DeletedMessage {
+  uint64 deleted_at = 1;
+}
+
+message Message {
+  string chat_id = 16; // actually need only for push notifications and websocket events but present in all messages for consistency
+  string id = 1;
+  uint64 created_at = 3;
+  uint64 edited_at = 9; // Time when message was edited by author or deleted. It happens only on text / uploads / reply / forwards change. When equal to created_at, message was not edited.
+  User sender = 5; // Sender of message. If empty, message was sent by system or deleted
+  oneof content {
+    string text = 4;
+    ChatMessage forward = 13;
+    SystemMessage system_message = 17;
+    Upload audio_upload = 18;
+    DeletedMessage deleted = 20;
+  }
+  string prev_message_id = 6; // If empty, message is first in chat
+  uint32 viewed_counter = 7; // How many recipients viewed this message
+
+  // attachments
+  Message reply = 12;
+  repeated Upload uploads = 11;
+  repeated MessageReaction reactions = 14;
+
+  // rights
+  bool can_i_edit_this_message = 15; // message can be edited by author except for messages to bots
+  bool can_i_delete_this_message = 19;
+
+  reserved 2, 8, 10;
+}
+
+// Message with full chat info. For forwarded, search results etc
+message ChatMessage {
+  Chat chat = 1;
+  Message message = 2;
+}
+
+message MessageReaction {
+  string emoji = 1;
+  uint32 count = 2; // total count of reactions
+  bool is_my = 3; // is my reaction
+  repeated User users = 4; // users who reacted with this emoji
+}
+
 message SendMessageRequest {
   string id = 4; // optional: when present used as id for new message or for editing existing message
   oneof recipient {
@@ -58,28 +154,23 @@ message DeleteMessageResponse {
 }
 
 message MessagesListRequest {
-  message LatestFilter {
-    oneof recipient {
-      string chat_id = 1;
-      string user_id = 2;
-    }
-    uint32 limit = 3; // default: StateResponse.max_results_on_page
+  oneof recipient {
+    string chat_id = 1;
+    string user_id = 2;
   }
 
-  message ScrollFilter {
-    oneof recipient {
-      string chat_id = 1;
-      string user_id = 2;
-    }
-    string message_id = 6;
-    uint32 new_messages_limit = 4;
-    uint32 old_messages_limit = 5;
+  enum PositionType {
+    LAST_MESSAGES_IN_CHAT = 0;
+    LAST_VIEWED_MESSAGES_IN_CHAT = 1;
   }
 
-  oneof filter {
-    LatestFilter latest = 3;
-    ScrollFilter scroll = 4;
+  oneof position {
+    PositionType type = 10;
+    string message_id = 9;
   }
+
+  uint32 new_messages_limit = 4; // default: StateResponse.max_results_on_page
+  uint32 old_messages_limit = 5; // default: StateResponse.max_results_on_page
 
   // filters
   bool only_with_uploads = 6;

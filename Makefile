@@ -20,10 +20,14 @@ codegen: go-protobuf
 	cd codegen
 	go run codegen/main.go
 
-go-protobuf:
-	cat docs/CHANGELOG.md  | grep '##' | head -n 1 | sed -e 's/## //' > $(PROTOBUF_DIR)/gtproto/version.txt
-	mkdir -p $(PROTOBUF_DIR)
+version:
+	cat docs/CHANGELOG.md  | grep '##' | head -n 1 | sed -e 's/## //' > version.txt
+
+go-protobuf: version
+	mkdir -p $(PROTOBUF_DIR)/$(PROTOBUF_PACKAGE)
+	cp version.txt $(PROTOBUF_DIR)/$(PROTOBUF_PACKAGE)/
 	rm -rf $(PROTOBUF_DIR)/$(PROTOBUF_PACKAGE)/*.pb.go
+	protoc --version
 	protoc --fatal_warnings -I protobuf \
 		--go_opt=Mactions.proto=./$(PROTOBUF_PACKAGE) \
 		--go_opt=Mauth.proto=./$(PROTOBUF_PACKAGE) \

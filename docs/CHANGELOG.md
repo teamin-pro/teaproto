@@ -1,6 +1,10 @@
 ## v2.0.0
  - tasks api first version
 
+## v1.16.0
+ - last viewed message information moved from `ChatContext` to `ChatBadge` 
+ - `MessagesListRequest` reworked
+
 ## v1.15.2
  - documentation added
 

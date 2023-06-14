@@ -79,13 +79,11 @@ message Chat {
 message ChatState {
   Message last_message = 8; // can be empty
   uint64 updated_at = 9; // last message creation time even message was deleted
-  string last_viewed_message_id = 10; // optional
-  uint64 last_viewed_message_created_at = 13; // optional
   ChatBadge badge = 14;
   uint32 pinned_position = 12; // pinned position at chat list, if any
   repeated Command bot_commands = 15;
 
-  reserved 1 to 7, 11;
+  reserved 1 to 7, 10, 11, 13;
 }
 
 // MessageReaction is a reaction to message
@@ -140,6 +138,8 @@ message ChatBadge {
   string chat_id = 1; // omited when ChatBadge is used inside Chat
   uint32 counter = 2;
   uint64 updated_at = 3; // in conflicting cases, the badge with the latest updated_at should be used
+  string last_viewed_message_id = 4;
+  uint64 last_viewed_message_created_at = 5;
 }
 
 enum BadgeType {
