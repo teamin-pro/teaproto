@@ -36,7 +36,6 @@ message ChatEventResponse {
   ChatEvent chat_event = 2;
 }
 
-
 message ChatDetailsRequest {
   oneof recipient {
     string chat_id = 2;
