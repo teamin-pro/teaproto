@@ -35,58 +35,58 @@ message ServerResponse {
 message Action {
   oneof request {
     // auth
-    EmailPasswordAuthRequest email_password_auth_request = 28;
-    EmailCodeAuthRequest email_code_auth_request = 19;
     EmailCodeAuthConfirmRequest email_code_auth_confirm_request = 27;
+    EmailCodeAuthRequest email_code_auth_request = 19;
+    EmailPasswordAuthRequest email_password_auth_request = 28;
     LogoutRequest logout_request = 17;
-    SetPasswordRequest set_password_request = 16;
-    SetEmailRequest set_email_request = 46;
     SetEmailConfirmRequest set_email_confirm_request = 47;
+    SetEmailRequest set_email_request = 46;
+    SetPasswordRequest set_password_request = 16;
 
     // chats
     ChatDetailsRequest chat_details_request = 24;
+    ChatEventRequest chat_event_request = 31;
     ChatListRequest chat_list_request = 25;
     PinChatRequest pin_chat_request = 30;
-    ChatEventRequest chat_event_request = 31;
 
     // groups
-    CreateGroupRequest create_group_request = 26;
-    UpdateGroupSettingsRequest update_group_settings_request = 29;
-    GroupMembersListRequest group_members_list_request = 35;
     CreateGroupMembersRequest create_group_members_request = 38;
+    CreateGroupRequest create_group_request = 26;
     DeleteGroupMemberRequest delete_group_member_request = 37;
-    UpdateGroupMemberRequest update_group_member_request = 49;
+    GroupMembersListRequest group_members_list_request = 35;
     GroupRolesRequest group_roles_request = 50;
+    UpdateGroupMemberRequest update_group_member_request = 49;
+    UpdateGroupSettingsRequest update_group_settings_request = 29;
 
     // devices
     CreateOrUpdateDeviceRequest create_or_update_device_request = 10;
-    DevicesListRequest devices_list_request = 11;
     DeleteDeviceRequest delete_device_request = 12;
+    DevicesListRequest devices_list_request = 11;
 
     // messages
-    SendMessageRequest send_message_request = 22;
     DeleteMessageRequest delete_message_request = 36;
-    MessagesListRequest messages_list_request = 23;
     MessageDetailsRequest message_details_request = 32;
-    ViewMessageRequest view_message_request = 33;
+    MessagesListRequest messages_list_request = 23;
     MessageViewersRequest message_viewers_request = 34;
+    SendMessageRequest send_message_request = 22;
+    ViewMessageRequest view_message_request = 33;
 
     // reactions
     ReactionsRequest reactions_request = 44;
     SetMessageReactionRequest set_message_reaction_request = 43;
 
     // state
-    StateRequest state_request = 15; // works without ClientRequest.token
     BadgeRequest badge_request = 45;
+    StateRequest state_request = 15; // works without ClientRequest.token
 
     // tokens
-    TokensListRequest tokens_list_request = 13;
     DeleteTokenRequest delete_token_request = 14;
+    TokensListRequest tokens_list_request = 13;
 
     // uploads
-    UploadRequest upload_request = 39;
     ChatUploadsRequest chat_uploads_request = 40;
     UploadIconRequest upload_icon_request = 48;
+    UploadRequest upload_request = 39;
 
     // users
     ProfileRequest profile_request = 18;
@@ -104,58 +104,58 @@ message Result {
     InvalidActionResponse invalid_action_response = 2;
 
     // auth
-    EmailPasswordAuthResponse email_password_auth_response = 28;
-    EmailCodeAuthResponse email_code_auth_response = 19;
     EmailCodeAuthConfirmResponse email_code_auth_confirm_response = 27;
+    EmailCodeAuthResponse email_code_auth_response = 19;
+    EmailPasswordAuthResponse email_password_auth_response = 28;
     LogoutResponse logout_response = 17;
-    SetPasswordResponse set_password_response = 16;
-    SetEmailResponse set_email_response = 46;
     SetEmailConfirmResponse set_email_confirm_response = 47;
+    SetEmailResponse set_email_response = 46;
+    SetPasswordResponse set_password_response = 16;
 
     // chats
     ChatDetailsResponse chat_details_response = 24;
+    ChatEventResponse chat_event_response = 31;
     ChatListResponse chat_list_response = 25;
     PinChatResponse pin_chat_response = 30;
-    ChatEventResponse chat_event_response = 31;
 
     // groups
-    CreateGroupResponse create_group_response = 26;
-    UpdateGroupSettingsResponse update_group_settings_response = 29;
-    GroupMembersListResponse group_members_list_response = 35;
     CreateGroupMembersResponse create_group_members_response = 38;
+    CreateGroupResponse create_group_response = 26;
     DeleteGroupMemberResponse delete_group_member_response = 37;
-    UpdateGroupMemberResponse update_group_member_response = 49;
+    GroupMembersListResponse group_members_list_response = 35;
     GroupRolesResponse group_roles_response = 50;
+    UpdateGroupMemberResponse update_group_member_response = 49;
+    UpdateGroupSettingsResponse update_group_settings_response = 29;
 
     // devices
     CreateOrUpdateDeviceResponse create_or_update_device_response = 10;
-    DevicesListResponse devices_list_response = 11;
     DeleteDeviceResponse delete_device_response = 12;
+    DevicesListResponse devices_list_response = 11;
 
     // messages
-    SendMessageResponse send_message_response = 22;
     DeleteMessageResponse delete_message_response = 36;
-    MessagesListResponse messages_list_response = 23;
     MessageDetailsResponse message_details_response = 32;
-    ViewMessageResponse view_message_response = 33;
+    MessagesListResponse messages_list_response = 23;
     MessageViewersResponse message_viewers_response = 34;
+    SendMessageResponse send_message_response = 22;
+    ViewMessageResponse view_message_response = 33;
 
     // reactions
     ReactionsResponse reactions_response = 44;
     SetMessageReactionResponse set_message_reaction_response = 43;
 
     // state
-    StateResponse state_response = 15;
     BadgeResponse badge_response = 45;
+    StateResponse state_response = 15;
 
     // tokens
-    TokensListResponse tokens_list_response = 13;
     DeleteTokenResponse delete_token_response = 14;
+    TokensListResponse tokens_list_response = 13;
 
     // uploads
-    UploadResponse upload_response = 39;
     ChatUploadsResponse chat_uploads_response = 40;
     UploadIconResponse upload_icon_response = 48;
+    UploadResponse upload_response = 39;
 
     // users
     ProfileResponse profile_response = 18;
