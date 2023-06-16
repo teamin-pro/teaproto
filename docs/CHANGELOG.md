@@ -1,6 +1,9 @@
 ## v2.0.0
  - tasks api first version
 
+## v1.16.1
+ - `ChatDetailsResponse.ACCESS_TO_CHAT_DENIED_ERROR`
+
 ## v1.16.0
  - last viewed message information moved from `ChatContext` to `ChatBadge` 
  - `MessagesListRequest` reworked
