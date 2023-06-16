@@ -7,7 +7,7 @@ import "users.proto";
 
 message GroupMember {
   User user = 1;
-  uint32 role_id = 6;
+  uint32 group_role_id = 6;
   bool can_i_remove_this_member = 5;
 }
 
@@ -27,12 +27,12 @@ message CreateGroupResponse {
   Chat chat = 3;
 }
 
-message UpdateGroupSettingsRequest {
+message UpdateGroupRequest {
   string chat_id = 1;
   string title = 2;
 }
 
-message UpdateGroupSettingsResponse {
+message UpdateGroupResponse {
   enum Error {
     UNKNOWN_ERROR = 0;
     INVALID_CHAT_ERROR = 1;
@@ -44,11 +44,11 @@ message UpdateGroupSettingsResponse {
   Chat chat = 3;
 }
 
-message GroupRolesRequest {
+message GroupDetailsRequest {
   string chat_id = 1;
 }
 
-message GroupRolesResponse {
+message GroupDetailsResponse {
   enum Error {
     UNKNOWN_ERROR = 0;
     INVALID_CHAT_ERROR = 1;
@@ -78,12 +78,12 @@ message GroupMembersListResponse {
   repeated GroupRole roles = 3;
 }
 
-message DeleteGroupMemberRequest {
+message RemoveGroupMemberRequest {
   string chat_id = 1;
   string user_id = 2; // uuid or "me"
 }
 
-message DeleteGroupMemberResponse {
+message RemoveGroupMemberResponse {
   enum Error {
     UNKNOWN_ERROR = 0;
     INVALID_CHAT_ERROR = 1;
@@ -111,7 +111,7 @@ message CreateGroupMembersResponse {
 message UpdateGroupMemberRequest {
   string chat_id = 1;
   string user_id = 2; // uuid or "me"
-  uint32 role_id = 3;
+  uint32 group_role_id = 3;
 }
 
 message UpdateGroupMemberResponse {

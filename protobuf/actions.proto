@@ -51,13 +51,13 @@ message Action {
 
     // groups
     CreateGroupRequest create_group_request = 26;
-    GroupRolesRequest group_roles_request = 50;
-    UpdateGroupSettingsRequest update_group_settings_request = 29;
+    GroupDetailsRequest group_details_request = 50;
+    UpdateGroupRequest update_group_request = 29;
 
     // group members
     CreateGroupMembersRequest create_group_members_request = 38;
-    DeleteGroupMemberRequest delete_group_member_request = 37;
     GroupMembersListRequest group_members_list_request = 35;
+    RemoveGroupMemberRequest remove_group_member_request = 37;
     UpdateGroupMemberRequest update_group_member_request = 49;
 
     // devices
@@ -124,13 +124,13 @@ message Result {
 
     // groups
     CreateGroupResponse create_group_response = 26;
-    GroupRolesResponse group_roles_response = 50;
-    UpdateGroupSettingsResponse update_group_settings_response = 29;
+    GroupDetailsResponse group_details_response = 50;
+    UpdateGroupResponse update_group_response = 29;
 
     // group members
     CreateGroupMembersResponse create_group_members_response = 38;
-    DeleteGroupMemberResponse delete_group_member_response = 37;
     GroupMembersListResponse group_members_list_response = 35;
+    RemoveGroupMemberResponse remove_group_member_response = 37;
     UpdateGroupMemberResponse update_group_member_response = 49;
 
     // devices
