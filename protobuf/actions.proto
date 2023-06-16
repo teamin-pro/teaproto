@@ -52,7 +52,7 @@ message Action {
 
     // groups
     CreateGroupRequest create_group_request = 26;
-    GroupDetailsRequest group_details_request = 51;
+    GroupDetailsRequest group_details_request = 50;
     UpdateGroupRequest update_group_request = 29;
 
     // groups members
@@ -146,7 +146,7 @@ message Result {
 
     // groups
     CreateGroupResponse create_group_response = 26;
-    GroupDetailsResponse group_details_response = 51;
+    GroupDetailsResponse group_details_response = 50;
     UpdateGroupResponse update_group_response = 29;
 
     // group members

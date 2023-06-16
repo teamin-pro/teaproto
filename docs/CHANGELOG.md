@@ -1,6 +1,12 @@
 ## v2.0.0
  - tasks api first version
 
+## v1.17.0
+ - `GroupRolesXXX` renamed to `GroupDetailsXXX`
+ - `UpdateGroupSettingsXXX` renamed to `UpdateGroupXXX`
+ - `DeleteGroupMemberXXX` renamed to `RemoveGroupMemberXXX`
+ - `role_id` renamed to `group_role_id`
+
 ## v1.16.1
  - `ChatDetailsResponse.ACCESS_TO_CHAT_DENIED_ERROR`
 
