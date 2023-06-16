@@ -50,13 +50,15 @@ message Action {
     PinChatRequest pin_chat_request = 30;
 
     // groups
-    CreateGroupMembersRequest create_group_members_request = 38;
     CreateGroupRequest create_group_request = 26;
+    GroupRolesRequest group_roles_request = 50;
+    UpdateGroupSettingsRequest update_group_settings_request = 29;
+
+    // group members
+    CreateGroupMembersRequest create_group_members_request = 38;
     DeleteGroupMemberRequest delete_group_member_request = 37;
     GroupMembersListRequest group_members_list_request = 35;
-    GroupRolesRequest group_roles_request = 50;
     UpdateGroupMemberRequest update_group_member_request = 49;
-    UpdateGroupSettingsRequest update_group_settings_request = 29;
 
     // devices
     CreateOrUpdateDeviceRequest create_or_update_device_request = 10;
@@ -119,13 +121,15 @@ message Result {
     PinChatResponse pin_chat_response = 30;
 
     // groups
-    CreateGroupMembersResponse create_group_members_response = 38;
     CreateGroupResponse create_group_response = 26;
+    GroupRolesResponse group_roles_response = 50;
+    UpdateGroupSettingsResponse update_group_settings_response = 29;
+
+    // group members
+    CreateGroupMembersResponse create_group_members_response = 38;
     DeleteGroupMemberResponse delete_group_member_response = 37;
     GroupMembersListResponse group_members_list_response = 35;
-    GroupRolesResponse group_roles_response = 50;
     UpdateGroupMemberResponse update_group_member_response = 49;
-    UpdateGroupSettingsResponse update_group_settings_response = 29;
 
     // devices
     CreateOrUpdateDeviceResponse create_or_update_device_response = 10;
