@@ -1,3 +1,8 @@
+## v1.17.0
+ - `GroupRolesXXX` renamed to `GroupDetailsXXX`
+ - `UpdateGroupSettingsXXX` renamed to `UpdateGroupXXX`
+ - `DeleteGroupMemberXXX` renamed to `RemoveGroupMemberXXX`
+
 ## v1.16.1
  - `ChatDetailsResponse.ACCESS_TO_CHAT_DENIED_ERROR`
 
