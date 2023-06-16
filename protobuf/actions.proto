@@ -187,7 +187,7 @@ message Result {
     MessagesListResponse messages_list_response = 23;
     SendMessageResponse send_message_response = 22;
 
-    // view messages
+    // message views
     MessageViewersResponse message_viewers_response = 34;
     ViewMessageResponse view_message_response = 33;
 
