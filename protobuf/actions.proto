@@ -69,11 +69,13 @@ message Action {
     DeleteMessageRequest delete_message_request = 36;
     MessageDetailsRequest message_details_request = 32;
     MessagesListRequest messages_list_request = 23;
-    MessageViewersRequest message_viewers_request = 34;
     SendMessageRequest send_message_request = 22;
+
+    // message views
+    MessageViewersRequest message_viewers_request = 34;
     ViewMessageRequest view_message_request = 33;
 
-    // reactions
+    // message reactions
     ReactionsRequest reactions_request = 44;
     SetMessageReactionRequest set_message_reaction_request = 43;
 
@@ -140,11 +142,13 @@ message Result {
     DeleteMessageResponse delete_message_response = 36;
     MessageDetailsResponse message_details_response = 32;
     MessagesListResponse messages_list_response = 23;
-    MessageViewersResponse message_viewers_response = 34;
     SendMessageResponse send_message_response = 22;
+
+    // message views
+    MessageViewersResponse message_viewers_response = 34;
     ViewMessageResponse view_message_response = 33;
 
-    // reactions
+    // message reactions
     ReactionsResponse reactions_response = 44;
     SetMessageReactionResponse set_message_reaction_response = 43;
 
