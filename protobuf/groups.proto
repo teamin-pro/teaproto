@@ -7,7 +7,7 @@ import "users.proto";
 
 message GroupMember {
   User user = 1;
-  uint32 role_id = 6;
+  uint32 group_role_id = 6;
   bool can_i_remove_this_member = 5;
 }
 
@@ -111,7 +111,7 @@ message CreateGroupMembersResponse {
 message UpdateGroupMemberRequest {
   string chat_id = 1;
   string user_id = 2; // uuid or "me"
-  uint32 role_id = 3;
+  uint32 group_role_id = 3;
 }
 
 message UpdateGroupMemberResponse {
