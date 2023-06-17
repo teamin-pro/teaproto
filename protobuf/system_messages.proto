@@ -30,6 +30,10 @@ message SystemMessage {
     repeated User users = 1;
   }
 
+  message WelcomeType {
+    string text = 1;
+  }
+
   User actor = 1;
   oneof type {
     ErrorMessageType error_message = 9;
@@ -38,6 +42,7 @@ message SystemMessage {
     GroupIconChangedType group_icon_changed = 14;
     UsersAddedToGroupType users_added_to_group = 12;
     UsersRemovedFromGroupType users_removed_from_group = 13;
+    WelcomeType welcome = 15;
   }
   string fallback_text = 2;
 }
