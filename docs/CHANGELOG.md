@@ -1,3 +1,6 @@
+## v1.17.1
+ - `SystemMessage.WelcomeType` was added
+
 ## v1.17.0
  - `GroupRolesXXX` renamed to `GroupDetailsXXX`
  - `UpdateGroupSettingsXXX` renamed to `UpdateGroupXXX`
