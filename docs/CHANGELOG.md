@@ -1,6 +1,12 @@
 ## v2.0.0
  - tasks api first version
 
+## v1.19.0
+ - errors emulator moved from `StateXXX` to `FakeErrorXXX`
+
+## v1.18.0
+ - `GroupMembersListResponse.roles` was removed. Use `GroupMembersListRequest` + `GroupDetailsRequest` in one request instead 
+
 ## v1.17.1
  - `SystemMessage.WelcomeType` was added
 

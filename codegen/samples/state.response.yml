@@ -3,8 +3,8 @@
   "results": [
     {
       "stateResponse": {
-        "now": "1609459200000",
-        "gtprotoVersion": "v1.15.2",
+        "now": "1609466584000",
+        "gtprotoVersion": "v1.19.0",
         "maxResultsOnPage": 10,
         "maxActionsInRequest": 10,
         "maxFileSize": 10485760,

@@ -4,15 +4,15 @@ package gtproto;
 
 import "auth.proto";
 
-// 3-in-one: server configuration / ping / errors emulator
-message StateRequest {
+message FakeErrorRequest {
   enum Mode {
-    NONE = 0;
-    RETURN_SERVER_ERROR = 1;
-    RETURN_INVALID_TOKEN = 2;
+    RETURN_SERVER_ERROR = 0;
+    RETURN_INVALID_TOKEN = 1;
   }
   Mode mode = 1;
 }
+
+message StateRequest {}
 
 message StateResponse {
   // server info

@@ -91,7 +91,6 @@ message GroupMembersListResponse {
   }
   repeated Error errors = 1;
   repeated GroupMember members = 2;
-  repeated GroupRole group_roles = 3;
 }
 
 message CreateGroupMembersRequest {

@@ -4,6 +4,7 @@ nav:
   - Basic usage: basics.md
   - Authentication: auth.md
   - State: state.md
+  - Groups: groups.md
   - Messaging: messaging.md
   - FAQ: faq.md
   - Changelog: CHANGELOG.md

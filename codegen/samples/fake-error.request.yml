@@ -1,0 +1,9 @@
+```json
+{
+  "actions": [
+    {
+      "fakeErrorRequest": {}
+    }
+  ]
+}
+```
