@@ -70,15 +70,13 @@ func chats() {
 							{
 								Id:                   1,
 								Title:                "Admin",
-								CanSendMessages:      true,
 								CanAddNewMembers:     true,
 								CanChangeInformation: true,
 								CanSetRoleIds:        []uint32{1, 2},
 							},
 							{
-								Id:              2,
-								Title:           "User",
-								CanSendMessages: true,
+								Id:    2,
+								Title: "User",
 							},
 						},
 					},
