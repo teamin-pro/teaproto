@@ -1,3 +1,6 @@
+## v1.19.0
+ - errors emulator moved from `StateXXX` to `FakeErrorXXX`
+
 ## v1.18.0
  - `GroupMembersListResponse.roles` was removed. Use `GroupMembersListRequest` + `GroupDetailsRequest` in one request instead 
 

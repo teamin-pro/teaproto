@@ -11,7 +11,7 @@ import (
 	"google.golang.org/protobuf/encoding/protojson"
 	"google.golang.org/protobuf/proto"
 
-	"github.com/gamarjoba-team/gtnode/generated/gtproto"
+	"github.com/gamarjoba-team/gtnode/gtproto/codegen/gtproto"
 )
 
 //go:embed gtproto/version.txt
@@ -127,19 +127,19 @@ func state() {
 		},
 	})
 
-	mustSave("state-server-error.request.yml", &gtproto.ClientRequest{
+	mustSave("fake-error.request.yml", &gtproto.ClientRequest{
 		Actions: []*gtproto.Action{
 			{
-				Request: &gtproto.Action_StateRequest{
-					StateRequest: &gtproto.StateRequest{
-						Mode: gtproto.StateRequest_RETURN_SERVER_ERROR,
+				Request: &gtproto.Action_FakeErrorRequest{
+					FakeErrorRequest: &gtproto.FakeErrorRequest{
+						Mode: gtproto.FakeErrorRequest_RETURN_SERVER_ERROR,
 					},
 				},
 			},
 		},
 	})
 
-	mustSave("state-server-error.response.yml", &gtproto.ServerResponse{
+	mustSave("fake-error.response.yml", &gtproto.ServerResponse{
 		Errors: []gtproto.ServerResponse_Error{
 			gtproto.ServerResponse_INTERNAL_SERVER_ERROR,
 		},
