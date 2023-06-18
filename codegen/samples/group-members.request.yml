@@ -1,0 +1,17 @@
+```json
+{
+  "actions": [
+    {
+      "groupMembersListRequest": {
+        "chatId": "f47ac10b-58cc-4372-a567-0e02b2c3d479",
+        "limit": 2
+      }
+    },
+    {
+      "groupDetailsRequest": {
+        "chatId": "f47ac10b-58cc-4372-a567-0e02b2c3d479"
+      }
+    }
+  ]
+}
+```

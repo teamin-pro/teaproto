@@ -1,3 +1,6 @@
+## v1.18.0
+ - `GroupMembersListResponse.roles` was removed. Use `GroupMembersListRequest` + `GroupDetailsRequest` in one request instead 
+
 ## v1.17.1
  - `SystemMessage.WelcomeType` was added
 

@@ -1,0 +1,67 @@
+```json
+{
+  "results": [
+    {
+      "groupMembersListResponse": {
+        "members": [
+          {
+            "user": {
+              "id": "a2f1f0d6-5b9e-4e0e-8d4a-8b5b7a0e0b0e",
+              "name": "Alice Smith",
+              "icon": {
+                "letters": "AS",
+                "color": "#ff0000"
+              },
+              "isMe": true,
+              "onlineStatus": {
+                "userId": "a2f1f0d6-5b9e-4e0e-8d4a-8b5b7a0e0b0e",
+                "status": "ONLINE"
+              }
+            },
+            "groupRoleId": 1,
+            "canIRemoveThisMember": true
+          },
+          {
+            "user": {
+              "id": "b2f1f0d6-5b9e-4e0e-8d4a-8b5b7a0e0b0e",
+              "name": "Bob Doe",
+              "icon": {
+                "letters": "BD",
+                "color": "#00ff00"
+              },
+              "onlineStatus": {
+                "userId": "b2f1f0d6-5b9e-4e0e-8d4a-8b5b7a0e0b0e",
+                "lastSeen": "1609466584000"
+              }
+            },
+            "groupRoleId": 2,
+            "canIRemoveThisMember": true
+          }
+        ]
+      }
+    },
+    {
+      "groupDetailsResponse": {
+        "groupRoles": [
+          {
+            "id": 1,
+            "title": "Admin",
+            "canSendMessages": true,
+            "canAddNewMembers": true,
+            "canChangeInformation": true,
+            "canSetRoleIds": [
+              1,
+              2
+            ]
+          },
+          {
+            "id": 2,
+            "title": "User",
+            "canSendMessages": true
+          }
+        ]
+      }
+    }
+  ]
+}
+```
