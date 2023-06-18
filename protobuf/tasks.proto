@@ -6,7 +6,7 @@ import "core.proto";
 import "users.proto";
 
 message TaskStatus {
-  uint32 id = 1; // unique id of the status in the folder
+  uint32 id = 1; // unique id of the status on the board
   uint32 sort_order = 2;
   string title = 3; // for example: "To Do", "In Progress", "Done".
 }
