@@ -54,7 +54,7 @@ message GroupDetailsResponse {
     INVALID_CHAT_ERROR = 1;
   }
   repeated Error errors = 1;
-  repeated GroupRole roles = 2;
+  repeated GroupRole group_roles = 2;
 }
 
 message GroupMembersListRequest {
@@ -75,7 +75,6 @@ message GroupMembersListResponse {
   }
   repeated Error errors = 1;
   repeated GroupMember members = 2;
-  repeated GroupRole roles = 3;
 }
 
 message RemoveGroupMemberRequest {
