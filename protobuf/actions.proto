@@ -82,6 +82,7 @@ message Action {
     // state
     BadgeRequest badge_request = 45;
     StateRequest state_request = 15; // works without ClientRequest.token
+    FakeErrorRequest fake_error_request = 51;
 
     // tokens
     DeleteTokenRequest delete_token_request = 14;

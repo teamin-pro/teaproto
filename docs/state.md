@@ -15,10 +15,10 @@ Can be used for checking server availability (ping). Works without authenticatio
 ## Emulate server errors
 
 ### Request
-{% include "../codegen/samples/state-server-error.request.yml" %}
+{% include "../codegen/samples/fake-error.request.yml" %}
 
 ### Response
-{% include "../codegen/samples/state-server-error.response.yml" %}
+{% include "../codegen/samples/fake-error.response.yml" %}
 
 ## Global badge
 Number of unread notifications. Should be displayed as a badge on 
