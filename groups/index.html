@@ -5,15 +5,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link rel="shortcut icon" href="../img/favicon.ico" />
-    <title>Messaging - GTProto</title>
+    <title>Groups - GTProto</title>
     <link rel="stylesheet" href="../css/theme.css" />
     <link rel="stylesheet" href="../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
     
       <script>
         // Current page data
-        var mkdocs_page_name = "Messaging";
-        var mkdocs_page_input_path = "messaging.md";
+        var mkdocs_page_name = "Groups";
+        var mkdocs_page_input_path = "groups.md";
         var mkdocs_page_url = null;
       </script>
     
@@ -52,14 +52,22 @@
                 <li class="toctree-l1"><a class="reference internal" href="../state/">State</a>
                 </li>
               </ul>
-              <ul>
-                <li class="toctree-l1"><a class="reference internal" href="../groups/">Groups</a>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="./">Groups</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#members-list">Members list</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#request">Request</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#response">Response</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
                 </li>
               </ul>
-              <ul class="current">
-                <li class="toctree-l1 current"><a class="reference internal current" href="./">Messaging</a>
-    <ul class="current">
-    </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../messaging/">Messaging</a>
                 </li>
               </ul>
               <ul>
@@ -84,7 +92,7 @@
         <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
     <li><a href=".." class="icon icon-home" aria-label="Docs"></a> &raquo;</li>
-      <li>Messaging</li>
+      <li>Groups</li>
     <li class="wy-breadcrumbs-aside">
     </li>
   </ul>
@@ -93,18 +101,99 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h3 id="sending-a-message-to-a-chat">Sending a message to a chat</h3>
-<p>More useful example. This request requires authentication and sends a message to a chat.</p>
-<pre><code class="language-shell">curl -X POST https://api.gamarjoba.team/ \
-  -H 'Content-Type: application/json' \
-  -d '{&quot;token&quot;:&quot;&lt;TOKEN&gt;&quot;,&quot;actions&quot;:[{&quot;sendMessageRequest&quot;:{&quot;chatId&quot;:&quot;&lt;CHAT_ID&gt;&quot;,&quot;text&quot;:&quot;&lt;MESSAGE_TEXT&gt;&quot;}}]}'
+                <h1 id="groups">Groups</h1>
+<h2 id="members-list">Members list</h2>
+<p>Recommended join two requests on one (members and group roles) to get full information about group members:</p>
+<h3 id="request">Request</h3>
+<pre><code class="language-json">{
+  &quot;actions&quot;: [
+    {
+      &quot;groupMembersListRequest&quot;: {
+        &quot;chatId&quot;: &quot;f47ac10b-58cc-4372-a567-0e02b2c3d479&quot;,
+        &quot;limit&quot;: 2
+      }
+    },
+    {
+      &quot;groupDetailsRequest&quot;: {
+        &quot;chatId&quot;: &quot;f47ac10b-58cc-4372-a567-0e02b2c3d479&quot;
+      }
+    }
+  ]
+}
+</code></pre>
+<h3 id="response">Response</h3>
+<pre><code class="language-json">{
+  &quot;results&quot;: [
+    {
+      &quot;groupMembersListResponse&quot;: {
+        &quot;members&quot;: [
+          {
+            &quot;user&quot;: {
+              &quot;id&quot;: &quot;a2f1f0d6-5b9e-4e0e-8d4a-8b5b7a0e0b0e&quot;,
+              &quot;name&quot;: &quot;Alice Smith&quot;,
+              &quot;icon&quot;: {
+                &quot;letters&quot;: &quot;AS&quot;,
+                &quot;color&quot;: &quot;#ff0000&quot;
+              },
+              &quot;isMe&quot;: true,
+              &quot;onlineStatus&quot;: {
+                &quot;userId&quot;: &quot;a2f1f0d6-5b9e-4e0e-8d4a-8b5b7a0e0b0e&quot;,
+                &quot;status&quot;: &quot;ONLINE&quot;
+              }
+            },
+            &quot;groupRoleId&quot;: 1,
+            &quot;canIRemoveThisMember&quot;: true
+          },
+          {
+            &quot;user&quot;: {
+              &quot;id&quot;: &quot;b2f1f0d6-5b9e-4e0e-8d4a-8b5b7a0e0b0e&quot;,
+              &quot;name&quot;: &quot;Bob Doe&quot;,
+              &quot;icon&quot;: {
+                &quot;letters&quot;: &quot;BD&quot;,
+                &quot;color&quot;: &quot;#00ff00&quot;
+              },
+              &quot;onlineStatus&quot;: {
+                &quot;userId&quot;: &quot;b2f1f0d6-5b9e-4e0e-8d4a-8b5b7a0e0b0e&quot;,
+                &quot;lastSeen&quot;: &quot;1609466584000&quot;
+              }
+            },
+            &quot;groupRoleId&quot;: 2,
+            &quot;canIRemoveThisMember&quot;: true
+          }
+        ]
+      }
+    },
+    {
+      &quot;groupDetailsResponse&quot;: {
+        &quot;groupRoles&quot;: [
+          {
+            &quot;id&quot;: 1,
+            &quot;title&quot;: &quot;Admin&quot;,
+            &quot;canSendMessages&quot;: true,
+            &quot;canAddNewMembers&quot;: true,
+            &quot;canChangeInformation&quot;: true,
+            &quot;canSetRoleIds&quot;: [
+              1,
+              2
+            ]
+          },
+          {
+            &quot;id&quot;: 2,
+            &quot;title&quot;: &quot;User&quot;,
+            &quot;canSendMessages&quot;: true
+          }
+        ]
+      }
+    }
+  ]
+}
 </code></pre>
               
             </div>
           </div><footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
-        <a href="../groups/" class="btn btn-neutral float-left" title="Groups"><span class="icon icon-circle-arrow-left"></span> Previous</a>
-        <a href="../faq/" class="btn btn-neutral float-right" title="FAQ">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../state/" class="btn btn-neutral float-left" title="State"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../messaging/" class="btn btn-neutral float-right" title="Messaging">Next <span class="icon icon-circle-arrow-right"></span></a>
     </div>
 
   <hr/>
@@ -127,10 +216,10 @@
   <span class="rst-current-version" data-toggle="rst-current-version">
     
     
-      <span><a href="../groups/" style="color: #fcfcfc">&laquo; Previous</a></span>
+      <span><a href="../state/" style="color: #fcfcfc">&laquo; Previous</a></span>
     
     
-      <span><a href="../faq/" style="color: #fcfcfc">Next &raquo;</a></span>
+      <span><a href="../messaging/" style="color: #fcfcfc">Next &raquo;</a></span>
     
   </span>
 </div>
