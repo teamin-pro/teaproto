@@ -1,3 +1,6 @@
+## v1.19.1
+ - remove `last_opened_chat_id` 
+
 ## v1.19.0
  - errors emulator moved from `StateXXX` to `FakeErrorXXX`
 
