@@ -179,6 +179,7 @@ message MessagesListRequest {
   // filters
   bool only_with_uploads = 6;
   bool skip_system_messages = 7;
+  bool skip_deleted_messages = 12;
   bool only_audio_uploads = 8;
 }
 
