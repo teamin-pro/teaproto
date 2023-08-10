@@ -1,6 +1,9 @@
 ## v2.0.0
  - tasks api first version
 
+## v1.19.2
+ - `MessagesListRequest.skip_deleted_messages`
+
 ## v1.19.1
  - remove `last_opened_chat_id` 
 
