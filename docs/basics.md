@@ -11,7 +11,7 @@ To initiate a synchronous workflow for actions:
 
 To initiate an asynchronous workflow for events:
 
- * The client must create a WebSocket connection to the endpoint https://api.gamarjoba.team/ws.
+ * The client must create a WebSocket connection to the endpoint [https://api.gamarjoba.team/ws](https://api.gamarjoba.team/ws).
  * The client sends a `WebsocketAuthRequest` message.
  * The server starts sending `WebsocketEvent` messages.
 
