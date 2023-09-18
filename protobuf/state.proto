@@ -44,6 +44,7 @@ message StateResponse {
   uint32 max_task_title_length = 19;
   uint32 max_task_description_length = 16;
   uint32 max_board_title_length = 17;
+  uint32 max_task_members_number = 20;
 
   // notifications
   bool push_notifications_enabled = 9; // push notifications are configured and enabled on server

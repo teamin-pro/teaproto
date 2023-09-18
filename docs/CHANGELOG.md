@@ -1,3 +1,6 @@
+## v2.1.2
+ - `StateResponse.max_task_members_number`
+
 ## v2.1.1
  - `TaskMemberParams`
 
