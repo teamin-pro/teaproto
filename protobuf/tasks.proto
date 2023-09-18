@@ -27,7 +27,7 @@ message TaskListRequest {
 message TaskListResponse {
   enum Error {
     UNKNOWN_ERROR = 0;
-    INVALID_CHAT_ID_ERROR = 1;
+    INVALID_CHAT_ERROR = 1;
     INVALID_LIMIT_ERROR = 2;
   }
   repeated Error errors = 1;
@@ -45,7 +45,7 @@ message CreateTaskRequest {
 message CreateTaskResponse {
   enum Error {
     UNKNOWN_ERROR = 0;
-    INVALID_PARENT_CHAT_ID_ERROR = 1;
+    INVALID_PARENT_CHAT_ERROR = 1;
     TITLE_AND_DESCRIPTION_EMPTY_ERROR = 2;
     TITLE_IS_TOO_LONG_ERROR = 3; // see: StateResponse.max_task_title_length
     DESCRIPTION_IS_TOO_LONG_ERROR = 4; // see: StateResponse.max_task_description_length
@@ -72,7 +72,7 @@ message UpdateTaskRequest {
 message UpdateTaskResponse {
   enum Error {
     UNKNOWN_ERROR = 0;
-    INVALID_CHAT_ID_ERROR = 1;
+    INVALID_CHAT_ERROR = 1;
     NOT_ALLOWED_TO_UPDATE_TASK_ERROR = 2;
     TITLE_IS_TOO_LONG_ERROR = 3; // see: StateResponse.max_task_title_length
     DESCRIPTION_IS_TOO_LONG_ERROR = 4; // see: StateResponse.max_task_description_length
@@ -89,7 +89,7 @@ message DeleteTaskRequest {
 message DeleteTaskResponse {
   enum Error {
     UNKNOWN_ERROR = 0;
-    INVALID_CHAT_ID_ERROR = 1;
+    INVALID_CHAT_ERROR = 1;
     NOT_ALLOWED_TO_DELETE_TASK_ERROR = 2;
   }
   repeated Error errors = 1;
@@ -102,22 +102,57 @@ message TaskMemberListRequest {
 message TaskMemberListResponse {
   enum Error {
     UNKNOWN_ERROR = 0;
-    INVALID_CHAT_ID_ERROR = 1;
+    INVALID_CHAT_ERROR = 1;
   }
   repeated Error errors = 1;
   repeated TaskMember members = 2;
 }
 
-message WatchTaskRequest {
+message CreateTaskMembersRequest {
   string chat_id = 1;
-  bool watch = 2; // if false, unwatch
+  repeated string user_ids = 2;
 }
 
-message WatchTaskResponse {
+message CreateTaskMembersResponse {
   enum Error {
     UNKNOWN_ERROR = 0;
     INVALID_CHAT_ERROR = 1;
+    NOT_ALLOWED_TO_ADD_MEMBERS_ERROR = 2;
+  }
+  repeated Error errors = 1;
+  repeated TaskMember members = 2;
+}
+
+message UpdateTaskMemberRequest {
+  string chat_id = 1;
+  string user_id = 2; // uuid or "me"
+
+  bool update_is_assignee = 3;
+  bool is_assignee = 4;
+}
+
+message UpdateTaskMemberResponse {
+  enum Error {
+    UNKNOWN_ERROR = 0;
+    INVALID_CHAT_ERROR = 1;
+    INVALID_USER_ERROR = 2;
+    UPDATE_TASK_MEMBER_NOT_ALLOWED_ERROR = 3;
   }
   repeated Error errors = 1;
   TaskMember member = 2;
+}
+
+message RemoveTaskMemberRequest {
+  string chat_id = 1;
+  string user_id = 2; // uuid or "me"
+}
+
+message RemoveTaskMemberResponse {
+  enum Error {
+    UNKNOWN_ERROR = 0;
+    INVALID_CHAT_ERROR = 1;
+    INVALID_USER_ERROR = 2;
+    REMOVE_TASK_MEMBER_NOT_ALLOWED_ERROR = 3;
+  }
+  repeated Error errors = 1;
 }

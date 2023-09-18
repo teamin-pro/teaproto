@@ -80,7 +80,9 @@ message Action {
 
     // tasks members
     TaskMemberListRequest task_member_list_request = 66;
-    WatchTaskRequest watch_task_request = 67;
+    CreateTaskMembersRequest create_task_members_request = 67;
+    UpdateTaskMemberRequest update_task_member_request = 68;
+    RemoveTaskMemberRequest remove_task_member_request = 69;
 
     // devices
     CreateOrUpdateDeviceRequest create_or_update_device_request = 10;
@@ -175,7 +177,9 @@ message Result {
 
     // tasks members
     TaskMemberListResponse task_member_list_response = 66;
-    WatchTaskResponse watch_task_response = 67;
+    CreateTaskMembersResponse create_task_members_response = 67;
+    UpdateTaskMemberResponse update_task_member_response = 68;
+    RemoveTaskMemberResponse remove_task_member_response = 69;
 
     // devices
     CreateOrUpdateDeviceResponse create_or_update_device_response = 10;

@@ -1,3 +1,7 @@
+## v2.1.0
+ - `WatchTaskRequest` removed
+ - task members requests
+
 ## v2.0.0
  - tasks api first version
 
