@@ -35,11 +35,16 @@ message TaskListResponse {
   repeated TaskStatus task_statuses = 3;
 }
 
+message TaskMemberParams {
+  string user_id = 1; // uuid or "me"
+  bool is_assignee = 2;
+}
+
 message CreateTaskRequest {
   string parent_chat_id = 1;
   string title = 2;
   string description = 3;
-  repeated string assignee_ids = 4;
+  repeated TaskMemberParams member_params = 5;
 }
 
 message CreateTaskResponse {
@@ -54,6 +59,7 @@ message CreateTaskResponse {
   }
   repeated Error errors = 1;
   Chat chat = 2;
+  repeated TaskMember members = 3;
 }
 
 message UpdateTaskRequest {
@@ -67,6 +73,9 @@ message UpdateTaskRequest {
 
   bool update_task_status_id = 6;
   uint32 task_status_id = 7;
+
+  repeated TaskMemberParams member_params = 8;
+  repeated string remove_members = 9;
 }
 
 message UpdateTaskResponse {
@@ -77,9 +86,11 @@ message UpdateTaskResponse {
     TITLE_IS_TOO_LONG_ERROR = 3; // see: StateResponse.max_task_title_length
     DESCRIPTION_IS_TOO_LONG_ERROR = 4; // see: StateResponse.max_task_description_length
     TITLE_AND_DESCRIPTION_EMPTY_ERROR = 5;
+    NOT_ALLOWED_TO_UPDATE_TASK_MEMBERS_ERROR = 6;
   }
   repeated Error errors = 1;
   Chat chat = 2;
+  repeated TaskMember members = 3;
 }
 
 message DeleteTaskRequest {
@@ -106,40 +117,6 @@ message TaskMemberListResponse {
   }
   repeated Error errors = 1;
   repeated TaskMember members = 2;
-}
-
-message CreateTaskMembersRequest {
-  string chat_id = 1;
-  repeated string user_ids = 2;
-}
-
-message CreateTaskMembersResponse {
-  enum Error {
-    UNKNOWN_ERROR = 0;
-    INVALID_CHAT_ERROR = 1;
-    NOT_ALLOWED_TO_ADD_MEMBERS_ERROR = 2;
-  }
-  repeated Error errors = 1;
-  repeated TaskMember members = 2;
-}
-
-message UpdateTaskMemberRequest {
-  string chat_id = 1;
-  string user_id = 2; // uuid or "me"
-
-  bool update_is_assignee = 3;
-  bool is_assignee = 4;
-}
-
-message UpdateTaskMemberResponse {
-  enum Error {
-    UNKNOWN_ERROR = 0;
-    INVALID_CHAT_ERROR = 1;
-    INVALID_USER_ERROR = 2;
-    UPDATE_TASK_MEMBER_NOT_ALLOWED_ERROR = 3;
-  }
-  repeated Error errors = 1;
-  TaskMember member = 2;
 }
 
 message RemoveTaskMemberRequest {

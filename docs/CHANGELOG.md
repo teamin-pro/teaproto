@@ -1,3 +1,6 @@
+## v2.1.1
+ - `TaskMemberParams`
+
 ## v2.1.0
  - `WatchTaskRequest` removed
  - task members requests
