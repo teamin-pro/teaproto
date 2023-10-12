@@ -11,6 +11,9 @@
 ## v2.0.0
  - tasks api first version
 
+## v1.19.3
+ - `EmailCodeAuthRequest.force_send_by_bot`
+
 ## v1.19.2
  - `MessagesListRequest.skip_deleted_messages`
 
