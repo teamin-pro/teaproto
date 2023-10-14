@@ -75,10 +75,12 @@ message Action {
     // tasks
     CreateTaskRequest create_task_request = 54;
     DeleteTaskRequest delete_task_request = 56;
-    RemoveTaskMemberRequest remove_task_member_request = 69;
     TaskListRequest task_list_request = 53;
-    TaskMemberListRequest task_member_list_request = 66;
     UpdateTaskRequest update_task_request = 55;
+
+    // task members
+    RemoveTaskMemberRequest remove_task_member_request = 69;
+    TaskMemberListRequest task_member_list_request = 66;
 
     // devices
     CreateOrUpdateDeviceRequest create_or_update_device_request = 10;
@@ -168,10 +170,12 @@ message Result {
     // tasks
     CreateTaskResponse create_task_response = 54;
     DeleteTaskResponse delete_task_response = 56;
-    RemoveTaskMemberResponse remove_task_member_response = 69;
     TaskListResponse task_list_response = 53;
-    TaskMemberListResponse task_member_list_response = 66;
     UpdateTaskResponse update_task_response = 55;
+
+    // task members
+    RemoveTaskMemberResponse remove_task_member_response = 69;
+    TaskMemberListResponse task_member_list_response = 66;
 
     // devices
     CreateOrUpdateDeviceResponse create_or_update_device_response = 10;
