@@ -66,7 +66,7 @@ message Action {
     CreateBoardRequest create_board_request = 63;
     UpdateBoardRequest update_board_request = 64;
 
-    // boards members
+    // board members
     BoardMembersListRequest board_members_list_request = 58;
     CreateBoardMembersRequest create_board_members_request = 60;
     RemoveBoardMemberRequest remove_board_member_request = 62;
@@ -159,7 +159,7 @@ message Result {
     CreateBoardResponse create_board_response = 63;
     UpdateBoardResponse update_board_response = 64;
 
-    // boards members
+    // board members
     BoardMembersListResponse board_members_list_response = 58;
     CreateBoardMembersResponse create_board_members_response = 60;
     RemoveBoardMemberResponse remove_board_member_response = 62;
