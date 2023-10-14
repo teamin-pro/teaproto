@@ -55,7 +55,7 @@ message Action {
     GroupDetailsRequest group_details_request = 50;
     UpdateGroupRequest update_group_request = 29;
 
-    // groups members
+    // group members
     CreateGroupMembersRequest create_group_members_request = 38;
     GroupMembersListRequest group_members_list_request = 35;
     RemoveGroupMemberRequest remove_group_member_request = 37;
