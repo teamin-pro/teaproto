@@ -52,6 +52,7 @@ message ChatUploadsResponse {
     UNKNOWN_ERROR = 0;
     INVALID_LIMIT_ERROR = 1;
     INVALID_CHAT_ERROR = 2;
+    ACCESS_TO_CHAT_DENIED_ERROR = 3;
   }
   repeated Error errors = 1;
   repeated Upload uploads = 2;

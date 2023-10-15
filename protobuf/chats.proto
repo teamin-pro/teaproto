@@ -31,6 +31,7 @@ message ChatEventResponse {
   enum Error {
     UNKNOWN_ERROR = 0;
     INVALID_RECIPIENT_ERROR = 1;
+    ACCESS_TO_CHAT_DENIED_ERROR = 2;
   }
   repeated Error errors = 1;
   ChatEvent chat_event = 2;
@@ -65,6 +66,7 @@ message PinChatResponse {
   enum Error {
     UNKNOWN_ERROR = 0;
     INVALID_RECIPIENT_ERROR = 1;
+    ACCESS_TO_CHAT_DENIED_ERROR = 2;
   }
   repeated Error errors = 1;
   Chat chat = 2;

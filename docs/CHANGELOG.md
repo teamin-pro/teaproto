@@ -1,5 +1,9 @@
 ## v2.1.3
- - `SendMessageResponse.ACCESS_DENIED_ERROR`
+ - `ChatEventResponse.ACCESS_TO_CHAT_DENIED_ERROR`
+ - `ChatUploadsResponse.ACCESS_TO_CHAT_DENIED_ERROR`
+ - `MessagesListResponse.ACCESS_TO_CHAT_DENIED_ERROR`
+ - `PinChatResponse.ACCESS_TO_CHAT_DENIED_ERROR`
+ - `SendMessageResponse.ACCESS_TO_CHAT_DENIED_ERROR`
 
 ## v2.1.2
  - `StateResponse.max_task_members_number`
