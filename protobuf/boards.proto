@@ -133,7 +133,7 @@ message RemoveBoardMemberResponse {
     UNKNOWN_ERROR = 0;
     INVALID_CHAT_ERROR = 1;
     INVALID_USER_ERROR = 2;
-    DELETE_BOARD_MEMBER_NOT_ALLOWED_ERROR = 3;
+    REMOVE_BOARD_MEMBER_NOT_ALLOWED_ERROR = 3;
   }
   repeated Error errors = 1;
 }
