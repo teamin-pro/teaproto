@@ -1,3 +1,6 @@
+## v2.1.3
+ - `SendMessageResponse.ACCESS_DENIED_ERROR`
+
 ## v2.1.2
  - `StateResponse.max_task_members_number`
 
