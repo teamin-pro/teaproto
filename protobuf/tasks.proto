@@ -28,6 +28,7 @@ message TaskListResponse {
   enum Error {
     UNKNOWN_ERROR = 0;
     INVALID_CHAT_ERROR = 1;
+    ACCESS_DENIED_ERROR = 3;
     INVALID_LIMIT_ERROR = 2;
   }
   repeated Error errors = 1;
