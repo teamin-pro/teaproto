@@ -54,7 +54,7 @@ message CreateTaskResponse {
     TITLE_AND_DESCRIPTION_EMPTY_ERROR = 2;
     TITLE_IS_TOO_LONG_ERROR = 3; // see: StateResponse.max_task_title_length
     DESCRIPTION_IS_TOO_LONG_ERROR = 4; // see: StateResponse.max_task_description_length
-    TOO_MANY_ASSIGNEES_ERROR = 5; // see: StateResponse.max_task_assignees
+    TOO_MANY_TASK_MEMBERS = 5; // see: StateResponse.max_task_members
     NOT_ALLOWED_TO_CREATE_TASK_ERROR = 6;
   }
   repeated Error errors = 1;
