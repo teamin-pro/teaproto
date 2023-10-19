@@ -33,7 +33,6 @@ message TaskListResponse {
   }
   repeated Error errors = 1;
   repeated Task tasks = 2;
-  repeated TaskStatus task_statuses = 3;
 }
 
 message TaskMemberParams {
