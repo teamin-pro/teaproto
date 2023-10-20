@@ -43,8 +43,6 @@ message Task {
   string title = 6; // one of the title or description must be set
   string description = 7; // one of the title or description must be set
   uint32 task_status_id = 8;
-
-  uint64 created_at = 9;
 }
 
 // Board is a collection of task chats (for now. In future it can be a collection of any chats)
@@ -61,6 +59,7 @@ message Chat {
 
   string parent_id = 8; // optional, present only for task chats
   ChatType parent_type = 9; // optional, present only for task chats and always is BOARD for now
+  uint64 created_at = 20;
 
   string title = 6;
   Icon icon = 7;

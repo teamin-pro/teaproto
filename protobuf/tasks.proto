@@ -11,10 +11,14 @@ message TaskStatus {
   string title = 3; // for example: "To Do", "In Progress", "Done".
 }
 
+message TaskRole {
+  uint32 id = 1; // value is unique inside group chat
+  string title = 2; // human readable title
+}
+
 message TaskMember {
   User user = 1;
-  bool is_assignee = 2;
-  bool is_creator = 3;
+  uint32 task_role_id = 4;
 }
 
 message TaskListRequest {
