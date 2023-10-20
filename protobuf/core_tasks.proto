@@ -1,0 +1,29 @@
+syntax = "proto3";
+
+package gtproto;
+
+import "users.proto";
+
+message TaskStatus {
+  uint32 id = 1; // unique id of the status on the board
+  uint32 sort_order = 2;
+  string title = 3; // for example: "To Do", "In Progress", "Done".
+}
+
+message TaskRole {
+  uint32 id = 1; // value is unique inside task chat
+  string title = 2; // human readable title
+}
+
+message TaskMember {
+  User user = 1;
+  uint32 task_role_id = 4;
+}
+
+// Task is a task chat
+message Task {
+  string title = 6; // one of the title or description must be set
+  string description = 7; // one of the title or description must be set
+  uint32 task_status_id = 8;
+  repeated TaskMember members = 9; // active task members
+}

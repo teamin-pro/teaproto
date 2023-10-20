@@ -3,23 +3,7 @@ syntax = "proto3";
 package gtproto;
 
 import "core.proto";
-import "users.proto";
-
-message TaskStatus {
-  uint32 id = 1; // unique id of the status on the board
-  uint32 sort_order = 2;
-  string title = 3; // for example: "To Do", "In Progress", "Done".
-}
-
-message TaskRole {
-  uint32 id = 1; // value is unique inside group chat
-  string title = 2; // human readable title
-}
-
-message TaskMember {
-  User user = 1;
-  uint32 task_role_id = 4;
-}
+import "core_tasks.proto";
 
 message TaskListRequest {
   string parent_chat_id = 1; // any task should have a parent chat for now

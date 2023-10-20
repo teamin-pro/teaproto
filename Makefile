@@ -38,6 +38,7 @@ go-protobuf: version
 		--go_opt=Mcommands.proto=./$(PROTOBUF_PACKAGE) \
 		--go_opt=Mcommons.proto=./$(PROTOBUF_PACKAGE) \
 		--go_opt=Mcore.proto=./$(PROTOBUF_PACKAGE) \
+		--go_opt=Mcore_tasks.proto=./$(PROTOBUF_PACKAGE) \
 		--go_opt=Mdevices.proto=./$(PROTOBUF_PACKAGE) \
 		--go_opt=Mgroup_chats.proto=./$(PROTOBUF_PACKAGE) \
 		--go_opt=Mgroups.proto=./$(PROTOBUF_PACKAGE) \

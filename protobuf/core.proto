@@ -7,6 +7,7 @@ import "commons.proto";
 import "system_messages.proto";
 import "uploads.proto";
 import "users.proto";
+import "core_tasks.proto";
 
 // Example of chat list
 // ====================
@@ -33,16 +34,6 @@ message Group {
   string title = 2;
   Icon icon = 3;
   uint32 num_members = 4; // read only computed field
-}
-
-// Task is a task chat
-message Task {
-  User creator = 4; // user who created the Task
-  repeated User assignees = 5; // users who are assigned to the Task. See: StateResponse.max_task_assignees
-
-  string title = 6; // one of the title or description must be set
-  string description = 7; // one of the title or description must be set
-  uint32 task_status_id = 8;
 }
 
 // Board is a collection of task chats (for now. In future it can be a collection of any chats)
