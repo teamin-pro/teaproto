@@ -25,7 +25,6 @@ message TaskListResponse {
 
 message TaskMemberParams {
   string user_id = 1; // uuid or "me"
-  bool is_assignee = 2;
 }
 
 message CreateTaskRequest {

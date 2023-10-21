@@ -13,6 +13,7 @@ message TaskStatus {
 message TaskRole {
   uint32 id = 1; // value is unique inside task chat
   string title = 2; // human readable title
+  bool can_delete_task = 3;
 }
 
 message TaskMember {
@@ -25,5 +26,6 @@ message Task {
   string title = 6; // one of the title or description must be set
   string description = 7; // one of the title or description must be set
   uint32 task_status_id = 8;
+  bool can_i_delete_this_task = 10;
   repeated TaskMember members = 9; // active task members
 }
