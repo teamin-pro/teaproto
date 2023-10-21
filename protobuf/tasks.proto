@@ -73,6 +73,7 @@ message UpdateTaskResponse {
     NOT_ALLOWED_TO_UPDATE_TASK_ERROR = 2;
     TITLE_IS_TOO_LONG_ERROR = 3; // see: StateResponse.max_task_title_length
     DESCRIPTION_IS_TOO_LONG_ERROR = 4; // see: StateResponse.max_task_description_length
+    INVALID_TASK_STATUS_ID_ERROR = 7;
     TITLE_AND_DESCRIPTION_EMPTY_ERROR = 5;
     NOT_ALLOWED_TO_UPDATE_TASK_MEMBERS_ERROR = 6;
   }
