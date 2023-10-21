@@ -70,6 +70,7 @@ message GroupDetailsResponse {
     ACCESS_DENIED_ERROR = 2;
   }
   repeated Error errors = 1;
+  Chat chat = 3;
   repeated GroupRole group_roles = 2;
 }
 

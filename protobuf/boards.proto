@@ -34,7 +34,9 @@ message BoardDetailsResponse {
     ACCESS_TO_CHAT_DENIED_ERROR = 2;
   }
   repeated Error errors = 1;
+  Chat chat = 4;
   repeated BoardRole board_roles = 2;
+  repeated TaskRole task_roles = 5;
   repeated TaskStatus task_statuses = 3;
 }
 
