@@ -54,6 +54,7 @@ message Action {
     CreateGroupRequest create_group_request = 26;
     GroupDetailsRequest group_details_request = 50;
     UpdateGroupRequest update_group_request = 29;
+    DeleteGroupRequest delete_group_request = 65;
 
     // group members
     CreateGroupMembersRequest create_group_members_request = 38;
@@ -149,6 +150,7 @@ message Result {
     CreateGroupResponse create_group_response = 26;
     GroupDetailsResponse group_details_response = 50;
     UpdateGroupResponse update_group_response = 29;
+    DeleteGroupResponse delete_group_response = 65;
 
     // group members
     CreateGroupMembersResponse create_group_members_response = 38;
