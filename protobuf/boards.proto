@@ -3,25 +3,8 @@ syntax = "proto3";
 package gtproto;
 
 import "core.proto";
+import "core_boards.proto";
 import "core_tasks.proto";
-import "users.proto";
-
-// Roles are predefined on server side. In future we can add custom roles via API.
-message BoardRole {
-  uint32 id = 1; // value is unique inside board
-  string title = 2; // human readable title
-  bool can_add_new_members = 11;
-  bool can_change_information = 12; // title, icon
-  bool can_delete_board = 14;
-  repeated uint32 can_set_role_ids = 13;
-  bool can_create_tasks = 15;
-}
-
-message BoardMember {
-  User user = 1;
-  uint32 board_role_id = 6;
-  bool can_i_remove_this_member = 5;
-}
 
 message BoardDetailsRequest {
   string chat_id = 1;

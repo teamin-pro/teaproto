@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package gtproto;
 
-import "users.proto";
+import "core_users.proto";
 
 message TaskStatus {
   uint32 id = 1; // unique id of the status on the board

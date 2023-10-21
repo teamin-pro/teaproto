@@ -3,11 +3,13 @@ syntax = "proto3";
 package gtproto;
 
 import "commands.proto";
-import "commons.proto";
+import "core_boards.proto";
+import "core_groups.proto";
+import "core_images.proto";
+import "core_tasks.proto";
+import "core_users.proto";
 import "system_messages.proto";
 import "uploads.proto";
-import "users.proto";
-import "core_tasks.proto";
 
 // Example of chat list
 // ====================
@@ -27,20 +29,6 @@ enum ChatType {
   GROUP = 2;
   TASK = 3;
   BOARD = 4;
-}
-
-// Group is a group chat
-message Group {
-  string title = 2;
-  Icon icon = 3;
-  uint32 num_members = 4; // read only computed field
-}
-
-// Board is a collection of task chats (for now. In future it can be a collection of any chats)
-message Board {
-  string title = 1;
-  Icon icon = 2;
-  uint32 num_members = 3; // read only computed field
 }
 
 // Chat is a chat in chat list. It can be direct chat, group chat, task chat or board

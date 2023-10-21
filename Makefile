@@ -36,9 +36,12 @@ go-protobuf: version
 		--go_opt=Mchat_events.proto=./$(PROTOBUF_PACKAGE) \
 		--go_opt=Mchats.proto=./$(PROTOBUF_PACKAGE) \
 		--go_opt=Mcommands.proto=./$(PROTOBUF_PACKAGE) \
-		--go_opt=Mcommons.proto=./$(PROTOBUF_PACKAGE) \
 		--go_opt=Mcore.proto=./$(PROTOBUF_PACKAGE) \
+		--go_opt=Mcore_boards.proto=./$(PROTOBUF_PACKAGE) \
+		--go_opt=Mcore_groups.proto=./$(PROTOBUF_PACKAGE) \
+		--go_opt=Mcore_images.proto=./$(PROTOBUF_PACKAGE) \
 		--go_opt=Mcore_tasks.proto=./$(PROTOBUF_PACKAGE) \
+		--go_opt=Mcore_users.proto=./$(PROTOBUF_PACKAGE) \
 		--go_opt=Mdevices.proto=./$(PROTOBUF_PACKAGE) \
 		--go_opt=Mgroup_chats.proto=./$(PROTOBUF_PACKAGE) \
 		--go_opt=Mgroups.proto=./$(PROTOBUF_PACKAGE) \

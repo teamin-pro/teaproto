@@ -2,8 +2,8 @@ syntax = "proto3";
 
 package gtproto;
 
-import "commons.proto";
-import "users.proto";
+import "core_images.proto";
+import "core_users.proto";
 
 message SystemMessage {
   message ErrorMessageType {

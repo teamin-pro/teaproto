@@ -6,6 +6,7 @@ import "auth.proto";
 import "boards.proto";
 import "chats.proto";
 import "core.proto";
+import "core_users.proto";
 import "devices.proto";
 import "groups.proto";
 import "messages.proto";

@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package gtproto;
 
-import "commons.proto";
+import "core_images.proto";
 
 enum UploadType {
   UT_FILE = 0;
