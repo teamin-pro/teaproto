@@ -18,7 +18,6 @@ message BoardRole {
   string title = 2; // human readable title
   bool can_add_new_members = 11;
   bool can_change_information = 12; // title, icon
-  bool can_delete_board = 14;
   repeated uint32 can_set_role_ids = 13;
   bool can_create_tasks = 15;
 }
