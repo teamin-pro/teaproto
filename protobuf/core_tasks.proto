@@ -26,6 +26,6 @@ message Task {
   string title = 6; // one of the title or description must be set
   string description = 7; // one of the title or description must be set
   uint32 task_status_id = 8;
-  bool can_i_delete_this_task = 10;
-  repeated TaskMember members = 9; // active task members
+  uint32 num_members = 11; // read only computed field
+  bool can_i_delete_this_task = 10; // read only computed field
 }
