@@ -102,7 +102,7 @@ message UpdateBoardMemberResponse {
     UNKNOWN_ERROR = 0;
     INVALID_CHAT_ERROR = 1;
     INVALID_USER_ERROR = 2;
-    UPDATE_BOARD_MEMBER_NOT_ALLOWED_ERROR = 3;
+    NOT_ALLOWED_TO_UPDATE_BOARD_MEMBER_ERROR = 6;
   }
   repeated Error errors = 1;
   BoardMember member = 2;
@@ -118,7 +118,7 @@ message RemoveBoardMemberResponse {
     UNKNOWN_ERROR = 0;
     INVALID_CHAT_ERROR = 1;
     INVALID_USER_ERROR = 2;
-    REMOVE_BOARD_MEMBER_NOT_ALLOWED_ERROR = 3;
+    NOT_ALLOWED_TO_REMOVE_BOARD_MEMBER_ERROR = 3;
   }
   repeated Error errors = 1;
 }

@@ -1,0 +1,48 @@
+syntax = "proto3";
+
+package gtproto;
+
+import "core_tasks.proto";
+
+message TaskMemberListRequest {
+  string chat_id = 1;
+}
+
+message TaskMemberListResponse {
+  enum Error {
+    UNKNOWN_ERROR = 0;
+    INVALID_CHAT_ERROR = 1;
+  }
+  repeated Error errors = 1;
+  repeated TaskMember members = 2;
+}
+
+message RemoveTaskMemberRequest {
+  string chat_id = 1;
+  string user_id = 2; // uuid or "me"
+}
+
+message RemoveTaskMemberResponse {
+  enum Error {
+    UNKNOWN_ERROR = 0;
+    INVALID_CHAT_ERROR = 1;
+    INVALID_USER_ERROR = 2;
+    NOT_ALLOWED_TO_REMOVE_TASK_MEMBER_ERROR = 3;
+  }
+  repeated Error errors = 1;
+}
+
+message CreateOrUpdateTaskMembersRequest {
+  string chat_id = 1;
+  repeated TaskMemberUpdate members = 2;
+}
+
+message CreateOrUpdateTaskMembersResponse {
+  enum Error {
+    UNKNOWN_ERROR = 0;
+    INVALID_CHAT_ERROR = 1;
+    NOT_ALLOWED_TO_UPDATE_TASK_MEMBERS_ERROR = 6;
+  }
+  repeated Error errors = 1;
+  repeated TaskMember new_or_updated_members = 2;
+}

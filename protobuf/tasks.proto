@@ -23,16 +23,11 @@ message TaskListResponse {
   repeated Chat chats = 2;
 }
 
-message TaskMemberParams {
-  string user_id = 1; // uuid or "me"
-  uint32 task_role_id = 2; // 0 = default role
-}
-
 message CreateTaskRequest {
   string parent_chat_id = 1;
   string title = 2;
   string description = 3;
-  repeated TaskMemberParams member_params = 5;
+  repeated TaskMemberUpdate members = 5;
 }
 
 message CreateTaskResponse {
@@ -59,11 +54,7 @@ message UpdateTaskRequest {
   bool update_description = 4;
   string description = 5;
 
-  bool update_task_status_id = 6;
   uint32 task_status_id = 7;
-
-  repeated TaskMemberParams member_params = 8;
-  repeated string remove_members = 9;
 }
 
 message UpdateTaskResponse {
@@ -75,7 +66,6 @@ message UpdateTaskResponse {
     DESCRIPTION_IS_TOO_LONG_ERROR = 4; // see: StateResponse.max_task_description_length
     INVALID_TASK_STATUS_ID_ERROR = 7;
     TITLE_AND_DESCRIPTION_EMPTY_ERROR = 5;
-    NOT_ALLOWED_TO_UPDATE_TASK_MEMBERS_ERROR = 6;
   }
   repeated Error errors = 1;
   Chat chat = 2;
@@ -90,34 +80,6 @@ message DeleteTaskResponse {
     UNKNOWN_ERROR = 0;
     INVALID_CHAT_ERROR = 1;
     NOT_ALLOWED_TO_DELETE_TASK_ERROR = 2;
-  }
-  repeated Error errors = 1;
-}
-
-message TaskMemberListRequest {
-  string chat_id = 1;
-}
-
-message TaskMemberListResponse {
-  enum Error {
-    UNKNOWN_ERROR = 0;
-    INVALID_CHAT_ERROR = 1;
-  }
-  repeated Error errors = 1;
-  repeated TaskMember members = 2;
-}
-
-message RemoveTaskMemberRequest {
-  string chat_id = 1;
-  string user_id = 2; // uuid or "me"
-}
-
-message RemoveTaskMemberResponse {
-  enum Error {
-    UNKNOWN_ERROR = 0;
-    INVALID_CHAT_ERROR = 1;
-    INVALID_USER_ERROR = 2;
-    REMOVE_TASK_MEMBER_NOT_ALLOWED_ERROR = 3;
   }
   repeated Error errors = 1;
 }

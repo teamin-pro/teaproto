@@ -44,11 +44,13 @@ go-protobuf: version
 		--go_opt=Mcore_users.proto=./$(PROTOBUF_PACKAGE) \
 		--go_opt=Mdevices.proto=./$(PROTOBUF_PACKAGE) \
 		--go_opt=Mgroup_chats.proto=./$(PROTOBUF_PACKAGE) \
+		--go_opt=Mgroup_members.proto=./$(PROTOBUF_PACKAGE) \
 		--go_opt=Mgroups.proto=./$(PROTOBUF_PACKAGE) \
 		--go_opt=Mmessages.proto=./$(PROTOBUF_PACKAGE) \
 		--go_opt=Mreactions.proto=./$(PROTOBUF_PACKAGE) \
 		--go_opt=Mstate.proto=./$(PROTOBUF_PACKAGE) \
 		--go_opt=Msystem_messages.proto=./$(PROTOBUF_PACKAGE) \
+		--go_opt=Mtask_members.proto=./$(PROTOBUF_PACKAGE) \
 		--go_opt=Mtasks.proto=./$(PROTOBUF_PACKAGE) \
 		--go_opt=Mtokens.proto=./$(PROTOBUF_PACKAGE) \
 		--go_opt=Muploads.proto=./$(PROTOBUF_PACKAGE) \
