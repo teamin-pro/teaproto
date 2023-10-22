@@ -25,6 +25,7 @@ message TaskListResponse {
 
 message TaskMemberParams {
   string user_id = 1; // uuid or "me"
+  uint32 task_role_id = 2; // 0 = default role
 }
 
 message CreateTaskRequest {
