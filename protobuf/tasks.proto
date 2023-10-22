@@ -46,7 +46,7 @@ message CreateTaskResponse {
   }
   repeated Error errors = 1;
   Chat chat = 2;
-  repeated TaskMember members = 3;
+  // TODO: create from message
 }
 
 message UpdateTaskRequest {
@@ -78,7 +78,6 @@ message UpdateTaskResponse {
   }
   repeated Error errors = 1;
   Chat chat = 2;
-  repeated TaskMember members = 3;
 }
 
 message DeleteTaskRequest {
