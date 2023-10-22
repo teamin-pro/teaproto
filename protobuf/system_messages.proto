@@ -30,6 +30,14 @@ message SystemMessage {
     repeated User users = 1;
   }
 
+  message UsersAddedToTaskType {
+    repeated User users = 1;
+  }
+
+  message UsersRemovedFromTaskType {
+    repeated User users = 1;
+  }
+
   message WelcomeType {
     string text = 1;
   }
@@ -37,12 +45,21 @@ message SystemMessage {
   User actor = 1;
   oneof type {
     ErrorMessageType error_message = 9;
+
+    // groups
     GroupCreatedType group_created = 10;
     GroupRenamedType group_renamed = 11;
     GroupIconChangedType group_icon_changed = 14;
     UsersAddedToGroupType users_added_to_group = 12;
     UsersRemovedFromGroupType users_removed_from_group = 13;
+
+    // tasks
+    UsersAddedToTaskType users_added_to_task = 16;
+    UsersRemovedFromTaskType users_removed_from_task = 17;
+
+    //etc
     WelcomeType welcome = 15;
   }
+
   string fallback_text = 2;
 }

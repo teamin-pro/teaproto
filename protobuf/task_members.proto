@@ -3,6 +3,7 @@ syntax = "proto3";
 package gtproto;
 
 import "core_tasks.proto";
+import "core.proto";
 
 message TaskMemberListRequest {
   string chat_id = 1;
@@ -30,6 +31,7 @@ message RemoveTaskMemberResponse {
     NOT_ALLOWED_TO_REMOVE_TASK_MEMBER_ERROR = 3;
   }
   repeated Error errors = 1;
+  Chat chat = 2;
 }
 
 message CreateOrUpdateTaskMembersRequest {
@@ -41,8 +43,8 @@ message CreateOrUpdateTaskMembersResponse {
   enum Error {
     UNKNOWN_ERROR = 0;
     INVALID_CHAT_ERROR = 1;
-    NOT_ALLOWED_TO_UPDATE_TASK_MEMBERS_ERROR = 6;
   }
   repeated Error errors = 1;
   repeated TaskMember new_or_updated_members = 2;
+  Chat chat = 3;
 }
