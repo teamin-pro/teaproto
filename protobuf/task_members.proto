@@ -18,12 +18,12 @@ message TaskMemberListResponse {
   repeated TaskMember members = 2;
 }
 
-message RemoveTaskMemberRequest {
+message RemoveTaskMembersRequest {
   string chat_id = 1;
-  string user_id = 2; // uuid or "me"
+  repeated string user_ids = 2; // uuid or "me"
 }
 
-message RemoveTaskMemberResponse {
+message RemoveTaskMembersResponse {
   enum Error {
     UNKNOWN_ERROR = 0;
     INVALID_CHAT_ERROR = 1;

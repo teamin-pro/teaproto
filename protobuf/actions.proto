@@ -84,7 +84,7 @@ message Action {
 
     // task members
     CreateOrUpdateTaskMembersRequest create_or_update_task_members_request = 68;
-    RemoveTaskMemberRequest remove_task_member_request = 69;
+    RemoveTaskMembersRequest remove_task_members_request = 69;
     TaskMemberListRequest task_member_list_request = 66;
 
     // devices
@@ -181,7 +181,7 @@ message Result {
 
     // task members
     CreateOrUpdateTaskMembersResponse create_or_update_task_members_response = 68;
-    RemoveTaskMemberResponse remove_task_member_response = 69;
+    RemoveTaskMembersResponse remove_task_members_response = 69;
     TaskMemberListResponse task_member_list_response = 66;
 
     // devices
