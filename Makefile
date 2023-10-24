@@ -32,6 +32,7 @@ go-protobuf: version
 		--go_opt=Mactions.proto=./$(PROTOBUF_PACKAGE) \
 		--go_opt=Mauth.proto=./$(PROTOBUF_PACKAGE) \
 		--go_opt=Mbadges.proto=./$(PROTOBUF_PACKAGE) \
+		--go_opt=Mboard_members.proto=./$(PROTOBUF_PACKAGE) \
 		--go_opt=Mboards.proto=./$(PROTOBUF_PACKAGE) \
 		--go_opt=Mchat_events.proto=./$(PROTOBUF_PACKAGE) \
 		--go_opt=Mchats.proto=./$(PROTOBUF_PACKAGE) \

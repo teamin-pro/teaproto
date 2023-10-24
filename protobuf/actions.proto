@@ -3,7 +3,7 @@ syntax = "proto3";
 package gtproto;
 
 import "auth.proto";
-import "board_member.proto";
+import "board_members.proto";
 import "boards.proto";
 import "chats.proto";
 import "core.proto";
