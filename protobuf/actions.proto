@@ -3,6 +3,7 @@ syntax = "proto3";
 package gtproto;
 
 import "auth.proto";
+import "board_member.proto";
 import "boards.proto";
 import "chats.proto";
 import "core.proto";
@@ -72,9 +73,8 @@ message Action {
 
     // board members
     BoardMembersListRequest board_members_list_request = 58;
-    CreateBoardMembersRequest create_board_members_request = 60;
-    RemoveBoardMemberRequest remove_board_member_request = 62;
-    UpdateBoardMemberRequest update_board_member_request = 61;
+    CreateOrUpdateBoardMembersRequest create_or_update_board_members_request = 60;
+    RemoveBoardMembersRequest remove_board_members_request = 62;
 
     // tasks
     CreateTaskRequest create_task_request = 54;
@@ -85,7 +85,7 @@ message Action {
     // task members
     CreateOrUpdateTaskMembersRequest create_or_update_task_members_request = 68;
     RemoveTaskMembersRequest remove_task_members_request = 69;
-    TaskMemberListRequest task_member_list_request = 66;
+    TaskMembersListRequest task_members_list_request = 66;
 
     // devices
     CreateOrUpdateDeviceRequest create_or_update_device_request = 10;
@@ -169,9 +169,8 @@ message Result {
 
     // board members
     BoardMembersListResponse board_members_list_response = 58;
-    CreateBoardMembersResponse create_board_members_response = 60;
-    RemoveBoardMemberResponse remove_board_member_response = 62;
-    UpdateBoardMemberResponse update_board_member_response = 61;
+    CreateOrUpdateBoardMembersResponse create_or_update_board_members_response = 60;
+    RemoveBoardMembersResponse remove_board_members_response = 62;
 
     // tasks
     CreateTaskResponse create_task_response = 54;
@@ -182,7 +181,7 @@ message Result {
     // task members
     CreateOrUpdateTaskMembersResponse create_or_update_task_members_response = 68;
     RemoveTaskMembersResponse remove_task_members_response = 69;
-    TaskMemberListResponse task_member_list_response = 66;
+    TaskMembersListResponse task_members_list_response = 66;
 
     // devices
     CreateOrUpdateDeviceResponse create_or_update_device_response = 10;
