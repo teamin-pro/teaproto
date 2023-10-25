@@ -1,13 +1,6 @@
 ## v2.1.3
- - `ChatEventResponse.ACCESS_TO_CHAT_DENIED_ERROR`
- - `ChatUploadsResponse.ACCESS_TO_CHAT_DENIED_ERROR`
- - `MessagesListResponse.ACCESS_TO_CHAT_DENIED_ERROR`
- - `PinChatResponse.ACCESS_TO_CHAT_DENIED_ERROR`
- - `SendMessageResponse.ACCESS_TO_CHAT_DENIED_ERROR`
- - `DELETE_BOARD_MEMBER_NOT_ALLOWED_ERROR` -> `REMOVE_BOARD_MEMBER_NOT_ALLOWED_ERROR`
- - `UpdateTaskResponse.INVALID_TASK_STATUS_ID_ERROR`
- - groups deletion
- - `CreateOrUpdateBoardMembersResponse`
+ - errors reworked
+ - groups deletion added
 
 ## v2.1.2
  - `StateResponse.max_task_members_number`
