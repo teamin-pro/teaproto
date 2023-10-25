@@ -18,12 +18,11 @@ message BoardMembersListResponse {
   enum Error {
     UNKNOWN_ERROR = 0;
     INVALID_CHAT_ERROR = 1;
-    INVALID_LIMIT_ERROR = 2;
-    INVALID_USER_ERROR = 3;
+    ACCESS_DENIED_ERROR = 2;
+    INVALID_LIMIT_ERROR = 3;
   }
   repeated Error errors = 1;
   repeated BoardMember members = 2;
-  repeated BoardRole board_roles = 3;
 }
 
 message CreateOrUpdateBoardMembersRequest {
@@ -35,6 +34,7 @@ message CreateOrUpdateBoardMembersResponse {
   enum Error {
     UNKNOWN_ERROR = 0;
     INVALID_CHAT_ERROR = 1;
+    ACCESS_DENIED_ERROR = 2;
   }
   repeated Error errors = 1;
   repeated BoardMember new_or_updated_members = 2;
@@ -50,7 +50,7 @@ message RemoveBoardMembersResponse {
   enum Error {
     UNKNOWN_ERROR = 0;
     INVALID_CHAT_ERROR = 1;
-    NOT_ALLOWED_TO_REMOVE_BOARD_MEMBER_ERROR = 3;
+    ACCESS_DENIED_ERROR = 2;
   }
   repeated Error errors = 1;
   Chat chat = 2;
