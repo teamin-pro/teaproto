@@ -14,7 +14,7 @@ message BoardDetailsResponse {
   enum Error {
     UNKNOWN_ERROR = 0;
     INVALID_CHAT_ERROR = 1;
-    ACCESS_TO_CHAT_DENIED_ERROR = 2;
+    ACCESS_DENIED_ERROR = 2;
   }
   repeated Error errors = 1;
   Chat chat = 4;

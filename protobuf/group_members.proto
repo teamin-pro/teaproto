@@ -19,6 +19,7 @@ message GroupMembersListResponse {
     INVALID_CHAT_ERROR = 1;
     INVALID_LIMIT_ERROR = 2;
     INVALID_USER_ERROR = 3;
+    ACCESS_DENIED_ERROR = 4;
   }
   repeated Error errors = 1;
   repeated GroupMember members = 2;
@@ -33,7 +34,7 @@ message CreateGroupMembersResponse {
   enum Error {
     UNKNOWN_ERROR = 0;
     INVALID_CHAT_ERROR = 1;
-    NOT_ALLOWED_TO_ADD_MEMBERS_ERROR = 2;
+    ACCESS_DENIED_ERROR = 2;
   }
   repeated Error errors = 1;
   repeated GroupMember members = 2;
@@ -50,7 +51,7 @@ message UpdateGroupMemberResponse {
     UNKNOWN_ERROR = 0;
     INVALID_CHAT_ERROR = 1;
     INVALID_USER_ERROR = 2;
-    NOT_ALLOWED_TO_UPDATE_GROUP_MEMBER_ERROR = 3;
+    ACCESS_DENIED_ERROR = 3;
   }
   repeated Error errors = 1;
   GroupMember member = 2;
@@ -66,7 +67,7 @@ message RemoveGroupMemberResponse {
     UNKNOWN_ERROR = 0;
     INVALID_CHAT_ERROR = 1;
     INVALID_USER_ERROR = 2;
-    NOT_ALLOWED_TO_REMOVE_GROUP_MEMBER_ERROR = 3;
+    ACCESS_DENIED_ERROR = 3;
   }
   repeated Error errors = 1;
 }

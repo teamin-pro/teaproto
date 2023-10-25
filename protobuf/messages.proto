@@ -28,7 +28,7 @@ message SendMessageResponse {
     UNKNOWN_ERROR = 0;
     INVALID_MESSAGE_ID_ERROR = 1;
     INVALID_RECIPIENT_ERROR = 2;
-    ACCESS_TO_CHAT_DENIED_ERROR = 11;
+    ACCESS_DENIED_ERROR = 11;
     MESSAGE_TEXT_TOO_LONG_ERROR = 3; // see StateResponse.max_message_length
     MESSAGE_IS_EMPTY_ERROR = 4; // message must have text, uploads or forward_id
     TOO_MANY_UPLOADS_ERROR = 5; // see StateResponse.max_uploads_for_message
@@ -88,7 +88,7 @@ message MessagesListResponse {
   enum Error {
     UNKNOWN_ERROR = 0;
     INVALID_RECIPIENT_ERROR = 1;
-    ACCESS_TO_CHAT_DENIED_ERROR = 4;
+    ACCESS_DENIED_ERROR = 4;
     INVALID_MESSAGE_ID_ERROR = 2;
     INVALID_LIMIT_ERROR = 3;
   }

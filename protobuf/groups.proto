@@ -61,7 +61,7 @@ message DeleteGroupResponse {
   enum Error {
     UNKNOWN_ERROR = 0;
     INVALID_CHAT_ERROR = 1;
-    NOT_ALLOWED_TO_DELETE_GROUP_ERROR = 2;
+    ACCESS_DENIED_ERROR = 2;
   }
   repeated Error errors = 1;
 }
