@@ -1,0 +1,85 @@
+syntax = "proto3";
+
+package gtproto;
+
+import "core.proto";
+import "core_tasks.proto";
+
+message TaskListRequest {
+  string parent_chat_id = 1; // any task should have a parent chat for now
+  repeated uint32 task_status_ids = 2; // if empty, all statuses are returned
+  uint32 limit = 4; // default: StateResponse.max_results_on_page
+  uint32 offset = 5;
+}
+
+message TaskListResponse {
+  enum Error {
+    UNKNOWN_ERROR = 0;
+    INVALID_CHAT_ERROR = 1;
+    ACCESS_DENIED_ERROR = 3;
+    INVALID_LIMIT_ERROR = 2;
+  }
+  repeated Error errors = 1;
+  repeated Chat chats = 2;
+}
+
+message CreateTaskRequest {
+  string parent_chat_id = 1;
+  string title = 2;
+  string description = 3;
+  repeated TaskMemberUpdate members = 5;
+}
+
+message CreateTaskResponse {
+  enum Error {
+    UNKNOWN_ERROR = 0;
+    INVALID_PARENT_CHAT_ERROR = 1;
+    TITLE_AND_DESCRIPTION_EMPTY_ERROR = 2;
+    TITLE_IS_TOO_LONG_ERROR = 3; // see: StateResponse.max_task_title_length
+    DESCRIPTION_IS_TOO_LONG_ERROR = 4; // see: StateResponse.max_task_description_length
+    TOO_MANY_TASK_MEMBERS = 5; // see: StateResponse.max_task_members
+    NOT_ALLOWED_TO_CREATE_TASK_ERROR = 6;
+  }
+  repeated Error errors = 1;
+  Chat chat = 2;
+  // TODO: create from message
+}
+
+message UpdateTaskRequest {
+  string chat_id = 1;
+
+  bool update_title = 2;
+  string title = 3;
+
+  bool update_description = 4;
+  string description = 5;
+
+  uint32 task_status_id = 7;
+}
+
+message UpdateTaskResponse {
+  enum Error {
+    UNKNOWN_ERROR = 0;
+    INVALID_CHAT_ERROR = 1;
+    ACCESS_DENIED_ERROR = 2;
+    TITLE_IS_TOO_LONG_ERROR = 3; // see: StateResponse.max_task_title_length
+    DESCRIPTION_IS_TOO_LONG_ERROR = 4; // see: StateResponse.max_task_description_length
+    INVALID_TASK_STATUS_ID_ERROR = 7;
+    TITLE_AND_DESCRIPTION_EMPTY_ERROR = 5;
+  }
+  repeated Error errors = 1;
+  Chat chat = 2;
+}
+
+message DeleteTaskRequest {
+  string chat_id = 1;
+}
+
+message DeleteTaskResponse {
+  enum Error {
+    UNKNOWN_ERROR = 0;
+    INVALID_CHAT_ERROR = 1;
+    ACCESS_DENIED_ERROR = 2;
+  }
+  repeated Error errors = 1;
+}

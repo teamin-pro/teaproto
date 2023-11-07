@@ -1,14 +1,12 @@
 # Basic usage
 
 ## Synchronous workflow (for actions)
-
 To initiate a synchronous workflow for actions:
 
  * The client must send a `ClientRequest` message via a POST HTTP request to the endpoint [https://api.gamarjoba.team/](https://api.gamarjoba.team/)
  * The server responds with a `ServerResponse` message.
 
 ## Asynchronous workflow (for events)
-
 To initiate an asynchronous workflow for events:
 
  * The client must create a WebSocket connection to the endpoint [https://api.gamarjoba.team/ws](https://api.gamarjoba.team/ws).

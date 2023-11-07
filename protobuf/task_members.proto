@@ -1,0 +1,57 @@
+syntax = "proto3";
+
+package gtproto;
+
+import "core_tasks.proto";
+import "core.proto";
+
+message TaskMembersListRequest {
+  string chat_id = 1;
+  uint32 limit = 2; // default: StateResponse.max_results_on_page
+  uint32 offset = 3;
+
+  // filters
+  string user_id = 4; // uuid or "me"
+}
+
+message TaskMembersListResponse {
+  enum Error {
+    UNKNOWN_ERROR = 0;
+    INVALID_CHAT_ERROR = 1;
+    ACCESS_DENIED_ERROR = 2;
+    INVALID_LIMIT_ERROR = 3;
+  }
+  repeated Error errors = 1;
+  repeated TaskMember members = 2;
+}
+
+message CreateOrUpdateTaskMembersRequest {
+  string chat_id = 1;
+  repeated TaskMemberUpdate members = 2;
+}
+
+message CreateOrUpdateTaskMembersResponse {
+  enum Error {
+    UNKNOWN_ERROR = 0;
+    INVALID_CHAT_ERROR = 1;
+    ACCESS_DENIED_ERROR = 2;
+  }
+  repeated Error errors = 1;
+  repeated TaskMember new_or_updated_members = 2;
+  Chat chat = 3;
+}
+
+message RemoveTaskMembersRequest {
+  string chat_id = 1;
+  repeated string user_ids = 2; // uuid or "me"
+}
+
+message RemoveTaskMembersResponse {
+  enum Error {
+    UNKNOWN_ERROR = 0;
+    INVALID_CHAT_ERROR = 1;
+    ACCESS_DENIED_ERROR = 2;
+  }
+  repeated Error errors = 1;
+  Chat chat = 2;
+}

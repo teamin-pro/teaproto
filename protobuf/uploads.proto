@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package gtproto;
 
-import "commons.proto";
+import "core_images.proto";
 
 enum UploadType {
   UT_FILE = 0;
@@ -50,8 +50,9 @@ message ChatUploadsRequest {
 message ChatUploadsResponse {
   enum Error {
     UNKNOWN_ERROR = 0;
-    INVALID_LIMIT_ERROR = 1;
     INVALID_CHAT_ERROR = 2;
+    ACCESS_DENIED_ERROR = 3;
+    INVALID_LIMIT_ERROR = 1;
   }
   repeated Error errors = 1;
   repeated Upload uploads = 2;

@@ -1,0 +1,56 @@
+syntax = "proto3";
+
+package gtproto;
+
+import "core.proto";
+import "core_boards.proto";
+import "core_tasks.proto";
+
+message BoardDetailsRequest {
+  string chat_id = 1;
+}
+
+message BoardDetailsResponse {
+  enum Error {
+    UNKNOWN_ERROR = 0;
+    INVALID_CHAT_ERROR = 1;
+    ACCESS_DENIED_ERROR = 2;
+  }
+  repeated Error errors = 1;
+  Chat chat = 4;
+  repeated BoardRole board_roles = 2;
+  repeated TaskRole task_roles = 5;
+  repeated TaskStatus task_statuses = 3;
+}
+
+message CreateBoardRequest {
+  string title = 1;
+  repeated string user_ids = 2;
+}
+
+message CreateBoardResponse {
+  enum Error {
+    UNKNOWN_ERROR = 0;
+    EMPTY_TITLE_ERROR = 1;
+    TITLE_TOO_LONG_ERROR = 2; // see StateResponse.max_board_title_length
+  }
+  repeated Error errors = 1;
+  Chat chat = 2;
+}
+
+message UpdateBoardRequest {
+  string chat_id = 1;
+  string title = 2;
+}
+
+message UpdateBoardResponse {
+  enum Error {
+    UNKNOWN_ERROR = 0;
+    INVALID_CHAT_ERROR = 1;
+    EMPTY_TITLE_ERROR = 2;
+    TITLE_TOO_LONG_ERROR = 3; // see StateResponse.max_board_title_length
+    UPDATE_BOARD_NOT_ALLOWED_ERROR = 4;
+  }
+  repeated Error errors = 1;
+  Chat chat = 2;
+}

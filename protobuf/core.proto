@@ -1,0 +1,138 @@
+syntax = "proto3";
+
+package gtproto;
+
+import "commands.proto";
+import "core_boards.proto";
+import "core_groups.proto";
+import "core_images.proto";
+import "core_tasks.proto";
+import "core_users.proto";
+import "system_messages.proto";
+import "uploads.proto";
+
+// Example of chat list
+// ====================
+// - direct chat
+// - direct chat
+// - group chat
+// - group chat
+// - board
+//   - task chat
+//   - task chat
+//   - task chat
+// - group chat
+// - direct chat
+enum ChatType {
+  UNKNOWN_CHAT_TYPE = 0;
+  DIRECT = 1;
+  GROUP = 2;
+  TASK = 3;
+  BOARD = 4;
+}
+
+// Chat is a chat in chat list. It can be direct chat, group chat, task chat or board
+message Chat {
+  string id = 1;
+  ChatType type = 2;
+
+  string parent_id = 8; // optional, present only for task chats
+  ChatType parent_type = 9; // optional, present only for task chats and always is BOARD for now
+  uint64 created_at = 20;
+
+  string title = 6;
+  Icon icon = 7;
+
+  oneof topic {
+    User user = 15; // for type = DIRECT
+    Group group = 16; // for type = GROUP
+    Task task = 18; // for type == TASK
+    Board board = 19; // for type == BOARD
+  }
+
+  ChatState state = 17;  // present only for chats in chat list and for chat details
+}
+
+// ChatState contain details related to current member
+message ChatState {
+  Message last_message = 8; // can be empty
+  uint64 updated_at = 9; // last message creation time even message was deleted
+  ChatBadge badge = 14;
+  uint32 pinned_position = 12; // pinned position at chat list, if any
+  repeated Command bot_commands = 15;
+
+  reserved 1 to 7, 10, 11, 13;
+}
+
+// MessageReaction is a reaction to message
+message MessageReaction {
+  string emoji = 1;
+  uint32 count = 2; // total count of reactions
+  bool is_my = 3; // is my reaction
+  repeated User users = 4; // users who reacted with this emoji
+}
+
+message DeletedMessage {
+  uint64 deleted_at = 1;
+}
+
+// Message is a message in chat
+message Message {
+  string chat_id = 16; // actually need only for push notifications and websocket events but present in all messages for consistency
+  string id = 1;
+  uint64 created_at = 3;
+  uint64 edited_at = 9; // Time when message was edited by author. It happens only on text / uploads / reply / forwards change. When equal to created_at, message was not edited.
+  User sender = 5; // Sender of message. If empty, message was sent by system
+  oneof content {
+    string text = 4;
+    ChatMessage forward = 13;
+    SystemMessage system_message = 17;
+    Upload audio_upload = 18;
+    DeletedMessage deleted = 20;
+  }
+  string prev_message_id = 6; // If empty, message is first in chat
+  uint32 viewed_counter = 7; // How many recipients viewed this message
+
+  // attachments
+  Message reply = 12;
+  repeated Upload uploads = 11;
+  repeated MessageReaction reactions = 14;
+
+  // rights
+  bool can_i_edit_this_message = 15; // message can be edited by author except for messages to bots
+  bool can_i_delete_this_message = 19;
+
+  reserved 2, 8, 10;
+}
+
+// ChatMessage is message with full chat info. For forwarded, search results etc
+message ChatMessage {
+  Chat chat = 1;
+  Message message = 2;
+}
+
+// ChatBadge contains counter for chat
+message ChatBadge {
+  string chat_id = 1; // omited when ChatBadge is used inside Chat
+  uint32 counter = 2;
+  uint64 updated_at = 3; // in conflicting cases, the badge with the latest updated_at should be used
+  string last_viewed_message_id = 4;
+  uint64 last_viewed_message_created_at = 5;
+}
+
+enum BadgeType {
+  BADGE_TYPE_MAIN = 0; // badge on application icon
+}
+
+// GlobalBadge contains counter for application
+message GlobalBadge {
+  BadgeType type = 1;
+  uint32 counter = 2;
+  uint64 updated_at = 3; // in conflicting cases, the badge with the latest updated_at should be used
+}
+
+message BadgeRequest {}
+
+message BadgeResponse {
+  repeated GlobalBadge global_badges = 1;
+}

@@ -46,7 +46,6 @@
           {
             "id": 1,
             "title": "Admin",
-            "canSendMessages": true,
             "canAddNewMembers": true,
             "canChangeInformation": true,
             "canSetRoleIds": [
@@ -56,8 +55,7 @@
           },
           {
             "id": 2,
-            "title": "User",
-            "canSendMessages": true
+            "title": "User"
           }
         ]
       }

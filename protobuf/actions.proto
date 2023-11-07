@@ -3,17 +3,22 @@ syntax = "proto3";
 package gtproto;
 
 import "auth.proto";
-import "badges.proto";
-import "chat_events.proto";
+import "board_members.proto";
+import "boards.proto";
+import "chats.proto";
+import "core.proto";
+import "core_users.proto";
 import "devices.proto";
+import "group_members.proto";
 import "groups.proto";
 import "messages.proto";
 import "reactions.proto";
 import "state.proto";
+import "task_members.proto";
+import "tasks.proto";
 import "tokens.proto";
 import "uploads.proto";
 import "users.proto";
-import "viewed_messages.proto";
 
 message ClientRequest {
   string token = 1;
@@ -53,12 +58,34 @@ message Action {
     CreateGroupRequest create_group_request = 26;
     GroupDetailsRequest group_details_request = 50;
     UpdateGroupRequest update_group_request = 29;
+    DeleteGroupRequest delete_group_request = 65;
 
     // group members
     CreateGroupMembersRequest create_group_members_request = 38;
     GroupMembersListRequest group_members_list_request = 35;
     RemoveGroupMemberRequest remove_group_member_request = 37;
     UpdateGroupMemberRequest update_group_member_request = 49;
+
+    // boards
+    BoardDetailsRequest board_details_request = 52;
+    CreateBoardRequest create_board_request = 63;
+    UpdateBoardRequest update_board_request = 64;
+
+    // board members
+    BoardMembersListRequest board_members_list_request = 58;
+    CreateOrUpdateBoardMembersRequest create_or_update_board_members_request = 60;
+    RemoveBoardMembersRequest remove_board_members_request = 62;
+
+    // tasks
+    CreateTaskRequest create_task_request = 54;
+    DeleteTaskRequest delete_task_request = 56;
+    TaskListRequest task_list_request = 53;
+    UpdateTaskRequest update_task_request = 55;
+
+    // task members
+    CreateOrUpdateTaskMembersRequest create_or_update_task_members_request = 68;
+    RemoveTaskMembersRequest remove_task_members_request = 69;
+    TaskMembersListRequest task_members_list_request = 66;
 
     // devices
     CreateOrUpdateDeviceRequest create_or_update_device_request = 10;
@@ -127,12 +154,34 @@ message Result {
     CreateGroupResponse create_group_response = 26;
     GroupDetailsResponse group_details_response = 50;
     UpdateGroupResponse update_group_response = 29;
+    DeleteGroupResponse delete_group_response = 65;
 
     // group members
     CreateGroupMembersResponse create_group_members_response = 38;
     GroupMembersListResponse group_members_list_response = 35;
     RemoveGroupMemberResponse remove_group_member_response = 37;
     UpdateGroupMemberResponse update_group_member_response = 49;
+
+    // boards
+    BoardDetailsResponse board_details_response = 52;
+    CreateBoardResponse create_board_response = 63;
+    UpdateBoardResponse update_board_response = 64;
+
+    // board members
+    BoardMembersListResponse board_members_list_response = 58;
+    CreateOrUpdateBoardMembersResponse create_or_update_board_members_response = 60;
+    RemoveBoardMembersResponse remove_board_members_response = 62;
+
+    // tasks
+    CreateTaskResponse create_task_response = 54;
+    DeleteTaskResponse delete_task_response = 56;
+    TaskListResponse task_list_response = 53;
+    UpdateTaskResponse update_task_response = 55;
+
+    // task members
+    CreateOrUpdateTaskMembersResponse create_or_update_task_members_response = 68;
+    RemoveTaskMembersResponse remove_task_members_response = 69;
+    TaskMembersListResponse task_members_list_response = 66;
 
     // devices
     CreateOrUpdateDeviceResponse create_or_update_device_response = 10;

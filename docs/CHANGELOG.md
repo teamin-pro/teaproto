@@ -1,3 +1,20 @@
+## v2.1.3
+ - errors reworked
+ - groups deletion added
+
+## v2.1.2
+ - `StateResponse.max_task_members_number`
+
+## v2.1.1
+ - `TaskMemberParams`
+
+## v2.1.0
+ - `WatchTaskRequest` removed
+ - task members requests
+
+## v2.0.0
+ - tasks api first version
+
 ## v1.19.3
  - `EmailCodeAuthRequest.force_send_by_bot`
 

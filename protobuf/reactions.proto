@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package gtproto;
 
-import "messages.proto";
+import "core.proto";
 
 message Reaction {
   string emoji = 1; // ☘️
