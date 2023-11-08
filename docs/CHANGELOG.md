@@ -1,3 +1,6 @@
+## v2.1.4
+ - `max_task_members` removed from `StateResponse`
+
 ## v2.1.3
  - errors reworked
  - groups deletion added
