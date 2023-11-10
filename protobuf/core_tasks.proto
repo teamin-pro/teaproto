@@ -17,6 +17,8 @@ message TaskStatus {
   uint32 id = 1; // unique id of the status on the board
   uint32 sort_order = 2;
   string title = 3; // for example: "To Do", "In Progress", "Done".
+  string label_text_color = 4; // empty string means default color
+  string label_background_color = 5; // empty string means default color
 }
 
 message TaskRole {

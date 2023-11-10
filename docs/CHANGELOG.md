@@ -1,3 +1,6 @@
+## v2.1.5
+ - `TaskStatus.label_text_color` and `TaskStatus.label_background_color` were added
+
 ## v2.1.4
  - `max_task_members` removed from `StateResponse`
 
