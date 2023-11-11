@@ -10,6 +10,8 @@ message SystemMessage {
     string text = 1;
   }
 
+  // groups
+
   message GroupCreatedType {
     string title = 1;
   }
@@ -30,6 +32,18 @@ message SystemMessage {
     repeated User users = 1;
   }
 
+  // tasks
+
+  message TaskCreatedType {
+    string title = 1;
+    string description = 2;
+  }
+
+  message TaskRenamedType {
+    string new_title = 1; // empty if not changed
+    string new_description = 2; // empty if not changed
+  }
+
   message UsersAddedToTaskType {
     repeated User users = 1;
   }
@@ -38,11 +52,18 @@ message SystemMessage {
     repeated User users = 1;
   }
 
+  message TaskStatusChangedType {
+    uint32 new_status_id = 1;
+  }
+
+  // etc
+
   message WelcomeType {
     string text = 1;
   }
 
   User actor = 1;
+
   oneof type {
     ErrorMessageType error_message = 9;
 
@@ -54,8 +75,11 @@ message SystemMessage {
     UsersRemovedFromGroupType users_removed_from_group = 13;
 
     // tasks
+    TaskCreatedType task_created = 18;
+    TaskRenamedType task_renamed = 19;
     UsersAddedToTaskType users_added_to_task = 16;
     UsersRemovedFromTaskType users_removed_from_task = 17;
+    TaskStatusChangedType task_status_changed = 20;
 
     //etc
     WelcomeType welcome = 15;

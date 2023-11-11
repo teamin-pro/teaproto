@@ -1,3 +1,6 @@
+## v2.2.0
+ - Task system messages
+
 ## v2.1.5
  - `TaskStatus.label_text_color` and `TaskStatus.label_background_color` were added
 
