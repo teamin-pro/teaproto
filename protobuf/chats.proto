@@ -77,6 +77,7 @@ message ChatListRequest {
   uint32 limit = 2; // default: StateResponse.max_results_on_page
   uint32 offset = 3;
   uint64 min_updated_at = 4; // optional
+  string chat_name = 5; // chat name for filters. If empty, all chats are returned
 }
 
 message ChatListResponse {
