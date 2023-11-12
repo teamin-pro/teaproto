@@ -1,3 +1,6 @@
+## v2.2.2
+ - ChatListRequest.title filter
+
 ## v2.2.1
  - TaskDescriptionChangedType was added
 
