@@ -40,8 +40,11 @@ message SystemMessage {
   }
 
   message TaskRenamedType {
-    string new_title = 1; // empty if not changed
-    string new_description = 2; // empty if not changed
+    string new_title = 1;
+  }
+
+  message TaskDescriptionChangedType {
+    string new_description = 1;
   }
 
   message UsersAddedToTaskType {
@@ -77,6 +80,7 @@ message SystemMessage {
     // tasks
     TaskCreatedType task_created = 18;
     TaskRenamedType task_renamed = 19;
+    TaskDescriptionChangedType task_description_changed = 21;
     UsersAddedToTaskType users_added_to_task = 16;
     UsersRemovedFromTaskType users_removed_from_task = 17;
     TaskStatusChangedType task_status_changed = 20;

@@ -1,3 +1,6 @@
+## v2.2.1
+ - TaskDescriptionChangedType was added
+
 ## v2.2.0
  - Task system messages
 
