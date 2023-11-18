@@ -1,5 +1,5 @@
 ## v2.2.3
- - refactoring
+ - `Task.can_i_edit_this_task` was added
 
 ## v2.2.2
  - ChatListRequest.title filter
