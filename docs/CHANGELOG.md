@@ -1,5 +1,5 @@
-## v2.2.1
- - removed `Task.can_i_delete_this_task`
+## v2.2.3
+ - refactoring
 
 ## v2.2.2
  - ChatListRequest.title filter
