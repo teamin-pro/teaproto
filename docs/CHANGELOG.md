@@ -1,3 +1,6 @@
+## v2.2.1
+ - Task.can_i_edit_or_delete_this_task
+
 ## v2.2.2
  - ChatListRequest.title filter
 
