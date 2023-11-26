@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-package gtproto;
+package teaproto;
 
 import "core_users.proto";
 import "core_images.proto";

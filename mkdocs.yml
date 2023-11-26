@@ -1,4 +1,4 @@
-site_name: GTProto
+site_name: TeaProto
 nav:
   - Home: index.md
   - Basic usage: basics.md

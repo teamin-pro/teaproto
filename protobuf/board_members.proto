@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-package gtproto;
+package teaproto;
 
 import "core_boards.proto";
 import "core.proto";

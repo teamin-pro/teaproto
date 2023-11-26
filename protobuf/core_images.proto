@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-package gtproto;
+package teaproto;
 
 message Image {
   string url = 1;

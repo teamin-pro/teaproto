@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-package gtproto;
+package teaproto;
 
 message Command {
   string command = 1; // string always starts with '/' symbol. Example: "/help"

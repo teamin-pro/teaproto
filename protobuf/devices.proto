@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-package gtproto;
+package teaproto;
 
 // Device for push notifications
 message Device {

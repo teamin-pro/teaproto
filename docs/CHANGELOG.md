@@ -1,3 +1,6 @@
+## v3.0.0
+ - GTProto renamed to TeaProto
+
 ## v2.2.3
  - `Task.can_i_edit_this_task` was added
 

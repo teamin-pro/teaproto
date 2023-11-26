@@ -14,7 +14,7 @@ gh-deploy: install
 	mkdocs gh-deploy
 
 PROTOBUF_DIR?=codegen
-PROTOBUF_PACKAGE?=gtproto
+PROTOBUF_PACKAGE?=teaproto
 
 codegen: go-protobuf
 	cd codegen
