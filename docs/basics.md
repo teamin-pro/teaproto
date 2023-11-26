@@ -3,13 +3,13 @@
 ## Synchronous workflow (for actions)
 To initiate a synchronous workflow for actions:
 
- * The client must send a `ClientRequest` message via a POST HTTP request to the endpoint [https://api.gamarjoba.team/](https://api.gamarjoba.team/)
+ * The client must send a `ClientRequest` message via a POST HTTP request to the endpoint [https://api.teamin.pro/](https://api.teamin.pro/)
  * The server responds with a `ServerResponse` message.
 
 ## Asynchronous workflow (for events)
 To initiate an asynchronous workflow for events:
 
- * The client must create a WebSocket connection to the endpoint [https://api.gamarjoba.team/ws](https://api.gamarjoba.team/ws).
+ * The client must create a WebSocket connection to the endpoint [https://api.teamin.pro/ws](https://api.teamin.pro/ws).
  * The client sends a `WebsocketAuthRequest` message.
  * The server starts sending `WebsocketEvent` messages.
 
@@ -27,7 +27,7 @@ If content type is omitted and request starts with `{` (without leading spaces) 
 This is simplest request. It does not require authentication and returns server info.
 
 ```shell
-curl -X POST https://api.gamarjoba.team/ \
+curl -X POST https://api.teamin.pro/ \
   -H 'Content-Type: application/json' \
-  -d '{"stateRequest":{}}'
+  -d '{"actions":[{"stateRequest":{}}]}'
 ```
