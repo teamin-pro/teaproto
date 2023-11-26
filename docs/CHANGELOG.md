@@ -1,3 +1,6 @@
+## v3.0.1
+ - `StateResponse.gtproto_version` renamed to `StateResponse.api_version`
+
 ## v3.0.0
  - GTProto renamed to TeaProto
 
