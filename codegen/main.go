@@ -11,7 +11,7 @@ import (
 	"google.golang.org/protobuf/encoding/protojson"
 	"google.golang.org/protobuf/proto"
 
-	"github.com/gamarjoba-team/gtnode/generated/teaproto"
+	"github.com/teamin-pro/teanode/generated/teaproto"
 )
 
 //go:embed teaproto/version.txt
