@@ -108,13 +108,13 @@
 <h2 id="synchronous-workflow-for-actions">Synchronous workflow (for actions)</h2>
 <p>To initiate a synchronous workflow for actions:</p>
 <ul>
-<li>The client must send a <code>ClientRequest</code> message via a POST HTTP request to the endpoint <a href="https://api.gamarjoba.team/">https://api.gamarjoba.team/</a></li>
+<li>The client must send a <code>ClientRequest</code> message via a POST HTTP request to the endpoint <a href="https://api.teamin.pro/">https://api.teamin.pro/</a></li>
 <li>The server responds with a <code>ServerResponse</code> message.</li>
 </ul>
 <h2 id="asynchronous-workflow-for-events">Asynchronous workflow (for events)</h2>
 <p>To initiate an asynchronous workflow for events:</p>
 <ul>
-<li>The client must create a WebSocket connection to the endpoint <a href="https://api.gamarjoba.team/ws">https://api.gamarjoba.team/ws</a>.</li>
+<li>The client must create a WebSocket connection to the endpoint <a href="https://api.teamin.pro/ws">https://api.teamin.pro/ws</a>.</li>
 <li>The client sends a <code>WebsocketAuthRequest</code> message.</li>
 <li>The server starts sending <code>WebsocketEvent</code> messages.</li>
 </ul>
@@ -129,9 +129,9 @@ header to <code>application/json</code> and send the JSON representation of the 
 <p>If content type is omitted and request starts with <code>{</code> (without leading spaces) it will be treated as JSON.</p>
 <h3 id="getting-server-info">Getting server info</h3>
 <p>This is simplest request. It does not require authentication and returns server info.</p>
-<pre><code class="language-shell">curl -X POST https://api.gamarjoba.team/ \
+<pre><code class="language-shell">curl -X POST https://api.teamin.pro/ \
   -H 'Content-Type: application/json' \
-  -d '{&quot;stateRequest&quot;:{}}'
+  -d '{&quot;actions&quot;:[{&quot;stateRequest&quot;:{}}]}'
 </code></pre>
               
             </div>
