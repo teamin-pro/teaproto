@@ -11,11 +11,11 @@ import (
 	"google.golang.org/protobuf/encoding/protojson"
 	"google.golang.org/protobuf/proto"
 
-	"github.com/gamarjoba-team/gtnode/gtproto/codegen/gtproto"
+	"github.com/gamarjoba-team/gtnode/generated/teaproto"
 )
 
-//go:embed gtproto/version.txt
-var gtprotoVersion string
+//go:embed teaproto/version.txt
+var teaprotoVersion string
 
 func main() {
 	state()
@@ -23,19 +23,19 @@ func main() {
 }
 
 func chats() {
-	mustSave("group-members.request.yml", &gtproto.ClientRequest{
-		Actions: []*gtproto.Action{
+	mustSave("group-members.request.yml", &teaproto.ClientRequest{
+		Actions: []*teaproto.Action{
 			{
-				Request: &gtproto.Action_GroupMembersListRequest{
-					GroupMembersListRequest: &gtproto.GroupMembersListRequest{
+				Request: &teaproto.Action_GroupMembersListRequest{
+					GroupMembersListRequest: &teaproto.GroupMembersListRequest{
 						ChatId: sampleGroupId(),
 						Limit:  2,
 					},
 				},
 			},
 			{
-				Request: &gtproto.Action_GroupDetailsRequest{
-					GroupDetailsRequest: &gtproto.GroupDetailsRequest{
+				Request: &teaproto.Action_GroupDetailsRequest{
+					GroupDetailsRequest: &teaproto.GroupDetailsRequest{
 						ChatId: sampleGroupId(),
 					},
 				},
@@ -43,12 +43,12 @@ func chats() {
 		},
 	})
 
-	mustSave("group-members.response.yml", &gtproto.ServerResponse{
-		Results: []*gtproto.Result{
+	mustSave("group-members.response.yml", &teaproto.ServerResponse{
+		Results: []*teaproto.Result{
 			{
-				Response: &gtproto.Result_GroupMembersListResponse{
-					GroupMembersListResponse: &gtproto.GroupMembersListResponse{
-						Members: []*gtproto.GroupMember{
+				Response: &teaproto.Result_GroupMembersListResponse{
+					GroupMembersListResponse: &teaproto.GroupMembersListResponse{
+						Members: []*teaproto.GroupMember{
 							{
 								User:                 alice(),
 								GroupRoleId:          1,
@@ -64,9 +64,9 @@ func chats() {
 				},
 			},
 			{
-				Response: &gtproto.Result_GroupDetailsResponse{
-					GroupDetailsResponse: &gtproto.GroupDetailsResponse{
-						GroupRoles: []*gtproto.GroupRole{
+				Response: &teaproto.Result_GroupDetailsResponse{
+					GroupDetailsResponse: &teaproto.GroupDetailsResponse{
+						GroupRoles: []*teaproto.GroupRole{
 							{
 								Id:                   1,
 								Title:                "Admin",
@@ -87,23 +87,23 @@ func chats() {
 }
 
 func state() {
-	mustSave("state.request.yml", &gtproto.ClientRequest{
-		Actions: []*gtproto.Action{
+	mustSave("state.request.yml", &teaproto.ClientRequest{
+		Actions: []*teaproto.Action{
 			{
-				Request: &gtproto.Action_StateRequest{
-					StateRequest: &gtproto.StateRequest{},
+				Request: &teaproto.Action_StateRequest{
+					StateRequest: &teaproto.StateRequest{},
 				},
 			},
 		},
 	})
 
-	mustSave("state.response.yml", &gtproto.ServerResponse{
-		Results: []*gtproto.Result{
+	mustSave("state.response.yml", &teaproto.ServerResponse{
+		Results: []*teaproto.Result{
 			{
-				Response: &gtproto.Result_StateResponse{
-					StateResponse: &gtproto.StateResponse{
+				Response: &teaproto.Result_StateResponse{
+					StateResponse: &teaproto.StateResponse{
 						Now:                      sampleDate(),
-						GtprotoVersion:           strings.TrimSpace(gtprotoVersion),
+						GtprotoVersion:           strings.TrimSpace(teaprotoVersion),
 						MaxResultsOnPage:         10,
 						MaxActionsInRequest:      10,
 						MaxFileSize:              1024 * 1024 * 10,
@@ -116,8 +116,8 @@ func state() {
 						MaxUploadsForMessage:     5,
 						MaxGroupTitleLength:      10,
 						PushNotificationsEnabled: false,
-						AuthMethods: []gtproto.AuthMethod{
-							gtproto.AuthMethod_EMAIL_CODE_AUTH_METHOD,
+						AuthMethods: []teaproto.AuthMethod{
+							teaproto.AuthMethod_EMAIL_CODE_AUTH_METHOD,
 						},
 					},
 				},
@@ -125,43 +125,43 @@ func state() {
 		},
 	})
 
-	mustSave("fake-error.request.yml", &gtproto.ClientRequest{
-		Actions: []*gtproto.Action{
+	mustSave("fake-error.request.yml", &teaproto.ClientRequest{
+		Actions: []*teaproto.Action{
 			{
-				Request: &gtproto.Action_FakeErrorRequest{
-					FakeErrorRequest: &gtproto.FakeErrorRequest{
-						Mode: gtproto.FakeErrorRequest_RETURN_SERVER_ERROR,
+				Request: &teaproto.Action_FakeErrorRequest{
+					FakeErrorRequest: &teaproto.FakeErrorRequest{
+						Mode: teaproto.FakeErrorRequest_RETURN_SERVER_ERROR,
 					},
 				},
 			},
 		},
 	})
 
-	mustSave("fake-error.response.yml", &gtproto.ServerResponse{
-		Errors: []gtproto.ServerResponse_Error{
-			gtproto.ServerResponse_INTERNAL_SERVER_ERROR,
+	mustSave("fake-error.response.yml", &teaproto.ServerResponse{
+		Errors: []teaproto.ServerResponse_Error{
+			teaproto.ServerResponse_INTERNAL_SERVER_ERROR,
 		},
 	})
 
-	mustSave("badge.request.yml", &gtproto.ClientRequest{
+	mustSave("badge.request.yml", &teaproto.ClientRequest{
 		Token: "<token>",
-		Actions: []*gtproto.Action{
+		Actions: []*teaproto.Action{
 			{
-				Request: &gtproto.Action_BadgeRequest{
-					BadgeRequest: &gtproto.BadgeRequest{},
+				Request: &teaproto.Action_BadgeRequest{
+					BadgeRequest: &teaproto.BadgeRequest{},
 				},
 			},
 		},
 	})
 
-	mustSave("badge.response.yml", &gtproto.ServerResponse{
-		Results: []*gtproto.Result{
+	mustSave("badge.response.yml", &teaproto.ServerResponse{
+		Results: []*teaproto.Result{
 			{
-				Response: &gtproto.Result_BadgeResponse{
-					BadgeResponse: &gtproto.BadgeResponse{
-						GlobalBadges: []*gtproto.GlobalBadge{
+				Response: &teaproto.Result_BadgeResponse{
+					BadgeResponse: &teaproto.BadgeResponse{
+						GlobalBadges: []*teaproto.GlobalBadge{
 							{
-								Type:      gtproto.BadgeType_BADGE_TYPE_MAIN,
+								Type:      teaproto.BadgeType_BADGE_TYPE_MAIN,
 								Counter:   42,
 								UpdatedAt: sampleDate(),
 							},
@@ -205,36 +205,36 @@ func sampleGroupId() string {
 	return "f47ac10b-58cc-4372-a567-0e02b2c3d479"
 }
 
-func alice() *gtproto.User {
+func alice() *teaproto.User {
 	userId := "a2f1f0d6-5b9e-4e0e-8d4a-8b5b7a0e0b0e"
-	return &gtproto.User{
+	return &teaproto.User{
 		Id:   userId,
 		Name: "Alice Smith",
 		IsMe: true,
-		Icon: &gtproto.Icon{
+		Icon: &teaproto.Icon{
 			Letters: "AS",
 			Color:   "#ff0000",
 		},
-		OnlineStatus: &gtproto.OnlineStatus{
+		OnlineStatus: &teaproto.OnlineStatus{
 			UserId: userId,
-			Status: gtproto.OnlineStatus_ONLINE,
+			Status: teaproto.OnlineStatus_ONLINE,
 		},
 	}
 }
 
-func bob() *gtproto.User {
+func bob() *teaproto.User {
 	userId := "b2f1f0d6-5b9e-4e0e-8d4a-8b5b7a0e0b0e"
-	return &gtproto.User{
+	return &teaproto.User{
 		Id:   userId,
 		Name: "Bob Doe",
 		IsMe: false,
-		Icon: &gtproto.Icon{
+		Icon: &teaproto.Icon{
 			Letters: "BD",
 			Color:   "#00ff00",
 		},
-		OnlineStatus: &gtproto.OnlineStatus{
+		OnlineStatus: &teaproto.OnlineStatus{
 			UserId:   userId,
-			Status:   gtproto.OnlineStatus_OFFLINE,
+			Status:   teaproto.OnlineStatus_OFFLINE,
 			LastSeen: sampleDate(),
 		},
 	}
