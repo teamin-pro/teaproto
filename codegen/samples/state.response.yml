@@ -4,7 +4,7 @@
     {
       "stateResponse": {
         "now": "1609466584000",
-        "gtprotoVersion": "v3.0.0",
+        "apiVersion": "v3.0.1",
         "maxResultsOnPage": 10,
         "maxActionsInRequest": 10,
         "maxFileSize": 10485760,

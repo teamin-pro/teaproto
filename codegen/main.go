@@ -15,7 +15,7 @@ import (
 )
 
 //go:embed teaproto/version.txt
-var teaprotoVersion string
+var apiVersion string
 
 func main() {
 	state()
@@ -103,7 +103,7 @@ func state() {
 				Response: &teaproto.Result_StateResponse{
 					StateResponse: &teaproto.StateResponse{
 						Now:                      sampleDate(),
-						GtprotoVersion:           strings.TrimSpace(teaprotoVersion),
+						ApiVersion:               strings.TrimSpace(apiVersion),
 						MaxResultsOnPage:         10,
 						MaxActionsInRequest:      10,
 						MaxFileSize:              1024 * 1024 * 10,
