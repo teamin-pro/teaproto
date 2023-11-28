@@ -5,24 +5,6 @@ package teaproto;
 import "core.proto";
 import "core_tasks.proto";
 
-message TaskListRequest {
-  string parent_chat_id = 1; // any task should have a parent chat for now
-  repeated uint32 task_status_ids = 2; // if empty, all statuses are returned
-  uint32 limit = 4; // default: StateResponse.max_results_on_page
-  uint32 offset = 5;
-}
-
-message TaskListResponse {
-  enum Error {
-    UNKNOWN_ERROR = 0;
-    INVALID_CHAT_ERROR = 1;
-    ACCESS_DENIED_ERROR = 3;
-    INVALID_LIMIT_ERROR = 2;
-  }
-  repeated Error errors = 1;
-  repeated Chat chats = 2;
-}
-
 message CreateTaskRequest {
   string parent_chat_id = 1;
   string title = 2;

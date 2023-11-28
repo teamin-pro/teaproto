@@ -73,17 +73,23 @@ message PinChatResponse {
 }
 
 message ChatListRequest {
-  repeated ChatType chat_types = 1; // if empty, all chats are returned
   uint32 limit = 2; // default: StateResponse.max_results_on_page
   uint32 offset = 3;
-  uint64 min_updated_at = 4; // optional
-  string title = 5; // optional
+
+  // optional filters
+  repeated ChatType chat_types = 1;
+  uint64 min_updated_at = 4;
+  string title = 5;
+  string parent_chat_id = 6;
+  repeated uint32 task_status_ids = 7;
 }
 
 message ChatListResponse {
   enum Error {
     UNKNOWN_ERROR = 0;
     INVALID_LIMIT_ERROR = 1;
+    INVALID_PARENT_CHAT_ERROR = 2;
+    ACCESS_DENIED_TO_PARENT_CHAT_ERROR = 3;
   }
   repeated Error errors = 2;
   repeated Chat chats = 1; // pinned chats first, other chats sorted by activity.

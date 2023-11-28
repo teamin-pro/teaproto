@@ -1,3 +1,6 @@
+## v3.1.0
+ - `TaskListRequest` removed, use `ChatListRequest` with filters instead
+
 ## v3.0.1
  - `StateResponse.gtproto_version` renamed to `StateResponse.api_version`
 
