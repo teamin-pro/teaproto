@@ -12,6 +12,7 @@ message Task {
   uint32 num_members = 11; // read only computed field
   bool can_i_delete_this_task = 12;
   bool can_i_edit_this_task = 13;
+  repeated TaskFieldValue field_values = 14;
 }
 
 message TaskStatus {
@@ -35,4 +36,18 @@ message TaskMember {
 message TaskMemberUpdate {
   string user_id = 1; // uuid or "me"
   uint32 task_role_id = 2; // 0 = default role
+}
+
+message TaskFieldDefinition {
+  uint32 id = 1; // It may be empty for new fields.
+  string name = 2;
+  optional string description = 3; // Hint or description of the field.  
+  uint32 position = 4;
+}
+
+message TaskFieldValue {
+  uint32 id = 1; // Id of the field value. It may be empty for new values.
+  uint32 field_id = 3; // Id of the field this value belongs to.
+  repeated User users = 4; // Users attached to this task field.
+  map<string, string> customValues = 5; 
 }

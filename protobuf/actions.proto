@@ -86,6 +86,10 @@ message Action {
     RemoveTaskMembersRequest remove_task_members_request = 69;
     TaskMembersListRequest task_members_list_request = 66;
 
+    // task fields
+    TaskFieldAddOrUpdateRequest task_field_add_or_update_request = 70;
+    UpdateTaskFieldsRequest update_task_fields_request = 71;
+
     // devices
     CreateOrUpdateDeviceRequest create_or_update_device_request = 10;
     DeleteDeviceRequest delete_device_request = 12;
@@ -180,6 +184,10 @@ message Result {
     CreateOrUpdateTaskMembersResponse create_or_update_task_members_response = 68;
     RemoveTaskMembersResponse remove_task_members_response = 69;
     TaskMembersListResponse task_members_list_response = 66;
+
+    // task fields
+    TaskFieldAddOrUpdateResponse task_field_add_or_update_response = 70;
+    CreateOrUpdateTaskFieldsResponse create_or_update_task_fields_response = 71;
 
     // devices
     CreateOrUpdateDeviceResponse create_or_update_device_response = 10;
