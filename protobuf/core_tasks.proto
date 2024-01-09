@@ -43,6 +43,7 @@ message TaskFieldDefinition {
   string name = 2;
   optional string description = 3; // Hint or description of the field.  
   uint32 position = 4;
+  map<string, string> customValues = 5; 
 }
 
 message TaskFieldValue {
