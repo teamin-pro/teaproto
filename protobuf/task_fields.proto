@@ -1,0 +1,35 @@
+syntax = "proto3";
+
+import "core_tasks.proto";
+import "core.proto";
+
+message TaskFieldAddOrUpdateRequest {
+  string board_id = 1;
+  repeated TaskFieldDefinition task_fields = 2;
+}
+
+message TaskFieldAddOrUpdateResponse {
+  enum Error {
+    UNKNOWN = 0;
+    BOARD_NOT_FOUND = 1;
+  }
+  repeated Error errors = 1;
+  repeated TaskFieldDefinition task_fields = 2;
+}
+
+message UpdateTaskFieldsRequest {
+  string task_id = 1;
+  repeated TaskFieldValue values_to_create_or_update = 2;
+  repeated uint32 values_to_delete = 3;
+}
+
+message CreateOrUpdateTaskFieldsResponse {
+  enum Error {
+    UNKNOWN_ERROR = 0;
+    INVALID_TASK_ERROR = 1;
+    ACCESS_DENIED_ERROR = 2;
+    INVALID_FIELD_ERROR = 3;
+  }
+  repeated Error errors = 1;
+  Chat chat = 2;  
+}

@@ -21,6 +21,7 @@ message BoardDetailsResponse {
   repeated BoardRole board_roles = 2;
   repeated TaskRole task_roles = 5;
   repeated TaskStatus task_statuses = 3;
+  repeated TaskFieldDefinition task_fields = 6;
 }
 
 message CreateBoardRequest {
