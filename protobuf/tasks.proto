@@ -5,11 +5,24 @@ package teaproto;
 import "core.proto";
 import "core_tasks.proto";
 
+message TaskPositionUpdate {
+  string chat_id = 1;
+  oneof position {
+    string after_task_id = 2;
+    string before_task_id = 3;
+    // Add a task to the beginning (top) of the task list by status
+    bool beggining = 4;
+    // Add a task to the end (bottom) of the task list by status
+    bool end = 5;
+  }
+}
+
 message CreateTaskRequest {
   string parent_chat_id = 1;
   string title = 2;
   string description = 3;
   repeated TaskMemberUpdate members = 5;
+  TaskPositionUpdate position = 6;
 }
 
 message CreateTaskResponse {
@@ -24,6 +37,9 @@ message CreateTaskResponse {
   }
   repeated Error errors = 1;
   Chat chat = 2;
+  // A list of tasks that were updated
+  // Usually, tasks are updated when their positoin changed due to the newly created task
+  repeated Chat updatedChats = 3;
   // TODO: create from message
 }
 
@@ -37,6 +53,9 @@ message UpdateTaskRequest {
   string description = 5;
 
   uint32 task_status_id = 7;
+  // New task position
+  // It should be set when the `task_status_id` changes. Otherwise, position value might be outdated and incorrect\
+  TaskPositionUpdate position = 8;
 }
 
 message UpdateTaskResponse {
@@ -51,6 +70,7 @@ message UpdateTaskResponse {
   }
   repeated Error errors = 1;
   Chat chat = 2;
+  repeated Chat updatedChats = 3;
 }
 
 message DeleteTaskRequest {

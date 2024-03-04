@@ -12,6 +12,8 @@ message Task {
   uint32 num_members = 11; // read only computed field
   bool can_i_delete_this_task = 12;
   bool can_i_edit_this_task = 13;
+  // Task position in the task list by status
+  uint32 position = 14; 
 }
 
 message TaskStatus {
