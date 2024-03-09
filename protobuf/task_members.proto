@@ -2,8 +2,8 @@ syntax = "proto3";
 
 package teaproto;
 
-import "core_tasks.proto";
-import "core.proto";
+import "core/tasks.proto";
+import "core/chats.proto";
 
 message TaskMembersListRequest {
   string chat_id = 1;

@@ -2,8 +2,8 @@ syntax = "proto3";
 
 package teaproto;
 
-import "core_images.proto";
-import "core_users.proto";
+import "core/images.proto";
+import "core/users.proto";
 
 message SystemMessage {
   message ErrorMessageType {

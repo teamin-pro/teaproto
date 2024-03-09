@@ -1,0 +1,76 @@
+syntax = "proto3";
+
+package teaproto;
+
+import "core/users.proto";
+
+// Task is a task chat in the board.
+message Task {
+  // Task title. One of the title or description must be set.
+  // For maximum length see StateResponse.max_task_title_length.
+  string title = 6;
+
+  // Task description. One of the title or description must be set.
+  // For maximum length see StateResponse.max_task_description_length.
+  string description = 7;
+
+  // Task status id. If omitted, the task will be created in default status.
+  uint32 task_status_id = 8;
+
+  // Task position in the task list by status. If 0, the task will be created at the end of the list.
+  uint32 position = 14;
+
+  // Number of task members. Read only.
+  uint32 num_members = 11;
+
+  // Can I delete this task? Read only/
+  bool can_i_delete_this_task = 12;
+
+  // Can I edit this task? Read only.
+  bool can_i_edit_this_task = 13;
+}
+
+// Task status for the board.
+message TaskStatus {
+  // Unique id of the status on the board
+  uint32 id = 1;
+
+  // Sort order of the status on the board
+  uint32 sort_order = 2;
+
+  // Title of the status. For example: "To Do", "In Progress", "Done".
+  string title = 3;
+
+  // Color of the status. Empty string means default color.
+  string label_text_color = 4;
+
+  // Background color of the status. Empty string means default color.
+  string label_background_color = 5;
+}
+
+// Task role for the board.
+message TaskRole {
+  // Unique id inside board
+  uint32 id = 1;
+
+  // Human readable title
+  string title = 2;
+}
+
+// Task member information.
+message TaskMember {
+  // User information.
+  User user = 1;
+
+  // Task role id. 0 means default role.
+  uint32 task_role_id = 4;
+}
+
+// Task member update request.
+message TaskMemberUpdate {
+  // User id. "me" means the current user.
+  string user_id = 1;
+
+  // Task role id. 0 means default role.
+  uint32 task_role_id = 2;
+}

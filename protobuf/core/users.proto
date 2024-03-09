@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package teaproto;
 
-import "core_images.proto";
+import "core/images.proto";
 
 message User {
   string id = 1;

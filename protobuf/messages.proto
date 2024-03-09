@@ -2,8 +2,9 @@ syntax = "proto3";
 
 package teaproto;
 
-import "core_users.proto";
-import "core.proto";
+import "core/badges.proto";
+import "core/chats.proto";
+import "core/users.proto";
 
 message SendMessageRequest {
   string id = 4; // optional: when present used as id for new message or for editing existing message

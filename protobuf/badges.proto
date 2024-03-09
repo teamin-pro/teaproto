@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+package teaproto;
+
+import "core/badges.proto";
+
+message BadgeRequest {}
+
+message BadgeResponse {
+  repeated GlobalBadge global_badges = 1;
+}

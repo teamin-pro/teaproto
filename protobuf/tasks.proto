@@ -2,8 +2,8 @@ syntax = "proto3";
 
 package teaproto;
 
-import "core.proto";
-import "core_tasks.proto";
+import "core/chats.proto";
+import "core/tasks.proto";
 
 message TaskPositionUpdate {
   string chat_id = 1;

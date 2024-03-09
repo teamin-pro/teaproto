@@ -3,11 +3,13 @@ syntax = "proto3";
 package teaproto;
 
 import "auth.proto";
+import "badges.proto";
 import "board_members.proto";
 import "boards.proto";
 import "chats.proto";
-import "core.proto";
-import "core_users.proto";
+import "core/badges.proto";
+import "core/chats.proto";
+import "core/users.proto";
 import "devices.proto";
 import "group_members.proto";
 import "groups.proto";

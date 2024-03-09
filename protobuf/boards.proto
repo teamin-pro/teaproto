@@ -2,9 +2,9 @@ syntax = "proto3";
 
 package teaproto;
 
-import "core.proto";
-import "core_boards.proto";
-import "core_tasks.proto";
+import "core/chats.proto";
+import "core/boards.proto";
+import "core/tasks.proto";
 
 message BoardDetailsRequest {
   string chat_id = 1;

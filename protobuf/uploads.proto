@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package teaproto;
 
-import "core_images.proto";
+import "core/images.proto";
 
 enum UploadType {
   UT_FILE = 0;
