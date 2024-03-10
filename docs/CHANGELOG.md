@@ -1,3 +1,9 @@
+## v3.2.0 
+ - task positions
+ - task id on task creation
+ - optional fields in task update
+ - message comments updated
+
 ## v3.1.0
  - `TaskListRequest` removed, use `ChatListRequest` with filters instead
 

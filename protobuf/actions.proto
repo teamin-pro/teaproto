@@ -225,22 +225,43 @@ message Result {
 }
 
 message WebsocketAuthRequest {
+  // Auth token
   string token = 1;
 }
 
 message WebsocketEvent {
   enum Error {
+    // Reserved
     UNKNOWN_ERROR = 0;
+
+    // Token is invalid
     INVALID_TOKEN_ERROR = 1;
   }
+
+  // Errors. If there are any errors, connection closes.
   repeated Error errors = 99;
 
-  repeated Message messages = 3; // new or updated messages
-  repeated User users = 4; // new or updated users
-  repeated Chat chats = 5; // new or updated chats
-  repeated ChatBadge chat_badges = 6; // updated chat badges
+  // New or updated messages
+  repeated Message messages = 3;
+
+  // New or updated users
+  repeated User users = 4;
+
+  // New or updated chats
+  repeated Chat chats = 5;
+
+  // Updated chat badges
+  repeated ChatBadge chat_badges = 6;
+
+  // Chat events
   repeated ChatEvent chat_events = 7;
+
+  // Viewed messages
   repeated ViewedMessage viewed_messages = 8;
+
+  // Global badges
   repeated GlobalBadge global_badges = 9;
-  repeated OnlineStatus online_statuses = 10; // users going online, offline or away
+
+  // Changed online statuses
+  repeated OnlineStatus online_statuses = 10;
 }

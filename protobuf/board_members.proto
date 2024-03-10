@@ -6,52 +6,94 @@ import "types/boards.proto";
 import "types/chats.proto";
 
 message BoardMembersListRequest {
+  // Chat ID
   string chat_id = 1;
-  uint32 limit = 2; // default: StateResponse.max_results_on_page
+
+  // Pagination limit. Default: StateResponse.max_results_on_page
+  uint32 limit = 2;
+
+  // Pagination offset. Default: 0
   uint32 offset = 3;
 
-  // filters
-  string user_id = 4; // uuid or "me"
+  // User ID. If not set, returns all members. If "me", returns current user.
+  string user_id = 4;
 }
 
 message BoardMembersListResponse {
   enum Error {
+    // Reserved
     UNKNOWN_ERROR = 0;
+
+    // Invalid chat ID
     INVALID_CHAT_ERROR = 1;
+
+    // Access to chat is denied
     ACCESS_DENIED_ERROR = 2;
+
+    // Invalid limit
     INVALID_LIMIT_ERROR = 3;
   }
+
+  // Errors
   repeated Error errors = 1;
+
+  // Board members list
   repeated BoardMember members = 2;
 }
 
 message CreateOrUpdateBoardMembersRequest {
+  // Chat ID
   string chat_id = 1;
+
+  // Board members update request
   repeated BoardMemberUpdate members = 2;
 }
 
 message CreateOrUpdateBoardMembersResponse {
   enum Error {
+    // Reserved
     UNKNOWN_ERROR = 0;
+
+    // Invalid chat ID
     INVALID_CHAT_ERROR = 1;
+
+    // Access to chat is denied
     ACCESS_DENIED_ERROR = 2;
   }
+
+  // Errors
   repeated Error errors = 1;
+
+  // Board members list
   repeated BoardMember new_or_updated_members = 2;
+
+  // Board chat information
   Chat chat = 3;
 }
 
 message RemoveBoardMembersRequest {
+  // Chat ID
   string chat_id = 1;
-  repeated string user_ids = 2; // uuid or "me"
+
+  // User IDs. UUID or "me"
+  repeated string user_ids = 2;
 }
 
 message RemoveBoardMembersResponse {
   enum Error {
+    // Reserved
     UNKNOWN_ERROR = 0;
+
+    // Invalid chat ID
     INVALID_CHAT_ERROR = 1;
+
+    // Access to chat is denied
     ACCESS_DENIED_ERROR = 2;
   }
+
+  // Errors
   repeated Error errors = 1;
+
+  // Board chat information
   Chat chat = 2;
 }

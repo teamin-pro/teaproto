@@ -7,5 +7,6 @@ import "types/badges.proto";
 message BadgeRequest {}
 
 message BadgeResponse {
+  // The global badges information
   repeated GlobalBadge global_badges = 1;
 }

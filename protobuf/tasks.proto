@@ -27,7 +27,7 @@ message CreateTaskRequest {
 
 message CreateTaskResponse {
   enum Error {
-    // Reserved for cases when the error is not specified
+    // Reserved
     UNKNOWN_ERROR = 0;
 
     // Parent chat is invalid or does not exist
@@ -85,7 +85,7 @@ message UpdateTaskRequest {
 
 message UpdateTaskResponse {
   enum Error {
-    // Reserved for cases when the error is not specified
+    // Reserved
     UNKNOWN_ERROR = 0;
 
     // Task chat is invalid or does not exist
@@ -125,7 +125,7 @@ message DeleteTaskRequest {
 
 message DeleteTaskResponse {
   enum Error {
-    // Reserved for cases when the error is not specified
+    // Reserved
     UNKNOWN_ERROR = 0;
 
     // Task chat is invalid or does not exist
