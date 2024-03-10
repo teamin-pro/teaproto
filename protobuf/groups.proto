@@ -2,7 +2,6 @@ syntax = "proto3";
 
 package teaproto;
 
-import "core/badges.proto";
 import "core/chats.proto";
 import "core/groups.proto";
 
