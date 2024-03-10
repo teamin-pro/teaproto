@@ -3,14 +3,26 @@ syntax = "proto3";
 package teaproto;
 
 message Image {
+  // URL of the image
   string url = 1;
+
+  // Width of the image in pixels
   uint32 width = 2;
+
+  // Height of the image in pixels
   uint32 height = 3;
-  string blur_hash = 4; // https://blurha.sh/ (optional)
+
+  // BlurHash of the image (optional). Details about BlurHash can be found at https://blurha.sh
+  string blur_hash = 4;
 }
 
 message Icon {
-  string letters = 1; // example: AB
-  string color = 2; // example: #FF9671
-  Image image = 3; // may be empty
+  // Letters to be displayed in the icon. Example: AB
+  string letters = 1;
+
+  // Color of the icon. Example: #FF9671
+  string color = 2;
+
+  // Information about the image to be displayed in the icon. May be empty.
+  Image image = 3;
 }

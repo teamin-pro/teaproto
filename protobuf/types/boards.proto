@@ -7,28 +7,52 @@ import "types/images.proto";
 
 // Board is a collection of task chats (for now. In future it can be a collection of any chats)
 message Board {
+  // Board title
   string title = 1;
+
+  // Board icon information
   Icon icon = 2;
-  uint32 num_members = 3; // read only computed field
+
+  // Number of members in board. Read only field.
+  uint32 num_members = 3;
 }
 
 // Roles are predefined on server side. In future we can add custom roles via API.
 message BoardRole {
-  uint32 id = 1; // value is unique inside board
-  string title = 2; // human readable title
-  bool can_add_new_members = 11; // can add new members to board or task
-  bool can_change_information = 12; // title, icon
+  // Role id. Unique inside board.
+  uint32 id = 1;
+
+  // Human readable title
+  string title = 2;
+
+  // Can add new members to board or task. Read only field computed from permissions.
+  bool can_add_new_members = 11;
+
+  // Can change board information (title, icon). Read only field computed from permissions.
+  bool can_change_information = 12;
+
+  // Can change board roles. Read only field computed from permissions.
   repeated uint32 can_set_role_ids = 13;
+
+  // Can create new tasks. Read only field computed from permissions.
   bool can_create_tasks = 15;
 }
 
 message BoardMember {
+  // User information
   User user = 1;
+
+  // Role id. 0 = default role
   uint32 board_role_id = 6;
+
+  // Can remove this member from board. Read only field computed from permissions.
   bool can_i_remove_this_member = 5;
 }
 
 message BoardMemberUpdate {
-  string user_id = 1; // uuid or "me"
-  uint32 board_role_id = 2; // 0 = default role
+  // User id. If "me" then it's current user.
+  string user_id = 1;
+
+  // Role id. 0 = default role
+  uint32 board_role_id = 2;
 }

@@ -5,11 +5,15 @@ package teaproto;
 import "types/images.proto";
 import "types/users.proto";
 
-// Group is a group chat
 message Group {
+  // Group title
   string title = 2;
+
+  // Icon information
   Icon icon = 3;
-  uint32 num_members = 4; // read only computed field
+
+  // Number of members in group. Read only computed field.
+  uint32 num_members = 4;
 }
 
 // Roles are predefined on server side. In future we can add custom roles via API.
@@ -18,17 +22,35 @@ message Group {
 //  * admin: can send messages, can manage members, can change group info, can set any role except owner
 //  * member: can send messages, can add new members
 message GroupRole {
-  uint32 id = 1; // value is unique inside group chat
-  string title = 2; // human readable title
+  // Role id. Unique inside group chat.
+  uint32 id = 1;
+
+  // Human readable title
+  string title = 2;
+
+  // Can add new members to group
   bool can_add_new_members = 11;
-  bool can_change_information = 12; // title, icon
+
+  // Can change group information: title, icon
+  bool can_change_information = 12;
+
+  // Can delete group
   bool can_delete_group = 16;
+
+  // Can delete any message in group
   bool can_delete_any_message = 15;
+
+  // Ids of roles that can be set by this role
   repeated uint32 can_set_role_ids = 13;
 }
 
 message GroupMember {
+  // User information
   User user = 1;
+
+  // Group role id
   uint32 group_role_id = 6;
+
+  // Can I remove this member from group? Read only computed field.
   bool can_i_remove_this_member = 5;
 }
