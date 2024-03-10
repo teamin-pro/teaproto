@@ -37,13 +37,13 @@ go-protobuf: version
 		--go_opt=Mchat_events.proto=./$(PROTOBUF_PACKAGE) \
 		--go_opt=Mchats.proto=./$(PROTOBUF_PACKAGE) \
 		--go_opt=Mcommands.proto=./$(PROTOBUF_PACKAGE) \
-		--go_opt=Mcore/badges.proto=./$(PROTOBUF_PACKAGE) \
-		--go_opt=Mcore/boards.proto=./$(PROTOBUF_PACKAGE) \
-		--go_opt=Mcore/chats.proto=./$(PROTOBUF_PACKAGE) \
-		--go_opt=Mcore/groups.proto=./$(PROTOBUF_PACKAGE) \
-		--go_opt=Mcore/images.proto=./$(PROTOBUF_PACKAGE) \
-		--go_opt=Mcore/tasks.proto=./$(PROTOBUF_PACKAGE) \
-		--go_opt=Mcore/users.proto=./$(PROTOBUF_PACKAGE) \
+		--go_opt=Mtypes/badges.proto=./$(PROTOBUF_PACKAGE) \
+		--go_opt=Mtypes/boards.proto=./$(PROTOBUF_PACKAGE) \
+		--go_opt=Mtypes/chats.proto=./$(PROTOBUF_PACKAGE) \
+		--go_opt=Mtypes/groups.proto=./$(PROTOBUF_PACKAGE) \
+		--go_opt=Mtypes/images.proto=./$(PROTOBUF_PACKAGE) \
+		--go_opt=Mtypes/tasks.proto=./$(PROTOBUF_PACKAGE) \
+		--go_opt=Mtypes/users.proto=./$(PROTOBUF_PACKAGE) \
 		--go_opt=Mdevices.proto=./$(PROTOBUF_PACKAGE) \
 		--go_opt=Mgroup_chats.proto=./$(PROTOBUF_PACKAGE) \
 		--go_opt=Mgroup_members.proto=./$(PROTOBUF_PACKAGE) \
