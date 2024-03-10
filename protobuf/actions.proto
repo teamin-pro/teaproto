@@ -7,9 +7,9 @@ import "badges.proto";
 import "board_members.proto";
 import "boards.proto";
 import "chats.proto";
-import "types/badges.proto";
-import "types/chats.proto";
-import "types/users.proto";
+import "teatypes/tbadges.proto";
+import "teatypes/tchats.proto";
+import "teatypes/tusers.proto";
 import "devices.proto";
 import "group_members.proto";
 import "groups.proto";
@@ -242,16 +242,16 @@ message WebsocketEvent {
   repeated Error errors = 99;
 
   // New or updated messages
-  repeated Message messages = 3;
+  repeated teatypes.Message messages = 3;
 
   // New or updated users
-  repeated User users = 4;
+  repeated teatypes.User users = 4;
 
   // New or updated chats
-  repeated Chat chats = 5;
+  repeated teatypes.Chat chats = 5;
 
   // Updated chat badges
-  repeated ChatBadge chat_badges = 6;
+  repeated teatypes.ChatBadge chat_badges = 6;
 
   // Chat events
   repeated ChatEvent chat_events = 7;
@@ -260,8 +260,8 @@ message WebsocketEvent {
   repeated ViewedMessage viewed_messages = 8;
 
   // Global badges
-  repeated GlobalBadge global_badges = 9;
+  repeated teatypes.GlobalBadge global_badges = 9;
 
   // Changed online statuses
-  repeated OnlineStatus online_statuses = 10;
+  repeated teatypes.OnlineStatus online_statuses = 10;
 }

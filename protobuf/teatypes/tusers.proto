@@ -1,8 +1,8 @@
 syntax = "proto3";
 
-package teaproto;
+package teatypes;
 
-import "types/images.proto";
+import "teatypes/timages.proto";
 
 message User {
   // User id. UUID v4
@@ -12,7 +12,7 @@ message User {
   string name = 2;
 
   // Icon information
-  Icon icon = 3;
+  teatypes.Icon icon = 3;
 
   // Is me
   bool is_me = 6;

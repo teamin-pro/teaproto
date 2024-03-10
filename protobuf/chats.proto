@@ -2,8 +2,8 @@ syntax = "proto3";
 
 package teaproto;
 
-import "types/chats.proto";
-import "types/users.proto";
+import "teatypes/tchats.proto";
+import "teatypes/tusers.proto";
 
 enum ChatEventType {
   TYPING = 0;
@@ -14,7 +14,7 @@ enum ChatEventType {
 message ChatEvent {
   ChatEventType type = 1;
   string chat_id = 2;
-  User user = 6;
+  teatypes.User user = 6;
   uint64 stop_after = 4; // stop showing event after this time
   bool stop_now = 5; // stop showing event right now
 }
@@ -51,7 +51,7 @@ message ChatDetailsResponse {
     ACCESS_DENIED_ERROR = 2;
   }
   repeated Error errors = 1;
-  Chat chat = 2;
+  teatypes.Chat chat = 2;
 }
 
 message PinChatRequest {
@@ -69,7 +69,7 @@ message PinChatResponse {
     ACCESS_DENIED_ERROR = 2;
   }
   repeated Error errors = 1;
-  Chat chat = 2;
+  teatypes.Chat chat = 2;
 }
 
 message ChatListRequest {
@@ -77,7 +77,7 @@ message ChatListRequest {
   uint32 offset = 3;
 
   // optional filters
-  repeated ChatType chat_types = 1;
+  repeated teatypes.ChatType chat_types = 1;
   uint64 min_updated_at = 4;
   string title = 5;
   string parent_chat_id = 6;
@@ -92,5 +92,5 @@ message ChatListResponse {
     ACCESS_DENIED_TO_PARENT_CHAT_ERROR = 3;
   }
   repeated Error errors = 2;
-  repeated Chat chats = 1; // pinned chats first, other chats sorted by activity.
+  repeated teatypes.Chat chats = 1; // pinned chats first, other chats sorted by activity.
 }

@@ -34,29 +34,53 @@ go-protobuf: version
 		--go_opt=Mbadges.proto=./$(PROTOBUF_PACKAGE) \
 		--go_opt=Mboard_members.proto=./$(PROTOBUF_PACKAGE) \
 		--go_opt=Mboards.proto=./$(PROTOBUF_PACKAGE) \
-		--go_opt=Mchat_events.proto=./$(PROTOBUF_PACKAGE) \
 		--go_opt=Mchats.proto=./$(PROTOBUF_PACKAGE) \
-		--go_opt=Mcommands.proto=./$(PROTOBUF_PACKAGE) \
-		--go_opt=Mtypes/badges.proto=./$(PROTOBUF_PACKAGE) \
-		--go_opt=Mtypes/boards.proto=./$(PROTOBUF_PACKAGE) \
-		--go_opt=Mtypes/chats.proto=./$(PROTOBUF_PACKAGE) \
-		--go_opt=Mtypes/groups.proto=./$(PROTOBUF_PACKAGE) \
-		--go_opt=Mtypes/images.proto=./$(PROTOBUF_PACKAGE) \
-		--go_opt=Mtypes/tasks.proto=./$(PROTOBUF_PACKAGE) \
-		--go_opt=Mtypes/users.proto=./$(PROTOBUF_PACKAGE) \
 		--go_opt=Mdevices.proto=./$(PROTOBUF_PACKAGE) \
-		--go_opt=Mgroup_chats.proto=./$(PROTOBUF_PACKAGE) \
 		--go_opt=Mgroup_members.proto=./$(PROTOBUF_PACKAGE) \
 		--go_opt=Mgroups.proto=./$(PROTOBUF_PACKAGE) \
 		--go_opt=Mmessages.proto=./$(PROTOBUF_PACKAGE) \
 		--go_opt=Mreactions.proto=./$(PROTOBUF_PACKAGE) \
 		--go_opt=Mstate.proto=./$(PROTOBUF_PACKAGE) \
-		--go_opt=Msystem_messages.proto=./$(PROTOBUF_PACKAGE) \
 		--go_opt=Mtask_members.proto=./$(PROTOBUF_PACKAGE) \
 		--go_opt=Mtasks.proto=./$(PROTOBUF_PACKAGE) \
+		--go_opt=Mteatypes/tbadges.proto=./$(PROTOBUF_PACKAGE) \
+		--go_opt=Mteatypes/tboards.proto=./$(PROTOBUF_PACKAGE) \
+		--go_opt=Mteatypes/tchats.proto=./$(PROTOBUF_PACKAGE) \
+		--go_opt=Mteatypes/tcommands.proto=./$(PROTOBUF_PACKAGE) \
+		--go_opt=Mteatypes/tgroups.proto=./$(PROTOBUF_PACKAGE) \
+		--go_opt=Mteatypes/timages.proto=./$(PROTOBUF_PACKAGE) \
+		--go_opt=Mteatypes/tsystem_messages.proto=./$(PROTOBUF_PACKAGE) \
+		--go_opt=Mteatypes/ttasks.proto=./$(PROTOBUF_PACKAGE) \
+		--go_opt=Mteatypes/tuploads.proto=./$(PROTOBUF_PACKAGE) \
+		--go_opt=Mteatypes/tusers.proto=./$(PROTOBUF_PACKAGE) \
 		--go_opt=Mtokens.proto=./$(PROTOBUF_PACKAGE) \
 		--go_opt=Muploads.proto=./$(PROTOBUF_PACKAGE) \
 		--go_opt=Musers.proto=./$(PROTOBUF_PACKAGE) \
-		--go_opt=Mviewed_messages.proto=./$(PROTOBUF_PACKAGE) \
 		--go_out=$(PROTOBUF_DIR) \
-		protobuf/*.proto
+		protobuf/actions.proto \
+		protobuf/auth.proto \
+		protobuf/badges.proto \
+		protobuf/board_members.proto \
+		protobuf/boards.proto \
+		protobuf/chats.proto \
+		protobuf/devices.proto \
+		protobuf/group_members.proto \
+		protobuf/groups.proto \
+		protobuf/messages.proto \
+		protobuf/reactions.proto \
+		protobuf/state.proto \
+		protobuf/task_members.proto \
+		protobuf/tasks.proto \
+		protobuf/teatypes/tbadges.proto \
+		protobuf/teatypes/tboards.proto \
+		protobuf/teatypes/tchats.proto \
+		protobuf/teatypes/tcommands.proto \
+		protobuf/teatypes/tgroups.proto \
+		protobuf/teatypes/timages.proto \
+		protobuf/teatypes/tsystem_messages.proto \
+		protobuf/teatypes/ttasks.proto \
+		protobuf/teatypes/tuploads.proto \
+		protobuf/teatypes/tusers.proto \
+		protobuf/tokens.proto \
+		protobuf/uploads.proto \
+		protobuf/users.proto

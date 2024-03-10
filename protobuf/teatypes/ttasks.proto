@@ -1,8 +1,8 @@
 syntax = "proto3";
 
-package teaproto;
+package teatypes;
 
-import "types/users.proto";
+import "teatypes/tusers.proto";
 
 // Task is a task chat in the board.
 message Task {

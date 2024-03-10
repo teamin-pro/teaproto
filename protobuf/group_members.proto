@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package teaproto;
 
-import "types/groups.proto";
+import "teatypes/tgroups.proto";
 
 message GroupMembersListRequest {
   string chat_id = 1;
@@ -22,7 +22,7 @@ message GroupMembersListResponse {
     ACCESS_DENIED_ERROR = 4;
   }
   repeated Error errors = 1;
-  repeated GroupMember members = 2;
+  repeated teatypes.GroupMember members = 2;
 }
 
 message CreateGroupMembersRequest {
@@ -37,7 +37,7 @@ message CreateGroupMembersResponse {
     ACCESS_DENIED_ERROR = 2;
   }
   repeated Error errors = 1;
-  repeated GroupMember members = 2;
+  repeated teatypes.GroupMember members = 2;
 }
 
 message UpdateGroupMemberRequest {
@@ -54,7 +54,7 @@ message UpdateGroupMemberResponse {
     ACCESS_DENIED_ERROR = 3;
   }
   repeated Error errors = 1;
-  GroupMember member = 2;
+  teatypes.GroupMember member = 2;
 }
 
 message RemoveGroupMemberRequest {

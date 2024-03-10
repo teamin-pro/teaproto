@@ -2,11 +2,11 @@ syntax = "proto3";
 
 package teaproto;
 
-import "types/badges.proto";
+import "teatypes/tbadges.proto";
 
 message BadgeRequest {}
 
 message BadgeResponse {
   // The global badges information
-  repeated GlobalBadge global_badges = 1;
+  repeated teatypes.GlobalBadge global_badges = 1;
 }

@@ -1,9 +1,9 @@
 syntax = "proto3";
 
-package teaproto;
+package teatypes;
 
-import "types/images.proto";
-import "types/users.proto";
+import "teatypes/timages.proto";
+import "teatypes/tusers.proto";
 
 message Group {
   // Group title

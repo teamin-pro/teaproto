@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-package teaproto;
+package teatypes;
 
 enum BadgeType {
   // Badge on application icon

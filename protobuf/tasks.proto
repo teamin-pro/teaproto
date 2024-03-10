@@ -2,8 +2,8 @@ syntax = "proto3";
 
 package teaproto;
 
-import "types/chats.proto";
-import "types/tasks.proto";
+import "teatypes/tchats.proto";
+import "teatypes/ttasks.proto";
 
 message CreateTaskRequest {
   // Parent chat id
@@ -19,10 +19,13 @@ message CreateTaskRequest {
   string description = 3;
 
   // Task members. Task creator is always a member by default.
-  repeated TaskMemberUpdate members = 5;
+  repeated teatypes.TaskMemberUpdate members = 5;
 
   // New task position.
-  TaskPositionUpdate position = 6;
+  teatypes.TaskPositionUpdate position = 6;
+
+  // Task status id
+  uint32 task_status_id = 7;
 }
 
 message CreateTaskResponse {
@@ -53,17 +56,20 @@ message CreateTaskResponse {
 
     // Invalid position target
     INVALID_POSITION_TARGET_ERROR = 8;
+
+    // Task status id is invalid
+    INVALID_TASK_STATUS_ID_ERROR = 9;
   }
 
   // A list of errors that occurred during the request processing
   repeated Error errors = 1;
 
   // The chat that was created if the request was successful
-  Chat chat = 2;
+  teatypes.Chat chat = 2;
 
   // A list of tasks that were updated during the request processing. Usually, tasks are updated when their position
   // changed due to the newly created task.
-  repeated Chat updated_chats = 3;
+  repeated teatypes.Chat updated_chats = 3;
 }
 
 message UpdateTaskRequest {
@@ -80,7 +86,7 @@ message UpdateTaskRequest {
   optional uint32 task_status_id = 7;
 
   // New task position. If not set, the position will not be updated.
-  optional TaskPositionUpdate position = 8;
+  optional teatypes.TaskPositionUpdate position = 8;
 }
 
 message UpdateTaskResponse {
@@ -105,17 +111,20 @@ message UpdateTaskResponse {
 
     // Invalid position target
     INVALID_POSITION_TARGET_ERROR = 6;
+
+    // Task status id is invalid
+    INVALID_TASK_STATUS_ID_ERROR = 7;
   }
 
   // A list of errors that occurred during the request processing
   repeated Error errors = 1;
 
   // The chat that was updated if the request was successful
-  Chat chat = 2;
+  teatypes.Chat chat = 2;
 
   // A list of chats that were updated during the request processing. Usually, chats are updated when their position
   // changed due to the updated task.
-  repeated Chat updated_chats = 3;
+  repeated teatypes.Chat updated_chats = 3;
 }
 
 message DeleteTaskRequest {

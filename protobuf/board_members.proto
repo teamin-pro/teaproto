@@ -2,8 +2,8 @@ syntax = "proto3";
 
 package teaproto;
 
-import "types/boards.proto";
-import "types/chats.proto";
+import "teatypes/tboards.proto";
+import "teatypes/tchats.proto";
 
 message BoardMembersListRequest {
   // Chat ID
@@ -38,7 +38,7 @@ message BoardMembersListResponse {
   repeated Error errors = 1;
 
   // Board members list
-  repeated BoardMember members = 2;
+  repeated teatypes.BoardMember members = 2;
 }
 
 message CreateOrUpdateBoardMembersRequest {
@@ -46,7 +46,7 @@ message CreateOrUpdateBoardMembersRequest {
   string chat_id = 1;
 
   // Board members update request
-  repeated BoardMemberUpdate members = 2;
+  repeated teatypes.BoardMemberUpdate members = 2;
 }
 
 message CreateOrUpdateBoardMembersResponse {
@@ -65,10 +65,10 @@ message CreateOrUpdateBoardMembersResponse {
   repeated Error errors = 1;
 
   // Board members list
-  repeated BoardMember new_or_updated_members = 2;
+  repeated teatypes.BoardMember new_or_updated_members = 2;
 
   // Board chat information
-  Chat chat = 3;
+  teatypes.Chat chat = 3;
 }
 
 message RemoveBoardMembersRequest {
@@ -95,5 +95,5 @@ message RemoveBoardMembersResponse {
   repeated Error errors = 1;
 
   // Board chat information
-  Chat chat = 2;
+  teatypes.Chat chat = 2;
 }

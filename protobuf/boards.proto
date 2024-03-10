@@ -2,9 +2,9 @@ syntax = "proto3";
 
 package teaproto;
 
-import "types/chats.proto";
-import "types/boards.proto";
-import "types/tasks.proto";
+import "teatypes/tchats.proto";
+import "teatypes/tboards.proto";
+import "teatypes/ttasks.proto";
 
 message BoardDetailsRequest {
   string chat_id = 1;
@@ -17,10 +17,10 @@ message BoardDetailsResponse {
     ACCESS_DENIED_ERROR = 2;
   }
   repeated Error errors = 1;
-  Chat chat = 4;
-  repeated BoardRole board_roles = 2;
-  repeated TaskRole task_roles = 5;
-  repeated TaskStatus task_statuses = 3;
+  teatypes.Chat chat = 4;
+  repeated teatypes.BoardRole board_roles = 2;
+  repeated teatypes.TaskRole task_roles = 5;
+  repeated teatypes.TaskStatus task_statuses = 3;
 }
 
 message CreateBoardRequest {
@@ -35,7 +35,7 @@ message CreateBoardResponse {
     TITLE_TOO_LONG_ERROR = 2; // see StateResponse.max_board_title_length
   }
   repeated Error errors = 1;
-  Chat chat = 2;
+  teatypes.Chat chat = 2;
 }
 
 message UpdateBoardRequest {
@@ -52,5 +52,5 @@ message UpdateBoardResponse {
     UPDATE_BOARD_NOT_ALLOWED_ERROR = 4;
   }
   repeated Error errors = 1;
-  Chat chat = 2;
+  teatypes.Chat chat = 2;
 }

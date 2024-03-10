@@ -1,18 +1,18 @@
 syntax = "proto3";
 
-package teaproto;
+package teatypes;
 
-import "commands.proto";
-import "types/boards.proto";
-import "types/groups.proto";
-import "types/images.proto";
-import "types/tasks.proto";
-import "types/users.proto";
-import "system_messages.proto";
-import "uploads.proto";
+import "teatypes/tcommands.proto";
+import "teatypes/tboards.proto";
+import "teatypes/tgroups.proto";
+import "teatypes/timages.proto";
+import "teatypes/ttasks.proto";
+import "teatypes/tusers.proto";
+import "teatypes/tsystem_messages.proto";
+import "teatypes/tuploads.proto";
 
 enum ChatType {
-  // Reserved for error cases
+  // Reserved
   UNKNOWN_CHAT_TYPE = 0;
 
   // Direct chat with another user
@@ -82,7 +82,7 @@ message ChatState {
   uint32 pinned_position = 12;
 
   // Bot commands. Still not implemented, reserved for future use
-  repeated Command bot_commands = 15;
+  repeated teatypes.Command bot_commands = 15;
 
   reserved 1 to 7, 10, 11, 13;
 }
@@ -135,7 +135,7 @@ message Message {
     SystemMessage system_message = 17;
 
     // Upload information for audio messages
-    Upload audio_upload = 18;
+    teatypes.Upload audio_upload = 18;
 
     // Deleted message information for deleted messages
     DeletedMessage deleted = 20;
