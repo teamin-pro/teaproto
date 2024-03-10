@@ -51,8 +51,8 @@ message CreateTaskResponse {
     // Not allowed to create the task in the parent chat
     NOT_ALLOWED_TO_CREATE_TASK_ERROR = 6;
 
-    // Task with given chat_id already exists
-    TASK_WITH_GIVEN_CHAT_ID_ALREADY_EXISTS_ERROR = 7;
+    // Task with given chat_id already exists or chat_id is invalid
+    INVALID_CHAT_ID_ERROR = 7;
 
     // Invalid position target
     INVALID_POSITION_TARGET_ERROR = 8;
