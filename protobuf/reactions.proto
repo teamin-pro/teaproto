@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package teaproto;
 
-import "core/chats.proto";
+import "types/chats.proto";
 
 message Reaction {
   string emoji = 1; // ☘️

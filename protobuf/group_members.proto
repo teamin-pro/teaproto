@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package teaproto;
 
-import "core/groups.proto";
+import "types/groups.proto";
 
 message GroupMembersListRequest {
   string chat_id = 1;

@@ -2,8 +2,8 @@ syntax = "proto3";
 
 package teaproto;
 
-import "core/chats.proto";
-import "core/groups.proto";
+import "types/chats.proto";
+import "types/groups.proto";
 
 message CreateGroupRequest {
   string title = 1;

@@ -2,8 +2,8 @@ syntax = "proto3";
 
 package teaproto;
 
-import "core/boards.proto";
-import "core/chats.proto";
+import "types/boards.proto";
+import "types/chats.proto";
 
 message BoardMembersListRequest {
   string chat_id = 1;

@@ -2,8 +2,8 @@ syntax = "proto3";
 
 package teaproto;
 
-import "core/chats.proto";
-import "core/tasks.proto";
+import "types/chats.proto";
+import "types/tasks.proto";
 
 message CreateTaskRequest {
   // Parent chat id

@@ -3,11 +3,11 @@ syntax = "proto3";
 package teaproto;
 
 import "commands.proto";
-import "core/boards.proto";
-import "core/groups.proto";
-import "core/images.proto";
-import "core/tasks.proto";
-import "core/users.proto";
+import "types/boards.proto";
+import "types/groups.proto";
+import "types/images.proto";
+import "types/tasks.proto";
+import "types/users.proto";
 import "system_messages.proto";
 import "uploads.proto";
 

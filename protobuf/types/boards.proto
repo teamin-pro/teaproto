@@ -2,8 +2,8 @@ syntax = "proto3";
 
 package teaproto;
 
-import "core/users.proto";
-import "core/images.proto";
+import "types/users.proto";
+import "types/images.proto";
 
 // Board is a collection of task chats (for now. In future it can be a collection of any chats)
 message Board {

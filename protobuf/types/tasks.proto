@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package teaproto;
 
-import "core/users.proto";
+import "types/users.proto";
 
 // Task is a task chat in the board.
 message Task {

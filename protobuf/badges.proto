@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package teaproto;
 
-import "core/badges.proto";
+import "types/badges.proto";
 
 message BadgeRequest {}
 

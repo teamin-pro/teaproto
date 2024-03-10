@@ -2,8 +2,8 @@ syntax = "proto3";
 
 package teaproto;
 
-import "core/chats.proto";
-import "core/users.proto";
+import "types/chats.proto";
+import "types/users.proto";
 
 enum ChatEventType {
   TYPING = 0;
