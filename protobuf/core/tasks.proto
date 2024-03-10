@@ -66,11 +66,34 @@ message TaskMember {
   uint32 task_role_id = 4;
 }
 
-// Task member update request.
+// Task member create/update request.
 message TaskMemberUpdate {
   // User id. "me" means the current user.
   string user_id = 1;
 
   // Task role id. 0 means default role.
-  uint32 task_role_id = 2;
+  optional uint32 task_role_id = 2;
+}
+
+// Task position create/update request.
+message TaskPositionUpdate {
+  enum Type {
+    // Add a task to the beginning (top) of the task list by status
+    BEGINNING = 0;
+
+    // Add a task to the end (bottom) of the task list by status
+    END = 1;
+
+    // Add a task after the specified task
+    AFTER_TARGET = 2;
+
+    // Add a task before the specified task
+    BEFORE_TARGET = 3;
+  }
+
+  // Type of the position update.
+  Type type = 1;
+
+  // Task id to add the new task after or before. Required if type is AFTER_TARGET or BEFORE_TARGET.
+  string target_chat_id = 2;
 }

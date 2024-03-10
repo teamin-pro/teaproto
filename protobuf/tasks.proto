@@ -5,83 +5,136 @@ package teaproto;
 import "core/chats.proto";
 import "core/tasks.proto";
 
-message TaskPositionUpdate {
-  string chat_id = 1;
-  oneof position {
-    string after_task_id = 2;
-    string before_task_id = 3;
-    // Add a task to the beginning (top) of the task list by status
-    bool beggining = 4;
-    // Add a task to the end (bottom) of the task list by status
-    bool end = 5;
-  }
-}
-
 message CreateTaskRequest {
+  // Parent chat id
   string parent_chat_id = 1;
+
+  // When present, the task will be created in the chat with the specified id. Should be valid uuid.
+  string chat_id = 4;
+
+  // Task title
   string title = 2;
+
+  // Task description
   string description = 3;
+
+  // Task members. Task creator is always a member by default.
   repeated TaskMemberUpdate members = 5;
+
+  // New task position.
   TaskPositionUpdate position = 6;
 }
 
 message CreateTaskResponse {
   enum Error {
+    // Reserved for cases when the error is not specified
     UNKNOWN_ERROR = 0;
+
+    // Parent chat is invalid or does not exist
     INVALID_PARENT_CHAT_ERROR = 1;
+
+    // Both title and description are empty
     TITLE_AND_DESCRIPTION_EMPTY_ERROR = 2;
-    TITLE_IS_TOO_LONG_ERROR = 3; // see: StateResponse.max_task_title_length
-    DESCRIPTION_IS_TOO_LONG_ERROR = 4; // see: StateResponse.max_task_description_length
-    TOO_MANY_TASK_MEMBERS = 5; // see: StateResponse.max_task_members
+
+    // Task title is too long. See: StateResponse.max_task_title_length for the maximum title length
+    TITLE_IS_TOO_LONG_ERROR = 3;
+
+    // Task description is too long. See: StateResponse.max_task_description_length for the maximum description length
+    DESCRIPTION_IS_TOO_LONG_ERROR = 4;
+
+    // Task members are too many. See: StateResponse.max_task_members for the maximum number of task members
+    TOO_MANY_TASK_MEMBERS_ERROR = 5;
+
+    // Not allowed to create the task in the parent chat
     NOT_ALLOWED_TO_CREATE_TASK_ERROR = 6;
+
+    // Task with given chat_id already exists
+    TASK_WITH_GIVEN_CHAT_ID_ALREADY_EXISTS_ERROR = 7;
+
+    // Invalid position target
+    INVALID_POSITION_TARGET_ERROR = 8;
   }
+
+  // A list of errors that occurred during the request processing
   repeated Error errors = 1;
+
+  // The chat that was created if the request was successful
   Chat chat = 2;
-  // A list of tasks that were updated
-  // Usually, tasks are updated when their positoin changed due to the newly created task
-  repeated Chat updatedChats = 3;
-  // TODO: create from message
+
+  // A list of tasks that were updated during the request processing. Usually, tasks are updated when their position
+  // changed due to the newly created task.
+  repeated Chat updated_chats = 3;
 }
 
 message UpdateTaskRequest {
+  // Task chat id
   string chat_id = 1;
 
-  bool update_title = 2;
-  string title = 3;
+  // Tak title to update. If not set, the title will not be updated
+  optional string title = 3;
 
-  bool update_description = 4;
-  string description = 5;
+  // Task description to update. If not set, the description will not be updated
+  optional string description = 5;
 
-  uint32 task_status_id = 7;
-  // New task position
-  // It should be set when the `task_status_id` changes. Otherwise, position value might be outdated and incorrect\
-  TaskPositionUpdate position = 8;
+  // Task members to update. If not set, the members will not be updated
+  optional uint32 task_status_id = 7;
+
+  // New task position. If not set, the position will not be updated.
+  optional TaskPositionUpdate position = 8;
 }
 
 message UpdateTaskResponse {
   enum Error {
+    // Reserved for cases when the error is not specified
     UNKNOWN_ERROR = 0;
+
+    // Task chat is invalid or does not exist
     INVALID_CHAT_ERROR = 1;
+
+    // Not allowed to update the task
     ACCESS_DENIED_ERROR = 2;
-    TITLE_IS_TOO_LONG_ERROR = 3; // see: StateResponse.max_task_title_length
-    DESCRIPTION_IS_TOO_LONG_ERROR = 4; // see: StateResponse.max_task_description_length
-    INVALID_TASK_STATUS_ID_ERROR = 7;
+
+    // Task title is too long. See: StateResponse.max_task_title_length for the maximum title length
+    TITLE_IS_TOO_LONG_ERROR = 3;
+
+    // Task description is too long. See: StateResponse.max_task_description_length for the maximum description length
+    DESCRIPTION_IS_TOO_LONG_ERROR = 4;
+
+    // Both title and description are empty
     TITLE_AND_DESCRIPTION_EMPTY_ERROR = 5;
+
+    // Invalid position target
+    INVALID_POSITION_TARGET_ERROR = 6;
   }
+
+  // A list of errors that occurred during the request processing
   repeated Error errors = 1;
+
+  // The chat that was updated if the request was successful
   Chat chat = 2;
-  repeated Chat updatedChats = 3;
+
+  // A list of chats that were updated during the request processing. Usually, chats are updated when their position
+  // changed due to the updated task.
+  repeated Chat updated_chats = 3;
 }
 
 message DeleteTaskRequest {
+  // Task chat id
   string chat_id = 1;
 }
 
 message DeleteTaskResponse {
   enum Error {
+    // Reserved for cases when the error is not specified
     UNKNOWN_ERROR = 0;
+
+    // Task chat is invalid or does not exist
     INVALID_CHAT_ERROR = 1;
+
+    // Not allowed to delete the task
     ACCESS_DENIED_ERROR = 2;
   }
+
+  // A list of errors that occurred during the request processing
   repeated Error errors = 1;
 }
