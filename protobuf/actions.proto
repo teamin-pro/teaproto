@@ -7,9 +7,6 @@ import "badges.proto";
 import "board_members.proto";
 import "boards.proto";
 import "chats.proto";
-import "teatypes/tbadges.proto";
-import "teatypes/tchats.proto";
-import "teatypes/tusers.proto";
 import "devices.proto";
 import "group_members.proto";
 import "groups.proto";
@@ -18,6 +15,10 @@ import "reactions.proto";
 import "state.proto";
 import "task_members.proto";
 import "tasks.proto";
+import "teatypes/tbadges.proto";
+import "teatypes/tchats.proto";
+import "teatypes/ttasks.proto";
+import "teatypes/tusers.proto";
 import "tokens.proto";
 import "uploads.proto";
 import "users.proto";
@@ -264,4 +265,7 @@ message WebsocketEvent {
 
   // Changed online statuses
   repeated teatypes.OnlineStatus online_statuses = 10;
+
+  // Task moves
+  repeated teatypes.TaskMove task_moves = 11;
 }

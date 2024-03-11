@@ -30,6 +30,18 @@ message Task {
   bool can_i_edit_this_task = 13;
 }
 
+// Short task information about the task status and/or position.
+message TaskMove {
+  // Task id
+  string chat_id = 1;
+
+  // Task status id
+  uint32 task_status_id = 8;
+
+  // Task position in the task list by status.
+  uint32 position = 3;
+}
+
 // Task status for the board.
 message TaskStatus {
   // Unique id of the status on the board

@@ -68,8 +68,7 @@ message CreateTaskResponse {
   teatypes.Chat chat = 2;
 
   // A list of tasks that were updated during the request processing. Usually, tasks are updated when their position
-  // changed due to the newly created task.
-  repeated teatypes.Chat updated_chats = 3;
+  repeated teatypes.TaskMove moved_tasks = 3;
 }
 
 message UpdateTaskRequest {
@@ -122,9 +121,8 @@ message UpdateTaskResponse {
   // The chat that was updated if the request was successful
   teatypes.Chat chat = 2;
 
-  // A list of chats that were updated during the request processing. Usually, chats are updated when their position
-  // changed due to the updated task.
-  repeated teatypes.Chat updated_chats = 3;
+  // A list of tasks that were updated during the request processing. Usually, tasks are updated when their position
+  repeated teatypes.TaskMove moved_tasks = 3;
 }
 
 message DeleteTaskRequest {
