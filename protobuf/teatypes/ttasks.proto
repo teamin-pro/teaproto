@@ -17,13 +17,13 @@ message Task {
   // Task status id. If omitted, the task will be created in default status.
   uint32 task_status_id = 8;
 
-  // Task position in the task list by status. If 0, the task will be created at the end of the list.
+  // Task position in the task list by status.
   uint32 position = 14;
 
   // Number of task members. Read only.
   uint32 num_members = 11;
 
-  // Can I delete this task? Read only/
+  // Can I delete this task? Read only.
   bool can_i_delete_this_task = 12;
 
   // Can I edit this task? Read only.
