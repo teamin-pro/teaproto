@@ -266,6 +266,6 @@ message WebsocketEvent {
   // Changed online statuses
   repeated teatypes.OnlineStatus online_statuses = 10;
 
-  // Task moves
-  repeated teatypes.TaskMove task_moves = 11;
+  // Changed task positions
+  repeated teatypes.TaskShift task_shifts = 11;
 }
