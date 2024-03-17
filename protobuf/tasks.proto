@@ -2,66 +2,146 @@ syntax = "proto3";
 
 package teaproto;
 
-import "core.proto";
-import "core_tasks.proto";
+import "teatypes/tchats.proto";
+import "teatypes/ttasks.proto";
 
 message CreateTaskRequest {
+  // Parent chat id
   string parent_chat_id = 1;
+
+  // When present, the task will be created in the chat with the specified id. Should be valid uuid.
+  string chat_id = 4;
+
+  // Task title
   string title = 2;
+
+  // Task description
   string description = 3;
-  repeated TaskMemberUpdate members = 5;
+
+  // Task members. Task creator is always a member by default.
+  repeated teatypes.TaskMemberUpdate members = 5;
+
+  // New task position.
+  teatypes.TaskPositionUpdate position = 6;
+
+  // Task status id
+  uint32 task_status_id = 7;
 }
 
 message CreateTaskResponse {
   enum Error {
+    // Reserved
     UNKNOWN_ERROR = 0;
+
+    // Parent chat is invalid or does not exist
     INVALID_PARENT_CHAT_ERROR = 1;
+
+    // Both title and description are empty
     TITLE_AND_DESCRIPTION_EMPTY_ERROR = 2;
-    TITLE_IS_TOO_LONG_ERROR = 3; // see: StateResponse.max_task_title_length
-    DESCRIPTION_IS_TOO_LONG_ERROR = 4; // see: StateResponse.max_task_description_length
-    TOO_MANY_TASK_MEMBERS = 5; // see: StateResponse.max_task_members
+
+    // Task title is too long. See: StateResponse.max_task_title_length for the maximum title length
+    TITLE_IS_TOO_LONG_ERROR = 3;
+
+    // Task description is too long. See: StateResponse.max_task_description_length for the maximum description length
+    DESCRIPTION_IS_TOO_LONG_ERROR = 4;
+
+    // Task members are too many. See: StateResponse.max_task_members for the maximum number of task members
+    TOO_MANY_TASK_MEMBERS_ERROR = 5;
+
+    // Not allowed to create the task in the parent chat
     NOT_ALLOWED_TO_CREATE_TASK_ERROR = 6;
+
+    // Task with given chat_id already exists or chat_id is invalid
+    INVALID_CHAT_ID_ERROR = 7;
+
+    // Invalid position target
+    INVALID_POSITION_TARGET_ERROR = 8;
+
+    // Task status id is invalid
+    INVALID_TASK_STATUS_ID_ERROR = 9;
   }
+
+  // A list of errors that occurred during the request processing
   repeated Error errors = 1;
-  Chat chat = 2;
-  // TODO: create from message
+
+  // The chat that was created if the request was successful
+  teatypes.Chat chat = 2;
+
+  // A list of tasks that were updated during the request processing. Usually, tasks are updated when their position
+  repeated teatypes.TaskShift task_shifts = 3;
 }
 
 message UpdateTaskRequest {
+  // Task chat id
   string chat_id = 1;
 
-  bool update_title = 2;
-  string title = 3;
+  // Tak title to update. If not set, the title will not be updated
+  optional string title = 3;
 
-  bool update_description = 4;
-  string description = 5;
+  // Task description to update. If not set, the description will not be updated
+  optional string description = 5;
 
-  uint32 task_status_id = 7;
+  // Task members to update. If not set, the members will not be updated
+  optional uint32 task_status_id = 7;
+
+  // New task position. If not set, the position will not be updated.
+  optional teatypes.TaskPositionUpdate position = 8;
 }
 
 message UpdateTaskResponse {
   enum Error {
+    // Reserved
     UNKNOWN_ERROR = 0;
+
+    // Task chat is invalid or does not exist
     INVALID_CHAT_ERROR = 1;
+
+    // Not allowed to update the task
     ACCESS_DENIED_ERROR = 2;
-    TITLE_IS_TOO_LONG_ERROR = 3; // see: StateResponse.max_task_title_length
-    DESCRIPTION_IS_TOO_LONG_ERROR = 4; // see: StateResponse.max_task_description_length
-    INVALID_TASK_STATUS_ID_ERROR = 7;
+
+    // Task title is too long. See: StateResponse.max_task_title_length for the maximum title length
+    TITLE_IS_TOO_LONG_ERROR = 3;
+
+    // Task description is too long. See: StateResponse.max_task_description_length for the maximum description length
+    DESCRIPTION_IS_TOO_LONG_ERROR = 4;
+
+    // Both title and description are empty
     TITLE_AND_DESCRIPTION_EMPTY_ERROR = 5;
+
+    // Invalid position target
+    INVALID_POSITION_TARGET_ERROR = 6;
+
+    // Task status id is invalid
+    INVALID_TASK_STATUS_ID_ERROR = 7;
   }
+
+  // A list of errors that occurred during the request processing
   repeated Error errors = 1;
-  Chat chat = 2;
+
+  // The chat that was updated if the request was successful
+  teatypes.Chat chat = 2;
+
+  // A list of tasks that were updated during the request processing. Usually, tasks are updated when their position
+  repeated teatypes.TaskShift task_shifts = 3;
 }
 
 message DeleteTaskRequest {
+  // Task chat id
   string chat_id = 1;
 }
 
 message DeleteTaskResponse {
   enum Error {
+    // Reserved
     UNKNOWN_ERROR = 0;
+
+    // Task chat is invalid or does not exist
     INVALID_CHAT_ERROR = 1;
+
+    // Not allowed to delete the task
     ACCESS_DENIED_ERROR = 2;
   }
+
+  // A list of errors that occurred during the request processing
   repeated Error errors = 1;
 }

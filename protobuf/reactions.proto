@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package teaproto;
 
-import "core.proto";
+import "teatypes/tchats.proto";
 
 message Reaction {
   string emoji = 1; // ☘️
@@ -32,7 +32,7 @@ message SetMessageReactionResponse {
     INVALID_EMOJI_ERROR = 2;
   }
   repeated Error errors = 1;
-  repeated MessageReaction reactions = 2;
+  repeated teatypes.MessageReaction reactions = 2;
 
   // update
   repeated string recent = 3;

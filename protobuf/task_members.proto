@@ -2,8 +2,8 @@ syntax = "proto3";
 
 package teaproto;
 
-import "core_tasks.proto";
-import "core.proto";
+import "teatypes/ttasks.proto";
+import "teatypes/tchats.proto";
 
 message TaskMembersListRequest {
   string chat_id = 1;
@@ -22,12 +22,12 @@ message TaskMembersListResponse {
     INVALID_LIMIT_ERROR = 3;
   }
   repeated Error errors = 1;
-  repeated TaskMember members = 2;
+  repeated teatypes.TaskMember members = 2;
 }
 
 message CreateOrUpdateTaskMembersRequest {
   string chat_id = 1;
-  repeated TaskMemberUpdate members = 2;
+  repeated teatypes.TaskMemberUpdate members = 2;
 }
 
 message CreateOrUpdateTaskMembersResponse {
@@ -37,8 +37,8 @@ message CreateOrUpdateTaskMembersResponse {
     ACCESS_DENIED_ERROR = 2;
   }
   repeated Error errors = 1;
-  repeated TaskMember new_or_updated_members = 2;
-  Chat chat = 3;
+  repeated teatypes.TaskMember new_or_updated_members = 2;
+  teatypes.Chat chat = 3;
 }
 
 message RemoveTaskMembersRequest {
@@ -53,5 +53,5 @@ message RemoveTaskMembersResponse {
     ACCESS_DENIED_ERROR = 2;
   }
   repeated Error errors = 1;
-  Chat chat = 2;
+  teatypes.Chat chat = 2;
 }

@@ -1,0 +1,111 @@
+syntax = "proto3";
+
+package teatypes;
+
+import "teatypes/tusers.proto";
+
+// Task is a task chat in the board.
+message Task {
+  // Task title. One of the title or description must be set.
+  // For maximum length see StateResponse.max_task_title_length.
+  string title = 6;
+
+  // Task description. One of the title or description must be set.
+  // For maximum length see StateResponse.max_task_description_length.
+  string description = 7;
+
+  // Task status id. If omitted, the task will be created in default status.
+  uint32 task_status_id = 8;
+
+  // Task position in the task list by status.
+  uint32 position = 14;
+
+  // Number of task members. Read only.
+  uint32 num_members = 11;
+
+  // Can I delete this task? Read only.
+  bool can_i_delete_this_task = 12;
+
+  // Can I edit this task? Read only.
+  bool can_i_edit_this_task = 13;
+}
+
+// Short task information about the task status and/or position.
+message TaskShift {
+  // Task id
+  string chat_id = 1;
+
+  // Task status id
+  uint32 task_status_id = 8;
+
+  // Task position in the task list by status.
+  uint32 position = 3;
+}
+
+// Task status for the board.
+message TaskStatus {
+  // Unique id of the status on the board
+  uint32 id = 1;
+
+  // Sort order of the status on the board
+  uint32 sort_order = 2;
+
+  // Title of the status. For example: "To Do", "In Progress", "Done".
+  string title = 3;
+
+  // Color of the status. Empty string means default color.
+  string label_text_color = 4;
+
+  // Background color of the status. Empty string means default color.
+  string label_background_color = 5;
+}
+
+// Task role for the board.
+message TaskRole {
+  // Unique id inside board
+  uint32 id = 1;
+
+  // Human readable title
+  string title = 2;
+}
+
+// Task member information.
+message TaskMember {
+  // User information.
+  User user = 1;
+
+  // Task role id. 0 means default role.
+  uint32 task_role_id = 4;
+}
+
+// Task member create/update request.
+message TaskMemberUpdate {
+  // User id. "me" means the current user.
+  string user_id = 1;
+
+  // Task role id. 0 means default role.
+  optional uint32 task_role_id = 2;
+}
+
+// Task position create/update request.
+message TaskPositionUpdate {
+  enum Type {
+    // Add a task to the beginning (top) of the task list by status
+    BEGINNING = 0;
+
+    // Add a task to the end (bottom) of the task list by status
+    END = 1;
+
+    // Add a task after the specified task
+    AFTER_TARGET = 2;
+
+    // Add a task before the specified task
+    BEFORE_TARGET = 3;
+  }
+
+  // Type of the position update.
+  Type type = 1;
+
+  // Task id to add the new task after or before. Required if type is AFTER_TARGET or BEFORE_TARGET.
+  string target_chat_id = 2;
+}

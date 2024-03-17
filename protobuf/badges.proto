@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+package teaproto;
+
+import "teatypes/tbadges.proto";
+
+message BadgeRequest {}
+
+message BadgeResponse {
+  // The global badges information
+  repeated teatypes.GlobalBadge global_badges = 1;
+}

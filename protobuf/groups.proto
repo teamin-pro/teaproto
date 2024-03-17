@@ -2,8 +2,8 @@ syntax = "proto3";
 
 package teaproto;
 
-import "core.proto";
-import "core_groups.proto";
+import "teatypes/tchats.proto";
+import "teatypes/tgroups.proto";
 
 message CreateGroupRequest {
   string title = 1;
@@ -18,7 +18,7 @@ message CreateGroupResponse {
     GROUP_CREATION_NOT_ALLOWED_ERROR = 3;
   }
   repeated Error errors = 1;
-  Chat chat = 3;
+  teatypes.Chat chat = 3;
 }
 
 message UpdateGroupRequest {
@@ -35,7 +35,7 @@ message UpdateGroupResponse {
     TITLE_TOO_LONG_ERROR = 4;
   }
   repeated Error errors = 1;
-  Chat chat = 3;
+  teatypes.Chat chat = 3;
 }
 
 message GroupDetailsRequest {
@@ -49,8 +49,8 @@ message GroupDetailsResponse {
     ACCESS_DENIED_ERROR = 2;
   }
   repeated Error errors = 1;
-  Chat chat = 3;
-  repeated GroupRole group_roles = 2;
+  teatypes.Chat chat = 3;
+  repeated teatypes.GroupRole group_roles = 2;
 }
 
 message DeleteGroupRequest {

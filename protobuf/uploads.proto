@@ -2,27 +2,8 @@ syntax = "proto3";
 
 package teaproto;
 
-import "core_images.proto";
-
-enum UploadType {
-  UT_FILE = 0;
-  UT_IMAGE = 1;
-  UT_VIDEO = 2;
-  UT_AUDIO = 3;
-}
-
-message Upload {
-  string id = 1;
-  uint64 created_at = 8;
-  string url = 2;
-  string filename = 3;
-  UploadType type = 4;
-  uint32 size = 5;
-  Image large_preview = 6; // optional large preview: for UT_IMAGE and UT_VIDEO
-  Image small_preview = 10; // optional small square preview: for UT_IMAGE and UT_VIDEO
-  uint32 duration = 7; // non-zero for UT_AUDIO and UT_VIDEO
-  string content_type = 9; // https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Type
-}
+import "teatypes/tuploads.proto";
+import "teatypes/timages.proto";
 
 message UploadRequest {
   bytes content = 1;
@@ -37,14 +18,14 @@ message UploadResponse {
     INVALID_FILENAME_ERROR = 2; // filename length must be between 1 and 255 and must not contain character /
   }
   repeated Error errors = 1;
-  Upload upload = 2;
+  teatypes.Upload upload = 2;
 }
 
 message ChatUploadsRequest {
   string chat_id = 1;
   uint32 limit = 3; // default: StateResponse.max_results_on_page
   uint32 offset = 4;
-  repeated UploadType types = 5;
+  repeated teatypes.UploadType types = 5;
 }
 
 message ChatUploadsResponse {
@@ -55,7 +36,7 @@ message ChatUploadsResponse {
     INVALID_LIMIT_ERROR = 1;
   }
   repeated Error errors = 1;
-  repeated Upload uploads = 2;
+  repeated teatypes.Upload uploads = 2;
 }
 
 message UploadIconRequest {
@@ -75,5 +56,5 @@ message UploadIconResponse {
     NOT_ALLOWED_ERROR = 4;
   }
   repeated Error errors = 1;
-  Icon icon = 2;
+  teatypes.Icon icon = 2;
 }

@@ -1,0 +1,192 @@
+syntax = "proto3";
+
+package teatypes;
+
+import "teatypes/tcommands.proto";
+import "teatypes/tboards.proto";
+import "teatypes/tgroups.proto";
+import "teatypes/timages.proto";
+import "teatypes/ttasks.proto";
+import "teatypes/tusers.proto";
+import "teatypes/tsystem_messages.proto";
+import "teatypes/tuploads.proto";
+
+enum ChatType {
+  // Reserved
+  UNKNOWN_CHAT_TYPE = 0;
+
+  // Direct chat with another user
+  DIRECT = 1;
+
+  // Group chat
+  GROUP = 2;
+
+  // Task chat
+  TASK = 3;
+
+  // Board chat: contains task chats
+  BOARD = 4;
+}
+
+message Chat {
+  // Chat id. UUID v4
+  string id = 1;
+
+  // Chat type
+  ChatType type = 2;
+
+  // Parent chat id. Present only for task chats
+  string parent_id = 8;
+
+  // Parent chat type. Present only for task chats and always is BOARD for now
+  ChatType parent_type = 9;
+
+  // Creation time
+  uint64 created_at = 20;
+
+  // Title of chat
+  string title = 6;
+
+  // Icon information
+  Icon icon = 7;
+
+  oneof topic {
+    // User information with whom chat is. Present only for DIRECT chats
+    User user = 15;
+
+    // Group information. Present only for GROUP chats
+    Group group = 16;
+
+    // Task information. Present only for TASK chats
+    Task task = 18;
+
+    // Board information. Present only for BOARD chats
+    Board board = 19;
+  }
+
+  // Chat state information. Present only for chats in chat list and for chat details
+  ChatState state = 17;
+}
+
+message ChatState {
+  // Last message information. Can be empty
+  Message last_message = 8;
+
+  // Last message reaction information. Can be empty. Present event message was deleted
+  uint64 updated_at = 9;
+
+  // Chat badge information.
+  ChatBadge badge = 14;
+
+  // Chat pinned position, if any
+  uint32 pinned_position = 12;
+
+  // Bot commands. Still not implemented, reserved for future use
+  repeated teatypes.Command bot_commands = 15;
+
+  reserved 1 to 7, 10, 11, 13;
+}
+
+message MessageReaction {
+  // Unicode emoji
+  string emoji = 1;
+
+  // Count of reactions with this emoji
+  uint32 count = 2;
+
+  // Is my reaction
+  bool is_my = 3;
+
+  // Users who reacted with this emoji
+  repeated User users = 4;
+}
+
+message DeletedMessage {
+  // Time when message was deleted
+  uint64 deleted_at = 1;
+}
+
+// Message in chat
+message Message {
+  // Message id. UUID v4
+  string id = 1;
+
+  // Chat id. Actually need only for push notifications and websocket events but present in all messages for consistency
+  string chat_id = 16;
+
+  // Message creation time
+  uint64 created_at = 3;
+
+  // Time when message was edited by author. It happens only on text / uploads / reply / forwards change. When equal to
+  // created_at, message was not edited.
+  uint64 edited_at = 9;
+
+  // Sender of message. If empty, message was sent by system
+  User sender = 5;
+
+  oneof content {
+    // Message text if message is text message
+    string text = 4;
+
+    // Forwarded message information for forwarded messages
+    ChatMessage forward = 13;
+
+    // System message information for system messages
+    SystemMessage system_message = 17;
+
+    // Upload information for audio messages
+    teatypes.Upload audio_upload = 18;
+
+    // Deleted message information for deleted messages
+    DeletedMessage deleted = 20;
+  }
+
+  // Previous message id. If empty, message is first in chat
+  string prev_message_id = 6;
+
+  // How many recipients received this message
+  uint32 viewed_counter = 7;
+
+  // Message to which this message is a reply
+  optional Message reply = 12;
+
+  // Uploads in message
+  repeated Upload uploads = 11;
+
+  // Reactions to this message
+  repeated MessageReaction reactions = 14;
+
+  // Can I edit this message. Read only field. For now, message can be edited by author except for messages to bots.
+  bool can_i_edit_this_message = 15;
+
+  // Can I delete this message. Read only field.
+  bool can_i_delete_this_message = 19;
+
+  reserved 2, 8, 10;
+}
+
+// Message with full chat info. For forwarded, search results etc.
+message ChatMessage {
+  // Chat information
+  Chat chat = 1;
+
+  // Message information
+  Message message = 2;
+}
+
+message ChatBadge {
+  // Chat id. Present only for ChatBadge in Chat
+  string chat_id = 1;
+
+  // Counter for chat
+  uint32 counter = 2;
+
+  // Updated at time. In conflicting cases, the badge with the latest updated_at should be used
+  uint64 updated_at = 3;
+
+  // Last viewed message id
+  string last_viewed_message_id = 4;
+
+  // Last viewed message creation time
+  uint64 last_viewed_message_created_at = 5;
+}

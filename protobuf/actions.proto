@@ -3,11 +3,10 @@ syntax = "proto3";
 package teaproto;
 
 import "auth.proto";
+import "badges.proto";
 import "board_members.proto";
 import "boards.proto";
 import "chats.proto";
-import "core.proto";
-import "core_users.proto";
 import "devices.proto";
 import "group_members.proto";
 import "groups.proto";
@@ -16,6 +15,10 @@ import "reactions.proto";
 import "state.proto";
 import "task_members.proto";
 import "tasks.proto";
+import "teatypes/tbadges.proto";
+import "teatypes/tchats.proto";
+import "teatypes/ttasks.proto";
+import "teatypes/tusers.proto";
 import "tokens.proto";
 import "uploads.proto";
 import "users.proto";
@@ -223,22 +226,46 @@ message Result {
 }
 
 message WebsocketAuthRequest {
+  // Auth token
   string token = 1;
 }
 
 message WebsocketEvent {
   enum Error {
+    // Reserved
     UNKNOWN_ERROR = 0;
+
+    // Token is invalid
     INVALID_TOKEN_ERROR = 1;
   }
+
+  // Errors. If there are any errors, connection closes.
   repeated Error errors = 99;
 
-  repeated Message messages = 3; // new or updated messages
-  repeated User users = 4; // new or updated users
-  repeated Chat chats = 5; // new or updated chats
-  repeated ChatBadge chat_badges = 6; // updated chat badges
+  // New or updated messages
+  repeated teatypes.Message messages = 3;
+
+  // New or updated users
+  repeated teatypes.User users = 4;
+
+  // New or updated chats
+  repeated teatypes.Chat chats = 5;
+
+  // Updated chat badges
+  repeated teatypes.ChatBadge chat_badges = 6;
+
+  // Chat events
   repeated ChatEvent chat_events = 7;
+
+  // Viewed messages
   repeated ViewedMessage viewed_messages = 8;
-  repeated GlobalBadge global_badges = 9;
-  repeated OnlineStatus online_statuses = 10; // users going online, offline or away
+
+  // Global badges
+  repeated teatypes.GlobalBadge global_badges = 9;
+
+  // Changed online statuses
+  repeated teatypes.OnlineStatus online_statuses = 10;
+
+  // Changed task positions
+  repeated teatypes.TaskShift task_shifts = 11;
 }

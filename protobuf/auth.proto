@@ -5,112 +5,198 @@ package teaproto;
 import "users.proto";
 
 enum AuthMethod {
+  // Reserved
   UNKNOWN_AUTH_METHOD = 0;
+
+  // Authenticated by email and code sent to email
   EMAIL_CODE_AUTH_METHOD = 1;
+
+  // Authenticated by email and password
   EMAIL_PASSWORD_AUTH_METHOD = 2;
 }
 
 message Confirmation {
+  // Length of sent code
   uint32 code_length = 2;
+
+  // Time when code will expire
   uint64 code_expired_at = 3;
+
+  // Time when next code can be sent
   uint64 next_code_can_be_sent_at = 4;
 }
 
 message EmailPasswordAuthRequest {
+  // Email. Must be valid email address.
   string email = 1;
+
+  // Password
   string password = 2;
 }
 
 message EmailPasswordAuthResponse {
   enum Error {
+    // Reserved
     UNKNOWN_ERROR = 0;
+
+    // Email is invalid
     INVALID_EMAIL_ERROR = 1;
+
+    // Password is invalid or not set
     INVALID_PASSWORD_OR_PASSWORD_NOT_SET_ERROR = 2;
+
+    // Auth method is not supported
     AUTH_METHOD_NOT_SUPPORTED_ERROR = 3;
   }
+
+  // Errors that occurred during authentication
   repeated Error errors = 1;
+
+  // Token that can be used to authenticate user in future
   string token = 2;
+
+  // User profile
   Profile profile = 3;
 }
 
 message EmailCodeAuthRequest {
+  // Email. Must be valid email address.
   string email = 1;
-  bool force_send_by_bot = 2; // when true, code will be sent by direct message from bot
+
+  // Force send code by bot. When true, code will be sent by direct message from bot.
+  bool force_send_by_bot = 2;
 }
 
 message EmailCodeAuthResponse {
   enum Error {
+    // Reserved
     UNKNOWN_ERROR = 0;
+
+    // Given email is invalid
     INVALID_EMAIL_ERROR = 1;
+
+    // Auth method is not supported on this server
     AUTH_METHOD_NOT_SUPPORTED_ERROR = 2;
+
+    // Too many attempts to send code
     TOO_MANY_ATTEMPTS_ERROR = 3;
   }
+
+  // Errors that occurred during authentication
   repeated Error errors = 1;
+
+  // Information about sent code
   Confirmation confirmation = 2;
 }
 
 message EmailCodeAuthConfirmRequest {
+  // Email. Must be valid email address.
   string email = 1;
+
+  // Code that was sent to email
   string code = 2;
 }
 
 message EmailCodeAuthConfirmResponse {
   enum Error {
+    // Reserved
     UNKNOWN_ERROR = 0;
-    CODE_INVALID_ERROR = 1; // code invalid but user can try again
-    CODE_EXPIRED_ERROR = 2; // need to request new code
+
+    // Code is invalid but user can try again
+    CODE_INVALID_ERROR = 1;
+
+    // Code is expired. Need to request new code
+    CODE_EXPIRED_ERROR = 2;
   }
+
+  // Errors that occurred during authentication
   repeated Error errors = 1;
+
+  // Token that can be used to authenticate user in future
   string token = 3;
+
+  // User information
   Profile profile = 4;
 }
 
 message LogoutRequest {
+  // Devices identifiers that should be deleted when user logs out
   repeated string delete_devices = 1;
 }
 
 message LogoutResponse {}
 
 message SetPasswordRequest {
-  // TODO: maybe ask current password
+  // New password
   string new_password = 1;
 }
 
 message SetPasswordResponse {
   enum Error {
+    // Reserved
     UNKNOWN_ERROR = 0;
-    NEW_PASSWORD_IS_TOO_SHORT_ERROR = 2; // see StateResponse.min_password_length
-    NEW_PASSWORD_IS_TOO_LONG_ERROR = 3;  // see StateResponse.max_password_length
+
+    // New password is too short. See StateResponse.min_password_length for minimum password length
+    NEW_PASSWORD_IS_TOO_SHORT_ERROR = 2;
+
+    // New password is too long. See StateResponse.max_password_length for maximum password length
+    NEW_PASSWORD_IS_TOO_LONG_ERROR = 3;
   }
+
+  // Errors that occurred during setting new password
   repeated Error errors = 1;
 }
 
 message SetEmailRequest {
+  // New email. Must be valid email address.
   string new_email = 1;
 }
 
 message SetEmailResponse {
   enum Error {
+    // Reserved
     UNKNOWN_ERROR = 0;
+
+    // New email is invalid
     INVALID_EMAIL_ERROR = 1;
+
+    // New email is already used by another user
     EMAIL_ALREADY_USED_BY_ANOTHER_USER_ERROR = 2;
+
+    // New email is already used by current user
     EMAIL_ALREADY_USED_BY_CURRENT_USER_ERROR = 3;
+
+    // Too many attempts to send confirmation code
     TOO_MANY_ATTEMPTS_ERROR = 4;
   }
+
+  // Errors that occurred during setting new email
   repeated Error errors = 1;
+
+  // Information about sent code
   Confirmation confirmation = 2;
 }
 
 message SetEmailConfirmRequest {
+  // Code that was sent to email
   string code = 1;
 }
 
 message SetEmailConfirmResponse {
   enum Error {
+    // Reserved
     UNKNOWN_ERROR = 0;
-    CODE_INVALID_ERROR = 1; // code invalid but user can try again
-    CODE_EXPIRED_ERROR = 2; // need to request new code
+
+    // Code is invalid but user can try again
+    CODE_INVALID_ERROR = 1;
+
+    // Code is expired. Need to request new code
+    CODE_EXPIRED_ERROR = 2;
   }
+
+  // Errors that occurred during setting new email
   repeated Error errors = 1;
+
+  // User information
   Profile profile = 2;
 }

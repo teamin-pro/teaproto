@@ -2,8 +2,9 @@ syntax = "proto3";
 
 package teaproto;
 
-import "core_users.proto";
-import "core.proto";
+import "teatypes/tbadges.proto";
+import "teatypes/tchats.proto";
+import "teatypes/tusers.proto";
 
 message SendMessageRequest {
   string id = 4; // optional: when present used as id for new message or for editing existing message
@@ -39,9 +40,9 @@ message SendMessageResponse {
   }
   repeated Error errors = 1;
   string errors_hint = 3; // optional human readable error description
-  Message message = 2;
-  repeated ChatBadge chat_badges = 4;
-  repeated GlobalBadge global_badges = 5;
+  teatypes.Message message = 2;
+  repeated teatypes.ChatBadge chat_badges = 4;
+  repeated teatypes.GlobalBadge global_badges = 5;
 }
 
 message DeleteMessageRequest {
@@ -55,7 +56,7 @@ message DeleteMessageResponse {
     NOT_ALLOWED_ERROR = 2;
   }
   repeated Error errors = 1;
-  Message message = 2;
+  teatypes.Message message = 2;
 }
 
 message MessagesListRequest {
@@ -93,7 +94,7 @@ message MessagesListResponse {
     INVALID_LIMIT_ERROR = 3;
   }
   repeated Error errors = 1;
-  repeated Message messages = 2;
+  repeated teatypes.Message messages = 2;
 }
 
 message MessageDetailsRequest {
@@ -106,7 +107,7 @@ message MessageDetailsResponse {
     INVALID_MESSAGE_ID_ERROR = 1;
   }
   repeated Error errors = 1;
-  Message message = 2;
+  teatypes.Message message = 2;
 }
 
 message ViewedMessage {
@@ -126,8 +127,8 @@ message ViewMessageResponse {
   }
   repeated Error errors = 1;
   repeated ViewedMessage viewed_messages = 3; // viewed messages list
-  repeated ChatBadge chat_badges = 4;  // number of unseen messages
-  repeated GlobalBadge global_badges = 5;
+  repeated teatypes.ChatBadge chat_badges = 4;  // number of unseen messages
+  repeated teatypes.GlobalBadge global_badges = 5;
 }
 
 message MessageViewersRequest {
@@ -143,5 +144,5 @@ message MessageViewersResponse {
     INVALID_LIMIT_ERROR = 2;
   }
   repeated Error errors = 1;
-  repeated User users = 3;
+  repeated teatypes.User users = 3;
 }

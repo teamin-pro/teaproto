@@ -1,9 +1,9 @@
 syntax = "proto3";
 
-package teaproto;
+package teatypes;
 
-import "core_images.proto";
-import "core_users.proto";
+import "teatypes/timages.proto";
+import "teatypes/tusers.proto";
 
 message SystemMessage {
   message ErrorMessageType {
@@ -21,15 +21,15 @@ message SystemMessage {
   }
 
   message GroupIconChangedType {
-    Icon new_icon = 1;
+    teatypes.Icon new_icon = 1;
   }
 
   message UsersAddedToGroupType {
-    repeated User users = 1;
+    repeated teatypes.User users = 1;
   }
 
   message UsersRemovedFromGroupType {
-    repeated User users = 1;
+    repeated teatypes.User users = 1;
   }
 
   // tasks
@@ -48,11 +48,11 @@ message SystemMessage {
   }
 
   message UsersAddedToTaskType {
-    repeated User users = 1;
+    repeated teatypes.User users = 1;
   }
 
   message UsersRemovedFromTaskType {
-    repeated User users = 1;
+    repeated teatypes.User users = 1;
   }
 
   message TaskStatusChangedType {
@@ -65,7 +65,7 @@ message SystemMessage {
     string text = 1;
   }
 
-  User actor = 1;
+  teatypes.User actor = 1;
 
   oneof type {
     ErrorMessageType error_message = 9;

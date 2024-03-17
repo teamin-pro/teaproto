@@ -1,0 +1,44 @@
+syntax = "proto3";
+
+package teatypes;
+
+import "teatypes/timages.proto";
+
+message User {
+  // User id. UUID v4
+  string id = 1;
+
+  // User name
+  string name = 2;
+
+  // Icon information
+  teatypes.Icon icon = 3;
+
+  // Is me
+  bool is_me = 6;
+
+  // Online status information. Can be omited in system messages
+  OnlineStatus online_status = 7;
+}
+
+message OnlineStatus {
+  enum Status {
+    // User is offline
+    OFFLINE = 0;
+
+    // User is online
+    ONLINE = 1;
+
+    // User if away from keyboard
+    AWAY = 2;
+  }
+
+  // User id. Can be omited if this message already inside User message
+  string user_id = 1;
+
+  // User status information
+  Status status = 2;
+
+  // Last seen timestamp. Only for OFFLINE status
+  uint64 last_seen = 3;
+}

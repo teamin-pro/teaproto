@@ -2,13 +2,13 @@ syntax = "proto3";
 
 package teaproto;
 
-import "core_images.proto";
-import "core_users.proto";
+import "teatypes/timages.proto";
+import "teatypes/tusers.proto";
 
 message Profile {
   string id = 1;
   string name = 2;
-  Icon icon = 3;
+  teatypes.Icon icon = 3;
   string email = 6;
   bool has_password = 7;
 }
@@ -55,5 +55,5 @@ message UsersListResponse {
     INVALID_LIMIT_ERROR = 1;
   }
   repeated Error errors = 2;
-  repeated User users = 1;
+  repeated teatypes.User users = 1;
 }
