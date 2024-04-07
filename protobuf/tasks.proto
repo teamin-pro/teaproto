@@ -42,6 +42,9 @@ message CreateTaskRequest {
 
   // Contains the ids of messages from the chat that are related to the task creation.
   repeated string source_message_ids = 8;
+
+  // Create system message in chat after task creation. Works only when source_message_ids is not empty.
+  bool notify_chat_after_task_creation = 9;
 }
 
 message CreateTaskResponse {

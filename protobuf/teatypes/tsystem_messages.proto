@@ -59,6 +59,12 @@ message SystemMessage {
     uint32 new_status_id = 1;
   }
 
+  // any chats
+  message TaskFromMessageWasCreatedType {
+    string title = 1;
+    string description = 2;
+  }
+
   // etc
 
   message WelcomeType {
@@ -84,6 +90,9 @@ message SystemMessage {
     UsersAddedToTaskType users_added_to_task = 16;
     UsersRemovedFromTaskType users_removed_from_task = 17;
     TaskStatusChangedType task_status_changed = 20;
+
+    // any chats
+    TaskFromMessageWasCreatedType task_from_message_was_created = 22;
 
     //etc
     WelcomeType welcome = 15;
