@@ -1,3 +1,7 @@
+## v3.3.0
+ - task drafts
+ - create task from messages
+
 ## v3.2.0 
  - task positions
  - task id on task creation

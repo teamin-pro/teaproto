@@ -5,6 +5,18 @@ package teaproto;
 import "teatypes/tchats.proto";
 import "teatypes/ttasks.proto";
 
+message TaskDraftRequest {
+  // Contains the ids of messages from the chat, which will be used to form the task draft.
+  // All messages should be from the same chat. If the messages are from different chats,
+  // the chat from the first message will be used, and messages from other chats will be ignored.
+  repeated string source_message_ids = 1;
+}
+
+message TaskDraftResponse {
+  // Task draft that has been created. Not saved in the database.
+  CreateTaskRequest create_task_request = 1;
+}
+
 message CreateTaskRequest {
   // Parent chat id
   string parent_chat_id = 1;
@@ -24,8 +36,11 @@ message CreateTaskRequest {
   // New task position.
   teatypes.TaskPositionUpdate position = 6;
 
-  // Task status id
+  // Represents the status identifier of the task, indicating its current state.
   uint32 task_status_id = 7;
+
+  // Contains the ids of messages from the chat that are related to the task creation.
+  repeated string source_message_ids = 8;
 }
 
 message CreateTaskResponse {
