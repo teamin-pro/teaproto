@@ -31,7 +31,7 @@ message CreateTaskRequest {
   // Task description
   string description = 3;
 
-  // Task members.Task creator is always a member by default.
+  // Task members. Task creator is always a member by default.
   repeated teatypes.TaskMemberUpdate members = 5;
 
   // New task position.
