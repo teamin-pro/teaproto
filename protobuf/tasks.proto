@@ -14,6 +14,7 @@ message TaskDraftRequest {
 
 message TaskDraftResponse {
   // Task draft that has been created. Not saved in the database.
+  // Contains description and members from the source messages.
   CreateTaskRequest create_task_request = 1;
 }
 
