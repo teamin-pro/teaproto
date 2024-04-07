@@ -2,6 +2,7 @@ syntax = "proto3";
 
 package teatypes;
 
+import "teatypes/tchats.proto";
 import "teatypes/timages.proto";
 import "teatypes/tusers.proto";
 
@@ -60,9 +61,9 @@ message SystemMessage {
   }
 
   // any chats
+
   message TaskFromMessageWasCreatedType {
-    string title = 1;
-    string description = 2;
+    teatypes.Chat task = 1;
   }
 
   // etc
