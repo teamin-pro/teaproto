@@ -16,9 +16,23 @@ message TaskDraftRequest {
 }
 
 message TaskDraftResponse {
+  enum Error {
+    // Reserved
+    UNKNOWN_ERROR = 0;
+
+    // Parent chat is invalid or does not exist
+    INVALID_PARENT_CHAT_ERROR = 1;
+
+    // Not allowed to create the task in the parent chat
+    NOT_ALLOWED_TO_CREATE_TASK_ERROR = 6;
+  }
+
+  // A list of errors that occurred during the request processing
+  repeated Error errors = 1;
+
   // Task draft that has been created. Contains title, description and members from the source messages.
   // Not saved in the database.
-  CreateTaskRequest create_task_request = 1;
+  CreateTaskRequest create_task_request = 2;
 }
 
 message CreateTaskRequest {
