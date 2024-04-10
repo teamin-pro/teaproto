@@ -82,8 +82,8 @@ message Action {
     // tasks
     CreateTaskRequest create_task_request = 54;
     DeleteTaskRequest delete_task_request = 56;
-    UpdateTaskRequest update_task_request = 55;
     TaskDraftRequest task_draft_request = 57;
+    UpdateTaskRequest update_task_request = 55;
 
     // task members
     CreateOrUpdateTaskMembersRequest create_or_update_task_members_request = 68;
@@ -178,8 +178,8 @@ message Result {
     // tasks
     CreateTaskResponse create_task_response = 54;
     DeleteTaskResponse delete_task_response = 56;
-    UpdateTaskResponse update_task_response = 55;
     TaskDraftResponse task_draft_response = 57;
+    UpdateTaskResponse update_task_response = 55;
 
     // task members
     CreateOrUpdateTaskMembersResponse create_or_update_task_members_response = 68;
