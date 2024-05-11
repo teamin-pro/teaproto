@@ -49,7 +49,6 @@ go-protobuf: version
 		--go_opt=Mteatypes/tcommands.proto=./$(PROTOBUF_PACKAGE) \
 		--go_opt=Mteatypes/tgroups.proto=./$(PROTOBUF_PACKAGE) \
 		--go_opt=Mteatypes/timages.proto=./$(PROTOBUF_PACKAGE) \
-		--go_opt=Mteatypes/tsystem_messages.proto=./$(PROTOBUF_PACKAGE) \
 		--go_opt=Mteatypes/ttasks.proto=./$(PROTOBUF_PACKAGE) \
 		--go_opt=Mteatypes/tuploads.proto=./$(PROTOBUF_PACKAGE) \
 		--go_opt=Mteatypes/tusers.proto=./$(PROTOBUF_PACKAGE) \
@@ -77,7 +76,6 @@ go-protobuf: version
 		protobuf/teatypes/tcommands.proto \
 		protobuf/teatypes/tgroups.proto \
 		protobuf/teatypes/timages.proto \
-		protobuf/teatypes/tsystem_messages.proto \
 		protobuf/teatypes/ttasks.proto \
 		protobuf/teatypes/tuploads.proto \
 		protobuf/teatypes/tusers.proto \
