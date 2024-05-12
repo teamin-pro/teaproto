@@ -82,6 +82,7 @@ message Action {
     // tasks
     CreateTaskRequest create_task_request = 54;
     DeleteTaskRequest delete_task_request = 56;
+    TaskDraftRequest task_draft_request = 57;
     UpdateTaskRequest update_task_request = 55;
 
     // task members
@@ -177,6 +178,7 @@ message Result {
     // tasks
     CreateTaskResponse create_task_response = 54;
     DeleteTaskResponse delete_task_response = 56;
+    TaskDraftResponse task_draft_response = 57;
     UpdateTaskResponse update_task_response = 55;
 
     // task members
